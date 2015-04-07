@@ -7,9 +7,9 @@
   </parent>
   <groupId>si.uom</groupId>
   <artifactId>si-parent</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.3</version>
   <packaging>pom</packaging>
-  <name>Units of Measurement SI </name>
+  <name>International System of Units (SI)</name>
  
   	<!-- ======================================================= -->
 	<!-- Build Settings -->

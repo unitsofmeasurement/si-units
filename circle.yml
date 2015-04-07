@@ -3,7 +3,7 @@
 #    - "target" # files, relative to the build directory
 machine:
   environment:
-    UOM_VERSION: 0.3-SNAPSHOT
+    UOM_VERSION: 0.3
 test:
   post:
     - cp $HOME/.m2/repository/si/uom/si-quantity/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS

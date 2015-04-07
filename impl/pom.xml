@@ -4,11 +4,10 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>0.3-SNAPSHOT</version>
+		<version>0.3</version>
 	</parent>
-	<groupId>si.uom</groupId>
 	<artifactId>si-impl</artifactId>
-	<name>Units of Measurement SI Implementation</name>
+	<name>SI Implementation</name>
 
 	<!-- ======================================================= -->
 	<!-- Build Settings -->

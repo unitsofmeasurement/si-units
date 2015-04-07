@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>0.3-SNAPSHOT</version>
+		<version>0.3</version>
 	</parent>
 	<artifactId>si-quantity</artifactId>
-	<name>Units of Measurement SI Quantities</name>
+	<name>SI Quantities</name>
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
@@ -19,4 +19,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- ======================================================= -->
+			<!-- Source Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
