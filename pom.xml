@@ -23,7 +23,7 @@
 	</properties>
   <modules>
   	<module>quantity</module>
-	<module>impl</module>
+	<!-- <module>impl</module> -->
   </modules>
   <description>Units of Measurement SI (Système International d'Unités)</description>
 </project>
