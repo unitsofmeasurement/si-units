@@ -10,20 +10,30 @@
   <version>0.3</version>
   <packaging>pom</packaging>
   <name>International System of Units (SI)</name>
- 
-  	<!-- ======================================================= -->
-	<!-- Build Settings -->
-	<!-- ======================================================= -->
-	<properties>
-		<jdkVersion>1.6</jdkVersion>
-		<si.version>${project.version}</si.version>
-		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
-		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
-		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-	</properties>
+  <description>Units of Measurement SI (Système International d'Unités)</description>
+  
+  <!-- ======================================================= -->
+  <!-- Build Settings -->
+  <!-- ======================================================= -->
+  <properties>
+	<jdkVersion>1.6</jdkVersion>
+	<si.version>${project.version}</si.version>
+	<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
+	<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
+	<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+  </properties>
   <modules>
   	<module>quantity</module>
-	<!-- <module>impl</module> -->
+	<module>impl</module>
   </modules>
-  <description>Units of Measurement SI (Système International d'Unités)</description>
+
+  <!-- Additional repositories -->
+  <!-- Helps to resolve Parent POM -->
+  <repositories>
+	<repository>
+		<id>jcenter</id>
+		<name>JCenter</name>
+		<url>http://jcenter.bintray.com</url>
+	</repository>
+   </repositories>
 </project>
