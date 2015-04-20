@@ -1,4 +1,3 @@
-package si.uom.impl;
 /**
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
@@ -24,7 +23,7 @@ package si.uom.impl;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
+package si.uom.impl;
 
 import static tec.units.ri.AbstractUnit.ONE;
 
@@ -61,7 +60,7 @@ import tec.units.ri.unit.TransformedUnit;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.4, April 4, 2015
+ * @version 0.5.5, April 19, 2015
 */
 public final class SI extends AbstractSystemOfUnits {
 
