@@ -7,4 +7,4 @@ machine:
 test:
   post:
     - cp $HOME/.m2/repository/si/uom/si-quantity/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
-  #  - cp $HOME/.m2/repository/tec/uom/tools/uom-obix-tools/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
+    - cp $HOME/.m2/repository/si/uom/si-impl/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
