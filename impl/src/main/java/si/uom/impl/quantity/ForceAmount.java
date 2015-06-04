@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -30,7 +30,7 @@
 package si.uom.impl.quantity;
 
 import javax.measure.Unit;
-import si.uom.quantity.Force;
+import javax.measure.quantity.Force;
 
 import tec.units.ri.quantity.NumberQuantity;
 
@@ -46,6 +46,10 @@ import tec.units.ri.quantity.NumberQuantity;
 public final class ForceAmount extends NumberQuantity<Force> implements Force {
 
 	public ForceAmount(Number number, Unit<Force> unit) {
+		super(number, unit);
+	}
+	
+	public ForceAmount(double number, Unit<Force> unit) {
 		super(number, unit);
 	}
 }
