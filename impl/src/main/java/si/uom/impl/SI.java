@@ -31,8 +31,8 @@ import java.util.HashMap;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.Dimensionless; 
-import si.uom.quantity.*;
+import javax.measure.quantity.*; 
+//import si.uom.quantity.*;
 
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
@@ -60,7 +60,7 @@ import tec.units.ri.unit.TransformedUnit;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.5, April 19, 2015
+ * @version 0.5.6, May 04, 2015
 */
 public final class SI extends AbstractSystemOfUnits {
 

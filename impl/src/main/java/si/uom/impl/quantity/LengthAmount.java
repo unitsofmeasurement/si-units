@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -30,8 +30,8 @@
 package si.uom.impl.quantity;
 
 import javax.measure.Unit;
-import si.uom.quantity.Area;
-import si.uom.quantity.Length;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Length;
 
 import tec.units.ri.quantity.NumberQuantity;
 
@@ -42,7 +42,7 @@ import tec.units.ri.quantity.NumberQuantity;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, $Date: 2014-08-31 $
+ * @version 0.7.1, $Date: 2015-06-04 $
  */
 public final class LengthAmount extends NumberQuantity<Length> implements Length {
 
