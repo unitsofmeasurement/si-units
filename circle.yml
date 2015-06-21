@@ -8,3 +8,4 @@ test:
   post:
     - cp $HOME/.m2/repository/si/uom/si-quantity/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
     - cp $HOME/.m2/repository/si/uom/si-impl/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
+    #- mvn deploy -Dmaven.test.skip -DcreateDocs=true -s settings.xml
