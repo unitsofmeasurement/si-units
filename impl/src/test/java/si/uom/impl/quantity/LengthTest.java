@@ -30,8 +30,9 @@
 package si.uom.impl.quantity;
 
 import static org.junit.Assert.*;
-import static si.uom.impl.SI.METRE;
+import static si.uom.SI.METRE;
 import si.uom.impl.quantity.LengthAmount;
+
 import javax.measure.quantity.Length;
 
 import org.junit.Before;

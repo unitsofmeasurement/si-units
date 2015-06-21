@@ -14,9 +14,9 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
-		<ri.version>0.8-RC1</ri.version>
+		<ri.version>0.8-SNAPSHOT</ri.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
-		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
+		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 
@@ -27,7 +27,7 @@
 				<artifactId>unit-ri</artifactId>
 				<version>${ri.version}</version>
 			</dependency>
-			 <dependency>
+			<dependency>
                 <groupId>si.uom</groupId>
                 <artifactId>si-quantity</artifactId>
                 <version>0.3</version>

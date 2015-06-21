@@ -24,7 +24,7 @@
   </properties>
   <modules>
   	<module>quantity</module>
-	<module>impl</module>
+	<!--module>impl</module -->
   </modules>
 
   <!-- Additional repositories -->
