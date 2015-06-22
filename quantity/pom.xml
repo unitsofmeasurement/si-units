@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>si.uom</groupId>
-		<artifactId>si-units</artifactId>
+		<artifactId>si-parent</artifactId>
 		<version>0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>si-quantity</artifactId>

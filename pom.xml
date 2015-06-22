@@ -6,7 +6,7 @@
     <version>0.8-RC2</version>
   </parent>
   <groupId>si.uom</groupId>
-  <artifactId>si-units</artifactId>
+  <artifactId>si-parent</artifactId>
   <version>0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>International System of Units (SI)</name>
@@ -24,7 +24,7 @@
   </properties>
   <modules>
   	<module>quantity</module>
-	<!--module>impl</module -->
+	<!--  >module>impl</module -->
   </modules>
 
   <!-- Additional repositories -->

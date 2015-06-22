@@ -33,6 +33,7 @@ import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.*; 
 //import si.uom.quantity.*;
+import si.uom.quantity.MagnetomotiveForce;
 
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
@@ -47,7 +48,6 @@ import tec.units.ri.unit.BaseUnit;
 import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.TransformedUnit;
 
-
 /**
  * <p> This class defines all SI (Système International d'Unités) base units and
  *     derived units as well as units that are accepted for use with the
@@ -60,7 +60,7 @@ import tec.units.ri.unit.TransformedUnit;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.6, May 04, 2015
+ * @version 0.5.7, June 22, 2015
 */
 public final class SI extends AbstractSystemOfUnits {
 
@@ -201,6 +201,7 @@ public final class SI extends AbstractSystemOfUnits {
 
     /**
      * The SI unit for binary information (standard name <code>bit</code>).
+     * @deprecated see https://github.com/unitsofmeasurement/si-units/issues/2
      */
     public static final AlternateUnit<Information> BIT
             = addUnit(new AlternateUnit<Information>(ONE, "bit"), Information.class);
@@ -498,6 +499,7 @@ public final class SI extends AbstractSystemOfUnits {
 
     /**
      * The SI unit for binary information rate (standard name <code>bit/s</code>).
+     * @deprecated see https://github.com/unitsofmeasurement/si-units/issues/2
      */
     public static final Unit<InformationRate> BITS_PER_SECOND
             = addUnit(new ProductUnit<InformationRate>(BIT.divide(SECOND)), InformationRate.class);
