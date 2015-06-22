@@ -19,6 +19,7 @@ import javax.measure.Quantity;
  *
  * @see Information
  * @see <a href="http://en.wikipedia.org/wiki/Information_rate">Wikipedia: Information Rate</a>
+ * @deprecated see https://github.com/unitsofmeasurement/si-units/issues/2
  */
 public interface InformationRate extends Quantity<InformationRate> {
 }
