@@ -32,10 +32,9 @@ import java.util.HashMap;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.*; 
+
 //import si.uom.quantity.*;
 import si.uom.quantity.MagnetomotiveForce;
-
-import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.function.AddConverter;
 import tec.units.ri.function.LogConverter;
@@ -47,6 +46,7 @@ import tec.units.ri.unit.AlternateUnit;
 import tec.units.ri.unit.BaseUnit;
 import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.TransformedUnit;
+import tec.units.ri.unit.Units;
 
 /**
  * <p> This class defines all SI (Système International d'Unités) base units and
@@ -60,9 +60,9 @@ import tec.units.ri.unit.TransformedUnit;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.7, June 22, 2015
+ * @version 0.5.8, June 24, 2015
 */
-public final class SI extends AbstractSystemOfUnits {
+public final class SI extends Units {
 
     /**
      * The singleton instance.

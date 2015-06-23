@@ -67,6 +67,12 @@ public class UnitFormatTest {
 	}
 
 	@Test
+	public void testFormat2() {
+		Unit<Speed> kph = SI.KILOMETRES_PER_HOUR;
+		assertEquals("kph", kph.toString());
+	}
+	
+	@Test
 	public void testFormat3() {
 		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
 		assertEquals("At", at.toString());
