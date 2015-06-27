@@ -27,17 +27,20 @@ package si.uom.quantity;
 
 import javax.measure.Quantity;
 
-
 /**
- * Energy multiplied by a duration (quantity associated to the
- * <a href="http://en.wikipedia.org/wiki/Planck%27s_constant">Planck Constant</a>).
- * The system unit for this quantity is "J.s" (joules second).
+ * The density, or more precisely, the volumetric mass density, mass per unit volume of a substance
+ * under specified conditions of pressure and temperature.
+ * The system unit for this quantity is "kg/m³" (kilogram per cubic metre).
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.2
+ * 
+ * @version 1.3
  *
- * @see <a href="http://en.wikipedia.org/wiki/Action_(physics)">Wikipedia: Action</a>
+ * @see <a href=" https://en.wikipedia.org/wiki/Density">Wikipedia: Density</a>
+ *
+ * @see Mass
+ * @see Volume
  */
-public interface Action extends Quantity<Action> {
+public interface Density extends Quantity<Density> {
 }
