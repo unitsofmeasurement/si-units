@@ -1,39 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>tec.uom</groupId>
-    <artifactId>uom-parent</artifactId>
-    <version>0.8-RC2</version>
-  </parent>
-  <groupId>si.uom</groupId>
-  <artifactId>si-parent</artifactId>
-  <version>0.4-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>International System of Units (SI)</name>
-  <description>Units of Measurement SI (Système International d'Unités)</description>
-  
-  <!-- ======================================================= -->
-  <!-- Build Settings -->
-  <!-- ======================================================= -->
-  <properties>
-	<jdkVersion>1.6</jdkVersion>
-	<si.version>${project.version}</si.version>
-	<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
-	<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
-	<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-  </properties>
-  <modules>
-  	<module>quantity</module>
-	<!--  >module>impl</module -->
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>tec.uom</groupId>
+		<artifactId>uom-parent</artifactId>
+		<version>0.8-RC2</version>
+	</parent>
+	<groupId>si.uom</groupId>
+	<artifactId>si-parent</artifactId>
+	<version>0.4-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>International System of Units (SI)</name>
+	<description>Units of Measurement SI (Système International d'Unités)</description>
 
-  <!-- Additional repositories -->
-  <!-- Helps to resolve Parent POM -->
-  <repositories>
-	<repository>
-		<id>jcenter</id>
-		<name>JCenter</name>
-		<url>http://jcenter.bintray.com</url>
-	</repository>
-   </repositories>
+	<!-- ======================================================= -->
+	<!-- Build Settings -->
+	<!-- ======================================================= -->
+	<properties>
+		<jdkVersion>1.6</jdkVersion>
+		<si.version>${project.version}</si.version>
+		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
+		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
+		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+	</properties>
+	<modules>
+		<module>quantity</module>
+		<!-- >module>impl</module -->
+	</modules>
+
+	<!-- Additional repositories -->
+	<!-- Helps to resolve Parent POM -->
+	<repositories>
+		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
 </project>
