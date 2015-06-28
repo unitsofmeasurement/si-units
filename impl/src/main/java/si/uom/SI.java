@@ -34,6 +34,9 @@ import javax.measure.Unit;
 import javax.measure.quantity.*; 
 
 import si.uom.quantity.Action;
+import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.KinematicViscosity;
 //import si.uom.quantity.*;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
