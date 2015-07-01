@@ -37,6 +37,7 @@ import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.MagneticPermeability;
 //import si.uom.quantity.*;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
@@ -62,7 +63,7 @@ import tec.units.ri.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, June 27, 2015
+ * @version 0.7, July 1, 2015
 */
 public final class SI extends Units {
 
