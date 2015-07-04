@@ -41,6 +41,7 @@ import si.uom.quantity.MagneticPermeability;
 //import si.uom.quantity.*;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
+import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.MultiplyConverter;
@@ -210,8 +211,9 @@ public final class SI extends Units {
      * A mass unit accepted for use with SI units (standard name <code>t</code>).
      */
     public static final Unit<Mass> TONNE
-        = new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1));
-
+        = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units, 
+        		new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)),
+        				"Tonne", "t");
     /**
      * A dimensionless unit accepted for use with SI units (standard name <code>Np</code>).
      * Although the neper is coherent with SI units and is accepted by the CIPM,

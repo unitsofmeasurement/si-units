@@ -24,7 +24,7 @@ public class QuantityPrefixTest {
 	}
 	
 	@Test
-	public void testMega2() {
+	public void testTonne() {
 		Quantity<Mass> m1 = Quantities.getQuantity(1.0, SI.TONNE);
 		assertEquals(1d, m1.getValue());
 		assertEquals("t", m1.getUnit().toString());
@@ -42,7 +42,6 @@ public class QuantityPrefixTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testNano() {
 		Quantity<Mass> m1 = Quantities.getQuantity(1.0, GRAM);
 		assertEquals(1d, m1.getValue());
