@@ -9,7 +9,6 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Volume;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import tec.units.ri.quantity.Quantities;
@@ -36,12 +35,11 @@ public class QuantityPrefixTest {
 		assertEquals("Mt", m1.getUnit().toString());
 	}
 	
-
 	@Test
 	public void testMilli() {
 		Quantity<Volume> m1 = Quantities.getQuantity(1.0, LITRE);
 		assertEquals(1d, m1.getValue());
-		assertEquals("l", m1.getUnit().toString());
+		assertEquals("L", m1.getUnit().toString());
 				
 		Quantity<Volume> m2 = m1.to(MILLI(LITRE));
 		assertEquals(1000.0d, m2.getValue());
