@@ -39,7 +39,7 @@ public class QuantityPrefixTest {
 	public void testMilli() {
 		Quantity<Volume> m1 = Quantities.getQuantity(1.0, LITRE);
 		assertEquals(1d, m1.getValue());
-		assertEquals("L", m1.getUnit().toString());
+		assertEquals("l", m1.getUnit().toString());
 				
 		Quantity<Volume> m2 = m1.to(MILLI(LITRE));
 		assertEquals(1000.0d, m2.getValue());
