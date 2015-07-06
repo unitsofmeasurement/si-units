@@ -28,11 +28,11 @@ package si.uom.impl.format;
 import static org.junit.Assert.*;
 import static tec.units.ri.unit.MetricPrefix.KILO;
 import static tec.units.ri.unit.MetricPrefix.MEGA;
-import static tec.units.ri.unit.SI.HERTZ;
-import static tec.units.ri.unit.SI.KILOGRAM;
-import static tec.units.ri.unit.SI.METRE;
-import static tec.units.ri.unit.SI.MINUTE;
-import static tec.units.ri.unit.SI.SECOND;
+import static tec.units.ri.unit.Units.HERTZ;
+import static tec.units.ri.unit.Units.KILOGRAM;
+import static tec.units.ri.unit.Units.METRE;
+import static tec.units.ri.unit.Units.MINUTE;
+import static tec.units.ri.unit.Units.SECOND;
 
 import java.io.IOException;
 
