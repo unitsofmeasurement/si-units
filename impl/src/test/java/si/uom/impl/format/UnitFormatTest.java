@@ -41,6 +41,7 @@ import javax.measure.Unit;
 import javax.measure.format.ParserException;
 import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Length;
+import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.Speed;
 
 import org.junit.Before;
@@ -82,6 +83,12 @@ public class UnitFormatTest {
 	public void testFormat4() {
 		Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
 		assertEquals("kph", kph.toString());
+	}
+	
+	@Test
+	public void testFormat5() {
+		Unit<Radioactivity> b = SI.BECQUEREL;
+		assertEquals("Bq", b.toString());
 	}
 	
 	@Test
