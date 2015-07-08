@@ -12,9 +12,11 @@ public class Messages_SI extends Messages {
 	private final Map<String, String> strings = new HashMap<String, String>(30);
 
 	public Messages_SI() {
-		strings.put("si.uom.SI.BIT", "b");
 		strings.put("si.uom.SI.AMPERE_TURN", "At");
-		strings.put("si.uom.SI.BECQUEREL", "Bq");
+		strings.put("si.uom.SI.BEL", "B");
+		strings.put("si.uom.SI.CARAT", "ct");
+		strings.put("si.uom.SI.HECTARE", "ha");
+		/*
 		strings.put("si.uom.SI.CANDELA", "cd");
 		strings.put("si.uom.SI.CELSIUS", "\u00B0C");
 		strings.put("si.uom.SI.CELSIUS.1", "\u2103");
@@ -49,7 +51,7 @@ public class Messages_SI extends Messages {
 		strings.put("si.uom.SI.VOLT", "V");
 		strings.put("si.uom.SI.WATT", "W");
 		strings.put("si.uom.SI.WEBER", "Wb");
-
+		*/
 	}
 
 	protected String handleGetString(String key) {

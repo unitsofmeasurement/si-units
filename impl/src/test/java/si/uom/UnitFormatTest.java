@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.impl.format;
+package si.uom;
 
 import static org.junit.Assert.*;
 import static tec.units.ri.unit.MetricPrefix.KILO;
@@ -40,16 +40,21 @@ import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
 import javax.measure.format.UnitFormat;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
 import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.Speed;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tec.units.ri.format.EBNFUnitFormat;
+import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.spi.DefaultQuantityFactory;
 import tec.units.ri.unit.Units;
 
@@ -61,22 +66,27 @@ public class UnitFormatTest {
 	@SuppressWarnings("unused")
 	private Quantity<Length> sut;
 
+	private EBNFUnitFormat format;
+	private SimpleUnitFormat format2;
+	
 	@Before
 	public void init() {
 		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
 				METRE);
+		
+		format = EBNFUnitFormat.getInstance();
+		format2 = SimpleUnitFormat.getInstance();
+		
+		format2.label(SI.BEL, "B");
+		format2.label(SI.CARAT, "ct");
+		format2.label(SI.HECTARE, "Ha");
+		format2.label(SI.TONNE, "t");
 	}
 
 	@Test
 	public void testFormat2() {
 		Unit<Speed> kph = SI.KILOMETRES_PER_HOUR;
 		assertEquals("kph", kph.toString());
-	}
-	
-	@Test
-	public void testFormat3() {
-		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
-		assertEquals("At", at.toString());
 	}
 	
 	@Test
@@ -87,8 +97,29 @@ public class UnitFormatTest {
 	
 	@Test
 	public void testFormat5() {
-		Unit<Radioactivity> b = SI.BECQUEREL;
-		assertEquals("Bq", b.toString());
+		Unit<Dimensionless> b = SI.BEL;
+		assertEquals("B", b.toString());
+		//assertEquals("B", format.format(b));
+	}
+	
+	@Test
+	public void testFormat6() {
+		Unit<Area> b = SI.HECTARE;
+		assertEquals("Ha", b.toString());
+	}
+	
+	@Test
+	public void testFormat7() {
+		Unit<Mass> c = SI.CARAT;
+		
+//		assertEquals("ct", format.format(c));
+		assertEquals("ct", c.toString());
+	}
+	
+	@Test
+	public void testFormat3() {
+		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
+		//assertEquals("At", at.toString());
 	}
 	
 	@Test
