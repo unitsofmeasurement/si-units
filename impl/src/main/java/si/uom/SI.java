@@ -178,6 +178,15 @@ public final class SI extends Units {
     public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM
             = addUnit(new ProductUnit<IonizingRadiation>(
             COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
+            
+    /**
+     * Carat (mass) is a unit of mass for gems. It is equal to 0.2 gram.</br>
+     * In the United States, carat almost exclusively means the unit of mass. 
+     */
+    public static final Unit<Mass> CARAT
+    	    = addUnit(new ProductUnit<Mass>(
+    	    KILOGRAM.divide(5000))
+    	    );
 
     /////////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //
