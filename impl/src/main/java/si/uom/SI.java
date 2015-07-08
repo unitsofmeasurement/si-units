@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -64,7 +64,7 @@ import tec.units.ri.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, July 1, 2015
+ * @version 0.7.1, July 8, 2015
 */
 public final class SI extends Units {
 
@@ -200,12 +200,6 @@ public final class SI extends Units {
      */
     public static final Unit<Angle> SECOND_ANGLE
         = new TransformedUnit<Angle>(RADIAN,  new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
-
-    /**
-     * A volume unit accepted for use with SI units (standard name <code>l</code>).
-     */
-    public static final Unit<Volume> LITRE
-        = new TransformedUnit<Volume>(CUBIC_METRE, new RationalConverter(1, 1000));
 
     /**
      * A mass unit accepted for use with SI units (standard name <code>t</code>).
