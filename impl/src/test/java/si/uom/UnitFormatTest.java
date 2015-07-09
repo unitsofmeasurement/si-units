@@ -55,7 +55,7 @@ import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tec.units.ri.format.EBNFUnitFormat;
 import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.spi.DefaultQuantityFactory;
+import tec.units.ri.quantity.DefaultQuantityFactory;
 import tec.units.ri.unit.Units;
 
 /**
