@@ -1,11 +1,11 @@
-package tec.units.ri.format.internal;
+package tec.units.ri.internal.format;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import tec.units.ri.format.internal.Messages;
+import tec.units.ri.internal.format.Messages;
 
 public class Messages_SI extends Messages {
 
