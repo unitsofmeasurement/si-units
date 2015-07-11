@@ -25,13 +25,18 @@
  */
 package si.uom;
 
-import static tec.units.ri.AbstractUnit.ONE;
-
-import java.util.HashMap;
-
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.*; 
+import javax.measure.quantity.Acceleration;
+import javax.measure.quantity.Angle;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.quantity.ElectricPermittivity;
+import javax.measure.quantity.Energy;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Luminance;
+import javax.measure.quantity.MagneticFieldStrength;
+import javax.measure.quantity.Mass;
 
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
@@ -76,8 +81,8 @@ public final class SI extends Units {
     /**
      * Holds the mapping quantity to unit.
      */
-    private final HashMap<Class<? extends Quantity>, AbstractUnit>
-            quantityToUnit = new HashMap<Class<? extends Quantity>, AbstractUnit>();
+//    private final HashMap<Class<? extends Quantity>, AbstractUnit>
+//            quantityToUnit = new HashMap<Class<? extends Quantity>, AbstractUnit>();
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -285,11 +290,11 @@ public final class SI extends Units {
         return "SI";
     }
     
-    @SuppressWarnings("unchecked")
-	@Override
-    public <Q extends Quantity<Q>> AbstractUnit<Q> getUnit(Class<Q> quantityType) {
-        return quantityToUnit.get(quantityType);
-    }
+//    @SuppressWarnings("unchecked")
+//	@Override
+//    public <Q extends Quantity<Q>> AbstractUnit<Q> getUnit(Class<Q> quantityType) {
+//        return quantityToUnit.get(quantityType);
+//    }
 
     /**
      * Adds a new unit not mapped to any specified quantity type.
