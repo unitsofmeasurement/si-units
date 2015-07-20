@@ -14,7 +14,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
-		<ri.version>0.8-SNAPSHOT</ri.version>
+		<ri.version>0.8-RC3</ri.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -30,7 +30,8 @@
 			<dependency>
                 <groupId>si.uom</groupId>
                 <artifactId>si-quantity</artifactId>
-                <version>0.3</version>
+                <version>${si.version}</version>
+                <scope>provided</scope>
             </dependency>
 		</dependencies>
 	</dependencyManagement>
