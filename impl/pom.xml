@@ -13,11 +13,17 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
+		<!-- Versions -->
 		<jdkVersion>1.7</jdkVersion>
 		<ri.version>0.8-RC3</ri.version>
+		<se.version>0.8-RC1</se.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+		
+		<!-- Folders -->
+		<jsrcFolder>java</jsrcFolder>
+		<classFolder>classes</classFolder>
 	</properties>
 
 	<dependencyManagement>
@@ -28,11 +34,16 @@
 				<version>${ri.version}</version>
 			</dependency>
 			<dependency>
-                <groupId>si.uom</groupId>
-                <artifactId>si-quantity</artifactId>
-                <version>${si.version}</version>
-                <scope>provided</scope>
-            </dependency>
+				<groupId>tec.uom</groupId>
+				<artifactId>uom-se</artifactId>
+				<version>${se.version}</version>
+			</dependency>
+			<dependency>
+                		<groupId>si.uom</groupId>
+                		<artifactId>si-quantity</artifactId>
+                		<version>${si.version}</version>
+                		<scope>provided</scope>
+            		</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -41,9 +52,9 @@
 			<artifactId>unit-api</artifactId>
 		</dependency>
 		<dependency>
-                <groupId>si.uom</groupId>
-                <artifactId>si-quantity</artifactId>
-            </dependency>
+                	<groupId>si.uom</groupId>
+                	<artifactId>si-quantity</artifactId>
+            	</dependency>
 		<dependency>
 			<groupId>tec.units</groupId>
 			<artifactId>unit-ri</artifactId>
@@ -54,4 +65,43 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<!--
+	<build>
+		<sourceDirectory>src/main/${jsrcFolder}</sourceDirectory>
+		<outputDirectory>target/${classFolder}</outputDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<classifier>${envClassifier}</classifier>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	-->
+	<profiles>
+		<profile>
+			<id>ri</id>
+		</profile>
+
+		<profile>
+			<id>java8</id>
+			<properties>
+				<envClassifier>jdk8</envClassifier>
+				<jsrcFolder>java8</jsrcFolder>
+				<classFolder>classes2</classFolder>
+			</properties>
+		</profile>
+	</profiles>
 </project>
