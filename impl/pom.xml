@@ -98,6 +98,7 @@
 		<profile>
 			<id>java8</id>
 			<properties>
+				<jdkVersion>1.8</jdkVersion>
 				<envClassifier>jdk8</envClassifier>
 				<jsrcFolder>java8</jsrcFolder>
 				<classFolder>classes2</classFolder>
