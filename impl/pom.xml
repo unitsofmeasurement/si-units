@@ -15,8 +15,9 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.7</jdkVersion>
-		<ri.version>0.8-RC3</ri.version>
-		<se.version>0.8-RC1</se.version>
+		<jsr.version>0.8-SNAPSHOT</jsr.version>
+		<ri.version>0.8-SNAPSHOT</ri.version>
+		<se.version>0.8-SNAPSHOT</se.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
