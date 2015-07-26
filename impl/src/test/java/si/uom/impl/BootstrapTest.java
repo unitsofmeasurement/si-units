@@ -37,15 +37,14 @@ import javax.measure.spi.UnitFormatService;
 import org.junit.Test;
 
 /**
- * Tests for {@link javax.money.spi.Bootstrap}.
+ * Tests for {@link SI} services provided by {@link javax.money.spi.Bootstrap}.
  */
-@SuppressWarnings("unchecked")
 public class BootstrapTest {
 
     @Test
     public void testGetServices() throws Exception {
     	Collection<SystemOfUnitsService> services = 
-    			Collection.class.cast(Bootstrap.getServices(SystemOfUnitsService.class));
+    			Bootstrap.getServices(SystemOfUnitsService.class);
         assertNotNull(services);
         assertFalse(services.isEmpty());
         assertEquals(2, services.size());
@@ -57,6 +56,7 @@ public class BootstrapTest {
         		break;
         	case 1:
         		assertEquals("Units", service.getSystemOfUnits().getName());
+        		break;
         	}
         	i++;
         }
