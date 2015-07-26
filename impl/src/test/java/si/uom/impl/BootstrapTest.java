@@ -71,9 +71,8 @@ public class BootstrapTest {
 
     @Test
     public void testGetAnotherService() throws Exception {
-    	UnitFormatService rounding = Bootstrap.getService(UnitFormatService.class);
-        assertNotNull(rounding);
-        //assertTrue(num.equals(5));
+    	UnitFormatService format = Bootstrap.getService(UnitFormatService.class);
+        assertNotNull(format);
     }
 
     @Test
