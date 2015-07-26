@@ -21,7 +21,7 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		
+
 		<!-- Folders -->
 		<jsrcFolder>java</jsrcFolder>
 		<classFolder>classes</classFolder>
@@ -40,11 +40,11 @@
 				<version>${se.version}</version>
 			</dependency>
 			<dependency>
-                		<groupId>si.uom</groupId>
-                		<artifactId>si-quantity</artifactId>
-                		<version>${si.version}</version>
-                		<scope>provided</scope>
-            		</dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-quantity</artifactId>
+				<version>${si.version}</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -53,12 +53,8 @@
 			<artifactId>unit-api</artifactId>
 		</dependency>
 		<dependency>
-                	<groupId>si.uom</groupId>
-                	<artifactId>si-quantity</artifactId>
-            	</dependency>
-		<dependency>
-			<groupId>tec.units</groupId>
-			<artifactId>unit-ri</artifactId>
+			<groupId>si.uom</groupId>
+			<artifactId>si-quantity</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -66,34 +62,50 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-	<!--
+
 	<build>
 		<sourceDirectory>src/main/${jsrcFolder}</sourceDirectory>
 		<outputDirectory>target/${classFolder}</outputDirectory>
+		<testSourceDirectory>src/test/${jsrcFolder}</testSourceDirectory>
+		<testOutputDirectory>target/test-${classFolder}</testOutputDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
 				</configuration>
+			</plugin>
+
+			<!-- ======================================================= -->
+			<!-- Source Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
 				<configuration>
 					<classifier>${envClassifier}</classifier>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	-->
+
 	<profiles>
 		<profile>
 			<id>ri</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>tec.units</groupId>
+					<artifactId>unit-ri</artifactId>
+				</dependency>
+			</dependencies>
 		</profile>
 
 		<profile>
@@ -102,8 +114,60 @@
 				<jdkVersion>1.8</jdkVersion>
 				<envClassifier>jdk8</envClassifier>
 				<jsrcFolder>java8</jsrcFolder>
-				<classFolder>classes2</classFolder>
+				<classFolder>classes8</classFolder>
 			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>tec.uom</groupId>
+					<artifactId>uom-se</artifactId>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-source-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>attach-sources</id>
+									<phase>package</phase>
+									<goals>
+										<goal>jar-no-fork</goal>
+									</goals>
+								</execution>
+							</executions>
+							<configuration>
+								<finalName>${project.build.finalName}-jdk8</finalName>
+							</configuration>
+						</plugin>
+
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-install-plugin</artifactId>
+							<version>2.3.1</version>
+							<executions>
+								<execution>
+									<id>install-jar-lib</id>
+									<goals>
+										<goal>install-file</goal>
+									</goals>
+									<phase>install</phase>
+									<configuration>
+										<file>${project.build.directory}/jdk8.jar</file>
+										<generatePom>false</generatePom>
+										<pomFile>pom.xml</pomFile>
+										<packaging>jar</packaging>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 	</profiles>
 </project>
