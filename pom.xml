@@ -30,7 +30,7 @@
 	</modules>
 
     <!-- Additional repositories -->
-    <!-- Helps to resolve Parent POM -->
+    <!-- Helps to resolve Parent POM and Snapshot artifacts -->
     <repositories>
         <repository>
             <id>geotoolkit</id>
