@@ -11,8 +11,8 @@ A library of SI quantities and unit types
 Depending on the environment (Embedded, Desktop/Server or a particular Java version) implementations use a different Maven artifactId.
 
 E.g.
-- [SI Units](units) for all environments prior to Java SE 8 (including ME 8 Embedded) based on the [RI](../unit-ri) 
-- [SI Units for Java SE 8](units-java8) for Java SE 8 and above based on the [SE port](../uom-se)
+- [SI Units](units) for all environments prior to Java SE 8 (including ME 8 Embedded) based on the [RI](../../../unit-ri) 
+- [SI Units for Java SE 8](units-java8) for Java SE 8 and above based on the [SE port](../../../uom-se)
 
 Waffle.io
 ------------
