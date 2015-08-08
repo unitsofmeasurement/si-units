@@ -26,16 +26,54 @@
 	<modules>
 		<module>quantity</module>
 		<module>units</module>
-		<module>units-java8</module>
+		<!-- <module>units-java8</module> -->
 	</modules>
 
-	<!-- Additional repositories -->
-	<!-- Helps to resolve Parent POM -->
-	<repositories>
+    <!-- Additional repositories -->
+    <!-- Helps to resolve Parent POM -->
+    <repositories>
+        <repository>
+            <id>geotoolkit</id>
+            <name>Geotoolkit.org project</name>
+            <url>http://maven.geotoolkit.org</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-release</id>
+            <name>libs-release</name>
+            <url>http://oss.jfrog.org/artifactory/libs-release</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>bintray-snapshot</id>
+            <name>libs-snapshot</name>
+            <url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
+
+	<distributionManagement>
 		<repository>
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
+			<id>bintray-release</id>
+			<name>oss-jfrog-artifactory-release</name>
+			<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
 		</repository>
-	</repositories>
+		<snapshotRepository>
+			<id>bintray-snapshot</id>
+			<name>oss-jfrog-artifactory-snapshot</name>
+			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+		</snapshotRepository>
+		<site>
+			<id>www.unitsofmeasurement.org</id>
+			<url>scp://www.unitsofmeasurement.org/www/docs/lib/</url>
+		</site>
+	</distributionManagement>
 </project>

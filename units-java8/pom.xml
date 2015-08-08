@@ -16,7 +16,6 @@
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>0.8-SNAPSHOT</jsr.version>
-		<ri.version>0.8-SNAPSHOT</ri.version>
 		<se.version>0.8-SNAPSHOT</se.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
