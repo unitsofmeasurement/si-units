@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>si.uom</groupId>
+		<artifactId>si-parent</artifactId>
+		<version>0.4-SNAPSHOT</version>
+	</parent>
+	<artifactId>si-units-java8</artifactId>
+	<name>SI Units for Java SE 8</name>
+
+	<!-- ======================================================= -->
+	<!-- Build Settings -->
+	<!-- ======================================================= -->
+	<properties>
+		<!-- Versions -->
+		<jdkVersion>1.8</jdkVersion>
+		<jsr.version>0.8-SNAPSHOT</jsr.version>
+		<ri.version>0.8-SNAPSHOT</ri.version>
+		<se.version>0.8-SNAPSHOT</se.version>
+		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
+		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
+		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>tec.units</groupId>
+				<artifactId>unit-ri</artifactId>
+				<version>${ri.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tec.uom</groupId>
+				<artifactId>uom-se</artifactId>
+				<version>${se.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-quantity</artifactId>
+				<version>${si.version}</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>javax.measure</groupId>
+			<artifactId>unit-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>tec.uom</groupId>
+			<artifactId>uom-se</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>si.uom</groupId>
+			<artifactId>si-quantity</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
+				</configuration>
+			</plugin>
+
+			<!-- ======================================================= -->
+			<!-- Source Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
