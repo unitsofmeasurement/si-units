@@ -7,6 +7,13 @@ A library of SI quantities and unit types
 [![Stack Overflow](http://img.shields.io/badge/stack%20overflow-si%20units-4183C4.svg)](http://stackoverflow.com/search?q=si+units)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
 
+### Environment
+Depending on the environment (Embedded, Desktop/Server or a particular Java version) implementations use a different Maven artifactId.
+
+E.g.
+- [SI Units](units) for all environments prior to Java SE 8 (including ME 8 Embedded) based on the RI
+- [SI Units for Java SE 8](units-java8) for Java SE 8 and above
+
 Waffle.io
 ------------
 [![Stories in Ready](https://badge.waffle.io/unitsofmeasurement/si-units.png?label=ready&title=Ready)](https://waffle.io/unitsofmeasurement/si-units)
