@@ -1,7 +1,9 @@
-#general:
-#  artifacts:
-#    - "target" # files, relative to the build directory
+general:
+  artifacts:
+    - "target" # files, relative to the build directory
 machine:
+  java:
+    version: oraclejdk8
   environment:
     UOM_VERSION: 0.4-SNAPSHOT
 test:
