@@ -7,12 +7,18 @@ A library of SI quantities and unit types
 [![Stack Overflow](http://img.shields.io/badge/stack%20overflow-si%20units-4183C4.svg)](http://stackoverflow.com/search?q=si+units)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
 
+The project currently contains the following modules:
+
+- [Reusable Quantities](quantity)
+- [SI Units](units) for all environments prior to Java SE 8 (including ME 8 Embedded) based on the [RI](../../../unit-ri) 
+- [SI Units for Java SE 8](units-java8) for Java SE 8 and above based on the [SE port](../../../uom-se)
+
 ### Environment
 Depending on the environment (Embedded, Desktop/Server or a particular Java version) implementations use a different Maven artifactId.
 
 E.g.
-- [SI Units](units) for all environments prior to Java SE 8 (including ME 8 Embedded) based on the [RI](../../../unit-ri) 
-- [SI Units for Java SE 8](units-java8) for Java SE 8 and above based on the [SE port](../../../uom-se)
+- [si-units](units) for all environments prior to Java SE 8.
+- [si-units-java8](units-java8) for Java SE 8 and above.
 
 Waffle.io
 ------------
