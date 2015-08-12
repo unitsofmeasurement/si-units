@@ -54,6 +54,7 @@ import org.junit.Test;
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tec.uom.se.format.EBNFUnitFormat;
+import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.quantity.DefaultQuantityFactory;
 import tec.uom.se.unit.Units;
 
@@ -66,7 +67,7 @@ public class UnitFormatTest {
 	private Quantity<Length> sut;
 
 	private EBNFUnitFormat format;
-//	private SimpleUnitFormat format2;
+	private SimpleUnitFormat format2;
 	
 	@Before
 	public void init() {
@@ -74,24 +75,24 @@ public class UnitFormatTest {
 				METRE);
 		
 		format = EBNFUnitFormat.getInstance();
-//		format2 = SimpleUnitFormat.getInstance();
+		format2 = SimpleUnitFormat.getInstance();
 		
-//		format2.label(SI.BEL, "B");
-//		format2.label(SI.CARAT, "ct");
-//		format2.label(SI.HECTARE, "Ha");
-//		format2.label(SI.TONNE, "t");
+		format2.label(SI.BEL, "B");
+		format2.label(SI.CARAT, "ct");
+		format2.label(SI.HECTARE, "Ha");
+		format2.label(SI.TONNE, "t");
 	}
 
 	@Test
 	public void testFormat2() {
 		Unit<Speed> kph = SI.KILOMETRES_PER_HOUR;
-		assertEquals("km/h", kph.toString()); // TODO i18n vs. no i18n
+		assertEquals("kph", kph.toString());
 	}
 	
 	@Test
 	public void testFormat4() {
 		Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
-		assertEquals("km/h", kph.toString());  // TODO i18n vs. no i18n
+		assertEquals("kph", kph.toString());  // TODO i18n vs. no i18n
 	}
 	
 	@Test
