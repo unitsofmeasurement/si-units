@@ -28,29 +28,62 @@ package si.uom.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Collection;
+
 import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 
 public class SystemOfUnitsServiceTest {
 
-    private static SystemOfUnitsService service;
+    private static SystemOfUnitsService defaultService;
 
     @BeforeClass
     public static void setUp() {
-      service = Bootstrap.getService(SystemOfUnitsService.class);
+      defaultService = Bootstrap.getService(SystemOfUnitsService.class);
     }
 
     @Test
-    public void testGetUnitSystem() {
-    	assertNotNull(service);
-    	SystemOfUnits system = service.getSystemOfUnits();
+    public void testDefaultUnitSystemService() {
+    	assertNotNull(defaultService);
+    	SystemOfUnits system = defaultService.getSystemOfUnits();
     	assertNotNull(system);
     	assertEquals("Units", system.getClass().getSimpleName());
     	assertNotNull(system.getUnits());
     	assertEquals(39, system.getUnits().size());
+    }
+    
+    @Test
+    public void testOtherUnitSystemServices() {
+    	Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
+    	assertNotNull(services);
+    	assertEquals(2, services.size());
+    	for (SystemOfUnitsService service : services) {
+    		checkService(service);
+    	}
+    }
+    
+    private void checkService(SystemOfUnitsService service) {
+    	SystemOfUnits system;
+    	switch ( service.getClass().getSimpleName()) {
+	    	case "DefaultSystemOfUnitsService":
+	    		assertEquals("DefaultSystemOfUnitsService", service.getClass().getSimpleName());
+	    		system = service.getSystemOfUnits();
+	    		assertNotNull(system);
+	    		assertEquals("Units", system.getName());
+	    		break;
+	    	case "SISystemService":
+	    		assertEquals("SISystemService", service.getClass().getSimpleName());
+	    		system = service.getSystemOfUnits();
+	    		assertNotNull(system);
+	    		assertEquals("SI", system.getName());
+	    		break;
+	    	default:
+    			break;
+    	}
     }
 }

@@ -43,7 +43,6 @@ public class SISystemService implements SystemOfUnitsService {
 	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
 	public SISystemService() {
-//		souMap.put(Units.class.getSimpleName(), Units.getInstance());
 		souMap.put(SI.class.getSimpleName(), SI.getInstance());
 	}
 	
