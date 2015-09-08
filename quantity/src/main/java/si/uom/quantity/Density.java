@@ -30,14 +30,16 @@ import javax.measure.Quantity;
 /**
  * The density, or more precisely, the volumetric mass density, mass per unit volume of a substance
  * under specified conditions of pressure and temperature.
- * The system unit for this quantity is "kg/m³" (kilogram per cubic metre).
+ * The system unit for this quantity is "kg/m³" (kilogram per cubic metre). 
+ * Common symbols are "ρ" or (e.g. if restricted to ASCII) "D".
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
  * 
- * @version 1.3
+ * @version 1.3.1
  *
- * @see <a href=" https://en.wikipedia.org/wiki/Density">Wikipedia: Density</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Density">Wikipedia: Density</a>
+ * @see <a href="https://en.wikipedia.org/wiki/ISO_80000-8">Wikipedia: ISO 80000-8</a>
  *
  * @see Mass
  * @see Volume
