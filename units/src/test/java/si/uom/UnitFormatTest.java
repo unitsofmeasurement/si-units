@@ -77,6 +77,8 @@ public class UnitFormatTest {
 		format = EBNFUnitFormat.getInstance();
 		format2 = SimpleUnitFormat.getInstance();
 		
+		format.label(SI.BEL, "B");
+		
 		format2.label(SI.BEL, "B");
 		format2.label(SI.CARAT, "ct");
 		format2.label(SI.HECTARE, "Ha");
