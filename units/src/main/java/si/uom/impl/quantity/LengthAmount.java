@@ -54,10 +54,4 @@ public final class LengthAmount extends NumberQuantity<Length> implements Length
 	public LengthAmount(Number number, Unit<Length> unit) {
 		super(number, unit);
 	}
-
-	@Override
-	public Area multiply(Length l) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
