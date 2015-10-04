@@ -30,7 +30,6 @@
 package si.uom.impl.quantity;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 
 import tec.units.ri.quantity.NumberQuantity;
@@ -42,7 +41,7 @@ import tec.units.ri.quantity.NumberQuantity;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, $Date: 2015-06-04 $
+ * @version 0.7.2, $Date: 2015-10-04 $
  */
 public final class LengthAmount extends NumberQuantity<Length> implements Length {
 
