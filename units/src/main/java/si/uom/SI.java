@@ -65,11 +65,13 @@ import tec.units.ri.unit.Units;
  * @see <a href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia: International System of Units</a>
  * @see <a href="http://physics.nist.gov/cuu/Units/outside.html>Units outside the SI that are accepted for use with the SI</a>
  * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf>SI 2006 - Official Specification</a>
- * @see SIPrefix
+ * @see MetricPrefix
+ * 
+ * @noextend This class is not intended to be extended by clients.
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, July 8, 2015
+ * @version 0.7.2, October 20, 2015
 */
 public final class SI extends Units {
 
