@@ -26,9 +26,6 @@
 package si.uom;
 
 import static org.junit.Assert.*;
-import static tec.units.ri.unit.MetricPrefix.KILO;
-import static tec.units.ri.unit.MetricPrefix.MEGA;
-import static tec.units.ri.unit.Units.HERTZ;
 import static tec.units.ri.unit.Units.KILOGRAM;
 import static tec.units.ri.unit.Units.METRE;
 import static tec.units.ri.unit.Units.MINUTE;
@@ -39,21 +36,17 @@ import java.io.IOException;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
-import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
-import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.Speed;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
-import tec.units.ri.format.EBNFUnitFormat;
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.quantity.DefaultQuantityFactory;
 import tec.units.ri.unit.Units;
@@ -63,7 +56,6 @@ import tec.units.ri.unit.Units;
  *
  */
 public class UnitFormatTest {
-	@SuppressWarnings("unused")
 	private Quantity<Length> sut;
 
 	private SimpleUnitFormat format2;
