@@ -36,7 +36,7 @@ import si.uom.SI;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1, July 26, 2015
+ * @version 0.2, November 3, 2015
  */
 public class SISystemService implements SystemOfUnitsService {
 	
@@ -47,7 +47,7 @@ public class SISystemService implements SystemOfUnitsService {
 		souMap.put(SI.class.getSimpleName(), SI.getInstance());
 	}
 	
-	public Collection<SystemOfUnits> getSystemsOfUnits() {
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
 		return souMap.values();
 	}
 	
