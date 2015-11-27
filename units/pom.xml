@@ -17,6 +17,7 @@
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>0.8</jsr.version>
 		<ri.version>0.8</ri.version>
+		<si.version>0.4-SNAPSHOT</si.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
