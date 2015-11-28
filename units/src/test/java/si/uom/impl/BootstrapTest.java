@@ -47,7 +47,7 @@ public class BootstrapTest {
     			Bootstrap.getServices(SystemOfUnitsService.class);
         assertNotNull(services);
         assertFalse(services.isEmpty());
-        assertEquals(2, services.size());
+        assertEquals(3, services.size());
         int i = 0;
         for (SystemOfUnitsService service : services) {
         	switch (i) {
@@ -66,7 +66,7 @@ public class BootstrapTest {
     public void testGetService() throws Exception {
     	SystemOfUnitsService souService = Bootstrap.getService(SystemOfUnitsService.class);
         assertNotNull(souService);
-        assertEquals("Units", souService.getSystemOfUnits().getName());
+        assertEquals("SI", souService.getSystemOfUnits().getName());
     }
 
     @Test

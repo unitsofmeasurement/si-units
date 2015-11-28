@@ -52,16 +52,16 @@ public class SystemOfUnitsServiceTest {
     	assertNotNull(defaultService);
     	SystemOfUnits system = defaultService.getSystemOfUnits();
     	assertNotNull(system);
-    	assertEquals("Units", system.getClass().getSimpleName());
+    	assertEquals("SI", system.getClass().getSimpleName());
     	assertNotNull(system.getUnits());
-    	assertEquals(39, system.getUnits().size());
+    	assertEquals(14, system.getUnits().size()); // SI extends Units, this is only its additional collection
     }
     
     @Test
     public void testOtherUnitSystemServices() {
     	Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
     	assertNotNull(services);
-    	assertEquals(2, services.size());
+    	assertEquals(3, services.size());
     	for (SystemOfUnitsService service : services) {
     		checkService(service);
     	}
