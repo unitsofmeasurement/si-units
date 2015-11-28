@@ -52,9 +52,9 @@ public class SystemOfUnitsServiceTest {
     	assertNotNull(defaultService);
     	SystemOfUnits system = defaultService.getSystemOfUnits();
     	assertNotNull(system);
-    	assertEquals("Units", system.getClass().getSimpleName());
+    	assertEquals("SI", system.getClass().getSimpleName());
     	assertNotNull(system.getUnits());
-    	assertEquals(37, system.getUnits().size()); // TODO 2 units missing in SE
+    	assertEquals(14, system.getUnits().size()); // Only additional units in SI
     }
     
     @Test

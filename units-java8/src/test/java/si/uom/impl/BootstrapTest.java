@@ -65,14 +65,14 @@ public class BootstrapTest {
     
     @Test
     public void testGetService() throws Exception {
-    	SystemOfUnitsService souService = Bootstrap.getService(SystemOfUnitsService.class);
+    	final SystemOfUnitsService souService = Bootstrap.getService(SystemOfUnitsService.class);
         assertNotNull(souService);
-        assertEquals("Units", souService.getSystemOfUnits().getName());
+        assertEquals("SI", souService.getSystemOfUnits().getName());
     }
 
     @Test
     public void testGetAnotherService() throws Exception {
-    	UnitFormatService format = Bootstrap.getService(UnitFormatService.class);
+    	final UnitFormatService format = Bootstrap.getService(UnitFormatService.class);
         assertNotNull(format);
     }
 
