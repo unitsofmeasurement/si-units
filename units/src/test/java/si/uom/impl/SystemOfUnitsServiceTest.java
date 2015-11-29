@@ -69,21 +69,17 @@ public class SystemOfUnitsServiceTest {
     
     private void checkService(SystemOfUnitsService service) {
     	SystemOfUnits system;
-    	switch ( service.getClass().getSimpleName()) {
-	    	case "DefaultSystemOfUnitsService":
-	    		assertEquals("DefaultSystemOfUnitsService", service.getClass().getSimpleName());
+    	final String serviceName = service.getClass().getSimpleName();
+    	if("DefaultSystemOfUnitsService".equals(serviceName)) {
+	    		assertEquals("DefaultSystemOfUnitsService", serviceName);
 	    		system = service.getSystemOfUnits();
 	    		assertNotNull(system);
 	    		assertEquals("Units", system.getName());
-	    		break;
-	    	case "SISystemService":
-	    		assertEquals("SISystemService", service.getClass().getSimpleName());
+    	} else if ("SISystemService".equals(serviceName)) {
+	    		assertEquals("SISystemService", serviceName);
 	    		system = service.getSystemOfUnits();
 	    		assertNotNull(system);
 	    		assertEquals("SI", system.getName());
-	    		break;
-	    	default:
-    			break;
     	}
     }
 }
