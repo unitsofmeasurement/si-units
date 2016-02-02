@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -31,7 +31,6 @@ import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
-import javax.measure.quantity.ElectricPermittivity;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Luminance;
@@ -40,6 +39,7 @@ import javax.measure.quantity.Mass;
 
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.MagneticPermeability;
@@ -68,7 +68,7 @@ import tec.uom.se.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, July 8, 2015
+ * @version 0.7.2, February 2, 2016
 */
 public final class SI extends Units {
 
@@ -128,11 +128,13 @@ public final class SI extends Units {
             JOULE.multiply(SECOND)), Action.class);
 
     /**
-     * The SI unit for electric permittivity quantities (standard name <code>F/m</code>).
+     * The SI unit for electric permittivity (standard name <code>ε</code>, <code>F/m </code> or <code>F·m−1</code>).
+     * In electromagnetism, absolute permittivity is the measure of resistance 
+     * that is encountered when forming an electric field in a medium.
      */
-    public static final Unit<ElectricPermittivity> FARADS_PER_METRE
-            = addUnit(new ProductUnit<ElectricPermittivity>(
-            FARAD.divide(METRE)), ElectricPermittivity.class);
+    public static final Unit<ElectricPermittivity> FARAD_PER_METRE
+            = addUnit(new AlternateUnit<ElectricPermittivity>(
+             FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
     
     /**
      * The SI unit for magnetic permeability quantities (standard name <code>N/A2</code>).
