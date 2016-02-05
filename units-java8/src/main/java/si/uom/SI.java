@@ -68,7 +68,7 @@ import tec.uom.se.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.2, February 2, 2016
+ * @version 0.7.3, February 5, 2016
 */
 public final class SI extends Units {
 
@@ -132,7 +132,7 @@ public final class SI extends Units {
      * In electromagnetism, absolute permittivity is the measure of resistance 
      * that is encountered when forming an electric field in a medium.
      */
-    public static final Unit<ElectricPermittivity> FARAD_PER_METRE
+    public static final Unit<ElectricPermittivity> FARADS_PER_METRE
             = addUnit(new AlternateUnit<ElectricPermittivity>(
              FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
     
