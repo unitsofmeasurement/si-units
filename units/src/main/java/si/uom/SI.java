@@ -1,5 +1,5 @@
 /*
- *  Unit-API - Units of Measurement API for Java
+ *  SI Units
  *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -33,8 +33,6 @@ import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
-import javax.measure.quantity.Luminance;
-import javax.measure.quantity.MagneticFieldStrength;
 import javax.measure.quantity.Mass;
 
 import si.uom.quantity.Action;
@@ -42,6 +40,8 @@ import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import si.uom.quantity.MagneticPermeability;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
@@ -70,7 +70,7 @@ import tec.units.ri.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.4, February 5, 2016
+ * @version 0.8, March 16, 2016
 */
 public final class SI extends Units {
 
@@ -169,9 +169,13 @@ public final class SI extends Units {
             PASCAL.multiply(SECOND)), DynamicViscosity.class);
 
     /**
-     * The SI unit for luminance quantities (standard name <code>cd/m2</code>).
+     * Luminance is a photometric measure of the luminous intensity per unit area of light travelling in a given
+     * direction. It describes the amount of light that passes through, is emitted or reflected from a particular 
+     * area, and falls within a given solid angle. The SI unit for luminance is candela per square metre (<code>cd/m2</code>).
+     * @see <a href="https://en.wikipedia.org/wiki/Luminance">
+     *      Wikipedia: Luminance</a>
      */
-    public static final Unit<Luminance> CANDELAS_PER_SQUARE_METRE
+    public static final Unit<Luminance> CANDELA_PER_SQUARE_METRE
             = addUnit(new ProductUnit<Luminance>(
             CANDELA.divide(SQUARE_METRE)), Luminance.class);
 
