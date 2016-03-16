@@ -33,7 +33,6 @@ import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
-import javax.measure.quantity.MagneticFieldStrength;
 import javax.measure.quantity.Mass;
 
 import si.uom.quantity.Action;
@@ -42,6 +41,7 @@ import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import si.uom.quantity.MagneticPermeability;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
