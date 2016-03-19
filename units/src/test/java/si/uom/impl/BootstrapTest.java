@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -37,7 +37,7 @@ import javax.measure.spi.UnitFormatService;
 import org.junit.Test;
 
 /**
- * Tests for {@link SI} services provided by {@link javax.money.spi.Bootstrap}.
+ * Tests for {@link SI} services provided by {@link javax.measure.spi.Bootstrap}.
  */
 public class BootstrapTest {
 

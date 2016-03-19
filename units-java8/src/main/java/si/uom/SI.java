@@ -25,6 +25,8 @@
  */
 package si.uom;
 
+import static tec.uom.se.unit.MetricPrefix.*;
+
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
@@ -47,6 +49,7 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
+import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.PiMultiplierConverter;
@@ -68,7 +71,7 @@ import tec.uom.se.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.4, March 16, 2016
+ * @version 0.7.5, March 19, 2016
 */
 public final class SI extends Units {
 
@@ -239,14 +242,14 @@ public final class SI extends Units {
      * (CGPM, Conférence Générale des Poids et Mesures) and is thus not an SI unit.
      */
     public static final Unit<Dimensionless> NEPER
-        = new TransformedUnit<Dimensionless>(ONE, new LogConverter(E).inverse());
+        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(E).inverse());
 
     /**
      * A dimensionless unit accepted for use with SI units (standard name <code>B</code>).
      * The bel is most commonly used with the SI prefix deci: 1 dB = 0.1 B
      */
     public static final Unit<Dimensionless> BEL
-        = new TransformedUnit<Dimensionless>(ONE, new LogConverter(10).inverse());
+        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(10).inverse());
 
     /**
      * An energy unit accepted for use with SI units (standard name <code>eV</code>).
@@ -297,7 +300,7 @@ public final class SI extends Units {
 
     @Override
     public String getName() {
-        return "SI";
+        return SI.class.getSimpleName(); // for Java SE this works
     }
     
 //    @SuppressWarnings("unchecked")
@@ -329,4 +332,11 @@ public final class SI extends Units {
         INSTANCE.quantityToUnit.put(type, unit);
         return unit;
     }
+    
+	// //////////////////////////////////////////////////////////////////////////
+	// Label adjustments for SI
+	static {
+		SimpleUnitFormat.getInstance().label(TONNE, "t");
+		SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
+	}
 }
