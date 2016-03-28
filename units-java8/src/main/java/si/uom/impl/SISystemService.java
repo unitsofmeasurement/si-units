@@ -37,9 +37,9 @@ import si.uom.SI;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3, March 20, 2016
+ * @version 0.3, March 29, 2016
  */
-@Priority(10)
+@Priority(20)
 public class SISystemService implements SystemOfUnitsService {
 	
 	final Map<String, SystemOfUnits> souMap = new HashMap<>();

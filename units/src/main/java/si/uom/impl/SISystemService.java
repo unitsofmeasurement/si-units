@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -33,30 +33,38 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import si.uom.SI;
+import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, November 3, 2015
+ * @version 0.3, March 29, 2016
  */
-public class SISystemService implements SystemOfUnitsService {
-	
-	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+public class SISystemService implements SystemOfUnitsService,
+	IntPrioritySupplier {
+    private static final int PRIO = 20;
 
-	public SISystemService() {
-		souMap.put(SI.class.getSimpleName(), SI.getInstance());
-	}
-	
-	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-		return souMap.values();
-	}
-	
-	@Override
-	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(SI.class.getSimpleName());
-	}
+    final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
-	@Override
-	public SystemOfUnits getSystemOfUnits(String name) {
-		return souMap.get(name);
-	}
+    public SISystemService() {
+	souMap.put(SI.class.getSimpleName(), SI.getInstance());
+    }
+
+    public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+	return souMap.values();
+    }
+
+    @Override
+    public SystemOfUnits getSystemOfUnits() {
+	return getSystemOfUnits(SI.class.getSimpleName());
+    }
+
+    @Override
+    public SystemOfUnits getSystemOfUnits(String name) {
+	return souMap.get(name);
+    }
+
+    @Override
+    public int getPriority() {
+	return PRIO;
+    }
 }
