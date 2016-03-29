@@ -30,7 +30,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
 
-import javax.measure.spi.Bootstrap;
+import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -44,7 +44,7 @@ public class SystemOfUnitsServiceTest {
 
     @BeforeClass
     public static void setUp() {
-      defaultService = Bootstrap.getService(SystemOfUnitsService.class);
+      defaultService = ServiceProvider.getDefault().getSystemOfUnitsService();
     }
 
     @Test
@@ -59,12 +59,12 @@ public class SystemOfUnitsServiceTest {
     
     @Test
     public void testOtherUnitSystemServices() {
-    	Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
-    	assertNotNull(services);
-    	assertEquals(3, services.size());
-    	for (SystemOfUnitsService service : services) {
-    		checkService(service);
-    	}
+    	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
+    	assertNotNull(systems);
+    	assertEquals(3, systems.size());
+//    	for (SystemOfUnitsService service : services) {
+//    		checkService(service);
+//    	}
     }
     
     private void checkService(SystemOfUnitsService service) {
