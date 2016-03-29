@@ -61,12 +61,13 @@ public class SystemOfUnitsServiceTest {
     public void testOtherUnitSystemServices() {
     	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
     	assertNotNull(systems);
-    	assertEquals(3, systems.size());
+    	assertEquals(2, systems.size());
 //    	for (SystemOfUnitsService service : services) {
 //    		checkService(service);
 //    	}
     }
-    
+  
+/*    
     private void checkService(SystemOfUnitsService service) {
     	SystemOfUnits system;
     	final String serviceName = service.getClass().getSimpleName();
@@ -82,4 +83,5 @@ public class SystemOfUnitsServiceTest {
 	    		assertEquals("SI", system.getName());
     	}
     }
+    */
 }
