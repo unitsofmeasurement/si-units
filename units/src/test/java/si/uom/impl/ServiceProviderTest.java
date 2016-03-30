@@ -57,6 +57,5 @@ public class ServiceProviderTest {
 	assertNotNull(provider.getSystemOfUnitsService());
 	assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
 	assertEquals("SI", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
-	assertEquals(2, provider.getSystemOfUnitsService().getAvailableSystemsOfUnits().size()); // we'd expect SI here, too
     }
 }

@@ -59,10 +59,10 @@ public class SystemOfUnitsServiceTest {
     }
     
     @Test
-    public void testOtherUnitSystemServices() {
+    public void testOtherUnitSystems() {
     	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
     	assertNotNull(systems);
-    	assertEquals(2, systems.size());
+    	assertEquals(2, systems.size()); // we'd expect SI and Units here
 //    	for (SystemOfUnitsService service : services) {
 //    		checkService(service);
 //    	}
