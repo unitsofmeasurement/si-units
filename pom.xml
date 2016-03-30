@@ -26,8 +26,8 @@
 	</properties>
 	<modules>
 		<module>quantity</module>  
-		<module>units</module>
-		<module>units-java8</module>
+		<module>units</module> <!--  
+		<module>units-java8</module> -->
 	</modules>
 
    <!-- Additional repositories -->

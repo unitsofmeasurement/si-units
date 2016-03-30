@@ -62,7 +62,13 @@ public class SystemOfUnitsServiceTest {
     public void testOtherUnitSystems() {
     	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
     	assertNotNull(systems);
-    	assertEquals(2, systems.size()); // we'd expect SI and Units here
+    	assertEquals(1, systems.size()); // we'd expect SI and Units here
+    	
+    	ServiceProvider otherProvider = ServiceProvider.getAvailables()[1];
+    	SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
+    	assertNotNull(otherService);
+    	assertNotNull(otherService.getSystemOfUnits());
+    	assertEquals("Units", otherService.getSystemOfUnits().getName());
 //    	for (SystemOfUnitsService service : services) {
 //    		checkService(service);
 //    	}
