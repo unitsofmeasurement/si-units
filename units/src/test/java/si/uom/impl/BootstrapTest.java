@@ -30,17 +30,18 @@ import static org.junit.Assert.*;
 import java.util.Collection;
 import java.util.Locale;
 
-import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnitsService;
 import javax.measure.spi.UnitFormatService;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * Tests for {@link SI} services provided by {@link javax.measure.spi.Bootstrap}.
  */
+@Ignore("This is here to illustrate which systems we would like to see in SI")
 public class BootstrapTest {
-
+/*
     @Test
     public void testGetServices() throws Exception {
     	Collection<SystemOfUnitsService> services = 
@@ -79,4 +80,5 @@ public class BootstrapTest {
     public void testGetService_BadCase() throws Exception {
         assertNull(Bootstrap.getService(Locale.class));
     }
+    */
 }
