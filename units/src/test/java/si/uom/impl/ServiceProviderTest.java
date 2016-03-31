@@ -39,14 +39,14 @@ public class ServiceProviderTest {
 
     @Test
     public void testAvailables() {
-	ServiceProvider[] providers = ServiceProvider.getAvailables();
+	ServiceProvider[] providers = ServiceProvider.available();
 	assertNotNull(providers);
 	assertEquals(2, providers.length);
     }
     
     @Test
     public void testDefault() {
-	ServiceProvider provider = ServiceProvider.getDefault();
+	ServiceProvider provider = ServiceProvider.current();
 	assertNotNull(provider);
 	assertEquals("si.uom.impl.SIServiceProvider", provider.getClass().getName());
 	
