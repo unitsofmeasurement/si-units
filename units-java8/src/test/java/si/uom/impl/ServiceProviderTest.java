@@ -1,5 +1,5 @@
 /*
- * SI Units of Measurement
+ * Units of Measurement Reference Implementation
  * Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -29,25 +29,33 @@
  */
 package si.uom.impl;
 
+import static org.junit.Assert.*;
+
 import javax.measure.spi.ServiceProvider;
-import javax.measure.spi.SystemOfUnitsService;
-import tec.units.ri.spi.RIServiceProvider;
 
-/**
- * This class implements the {@link ServiceProvider} interface and hereby uses
- * the JDK {@link java.util.ServiceLoader} to load the services required.
- *
- * @author Werner Keil
- * @version 0.2
- */
-class SIServiceProvider extends RIServiceProvider {
+import org.junit.Test;
 
-    public int getPriority() {
-	return 100;
+public class ServiceProviderTest {
+
+    @Test
+    public void testAvailables() {
+	ServiceProvider[] providers = ServiceProvider.available();
+	assertNotNull(providers);
+	assertEquals(2, providers.length);
     }
-
-    @Override
-    public SystemOfUnitsService getSystemOfUnitsService() {
-	return new SISystemService();
+    
+    @Test
+    public void testDefault() {
+	ServiceProvider provider = ServiceProvider.current();
+	assertNotNull(provider);
+	assertEquals("si.uom.impl.SIServiceProvider", provider.getClass().getName());
+	
+	assertNotNull(provider.getQuantityFactoryService());
+	assertNotNull(provider.getUnitFormatService());
+	assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
+	assertEquals(2, provider.getUnitFormatService().getAvailableFormatNames().size());
+	assertNotNull(provider.getSystemOfUnitsService());
+	assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
+	assertEquals("SI", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
     }
 }
