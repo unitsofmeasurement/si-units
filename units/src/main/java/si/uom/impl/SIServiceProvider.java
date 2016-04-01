@@ -40,7 +40,7 @@ import tec.units.ri.spi.DefaultServiceProvider;
  * @author Werner Keil
  * @version 0.2
  */
-class SIServiceProvider extends DefaultServiceProvider {
+public class SIServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
 	return 100;

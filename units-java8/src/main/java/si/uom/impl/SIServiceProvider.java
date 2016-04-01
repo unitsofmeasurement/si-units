@@ -39,9 +39,9 @@ import tec.uom.se.spi.DefaultServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.2
+ * @version 0.3
  */
-class SIServiceProvider extends DefaultServiceProvider {
+public class SIServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
 	return 100;

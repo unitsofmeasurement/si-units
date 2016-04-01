@@ -53,7 +53,7 @@ public class ServiceProviderTest {
 	assertNotNull(provider.getQuantityFactoryService());
 	assertNotNull(provider.getUnitFormatService());
 	assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
-	assertEquals(2, provider.getUnitFormatService().getAvailableFormatNames().size());
+	assertEquals(4, provider.getUnitFormatService().getAvailableFormatNames().size());
 	assertNotNull(provider.getSystemOfUnitsService());
 	assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
 	assertEquals("SI", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
