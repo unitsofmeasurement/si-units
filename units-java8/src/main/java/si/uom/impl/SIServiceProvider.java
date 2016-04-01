@@ -32,7 +32,7 @@ package si.uom.impl;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 
-import tec.uom.se.spi.PriorityAwareServiceProvider;
+import tec.uom.se.spi.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
@@ -41,7 +41,7 @@ import tec.uom.se.spi.PriorityAwareServiceProvider;
  * @author Werner Keil
  * @version 0.2
  */
-class SIServiceProvider extends PriorityAwareServiceProvider {
+class SIServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
 	return 100;
