@@ -50,7 +50,6 @@ public class ServiceProviderTest {
 	assertNotNull(provider);
 	assertEquals("si.uom.impl.SIServiceProvider", provider.getClass().getName());
 	
-	assertNotNull(provider.getQuantityFactoryService());
 	assertNotNull(provider.getUnitFormatService());
 	assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
 	assertEquals(2, provider.getUnitFormatService().getAvailableFormatNames().size());

@@ -71,7 +71,7 @@ import tec.uom.se.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.5, March 19, 2016
+ * @version 0.7.6, May 15, 2016
 */
 public final class SI extends Units {
 
@@ -196,15 +196,6 @@ public final class SI extends Units {
     public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM
             = addUnit(new ProductUnit<IonizingRadiation>(
             COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
-            
-    /**
-     * Carat (mass) is a unit of {@link Mass} for gems. It is equal to 0.2 gram (standard name <code>ct</code>).</br>
-     * In the United States, carat almost exclusively means the unit of mass. 
-     * 
-     * @see <a href="https://en.wikipedia.org/wiki/Carat_(mass)">Wikipedia: Carat (mass)</a>
-
-     */
-    public static final Unit<Mass> CARAT = addUnit((KILOGRAM.divide(5000)));
 
     /////////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //

@@ -26,9 +26,6 @@
 package si.uom;
 
 import static org.junit.Assert.*;
-import static tec.uom.se.unit.MetricPrefix.KILO;
-import static tec.uom.se.unit.MetricPrefix.MEGA;
-import static tec.uom.se.unit.Units.HERTZ;
 import static tec.uom.se.unit.Units.KILOGRAM;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.MINUTE;
@@ -44,11 +41,9 @@ import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
-import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.Speed;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import si.uom.SI;
@@ -63,7 +58,6 @@ import tec.uom.se.unit.Units;
  *
  */
 public class UnitFormatTest {
-	@SuppressWarnings("unused")
 	private Quantity<Length> sut;
 
 	private EBNFUnitFormat format;
@@ -71,14 +65,13 @@ public class UnitFormatTest {
 	
 	@Before
 	public void init() {
-		sut = new DefaultQuantityFactory(Length.class).create(10,
+		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
 				METRE);
 		
 		format = EBNFUnitFormat.getInstance();
 		format2 = SimpleUnitFormat.getInstance();
 		
 		format2.label(SI.BEL, "B");
-		format2.label(SI.CARAT, "ct");
 		format2.label(SI.HECTARE, "Ha");
 		format2.label(SI.TONNE, "t");
 	}
@@ -106,14 +99,6 @@ public class UnitFormatTest {
 	public void testFormat6() {
 		Unit<Area> b = SI.HECTARE;
 		assertEquals("Ha", b.toString());
-	}
-	
-	@Test
-	public void testFormat7() {
-		Unit<Mass> c = SI.CARAT;
-		
-//		assertEquals("ct", format.format(c));
-		assertEquals("ct", c.toString());
 	}
 	
 	@Test

@@ -71,7 +71,6 @@ public class UnitFormatTest {
 //		format.label(SI.BEL, "B");
 		
 		format2.label(SI.BEL, "B");
-		format2.label(SI.CARAT, "ct");
 		format2.label(SI.HECTARE, "Ha");
 		format2.label(SI.TONNE, "t");
 	}
@@ -99,14 +98,6 @@ public class UnitFormatTest {
 	public void testFormat6() {
 		Unit<Area> b = SI.HECTARE;
 		assertEquals("Ha", b.toString());
-	}
-	
-	@Test
-	public void testFormat7() {
-		Unit<Mass> c = SI.CARAT;
-		
-//		assertEquals("ct", format.format(c));
-		assertEquals("ct", c.toString());
 	}
 	
 	@Test

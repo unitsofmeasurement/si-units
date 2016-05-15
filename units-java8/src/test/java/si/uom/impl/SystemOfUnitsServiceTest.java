@@ -55,7 +55,7 @@ public class SystemOfUnitsServiceTest {
     	assertEquals("si.uom.SI", system.getClass().getName());
     	assertEquals("SI", system.getName());
     	assertNotNull(system.getUnits());
-    	assertEquals(14, system.getUnits().size()); // SI extends Units, this is only its additional collection
+    	assertEquals(13, system.getUnits().size()); // SI extends Units, this is only its additional collection
     }
     
     @Test

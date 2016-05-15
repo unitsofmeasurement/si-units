@@ -39,18 +39,18 @@ public class ArithmeticTest {
 	@Test
 	public void testAdd() {
 		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(10d, SI.CARAT);
+		Quantity<Mass> p = Quantities.getQuantity(10E30d, SI.UNIFIED_ATOMIC_MASS);
 		Quantity<Mass> result = kg.add(p);
-		assertEquals(5.002d, result.getValue());
+		assertEquals(16610.38782d, result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 
 	@Test
 	public void testSubtract2() {
-		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(10d, SI.CARAT);
+		Quantity<Mass> kg = Quantities.getQuantity(5000d, Units.KILOGRAM);
+		Quantity<Mass> p = Quantities.getQuantity(1E30d, SI.UNIFIED_ATOMIC_MASS);
 		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(4.998d, result.getValue());
+		assertEquals(3339.461218d, result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 }
