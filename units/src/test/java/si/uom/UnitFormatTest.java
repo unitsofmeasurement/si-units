@@ -39,7 +39,6 @@ import javax.measure.format.ParserException;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
 import javax.measure.quantity.Speed;
 
 import org.junit.Before;
