@@ -31,6 +31,8 @@ package si.uom.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.measure.spi.ServiceProvider;
 
 import org.junit.Test;
@@ -39,9 +41,9 @@ public class ServiceProviderTest {
 
     @Test
     public void testAvailables() {
-	ServiceProvider[] providers = ServiceProvider.available();
+	List<ServiceProvider> providers = ServiceProvider.available();
 	assertNotNull(providers);
-	assertEquals(2, providers.length);
+	assertEquals(2, providers.size());
     }
     
     @Test
