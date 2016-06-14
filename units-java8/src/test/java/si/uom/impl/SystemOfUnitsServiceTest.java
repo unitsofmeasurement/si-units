@@ -64,7 +64,7 @@ public class SystemOfUnitsServiceTest {
     	assertNotNull(systems);
     	assertEquals(1, systems.size()); // we'd expect SI and Units here
     	
-    	ServiceProvider otherProvider = ServiceProvider.available()[1];
+    	ServiceProvider otherProvider = ServiceProvider.available().get(1);
     	SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
     	assertNotNull(otherService);
     	assertNotNull(otherService.getSystemOfUnits());
