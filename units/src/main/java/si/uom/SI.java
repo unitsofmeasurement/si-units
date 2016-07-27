@@ -70,7 +70,7 @@ import tec.units.ri.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8.1, May 15, 2016
+ * @version 0.9, July 27, 2016
 */
 public final class SI extends Units {
 
@@ -236,14 +236,14 @@ public final class SI extends Units {
      * (CGPM, Conférence Générale des Poids et Mesures) and is thus not an SI unit.
      */
     public static final Unit<Dimensionless> NEPER
-        = new TransformedUnit<Dimensionless>(ONE, new LogConverter(E).inverse());
+        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(E).inverse());
 
     /**
      * A dimensionless unit accepted for use with SI units (standard name <code>B</code>).
      * The bel is most commonly used with the SI prefix deci: 1 dB = 0.1 B
      */
     public static final Unit<Dimensionless> BEL
-        = new TransformedUnit<Dimensionless>(ONE, new LogConverter(10).inverse());
+        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(10).inverse());
 
     /**
      * An energy unit accepted for use with SI units (standard name <code>eV</code>).

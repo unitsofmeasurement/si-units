@@ -71,7 +71,7 @@ import tec.uom.se.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.6, May 15, 2016
+ * @version 0.8, July 27, 2016
 */
 public final class SI extends Units {
 
