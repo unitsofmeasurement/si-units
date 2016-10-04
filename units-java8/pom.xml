@@ -103,9 +103,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- ======================================================= -->
-			<!-- Source Attachment -->
-			<!-- ======================================================= -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -113,6 +110,11 @@
 
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

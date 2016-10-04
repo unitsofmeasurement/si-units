@@ -80,11 +80,6 @@
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 		<repository>
-			<id>geotoolkit</id>
-			<name>Geotoolkit.org project</name>
-			<url>http://maven.geotoolkit.org</url>
-		</repository>
-		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
 			<url>http://jcenter.bintray.com</url>
@@ -111,9 +106,20 @@
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 
+			<!-- ======================================================= -->
+			<!-- JAR -->
+			<!-- ======================================================= -->
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<!-- <configuration> <classifier>${envClassifier}</classifier> </configuration> -->
+			</plugin>
+
+			<!-- ======================================================= -->
+			<!-- JavaDoc Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
