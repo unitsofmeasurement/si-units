@@ -47,6 +47,7 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
+import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.MultiplyConverter;
 import tec.units.ri.function.PiMultiplierConverter;
@@ -70,7 +71,7 @@ import tec.units.ri.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.9, July 27, 2016
+ * @version 1.0, October 7, 2016
 */
 public final class SI extends Units {
 
@@ -78,12 +79,6 @@ public final class SI extends Units {
      * The singleton instance.
      */
     private static final SI INSTANCE = new SI();
-
-    /**
-     * Holds the mapping quantity to unit.
-     */
-//    private final HashMap<Class<? extends Quantity>, AbstractUnit>
-//            quantityToUnit = new HashMap<Class<? extends Quantity>, AbstractUnit>();
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -137,16 +132,7 @@ public final class SI extends Units {
     public static final Unit<ElectricPermittivity> FARADS_PER_METRE
             = addUnit(new AlternateUnit<ElectricPermittivity>(
              FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
-
-    /**
-     * The SI unit for electric permittivity (standard name <code>ε</code>, <code>F/m</code> or <code>F·m−1</code>).
-     * In electromagnetism, absolute permittivity is the measure of resistance 
-     * that is encountered when forming an electric field in a medium.
-     */
-//    public static final Unit<ElectricPermittivity> FARADS_PER_METRE
-//            = addUnit(new ProductUnit<ElectricPermittivity>(
-//            FARAD.divide(METRE)), ElectricPermittivity.class);
-    
+  
     /**
      * The SI unit for magnetic permeability quantities (standard name <code>N/A2</code>).
      */
@@ -243,7 +229,7 @@ public final class SI extends Units {
      * The bel is most commonly used with the SI prefix deci: 1 dB = 0.1 B
      */
     public static final Unit<Dimensionless> BEL
-        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(10).inverse());
+        = addUnit(new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(10).inverse()));
 
     /**
      * An energy unit accepted for use with SI units (standard name <code>eV</code>).
@@ -297,12 +283,6 @@ public final class SI extends Units {
         return "SI";
     }
     
-//    @SuppressWarnings("unchecked")
-//	@Override
-//    public <Q extends Quantity<Q>> AbstractUnit<Q> getUnit(Class<Q> quantityType) {
-//        return quantityToUnit.get(quantityType);
-//    }
-
     /**
      * Adds a new unit not mapped to any specified quantity type.
      *
@@ -314,6 +294,51 @@ public final class SI extends Units {
         return unit;
     }
 
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name,
+	    String text, boolean isLabel) {
+	if (isLabel) {
+	    SimpleUnitFormat.getInstance().label(unit, text);
+	}
+	if (name != null && unit instanceof AbstractUnit) {
+	    return Helper.addUnit(INSTANCE.units, unit, name);
+	} else {
+	    INSTANCE.units.add(unit);
+	}
+	return unit;
+    }
+
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    @SuppressWarnings("unused")
+	private static <U extends Unit<?>> U addUnit(U unit, String text,
+	    boolean isLabel) {
+	return addUnit(unit, null, text, isLabel);
+    }
+    
     /**
      * Adds a new unit and maps it to the specified quantity type.
      *

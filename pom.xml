@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
