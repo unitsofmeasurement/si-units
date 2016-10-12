@@ -8,6 +8,7 @@
 	</parent>
 	<artifactId>si-units</artifactId>
 	<name>SI Units</name>
+    <packaging>bundle</packaging>
 
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -113,6 +114,21 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<!-- <configuration> <classifier>${envClassifier}</classifier> </configuration> -->
 			</plugin>
+
+            <!-- ======================================================= -->
+            <!-- Packaging (OSGi bundle) -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>si.uom</Export-Package>
+                        <Private-Package>si.uom.impl.*</Private-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
 
 			<!-- ======================================================= -->
 			<!-- JavaDoc Attachment -->

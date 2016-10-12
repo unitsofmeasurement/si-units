@@ -8,6 +8,7 @@
 	</parent>
 	<artifactId>si-quantity</artifactId>
 	<name>SI Quantities</name>
+    <packaging>bundle</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
@@ -29,7 +30,21 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
-			
+
+            <!-- ======================================================= -->
+            <!-- Packaging (OSGi bundle) -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>si.uom</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
 			<!-- ======================================================= -->
 			<!-- JavaDoc Attachment -->
 			<!-- ======================================================= -->
