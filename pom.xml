@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
-	<version>0.6-SNAPSHOT</version>
+	<version>0.6</version>
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>
@@ -18,8 +18,8 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.6</jdkVersion>
-		<jsr.version>1.0-SNAPSHOT</jsr.version>
-		<si.version>0.6-SNAPSHOT</si.version> <!-- ${project.version} -->
+		<jsr.version>1.0</jsr.version>
+		<si.version>0.6</si.version> <!-- ${project.version} -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
