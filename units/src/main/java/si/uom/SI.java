@@ -63,8 +63,8 @@ import tec.units.ri.unit.Units;
  *     SI units.</p>
  *
  * @see <a href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia: International System of Units</a>
- * @see <a href="http://physics.nist.gov/cuu/Units/outside.html>Units outside the SI that are accepted for use with the SI</a>
- * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf>SI 2006 - Official Specification</a>
+ * @see <a href="http://physics.nist.gov/cuu/Units/outside.html">Units outside the SI that are accepted for use with the SI</a>
+ * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf">SI 2006 - Official Specification</a>
  * @see MetricPrefix
  * 
  * @noextend This class is not intended to be extended by clients.
@@ -191,13 +191,13 @@ public final class SI extends Units {
     /////////////////////////////////////////////////////////////////
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>deg/code>).
+     * An angle unit accepted for use with SI units (standard name <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE
         = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180)));
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>'/code>).
+     * An angle unit accepted for use with SI units (standard name <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE
         = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60)));
