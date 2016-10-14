@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>0.6.1-SNAPSHOT</version>
+		<version>0.6.1</version>
 	</parent>
 	<artifactId>si-units-java8</artifactId>
 	<name>SI Units for Java SE 8</name>
