@@ -17,7 +17,7 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jdkVersion>1.6</jdkVersion>
+		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<si.version>0.6.1</si.version> <!-- ${project.version} -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
@@ -134,8 +134,8 @@
 			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
 		</snapshotRepository>
 		<site>
-			<id>www.unitsofmeasurement.org</id>
-			<url>scp://www.unitsofmeasurement.org/www/docs/lib/</url>
+			<id>unitsofmeasurement</id>
+			<url>scp://unitsofmeasurement.github.io/www/docs/lib/</url>
 		</site>
 	</distributionManagement>
 </project>

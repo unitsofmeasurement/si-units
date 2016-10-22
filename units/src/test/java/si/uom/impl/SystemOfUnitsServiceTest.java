@@ -39,7 +39,7 @@ import org.junit.Test;
 
 
 public class SystemOfUnitsServiceTest {
-
+	private static final int UNITS_EXPECTED = 14;
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
@@ -55,7 +55,7 @@ public class SystemOfUnitsServiceTest {
     	assertEquals("si.uom.SI", system.getClass().getName());
     	assertEquals("SI", system.getName());
     	assertNotNull(system.getUnits());
-    	assertEquals(13, system.getUnits().size()); // SI extends Units, this is only its additional collection
+    	assertEquals(UNITS_EXPECTED, system.getUnits().size()); // SI extends Units, this is only its additional collection
     }
     
     @Test

@@ -1,5 +1,5 @@
 /*
- *  Unit-API - Units of Measurement API for Java
+ *  SI Units for Java
  *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -65,13 +65,13 @@ import tec.uom.se.unit.Units;
  *     SI units.</p>
  *
  * @see <a href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia: International System of Units</a>
- * @see <a href="http://physics.nist.gov/cuu/Units/outside.html>Units outside the SI that are accepted for use with the SI</a>
- * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf>SI 2006 - Official Specification</a>
- * @see SIPrefix
+ * @see <a href="http://physics.nist.gov/cuu/Units/outside.html">Units outside the SI that are accepted for use with the SI</a>
+ * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf">SI 2006 - Official Specification</a>
+ * @see tec.uom.se.unit.MetricPrefix
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8, July 27, 2016
+ * @version 1.0, October 22, 2016
 */
 public final class SI extends Units {
 
@@ -202,13 +202,13 @@ public final class SI extends Units {
     /////////////////////////////////////////////////////////////////
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>deg/code>).
+     * An angle unit accepted for use with SI units (standard name <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE
         = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180)));
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>'/code>).
+     * An angle unit accepted for use with SI units (standard name <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE
         = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60)));
