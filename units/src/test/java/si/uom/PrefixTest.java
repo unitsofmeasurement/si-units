@@ -44,39 +44,40 @@ import org.junit.Test;
 import tec.units.ri.function.RationalConverter;
 
 public class PrefixTest {
-	@Test
-	public void testKilo() {
-		// TODO how to handle equals for units?
-		assertEquals(KILOGRAM.toString(), KILO(GRAM).toString());
-	}
-	
-	@Test
-	public void testMega() {
-		Unit<Mass> m1 = MEGA(GRAM);
-		assertEquals("t", m1.toString()); // Passes on CI
-	}
-	
-	@Test
-	public void testNano() {
-		Unit<Mass> m1 = NANO(GRAM);
-		assertEquals("ng", m1.toString());
-	}
-	
-	@Test
-	public void testPicoNano() {
-		Unit<Mass> m1 = PICO(KILOGRAM);
-		assertEquals("ng", m1.toString());
-	}
-	
-	@Test
-	public void testBetweenPrefixes() {
-		UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
-		assertEquals(conv, new RationalConverter(4.7683715820312499E17, 4.76837158203125E14)); // TODO value?
-	}
-	
-	@Test
-	public void testBetweenPrefixes2() {
-		UnitConverter conv = KILO(METRE).getConverterTo(GIGA(METRE));
-		assertEquals(RationalConverter.of(1d, 1000000d), conv);
-	}
+    @Test
+    public void testKilo() {
+	// TODO how to handle equals for units?
+	assertEquals(KILOGRAM.toString(), KILO(GRAM).toString());
+    }
+
+    @Test
+    public void testMega() {
+	Unit<Mass> m1 = MEGA(GRAM);
+	assertEquals("t", m1.toString()); // Passes on CI
+    }
+
+    @Test
+    public void testNano() {
+	Unit<Mass> m1 = NANO(GRAM);
+	assertEquals("ng", m1.toString());
+    }
+
+    @Test
+    public void testPicoNano() {
+	Unit<Mass> m1 = PICO(KILOGRAM);
+	assertEquals("ng", m1.toString());
+    }
+
+    @Test
+    public void testBetweenPrefixes() {
+	UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
+	assertEquals(conv, new RationalConverter(4.7683715820312499E17, 4.76837158203125E14)); // TODO
+											       // value?
+    }
+
+    @Test
+    public void testBetweenPrefixes2() {
+	UnitConverter conv = KILO(METRE).getConverterTo(GIGA(METRE));
+	assertEquals(RationalConverter.of(1d, 1000000d), conv);
+    }
 }
