@@ -270,8 +270,8 @@ public final class SI extends Units {
      * state. The value must be obtained by experiment, and is therefore not
      * known exactly.
      */
-    public static final Unit<Mass> UNIFIED_ATOMIC_MASS = new TransformedUnit<Mass>(KILOGRAM,
-	    new MultiplyConverter(1.660538782E-27));
+    public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
+	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u", true);
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
@@ -308,12 +308,48 @@ public final class SI extends Units {
 	return SI.class.getSimpleName(); // for Java SE this works
     }
 
-    // @SuppressWarnings("unchecked")
-    // @Override
-    // public <Q extends Quantity<Q>> AbstractUnit<Q> getUnit(Class<Q>
-    // quantityType) {
-    // return quantityToUnit.get(quantityType);
-    // }
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
+	if (isLabel) {
+	    SimpleUnitFormat.getInstance().label(unit, text);
+	}
+	if (name != null && unit instanceof AbstractUnit) {
+	    return Helper.addUnit(INSTANCE.units, unit, name);
+	} else {
+	    INSTANCE.units.add(unit);
+	}
+	return unit;
+    }
+
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    @SuppressWarnings("unused")
+    private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
+	return addUnit(unit, null, text, isLabel);
+    }
 
     /**
      * Adds a new unit not mapped to any specified quantity type.

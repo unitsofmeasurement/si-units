@@ -274,7 +274,7 @@ public final class SI extends Units {
      * known exactly.
      */
     public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
-	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)));
+	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u", true);
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
