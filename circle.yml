@@ -4,8 +4,6 @@ general:
 machine:
   java:
     version: oraclejdk8
-  environment:
-    UOM_VERSION: 0.5-SNAPSHOT
 test:
   post:
     # - cp $HOME/.m2/repository/si/uom/si-quantity/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
