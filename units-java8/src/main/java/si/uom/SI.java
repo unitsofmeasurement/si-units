@@ -32,7 +32,6 @@ import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
-import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -46,11 +45,12 @@ import si.uom.quantity.Luminance;
 import si.uom.quantity.MagneticFieldStrength;
 import si.uom.quantity.MagneticPermeability;
 import si.uom.quantity.MagnetomotiveForce;
+import si.uom.quantity.Radiance;
+import si.uom.quantity.RadiantIntensity;
 import si.uom.quantity.WaveNumber;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
-import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.function.RationalConverter;
@@ -60,19 +60,24 @@ import tec.uom.se.unit.TransformedUnit;
 import tec.uom.se.unit.Units;
 
 /**
- * <p> This class defines all SI (Système International d'Unités) base units and
- *     derived units as well as units that are accepted for use with the
- *     SI units.</p>
+ * <p>
+ * This class defines all SI (Système International d'Unités) base units and
+ * derived units as well as units that are accepted for use with the SI units.
+ * </p>
  *
- * @see <a href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia: International System of Units</a>
- * @see <a href="http://physics.nist.gov/cuu/Units/outside.html">Units outside the SI that are accepted for use with the SI</a>
- * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf">SI 2006 - Official Specification</a>
+ * @see <a href=
+ *      "http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
+ *      International System of Units</a>
+ * @see <a href="http://physics.nist.gov/cuu/Units/outside.html">Units outside
+ *      the SI that are accepted for use with the SI</a>
+ * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf">SI 2006
+ *      - Official Specification</a>
  * @see tec.uom.se.unit.MetricPrefix
  *
- * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, October 22, 2016
-*/
+ * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 1.0.1, October 23, 2016
+ */
 public final class SI extends Units {
 
     /**
@@ -83,8 +88,8 @@ public final class SI extends Units {
     /**
      * Holds the mapping quantity to unit.
      */
-//    private final HashMap<Class<? extends Quantity>, AbstractUnit>
-//            quantityToUnit = new HashMap<Class<? extends Quantity>, AbstractUnit>();
+    // private final HashMap<Class<? extends Quantity>, AbstractUnit>
+    // quantityToUnit = new HashMap<Class<? extends Quantity>, AbstractUnit>();
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -98,9 +103,9 @@ public final class SI extends Units {
      * @return the metric system instance.
      */
     public static SI getInstance() {
-        return INSTANCE;
+	return INSTANCE;
     }
- 
+
     ////////////////////////////////
     // SI DERIVED ALTERNATE UNITS //
     ////////////////////////////////
@@ -108,182 +113,191 @@ public final class SI extends Units {
     /**
      * The SI unit for magnetomotive force (standard name <code>At</code>).
      */
-    public static final AlternateUnit<MagnetomotiveForce> AMPERE_TURN
-            = addUnit(new AlternateUnit<MagnetomotiveForce>(SI.AMPERE, "At"), 
-            		MagnetomotiveForce.class);
-    
+    public static final AlternateUnit<MagnetomotiveForce> AMPERE_TURN = addUnit(
+	    new AlternateUnit<MagnetomotiveForce>(SI.AMPERE, "At"), MagnetomotiveForce.class);
+
     //////////////////////////////
     // SI DERIVED PRODUCT UNITS //
     //////////////////////////////
 
     /**
-     * The SI unit for acceleration quantities (standard name <code>m/s2</code>).
+     * The SI unit for acceleration quantities (standard name
+     * <code>m/s2</code>).
      */
-    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND
-            = addUnit(new ProductUnit<Acceleration>(
-            METRES_PER_SECOND.divide(SECOND)), Acceleration.class);
+    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = addUnit(
+	    new ProductUnit<Acceleration>(METRES_PER_SECOND.divide(SECOND)), Acceleration.class);
 
     /**
      * The SI unit for action quantities (standard name <code>j.s</code>).
      */
-    public static final Unit<Action> JOULE_SECOND
-            = addUnit(new ProductUnit<Action>(
-            JOULE.multiply(SECOND)), Action.class);
+    public static final Unit<Action> JOULE_SECOND = addUnit(new ProductUnit<Action>(JOULE.multiply(SECOND)),
+	    Action.class);
 
     /**
-     * The SI unit for electric permittivity (standard name <code>ε</code>, <code>F/m </code> or <code>F·m−1</code>).
-     * In electromagnetism, absolute permittivity is the measure of resistance 
-     * that is encountered when forming an electric field in a medium.
+     * The SI unit for electric permittivity (standard name <code>ε</code>,
+     * <code>F/m </code> or <code>F·m−1</code>). In electromagnetism, absolute
+     * permittivity is the measure of resistance that is encountered when
+     * forming an electric field in a medium.
      */
-    public static final Unit<ElectricPermittivity> FARADS_PER_METRE
-            = addUnit(new AlternateUnit<ElectricPermittivity>(
-             FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
-    
+    public static final Unit<ElectricPermittivity> FARADS_PER_METRE = addUnit(
+	    new AlternateUnit<ElectricPermittivity>(FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
+
     /**
-     * The SI unit for magnetic permeability quantities (standard name <code>N/A2</code>).
+     * The SI unit for magnetic permeability quantities (standard name
+     * <code>N/A2</code>).
      */
-    public static final Unit<MagneticPermeability> NEWTONS_PER_SQUARE_AMPERE
-            = addUnit(new ProductUnit<MagneticPermeability>(
-            NEWTON.divide(AMPERE.pow(2))), MagneticPermeability.class);
+    public static final Unit<MagneticPermeability> NEWTONS_PER_SQUARE_AMPERE = addUnit(
+	    new ProductUnit<MagneticPermeability>(NEWTON.divide(AMPERE.pow(2))), MagneticPermeability.class);
 
     /**
      * The SI unit for wave number quantities (standard name <code>1/m</code>).
      */
-    public static final Unit<WaveNumber> RECIPROCAL_METRE
-            = addUnit(new ProductUnit<WaveNumber>(
-            METRE.pow(-1)), WaveNumber.class);
+    public static final Unit<WaveNumber> RECIPROCAL_METRE = addUnit(new ProductUnit<WaveNumber>(METRE.pow(-1)),
+	    WaveNumber.class);
 
     /**
-     * The SI unit for dynamic viscosity quantities (standard name <code>Pa.s</code>).
+     * The SI unit for dynamic viscosity quantities (standard name
+     * <code>Pa.s</code>).
      */
-    public static final Unit<DynamicViscosity> PASCAL_SECOND
-            = addUnit(new ProductUnit<DynamicViscosity>(
-            PASCAL.multiply(SECOND)), DynamicViscosity.class);
+    public static final Unit<DynamicViscosity> PASCAL_SECOND = addUnit(
+	    new ProductUnit<DynamicViscosity>(PASCAL.multiply(SECOND)), DynamicViscosity.class);
 
     /**
-     * Luminance is a photometric measure of the luminous intensity per unit area of light travelling in a given
-     * direction. It describes the amount of light that passes through, is emitted or reflected from a particular 
-     * area, and falls within a given solid angle. The SI unit for luminance is candela per square metre (<code>cd/m2</code>).
-     * @see <a href="https://en.wikipedia.org/wiki/Luminance">
-     *      Wikipedia: Luminance</a>
+     * Luminance is a photometric measure of the luminous intensity per unit
+     * area of light travelling in a given direction. It describes the amount of
+     * light that passes through, is emitted or reflected from a particular
+     * area, and falls within a given solid angle. The SI unit for luminance is
+     * candela per square metre (<code>cd/m2</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Luminance"> Wikipedia:
+     *      Luminance</a>
      */
-    public static final Unit<Luminance> CANDELA_PER_SQUARE_METRE
-            = addUnit(new ProductUnit<Luminance>(
-            CANDELA.divide(SQUARE_METRE)), Luminance.class);
+    public static final Unit<Luminance> CANDELA_PER_SQUARE_METRE = addUnit(
+	    new ProductUnit<Luminance>(CANDELA.divide(SQUARE_METRE)), Luminance.class);
 
     /**
-     * The SI unit for kinematic viscosity quantities (standard name <code>m2/s"</code>).
+     * The SI unit for kinematic viscosity quantities (standard name
+     * <code>m2/s"</code>).
      */
-    public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND
-            = addUnit(new ProductUnit<KinematicViscosity>(
-            SQUARE_METRE.divide(SECOND)), KinematicViscosity.class);
+    public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND = addUnit(
+	    new ProductUnit<KinematicViscosity>(SQUARE_METRE.divide(SECOND)), KinematicViscosity.class);
 
     /**
-     * A magnetic field is the magnetic effect of electric currents and magnetic materials. 
-     * The magnetic field at any given point is specified by both a direction and a magnitude (or strength);
-     * as such it is a vector field.
-     * The H-field is measured in amperes per metre (<code>A/m</code>) in SI units.
+     * A magnetic field is the magnetic effect of electric currents and magnetic
+     * materials. The magnetic field at any given point is specified by both a
+     * direction and a magnitude (or strength); as such it is a vector field.
+     * The H-field is measured in amperes per metre (<code>A/m</code>) in SI
+     * units.
+     * 
      * @see <a href="https://en.wikipedia.org/wiki/Magnetic_field#The_H-field">
      *      Wikipedia: Magnetic Field - The H Field</a>
      */
-    public static final Unit<MagneticFieldStrength> AMPERES_PER_METRE
-            = addUnit(new ProductUnit<MagneticFieldStrength>(
-            AMPERE.divide(METRE)), MagneticFieldStrength.class);
+    public static final Unit<MagneticFieldStrength> AMPERE_PER_METRE = addUnit(
+	    new ProductUnit<MagneticFieldStrength>(AMPERE.divide(METRE)), MagneticFieldStrength.class);
 
     /**
-     * The SI unit for ionizing radiation quantities (standard name <code>C/kg"</code>).
+     * Alias for AMPERE_PER_METRE
+     * 
+     * @deprecated use AMPERE_PER_METRE.
      */
-    public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM
-            = addUnit(new ProductUnit<IonizingRadiation>(
-            COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
+    public static final Unit<MagneticFieldStrength> AMPERES_PER_METRE = AMPERE_PER_METRE;
+
+    /**
+     * The SI unit for ionizing radiation quantities (standard name
+     * <code>C/kg"</code>).
+     */
+    public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM = addUnit(
+	    new ProductUnit<IonizingRadiation>(COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
+
+    /**
+     * The SI unit for radiant intensity (standard name <code>W/sr</code>).
+     */
+    public static final Unit<RadiantIntensity> WATT_PER_STERADIAN = addUnit(
+	    WATT.divide(STERADIAN).asType(RadiantIntensity.class));
+
+    /**
+     * The SI unit for radiance (standard name <code>W⋅sr−1⋅m−2</code>).
+     */
+    public static final Unit<Radiance> WATT_PER_STERADIAN_PER_SQUARE_METRE = addUnit(
+	    WATT_PER_STERADIAN.divide(SQUARE_METRE).asType(Radiance.class));
 
     /////////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //
     /////////////////////////////////////////////////////////////////
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>deg</code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>deg</code>).
      */
-    public static final Unit<Angle> DEGREE_ANGLE
-        = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180)));
+    public static final Unit<Angle> DEGREE_ANGLE = addUnit(
+	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>'</code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>'</code>).
      */
-    public static final Unit<Angle> MINUTE_ANGLE
-        = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60)));
+    public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>''</code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>''</code>).
      */
-    public static final Unit<Angle> SECOND_ANGLE
-        = new TransformedUnit<Angle>(RADIAN,  new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+    public static final Unit<Angle> SECOND_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60))));
 
     /**
-     * A mass unit accepted for use with SI units (standard name <code>t</code>).
+     * A mass unit accepted for use with SI units (standard name
+     * <code>t</code>).
      */
-    public static final Unit<Mass> TONNE
-        = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units, 
-        		new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)),
-        				"Tonne", "t");
-    /**
-     * A dimensionless unit accepted for use with SI units (standard name <code>Np</code>).
-     * Although the neper is coherent with SI units and is accepted by the CIPM,
-     * it has not been adopted by the General Conference on Weights and Measures
-     * (CGPM, Conférence Générale des Poids et Mesures) and is thus not an SI unit.
-     */
-    public static final Unit<Dimensionless> NEPER
-        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(E).inverse());
+    public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
+	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");
 
     /**
-     * A dimensionless unit accepted for use with SI units (standard name <code>B</code>).
-     * The bel is most commonly used with the SI prefix deci: 1 dB = 0.1 B
+     * An energy unit accepted for use with SI units (standard name
+     * <code>eV</code>). The electronvolt is the kinetic energy acquired by an
+     * electron passing through a potential difference of 1 V in vacuum. The
+     * value must be obtained by experiment, and is therefore not known exactly.
      */
-    public static final Unit<Dimensionless> BEL
-        = new TransformedUnit<Dimensionless>(AbstractUnit.ONE, new LogConverter(10).inverse());
+    public static final Unit<Energy> ELECTRON_VOLT = new TransformedUnit<Energy>(JOULE,
+	    new MultiplyConverter(1.602176487E-19));
+    // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
-     * An energy unit accepted for use with SI units (standard name <code>eV</code>).
-     * The electronvolt is the kinetic energy acquired by an electron passing
-     * through a potential difference of 1 V in vacuum. 
-     * The value must be obtained by experiment, and is therefore not known exactly.
+     * A mass unit accepted for use with SI units (standard name
+     * <code>u</code>). The unified atomic mass unit is equal to 1/12 of the
+     * mass of an unbound atom of the nuclide 12C, at rest and in its ground
+     * state. The value must be obtained by experiment, and is therefore not
+     * known exactly.
      */
-    public static final Unit<Energy> ELECTRON_VOLT
-        = new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19));
-        // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
-            
-    /**
-     * A mass unit accepted for use with SI units (standard name <code>u</code>).
-     *  The unified atomic mass unit is equal to 1/12 of the mass of an unbound
-     * atom of the nuclide 12C, at rest and in its ground state. The value must
-     * be obtained by experiment, and is therefore not known exactly.
-     */
-    public static final Unit<Mass> UNIFIED_ATOMIC_MASS
-        = new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27));
-        // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
+    public static final Unit<Mass> UNIFIED_ATOMIC_MASS = new TransformedUnit<Mass>(KILOGRAM,
+	    new MultiplyConverter(1.660538782E-27));
+    // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
-     * A length unit accepted for use with SI units (standard name <code>UA</code>).
-     * The astronomical unit is a unit of length. Its value is such that,
-     * when used to describe the motion of bodies in the solar system,
-     * the heliocentric gravitation constant is (0.017 202 098 95)2 ua3·d-2.
-     * The value must be obtained by experiment, and is therefore not known exactly.
+     * A length unit accepted for use with SI units (standard name
+     * <code>UA</code>). The astronomical unit is a unit of length. Its value is
+     * such that, when used to describe the motion of bodies in the solar
+     * system, the heliocentric gravitation constant is (0.017 202 098 95)2
+     * ua3·d-2. The value must be obtained by experiment, and is therefore not
+     * known exactly.
      */
-    public static final Unit<Length> ASTRONOMICAL_UNIT
-        = addUnit(new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)));
-        // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
-    
-    /**
-     *  An angle unit accepted for use with SI units (standard name <code>rev</code>).
-     */
-    public static final Unit<Angle> REVOLUTION
-            = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(2, 1)));
+    public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
+	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)));
+    // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
 
     /**
-     *  An angle unit accepted for use with SI units (standard name <code>ha</code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>rev</code>).
      */
-    public static final Unit<Area> HECTARE
-            = new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1));
+    public static final Unit<Angle> REVOLUTION = addUnit(
+	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(2, 1))));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>ha</code>).
+     */
+    public static final Unit<Area> HECTARE = new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1));
 
     /////////////////////
     // Collection View //
@@ -291,43 +305,47 @@ public final class SI extends Units {
 
     @Override
     public String getName() {
-        return SI.class.getSimpleName(); // for Java SE this works
+	return SI.class.getSimpleName(); // for Java SE this works
     }
-    
-//    @SuppressWarnings("unchecked")
-//	@Override
-//    public <Q extends Quantity<Q>> AbstractUnit<Q> getUnit(Class<Q> quantityType) {
-//        return quantityToUnit.get(quantityType);
-//    }
+
+    // @SuppressWarnings("unchecked")
+    // @Override
+    // public <Q extends Quantity<Q>> AbstractUnit<Q> getUnit(Class<Q>
+    // quantityType) {
+    // return quantityToUnit.get(quantityType);
+    // }
 
     /**
      * Adds a new unit not mapped to any specified quantity type.
      *
-     * @param  unit the unit being added.
+     * @param unit
+     *            the unit being added.
      * @return <code>unit</code>.
      */
-    private static <U extends Unit<?>>  U addUnit(U unit) {
-        INSTANCE.units.add(unit);
-        return unit;
+    private static <U extends Unit<?>> U addUnit(U unit) {
+	INSTANCE.units.add(unit);
+	return unit;
     }
 
     /**
      * Adds a new unit and maps it to the specified quantity type.
      *
-     * @param  unit the unit being added.
-     * @param type the quantity type.
+     * @param unit
+     *            the unit being added.
+     * @param type
+     *            the quantity type.
      * @return <code>unit</code>.
      */
-    private static <U extends AbstractUnit<?>>  U addUnit(U unit, Class<? extends Quantity<?>> type) {
-        INSTANCE.units.add(unit);
-        INSTANCE.quantityToUnit.put(type, unit);
-        return unit;
+    private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+	INSTANCE.units.add(unit);
+	INSTANCE.quantityToUnit.put(type, unit);
+	return unit;
     }
-    
-	// //////////////////////////////////////////////////////////////////////////
-	// Label adjustments for SI
-	static {
-		SimpleUnitFormat.getInstance().label(TONNE, "t");
-		SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
-	}
+
+    // //////////////////////////////////////////////////////////////////////////
+    // Label adjustments for SI
+    static {
+	SimpleUnitFormat.getInstance().label(TONNE, "t");
+	SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
+    }
 }

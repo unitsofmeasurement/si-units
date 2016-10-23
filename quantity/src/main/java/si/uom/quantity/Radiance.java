@@ -28,15 +28,16 @@ package si.uom.quantity;
 import javax.measure.Quantity;
 
 /**
- * Radiance of a surface per unit frequency or wavelength. 
- * The latter is commonly measured in W⋅sr−1⋅m−2⋅nm−1. 
- * This is a directional quantity. 
- * This is sometimes also confusingly called "spectral intensity".
+ * Radiance of a surface per unit frequency or wavelength. The latter is
+ * commonly measured in W⋅sr−1⋅m−2⋅nm−1. This is a directional quantity. This is
+ * sometimes also confusingly called "spectral intensity".
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
  * @version 1.0
  *
- * @see <a href="https://en.wikipedia.org/wiki/Radiance#Radiance">Wikipedia: Radiance</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Radiance#Radiance">Wikipedia:
+ *      Radiance</a>
+ * @see RadiantIntensity
  */
 public interface Radiance extends Quantity<Radiance> {
 }

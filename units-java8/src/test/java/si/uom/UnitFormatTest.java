@@ -58,123 +58,114 @@ import tec.uom.se.unit.Units;
  *
  */
 public class UnitFormatTest {
-	private Quantity<Length> sut;
+    private Quantity<Length> sut;
 
-	private EBNFUnitFormat format;
-	private SimpleUnitFormat format2;
-	
-	@Before
-	public void init() {
-		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
-				METRE);
-		
-		format = EBNFUnitFormat.getInstance();
-		format2 = SimpleUnitFormat.getInstance();
-		
-		format2.label(SI.BEL, "B");
-		format2.label(SI.HECTARE, "Ha");
-		format2.label(SI.TONNE, "t");
-	}
+    private EBNFUnitFormat format;
+    private SimpleUnitFormat format2;
 
-	@Test
-	public void testFormat2() {
-		Unit<Speed> kph = SI.KILOMETRES_PER_HOUR;
-		assertEquals("km/h", kph.toString());
-	}
-	
-	@Test
-	public void testFormat4() {
-		Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
-		assertEquals("km/h", kph.toString());  // TODO i18n vs. no i18n
-	}
-	
-	@Test
-	public void testFormat5() {
-		Unit<Dimensionless> b = SI.BEL;
-		assertEquals("B", b.toString());
-		//assertEquals("B", format.format(b));
-	}
-	
-	@Test
-	public void testFormat6() {
-		Unit<Area> b = SI.HECTARE;
-		assertEquals("Ha", b.toString());
-	}
-	
-	@Test
-	public void testFormat3() {
-		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
-		//assertEquals("At", at.toString());
-	}
-	
-	@Test
-	public void testParseSimple() {
-		final UnitFormat format = EBNFUnitFormat.getInstance();
-		try {
-			Unit<?> u = format.parse("s");
-			assertEquals("s", u.getSymbol());
-			assertEquals(SECOND, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
-	}
-	
-	@Test
-	public void testFormatFromQuantity() {
-		final UnitFormat format = EBNFUnitFormat.getInstance();
-		final Appendable a = new StringBuilder();
-		try {
-			format.format(METRE, a);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals(METRE, sut.getUnit());
-		assertEquals("m", a.toString());
+    @Before
+    public void init() {
+	sut = DefaultQuantityFactory.getInstance(Length.class).create(10, METRE);
 
-		final Appendable a2 = new StringBuilder();
-		@SuppressWarnings("unchecked")
-		Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
-		try {
-			format.format(v, a2);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals("m/s", a2.toString());
-	}
+	format = EBNFUnitFormat.getInstance();
+	format2 = SimpleUnitFormat.getInstance();
 
-	@Test
-	public void testParseSimple1() {
-		final UnitFormat format = EBNFUnitFormat.getInstance();
-		try {
-			Unit<?> u = format.parse("min");
-			// assertEquals("min", u.getSymbol());
-			assertEquals(MINUTE, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
-	}
+	format2.label(SI.HECTARE, "Ha");
+	format2.label(SI.TONNE, "t");
+    }
 
-	@Test
-	public void testParseSimple2() {
-		final UnitFormat format = EBNFUnitFormat.getInstance();
-		try {
-			Unit<?> u = format.parse("m");
-			assertEquals("m", u.getSymbol());
-			assertEquals(METRE, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
-	}
+    @Test
+    public void testFormat2() {
+	Unit<Speed> kph = SI.KILOMETRES_PER_HOUR;
+	assertEquals("km/h", kph.toString());
+    }
 
-	@Test
-	public void testParseSimple3() {
-		final UnitFormat format = EBNFUnitFormat.getInstance();
-		try {
-			Unit<?> u = format.parse("kg");
-			assertEquals("kg", u.getSymbol());
-			assertEquals(KILOGRAM, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
+    @Test
+    public void testFormat4() {
+	Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
+	assertEquals("km/h", kph.toString()); // TODO i18n vs. no i18n
+    }
+
+    @Test
+    public void testFormat5() {
+	Unit<Area> b = SI.HECTARE;
+	assertEquals("Ha", b.toString());
+    }
+
+    @Test
+    public void testFormat3() {
+	Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
+	// assertEquals("At", at.toString());
+    }
+
+    @Test
+    public void testParseSimple() {
+	final UnitFormat format = EBNFUnitFormat.getInstance();
+	try {
+	    Unit<?> u = format.parse("s");
+	    assertEquals("s", u.getSymbol());
+	    assertEquals(SECOND, u);
+	} catch (ParserException e) {
+	    fail(e.getMessage());
 	}
+    }
+
+    @Test
+    public void testFormatFromQuantity() {
+	final UnitFormat format = EBNFUnitFormat.getInstance();
+	final Appendable a = new StringBuilder();
+	try {
+	    format.format(METRE, a);
+	} catch (IOException e) {
+	    fail(e.getMessage());
+	}
+	assertEquals(METRE, sut.getUnit());
+	assertEquals("m", a.toString());
+
+	final Appendable a2 = new StringBuilder();
+	@SuppressWarnings("unchecked")
+	Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
+	try {
+	    format.format(v, a2);
+	} catch (IOException e) {
+	    fail(e.getMessage());
+	}
+	assertEquals("m/s", a2.toString());
+    }
+
+    @Test
+    public void testParseSimple1() {
+	final UnitFormat format = EBNFUnitFormat.getInstance();
+	try {
+	    Unit<?> u = format.parse("min");
+	    // assertEquals("min", u.getSymbol());
+	    assertEquals(MINUTE, u);
+	} catch (ParserException e) {
+	    fail(e.getMessage());
+	}
+    }
+
+    @Test
+    public void testParseSimple2() {
+	final UnitFormat format = EBNFUnitFormat.getInstance();
+	try {
+	    Unit<?> u = format.parse("m");
+	    assertEquals("m", u.getSymbol());
+	    assertEquals(METRE, u);
+	} catch (ParserException e) {
+	    fail(e.getMessage());
+	}
+    }
+
+    @Test
+    public void testParseSimple3() {
+	final UnitFormat format = EBNFUnitFormat.getInstance();
+	try {
+	    Unit<?> u = format.parse("kg");
+	    assertEquals("kg", u.getSymbol());
+	    assertEquals(KILOGRAM, u);
+	} catch (ParserException e) {
+	    fail(e.getMessage());
+	}
+    }
 }

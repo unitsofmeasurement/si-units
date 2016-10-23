@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -40,21 +40,37 @@ import tec.units.ri.quantity.NumberQuantity;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.4, $Date: 2015-06-04 $
+ * @version 0.6.5, $Date: 2016-10-23 $
  */
-public final class AccelerationAmount extends NumberQuantity<Acceleration> 
-   implements Acceleration {
+/**
+ * @author werner
+ *
+ */
+/**
+ * @author werner
+ *
+ */
+public final class AccelerationAmount extends NumberQuantity<Acceleration> implements Acceleration {
 
-	/**
-	 * 
-	 */
-//	private static final long serialVersionUID = -3979825836742796484L;
+    /**
+     * 
+     */
+    // private static final long serialVersionUID = -3979825836742796484L;
 
-	public AccelerationAmount(Number number, Unit<Acceleration> unit) {
-		super(number, unit);
-	}
-	
-	public static final AccelerationAmount of(Number number, Unit<Acceleration> unit) {
-		return new AccelerationAmount(number, unit);
-	}
+    /**
+     * @param number
+     * @param unit
+     */
+    public AccelerationAmount(Number number, Unit<Acceleration> unit) {
+	super(number, unit);
+    }
+
+    /**
+     * @param number
+     * @param unit
+     * @return
+     */
+    public static final AccelerationAmount of(Number number, Unit<Acceleration> unit) {
+	return new AccelerationAmount(number, unit);
+    }
 }

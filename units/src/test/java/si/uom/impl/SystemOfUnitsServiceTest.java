@@ -39,7 +39,7 @@ import org.junit.Test;
 
 
 public class SystemOfUnitsServiceTest {
-	private static final int UNITS_EXPECTED = 14;
+	private static final int UNITS_EXPECTED = 21;
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass

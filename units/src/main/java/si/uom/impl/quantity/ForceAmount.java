@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -41,15 +41,23 @@ import tec.units.ri.quantity.NumberQuantity;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.3, $Date: 2013-05-21 $
+ * @version 1.3.1, $Date: 2016-10-23 $
  */
 public final class ForceAmount extends NumberQuantity<Force> implements Force {
 
-	public ForceAmount(Number number, Unit<Force> unit) {
-		super(number, unit);
-	}
-	
-	public ForceAmount(double number, Unit<Force> unit) {
-		super(number, unit);
-	}
+    /**
+     * @param number
+     * @param unit
+     */
+    public ForceAmount(Number number, Unit<Force> unit) {
+	super(number, unit);
+    }
+
+    /**
+     * @param number
+     * @param unit
+     */
+    public ForceAmount(double number, Unit<Force> unit) {
+	super(number, unit);
+    }
 }

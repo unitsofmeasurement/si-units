@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -36,122 +36,148 @@ import tec.units.ri.quantity.NumberQuantity;
 
 /**
  * @author Werner Keil
- * @version 1.5.1, $Date: 2014-10-01 $
+ * @version 1.5.2, $Date: 2016-10-23 $
  */
-public final class TemperatureAmount extends NumberQuantity<Temperature>
-		implements Temperature {
+/**
+ * @author werner
+ *
+ */
+/**
+ * @author werner
+ *
+ */
+public final class TemperatureAmount extends NumberQuantity<Temperature> implements Temperature {
 
-	/**
-	 * 
-	 */
-//	private static final long serialVersionUID = -3444768963576192753L;
+    /**
+     * 
+     */
+    // private static final long serialVersionUID = -3444768963576192753L;
 
-	private final Double scalar; // value in reference unit
+    private final Double scalar; // value in reference unit
 
-	private final Double value; // value in unit (Unit unit)
+    private final Double value; // value in unit (Unit unit)
 
-	public TemperatureAmount(Number number, Unit<Temperature> unit) {
-		super(number, unit);
-		scalar = (double) 0;
-		value = (double) 0;
-	}
+    /**
+     * @param number a number
+     * @param unit a unit
+     */
+    public TemperatureAmount(Number number, Unit<Temperature> unit) {
+	super(number, unit);
+	scalar = (double) 0;
+	value = (double) 0;
+    }
 
-	public boolean isZero() {
-		return (value != null) && 0d == (value);
-	}
+    /**
+     * @return if value is zero
+     */
+    public boolean isZero() {
+	return (value != null) && 0d == (value);
+    }
 
-	public TemperatureAmount add(TemperatureAmount d1) {
-        return new TemperatureAmount(this.value + d1.value, getUnit());
-	}
+    /**
+     * @param t
+     * @return
+     */
+    public TemperatureAmount add(TemperatureAmount t) {
+	return new TemperatureAmount(this.value + t.value, getUnit());
+    }
 
-	public TemperatureAmount subtract(TemperatureAmount d1) {
-        return new TemperatureAmount(this.value - d1.value, getUnit());
-	}
+    public TemperatureAmount subtract(TemperatureAmount d1) {
+	return new TemperatureAmount(this.value - d1.value, getUnit());
+    }
 
-	protected boolean eq(TemperatureAmount dq) {
-		return dq != null && dq.getValue().equals(getValue())
-				&& dq.getUnit().equals(getUnit())
-				&& dq.getScalar().equals(getScalar());
-	}
+    protected boolean eq(TemperatureAmount dq) {
+	return dq != null && dq.getValue().equals(getValue()) && dq.getUnit().equals(getUnit())
+		&& dq.getScalar().equals(getScalar());
+    }
 
-	boolean ne(TemperatureAmount d1) {
-		return ne((TemperatureAmount) d1);
-	}
+    boolean ne(TemperatureAmount d1) {
+	return ne((TemperatureAmount) d1);
+    }
 
-	boolean gt(TemperatureAmount d1) {
-		return gt((TemperatureAmount) d1);
-	}
+    boolean gt(TemperatureAmount d1) {
+	return gt((TemperatureAmount) d1);
+    }
 
-	public boolean lt(TemperatureAmount d1) {
-		return lt((TemperatureAmount) d1);
-	}
+    public boolean lt(TemperatureAmount d1) {
+	return lt((TemperatureAmount) d1);
+    }
 
-	public boolean ge(TemperatureAmount d1) {
-		return ge((TemperatureAmount) d1);
-	}
+    /**
+     * @param d1
+     * @return
+     */
+    public boolean ge(TemperatureAmount d1) {
+	return ge((TemperatureAmount) d1);
+    }
 
-	public boolean le(TemperatureAmount d1) {
-		return le((TemperatureAmount) d1);
-	}
+    public boolean le(TemperatureAmount d1) {
+	return le((TemperatureAmount) d1);
+    }
 
-	public TemperatureAmount divide(Double v) {
-		return new TemperatureAmount(value / v,
-				getUnit());
-	}
+    /**
+     * @param v
+     * @return
+     */
+    public TemperatureAmount divide(Double v) {
+	return new TemperatureAmount(value / v, getUnit());
+    }
 
-	//
-	// protected TemperatureAmount convert(TemperatureUnit newUnit) {
-	// return new TemperatureAmount(value.doubleValue() /
-	// newUnit.getFactor(), newUnit);
-	// }
+    //
+    // protected TemperatureAmount convert(TemperatureUnit newUnit) {
+    // return new TemperatureAmount(value.doubleValue() /
+    // newUnit.getFactor(), newUnit);
+    // }
 
-	public Double getScalar() {
-		return scalar;
-	}
+    /**
+     * @return
+     */
+    public Double getScalar() {
+	return scalar;
+    }
 
-	// @Override
-	// public String toString(boolean withUnit, boolean withSpace, int
-	// precision) {
-	// final StringBuilder sb = new StringBuilder();
-	// sb.append(getValue());
-	// if(withUnit) {
-	// if(withSpace) sb.append(" ");
-	// sb.append(getUnit().getSymbol());
-	// }
-	// return sb.toString();
-	// }
+    // @Override
+    // public String toString(boolean withUnit, boolean withSpace, int
+    // precision) {
+    // final StringBuilder sb = new StringBuilder();
+    // sb.append(getValue());
+    // if(withUnit) {
+    // if(withSpace) sb.append(" ");
+    // sb.append(getUnit().getSymbol());
+    // }
+    // return sb.toString();
+    // }
 
-	// @Override
-	// public String showInUnit(Unit<?> u, int precision,
-	// SimpleFormat.Show showWith) {
-	// return showInUnit(u, value, precision, showWith);
-	// }
-	//
-	// @Override
-	// public Number getValue() {
-	// return value;
-	// }
-	//
-	// @Override
-	// public Unit<Temperature> getUnit() {
-	// return unit;
-	// }
+    // @Override
+    // public String showInUnit(Unit<?> u, int precision,
+    // SimpleFormat.Show showWith) {
+    // return showInUnit(u, value, precision, showWith);
+    // }
+    //
+    // @Override
+    // public Number getValue() {
+    // return value;
+    // }
+    //
+    // @Override
+    // public Unit<Temperature> getUnit() {
+    // return unit;
+    // }
 
-	@Override
-	public TemperatureAmount multiply(Number that) {
-		return new TemperatureAmount(value * that.doubleValue(),
-				getUnit());
-	}
+    @Override
+    public TemperatureAmount multiply(Number that) {
+	return new TemperatureAmount(value * that.doubleValue(), getUnit());
+    }
 
-	@Override
-	public TemperatureAmount divide(Number that) {
-		return divide((Double) that);
-	}
+    @Override
+    public TemperatureAmount divide(Number that) {
+	return divide((Double) that);
+    }
 
-//	@Override
-//	public BigDecimal decimalValue(Unit<Temperature> unit, MathContext ctx)
-//			throws ArithmeticException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+    // @Override
+    // public BigDecimal decimalValue(Unit<Temperature> unit, MathContext ctx)
+    // throws ArithmeticException {
+    // // TODO Auto-generated method stub
+    // return null;
+    // }
 }

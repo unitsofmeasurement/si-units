@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  SI Units of Measurement for Java
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -37,40 +37,40 @@ import javax.measure.spi.SystemOfUnitsService;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
 public class SystemOfUnitsServiceTest {
-
+    private static final int UNITS_EXPECTED = 19;
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
     public static void setUp() {
-      defaultService = ServiceProvider.current().getSystemOfUnitsService();
+	defaultService = ServiceProvider.current().getSystemOfUnitsService();
     }
 
     @Test
     public void testDefaultUnitSystemService() {
-    	assertNotNull(defaultService);
-    	SystemOfUnits system = defaultService.getSystemOfUnits();
-    	assertNotNull(system);
-    	assertEquals("si.uom.SI", system.getClass().getName());
-    	assertEquals("SI", system.getName());
-    	assertNotNull(system.getUnits());
-    	assertEquals(13, system.getUnits().size()); // SI extends Units, this is only its additional collection
+	assertNotNull(defaultService);
+	SystemOfUnits system = defaultService.getSystemOfUnits();
+	assertNotNull(system);
+	assertEquals("si.uom.SI", system.getClass().getName());
+	assertEquals("SI", system.getName());
+	assertNotNull(system.getUnits());
+	assertEquals(UNITS_EXPECTED, system.getUnits().size());
+	// SI extends Units, this is only its additional collection
     }
-    
+
     @Test
     public void testOtherUnitSystems() {
-    	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
-    	assertNotNull(systems);
-    	assertEquals(1, systems.size()); // we'd expect SI and Units here
-    	
-    	ServiceProvider otherProvider = ServiceProvider.available().get(1);
-    	SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
-    	assertNotNull(otherService);
-    	assertNotNull(otherService.getSystemOfUnits());
-    	assertEquals("Units", otherService.getSystemOfUnits().getName());
-//    	for (SystemOfUnitsService service : services) {
-//    		checkService(service);
-//    	}
+	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
+	assertNotNull(systems);
+	assertEquals(1, systems.size()); // we'd expect SI and Units here
+
+	ServiceProvider otherProvider = ServiceProvider.available().get(1);
+	SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
+	assertNotNull(otherService);
+	assertNotNull(otherService.getSystemOfUnits());
+	assertEquals("Units", otherService.getSystemOfUnits().getName());
+	// for (SystemOfUnitsService service : services) {
+	// checkService(service);
+	// }
     }
 }

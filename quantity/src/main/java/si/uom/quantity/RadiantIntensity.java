@@ -32,14 +32,16 @@ package si.uom.quantity;
 import javax.measure.Quantity;
 
 /**
- * Radiant flux emitted, reflected, transmitted or received, per unit solid angle.
- * This is a directional quantity.
+ * Radiant flux emitted, reflected, transmitted or received, per unit solid
+ * angle. This is a directional quantity.
  *
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.0.1
  *
- * @see RadiantFlux
+ * @see <a href="https://en.wikipedia.org/wiki/Radiant_intensity">Wikipedia:
+ *      Radiant intensity</a>
  * @see Power
+ * @see SolidAngle
  */
 public interface RadiantIntensity extends Quantity<RadiantIntensity> {
 }

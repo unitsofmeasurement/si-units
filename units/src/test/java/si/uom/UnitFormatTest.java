@@ -66,10 +66,6 @@ public class UnitFormatTest {
 		
 //		format = EBNFUnitFormat.getInstance();
 		format2 = SimpleUnitFormat.getInstance();
-		
-//		format.label(SI.BEL, "B");
-		
-		format2.label(SI.BEL, "B");
 		format2.label(SI.HECTARE, "Ha");
 		format2.label(SI.TONNE, "t");
 	}
@@ -85,16 +81,9 @@ public class UnitFormatTest {
 		Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
 		assertEquals("km/h", kph.toString());
 	}
-	
+		
 	@Test
 	public void testFormat5() {
-		Unit<Dimensionless> b = SI.BEL;
-		assertEquals("B", b.toString());
-		//assertEquals("B", format.format(b));
-	}
-	
-	@Test
-	public void testFormat6() {
 		Unit<Area> b = SI.HECTARE;
 		assertEquals("Ha", b.toString());
 	}
