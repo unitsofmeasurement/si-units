@@ -35,7 +35,7 @@
 			<dependency>
 				<groupId>si.uom</groupId>
 				<artifactId>si-quantity</artifactId>
-				<version>${si.version}</version>
+				<version>${si.quantity.version}</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>

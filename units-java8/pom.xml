@@ -36,7 +36,7 @@
 			<dependency>
 				<groupId>si.uom</groupId>
 				<artifactId>si-quantity</artifactId>
-				<version>${si.version}</version>
+				<version>${si.quantity.version}</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>
@@ -80,11 +80,6 @@
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
-		</repository>
-		<repository>
-			<id>geotoolkit</id>
-			<name>Geotoolkit.org project</name>
-			<url>http://maven.geotoolkit.org</url>
 		</repository>
 		<repository>
 			<id>jcenter</id>

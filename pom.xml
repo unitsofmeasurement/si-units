@@ -20,15 +20,15 @@
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<si.version>${project.version}</si.version>
+		<si.quantity.version>0.6.2</si.quantity.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 	<modules>
-		<module>quantity</module><!-- 
+		<module>quantity</module> 
 		<module>units</module>
 		<module>units-java8</module>
-		 -->
 	</modules>
 
 	<build>
