@@ -113,7 +113,7 @@ public final class SI extends Units {
     /**
      * The SI unit for magnetomotive force (standard name <code>At</code>).
      */
-    public static final AlternateUnit<MagnetomotiveForce> AMPERE_TURN = addUnit(
+    public static final Unit<MagnetomotiveForce> AMPERE_TURN = addUnit(
 	    new AlternateUnit<MagnetomotiveForce>(SI.AMPERE, "At"), MagnetomotiveForce.class);
 
     //////////////////////////////
