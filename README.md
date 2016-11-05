@@ -22,8 +22,9 @@ E.g.
 
 Planning
 ------------
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/si-units/si-units.svg)](https://github.com/unitsofmeasurement/si-units/pulls)
-[![](https://img.shields.io/github/issues-closed-raw/badges/shields.svg)](https://github.com/unitsofmeasurement/si-units/issues)
+[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/pr?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
+[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/issue?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
+
 
 Waffle.io
 ------------
