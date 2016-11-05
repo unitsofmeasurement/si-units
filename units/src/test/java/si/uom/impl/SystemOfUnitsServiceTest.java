@@ -25,8 +25,7 @@
  */
 package si.uom.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.Collection;
 
@@ -37,58 +36,59 @@ import javax.measure.spi.SystemOfUnitsService;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
 public class SystemOfUnitsServiceTest {
-	private static final int UNITS_EXPECTED = 21;
+    private static final String SI_NAME = "SI";
+    private static final String NONSI_NAME = "Non-SI Units";
+    
+    private static final int UNITS_EXPECTED = 21;
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
     public static void setUp() {
-      defaultService = ServiceProvider.current().getSystemOfUnitsService();
+	defaultService = ServiceProvider.current().getSystemOfUnitsService();
     }
 
     @Test
     public void testDefaultUnitSystemService() {
-    	assertNotNull(defaultService);
-    	SystemOfUnits system = defaultService.getSystemOfUnits();
-    	assertNotNull(system);
-    	assertEquals("si.uom.SI", system.getClass().getName());
-    	assertEquals("SI", system.getName());
-    	assertNotNull(system.getUnits());
-    	assertEquals(UNITS_EXPECTED, system.getUnits().size()); // SI extends Units, this is only its additional collection
+	assertNotNull(defaultService);
+	SystemOfUnits system = defaultService.getSystemOfUnits();
+	assertNotNull(system);
+	assertEquals("si.uom.SI", system.getClass().getName());
+	assertEquals("SI", system.getName());
+	assertNotNull(system.getUnits());
+	assertEquals(UNITS_EXPECTED, system.getUnits().size()); 
+	// SI extends Units, this is only its additional collection
     }
-    
+
     @Test
     public void testOtherUnitSystems() {
-    	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
-    	assertNotNull(systems);
-    	assertEquals(1, systems.size()); // we'd expect SI and Units here
-    	
-    	ServiceProvider otherProvider = ServiceProvider.available().get(1);
-    	SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
-    	assertNotNull(otherService);
-    	assertNotNull(otherService.getSystemOfUnits());
-    	assertEquals("Units", otherService.getSystemOfUnits().getName());
-//    	for (SystemOfUnitsService service : services) {
-//    		checkService(service);
-//    	}
+	Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
+	assertNotNull(systems);
+	assertEquals(2, systems.size()); // we'd expect SI and NonSI here
+
+	for (SystemOfUnits s : systems) {
+	    checkSystem(s);
+	}
     }
-  
-/*    
-    private void checkService(SystemOfUnitsService service) {
-    	SystemOfUnits system;
-    	final String serviceName = service.getClass().getSimpleName();
-    	if("DefaultSystemOfUnitsService".equals(serviceName)) {
-	    		assertEquals("DefaultSystemOfUnitsService", serviceName);
-	    		system = service.getSystemOfUnits();
-	    		assertNotNull(system);
-	    		assertEquals("Units", system.getName());
-    	} else if ("SISystemService".equals(serviceName)) {
-	    		assertEquals("SISystemService", serviceName);
-	    		system = service.getSystemOfUnits();
-	    		assertNotNull(system);
-	    		assertEquals("SI", system.getName());
-    	}
+
+    @Test
+    public void testOtherProviders() {
+	ServiceProvider otherProvider = ServiceProvider.available().get(1);
+	SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
+	assertNotNull(otherService);
+	assertNotNull(otherService.getSystemOfUnits());
+	assertEquals("Units", otherService.getSystemOfUnits().getName());
     }
-    */
+
+    private void checkSystem(SystemOfUnits system) {
+	assertNotNull(system);
+	assertTrue(SI_NAME.equals(system.getName()) || NONSI_NAME.equals(system.getName()));
+	if (SI_NAME.equals(system.getName())) {
+	    assertEquals("si.uom.SI", system.getClass().getName());
+	    assertEquals(UNITS_EXPECTED, system.getUnits().size());
+	} else if (NONSI_NAME.equals(system.getName())) {
+	    assertEquals("si.uom.NonSI", system.getClass().getName());
+	    assertEquals(28, system.getUnits().size());
+	}
+    }
 }

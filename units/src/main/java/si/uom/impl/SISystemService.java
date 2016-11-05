@@ -32,12 +32,13 @@ import java.util.Map;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
+import si.uom.NonSI;
 import si.uom.SI;
 import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, April 1, 2016
+ * @version 0.5, November 5, 2016
  */
 class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 20;
@@ -45,7 +46,8 @@ class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
     final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
     public SISystemService() {
-	souMap.put(SI.class.getSimpleName(), SI.getInstance());
+	souMap.put(SI.getInstance().getName(), SI.getInstance());
+	souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
     }
 
     public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {

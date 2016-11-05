@@ -33,33 +33,35 @@ import javax.annotation.Priority;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
+import si.uom.NonSI;
 import si.uom.SI;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, April 1, 2016
+ * @version 0.5, November 5, 2016
  */
 @Priority(20)
 class SISystemService implements SystemOfUnitsService {
-	
-	final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
-	SISystemService() {
-//		souMap.put(Units.class.getSimpleName(), Units.getInstance());
-		souMap.put(SI.class.getSimpleName(), SI.getInstance());
-	}
-	
-	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-		return souMap.values();
-	}
-	
-	@Override
-	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(SI.class.getSimpleName());
-	}
+    final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
-	@Override
-	public SystemOfUnits getSystemOfUnits(String name) {
-		return souMap.get(name);
-	}
+    SISystemService() {
+	// souMap.put(Units.class.getSimpleName(), Units.getInstance());
+	souMap.put(SI.getInstance().getName(), SI.getInstance());
+	souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
+    }
+
+    public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+	return souMap.values();
+    }
+
+    @Override
+    public SystemOfUnits getSystemOfUnits() {
+	return getSystemOfUnits(SI.getInstance().getName());
+    }
+
+    @Override
+    public SystemOfUnits getSystemOfUnits(String name) {
+	return souMap.get(name);
+    }
 }
