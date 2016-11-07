@@ -26,31 +26,13 @@
 package si.uom;
 
 import static tec.units.ri.AbstractUnit.ONE;
-import static tec.units.ri.unit.Units.AMPERE;
-import static tec.units.ri.unit.Units.BECQUEREL;
-import static tec.units.ri.unit.Units.COULOMB;
-import static tec.units.ri.unit.Units.GRAY;
-import static tec.units.ri.unit.Units.JOULE;
-import static tec.units.ri.unit.Units.KELVIN;
-import static tec.units.ri.unit.Units.KILOGRAM;
-import static tec.units.ri.unit.Units.LUX;
-import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.METRES_PER_SECOND;
-import static tec.units.ri.unit.Units.METRES_PER_SQUARE_SECOND;
-import static tec.units.ri.unit.Units.MOLE;
-import static tec.units.ri.unit.Units.NEWTON;
-import static tec.units.ri.unit.Units.PASCAL;
-import static tec.units.ri.unit.Units.RADIAN;
-import static tec.units.ri.unit.Units.SECOND;
-import static tec.units.ri.unit.Units.SIEVERT;
-import static tec.units.ri.unit.Units.STERADIAN;
-import static tec.units.ri.unit.Units.TESLA;
-import static tec.units.ri.unit.Units.WEBER;
+import static tec.units.ri.unit.Units.*;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.AmountOfSubstance;
 import javax.measure.quantity.Angle;
+import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.ElectricCurrent;
@@ -76,7 +58,10 @@ import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.LogConverter;
+import tec.units.ri.function.MultiplyConverter;
+import tec.units.ri.function.PiMultiplierConverter;
 import tec.units.ri.function.RationalConverter;
+import tec.units.ri.unit.TransformedUnit;
 
 /**
  * <p>
@@ -93,7 +78,7 @@ import tec.units.ri.function.RationalConverter;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2016-11-05$
+ * @version 1.0.1, $Date: 2016-11-07$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -141,6 +126,78 @@ public class NonSI extends AbstractSystemOfUnits {
     }
 
     private static final NonSI INSTANCE = new NonSI();
+    /////////////////////////////////////////////////////////////////
+    // Units outside the SI that are accepted for use with the SI. //
+    /////////////////////////////////////////////////////////////////
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>deg</code>).
+     */
+    public static final Unit<Angle> DEGREE_ANGLE = addUnit(
+	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>'</code>).
+     */
+    public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>''</code>).
+     */
+    public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+
+    /**
+     * A mass unit accepted for use with SI units (standard name
+     * <code>t</code>).
+     */
+    public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
+	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");
+
+    /**
+     * An energy unit accepted for use with SI units (standard name
+     * <code>eV</code>). The electronvolt is the kinetic energy acquired by an
+     * electron passing through a potential difference of 1 V in vacuum. The
+     * value must be obtained by experiment, and is therefore not known exactly.
+     */
+    public static final Unit<Energy> ELECTRON_VOLT = addUnit(
+	    new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)));
+    // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
+
+    /**
+     * A mass unit accepted for use with SI units (standard name
+     * <code>u</code>). The unified atomic mass unit is equal to 1/12 of the
+     * mass of an unbound atom of the nuclide 12C, at rest and in its ground
+     * state. The value must be obtained by experiment, and is therefore not
+     * known exactly.
+     */
+    public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
+	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u",
+	    true);
+    // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
+
+    /**
+     * A length unit accepted for use with SI units (standard name
+     * <code>UA</code>). The astronomical unit is a unit of length. Its value is
+     * such that, when used to describe the motion of bodies in the solar
+     * system, the heliocentric gravitation constant is (0.017 202 098 95)2
+     * ua3·d-2. The value must be obtained by experiment, and is therefore not
+     * known exactly.
+     */
+    public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
+	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)));
+    // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>ha</code>).
+     */
+    public static final Unit<Area> HECTARE = addUnit(
+	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)));
 
     // /////////////////
     // Dimensionless //
@@ -181,7 +238,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of length equal to the average distance from the center of the
      * Earth to the center of the Sun (standard name <code>ua</code>).
      */
-    static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(METRE.multiply(149597870691.0));
+//    static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(METRE.multiply(149597870691.0));
 
     /**
      * A unit of length equal to the distance that light travels in one year
@@ -304,7 +361,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * electromagnetic unit of magnetomotive force, equal to <code>10/4
      * &pi;ampere-turn</code> (standard name <code>Gi</code>).
      */
-    static final Unit<ElectricCurrent> GILBERT = AMPERE.multiply(10).divide(4).multiply(PI)
+    public static final Unit<ElectricCurrent> GILBERT = AMPERE.multiply(10).divide(4).multiply(PI)
 	    .asType(ElectricCurrent.class);
 
     // //////////
@@ -314,13 +371,13 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of energy equal to <code>1E-7 J</code> (standard name
      * <code>erg</code>).
      */
-    static final Unit<Energy> ERG = JOULE.divide(10000000);
+    public static final Unit<Energy> ERG = JOULE.divide(10000000);
 
     /**
      * A unit of energy equal to one electron-volt (standard name
      * <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
      */
-    static final Unit<Energy> ELECTRON_VOLT = JOULE.multiply(ELEMENTARY_CHARGE);
+//    static final Unit<Energy> ELECTRON_VOLT = JOULE.multiply(ELEMENTARY_CHARGE);
 
     // ///////////////
     // Illuminance //

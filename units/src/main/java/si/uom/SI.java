@@ -231,6 +231,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>deg</code>).
+     * @deprecated use NonSI
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
 	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
@@ -238,6 +239,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>'</code>).
+     * @deprecated use NonSI
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
 	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
@@ -245,6 +247,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>''</code>).
+     * @deprecated use NonSI
      */
     public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
 	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
@@ -252,6 +255,7 @@ public final class SI extends Units {
     /**
      * A mass unit accepted for use with SI units (standard name
      * <code>t</code>).
+     * @deprecated use NonSI
      */
     public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
 	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");

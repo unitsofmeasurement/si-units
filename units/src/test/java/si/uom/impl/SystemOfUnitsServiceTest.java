@@ -88,7 +88,7 @@ public class SystemOfUnitsServiceTest {
 	    assertEquals(UNITS_EXPECTED, system.getUnits().size());
 	} else if (NONSI_NAME.equals(system.getName())) {
 	    assertEquals("si.uom.NonSI", system.getClass().getName());
-	    assertEquals(28, system.getUnits().size());
+	    assertEquals(34, system.getUnits().size());
 	}
     }
 }

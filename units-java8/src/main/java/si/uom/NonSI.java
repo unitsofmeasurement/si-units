@@ -26,30 +26,7 @@
 package si.uom;
 
 import static tec.uom.se.unit.MetricPrefix.CENTI;
-import static tec.uom.se.unit.Units.AMPERE;
-import static tec.uom.se.unit.Units.BECQUEREL;
-import static tec.uom.se.unit.Units.COULOMB;
-import static tec.uom.se.unit.Units.GRAM;
-import static tec.uom.se.unit.Units.GRAY;
-import static tec.uom.se.unit.Units.JOULE;
-import static tec.uom.se.unit.Units.KELVIN;
-import static tec.uom.se.unit.Units.KILOGRAM;
-import static tec.uom.se.unit.Units.LUX;
-import static tec.uom.se.unit.Units.METRE;
-import static tec.uom.se.unit.Units.METRES_PER_SECOND;
-import static tec.uom.se.unit.Units.METRES_PER_SQUARE_SECOND;
-import static tec.uom.se.unit.Units.MOLE;
-import static tec.uom.se.unit.Units.NEWTON;
-import static tec.uom.se.AbstractUnit.ONE;
-import static tec.uom.se.unit.Units.PASCAL;
-import static tec.uom.se.unit.Units.RADIAN;
-import static tec.uom.se.unit.Units.SECOND;
-import static tec.uom.se.unit.Units.SIEVERT;
-import static tec.uom.se.unit.Units.SQUARE_METRE;
-import static tec.uom.se.unit.Units.STERADIAN;
-import static tec.uom.se.unit.Units.TESLA;
-import static tec.uom.se.unit.Units.WATT;
-import static tec.uom.se.unit.Units.WEBER;
+import static tec.uom.se.unit.Units.*;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -85,7 +62,11 @@ import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.LogConverter;
+import tec.uom.se.function.MultiplyConverter;
+import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.function.RationalConverter;
+import tec.uom.se.unit.TransformedUnit;
+import tec.uom.se.unit.Units;
 
 /**
  * <p>
@@ -106,7 +87,7 @@ import tec.uom.se.function.RationalConverter;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2016-11-05$
+ * @version 1.0.1, $Date: 2016-11-07$
  */
 public class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
@@ -152,6 +133,79 @@ public class NonSI extends AbstractSystemOfUnits {
 
     private static final NonSI INSTANCE = new NonSI();
 
+    /////////////////////////////////////////////////////////////////
+    // Units outside the SI that are accepted for use with the SI. //
+    /////////////////////////////////////////////////////////////////
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>deg</code>).
+     */
+    public static final Unit<Angle> DEGREE_ANGLE = addUnit(
+	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>'</code>).
+     */
+    public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>''</code>).
+     */
+    public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+
+    /**
+     * A mass unit accepted for use with SI units (standard name
+     * <code>t</code>).
+     */
+    public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
+	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");
+
+    /**
+     * An energy unit accepted for use with SI units (standard name
+     * <code>eV</code>). The electronvolt is the kinetic energy acquired by an
+     * electron passing through a potential difference of 1 V in vacuum. The
+     * value must be obtained by experiment, and is therefore not known exactly.
+     */
+    public static final Unit<Energy> ELECTRON_VOLT = addUnit(
+	    new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)));
+    // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
+
+    /**
+     * A mass unit accepted for use with SI units (standard name
+     * <code>u</code>). The unified atomic mass unit is equal to 1/12 of the
+     * mass of an unbound atom of the nuclide 12C, at rest and in its ground
+     * state. The value must be obtained by experiment, and is therefore not
+     * known exactly.
+     */
+    public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
+	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u",
+	    true);
+    // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
+
+    /**
+     * A length unit accepted for use with SI units (standard name
+     * <code>UA</code>). The astronomical unit is a unit of length. Its value is
+     * such that, when used to describe the motion of bodies in the solar
+     * system, the heliocentric gravitation constant is (0.017 202 098 95)2
+     * ua3·d-2. The value must be obtained by experiment, and is therefore not
+     * known exactly.
+     */
+    public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
+	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)));
+    // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
+
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>ha</code>).
+     */
+    public static final Unit<Area> HECTARE = addUnit(
+	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)));
+
     // /////////////////
     // Dimensionless //
     // /////////////////
@@ -159,7 +213,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A dimensionless unit equals to <code>pi</code> (standard name
      * <code>Ï€</code>).
      */
-    static final Unit<Dimensionless> PI = addUnit(ONE.multiply(StrictMath.PI));
+    public static final Unit<Dimensionless> PI = addUnit(AbstractUnit.ONE.multiply(StrictMath.PI));
 
     /**
      * A dimensionless unit equals to <code>0.01</code> (standard name
@@ -172,8 +226,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * A logarithmic unit used to describe a ratio (standard name
      * <code>dB</code>).
      */
-    static final Unit<Dimensionless> DECIBEL = addUnit(
-	    ONE.transform(new LogConverter(10).inverse().concatenate(RationalConverter.of(1d, 10d))));
+    static final Unit<Dimensionless> DECIBEL = 
+	    AbstractUnit.ONE.transform(new LogConverter(10).inverse().concatenate(RationalConverter.of(1d, 10d)));
 
     // ///////////////////////
     // Amount of substance //
@@ -182,35 +236,17 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of amount of substance equals to one atom (standard name
      * <code>atom</code>).
      */
-    static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT));
+    public static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT));
 
     // //////////
     // Length //
     // //////////
 
     /**
-     * A unit of length equal to <code>0.3048 m</code> (standard name
-     * <code>ft</code>).
-     */
-    static final Unit<Length> FOOT = addUnit(METRE.multiply(3048).divide(10000));
-
-    /**
-     * A unit of length equal to <code>0.0254 m</code> (standard name
-     * <code>in</code>).
-     */
-    static final Unit<Length> INCH = addUnit(FOOT.divide(12));
-
-    /**
      * A unit of length equal to <code>1E-10 m</code> (standard name
      * <code>\u00C5ngstr\u00F6m</code>).
      */
     public static final Unit<Length> ANGSTROM = addUnit(METRE.divide(10000000000L));
-
-    /**
-     * A unit of length equal to the average distance from the center of the
-     * Earth to the center of the Sun (standard name <code>ua</code>).
-     */
-    static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(METRE.multiply(149597870691.0));
 
     /**
      * A unit of length equal to the distance that light travels in one year
@@ -225,36 +261,11 @@ public class NonSI extends AbstractSystemOfUnits {
      * in the direction perpendicular to the direction to the star (standard
      * name <code>pc</code>).
      */
-    static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
-
-    /**
-     * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly
-     * (standard name <code>pt</code>).
-     * 
-     * @see #PIXEL
-     */
-    static final Unit<Length> POINT = addUnit(INCH.multiply(13837).divide(1000000));
+    public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
 
     // ////////////
     // Duration //
     // ////////////
-    /**
-     * A unit of duration equal to <code>60 s</code> (standard name
-     * <code>min</code>).
-     */
-    static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60));
-
-    /**
-     * A unit of duration equal to <code>60 {@link #MINUTE}</code> (standard
-     * name <code>h</code>).
-     */
-    static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
-
-    /**
-     * A unit of duration equal to <code>24 {@link #HOUR}</code> (standard name
-     * <code>d</code>).
-     */
-    static final Unit<Time> DAY = addUnit(HOUR.multiply(24));
 
     /**
      * A unit of duration equal to the time required for a complete rotation of
@@ -262,26 +273,20 @@ public class NonSI extends AbstractSystemOfUnits {
      * meridian, equal to 23 hours, 56 minutes, 4.09 seconds (standard name
      * <code>day_sidereal</code>).
      */
-    static final Unit<Time> DAY_SIDEREAL = addUnit(SECOND.multiply(86164.09));
-
-    /**
-     * A unit of duration equal to 7 {@link #DAY} (standard name
-     * <code>week</code>).
-     */
-    static final Unit<Time> WEEK = addUnit(DAY.multiply(7));
+    public static final Unit<Time> DAY_SIDEREAL = addUnit(SECOND.multiply(86164.09));
 
     /**
      * A unit of duration equal to 365 {@link #DAY} (standard name
      * <code>year</code>).
      */
-    static final Unit<Time> YEAR_CALENDAR = addUnit(DAY.multiply(365));
+    public static final Unit<Time> YEAR_CALENDAR = addUnit(Units.DAY.multiply(365));
 
     /**
      * A unit of duration equal to one complete revolution of the earth about
      * the sun, relative to the fixed stars, or 365 days, 6 hours, 9 minutes,
      * 9.54 seconds (standard name <code>year_sidereal</code>).
      */
-    static final Unit<Time> YEAR_SIDEREAL = addUnit(SECOND.multiply(31558149.54));
+    public static final Unit<Time> YEAR_SIDEREAL = addUnit(SECOND.multiply(31558149.54));
 
     /**
      * The Julian year, as used in astronomy and other sciences, is a time unit
@@ -289,7 +294,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * "year" (symbol "a" from the Latin annus, annata) used in various
      * scientific contexts.
      */
-    static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600));
+    public static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600));
 
     // ////////
     // Mass //
@@ -352,7 +357,14 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
      * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
      */
-    static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
+    public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
+    /**
+     * An angle unit accepted for use with SI units (standard name
+     * <code>rev</code>).
+     */
+    // public static final Unit<Angle> REVOLUTION = addUnit(
+    // new TransformedUnit<Angle>(RADIAN, new
+    // PiMultiplierConverter().concatenate(new RationalConverter(2, 1))));
 
     // ////////////
     // Velocity //
@@ -361,7 +373,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
-    static final Unit<Speed> C = addUnit(METRES_PER_SECOND.multiply(299792458));
+    static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
 
     // ////////////////
     // Acceleration //
@@ -371,7 +383,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * (standard name <code>grav</code>).
      */
     static final Unit<Acceleration> G = addUnit(
-	    METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+	    METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
     // ////////
     // Area //
@@ -401,12 +413,6 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>erg</code>).
      */
     static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
-
-    /**
-     * A unit of energy equal to one electron-volt (standard name
-     * <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
-     */
-    static final Unit<Energy> ELECTRON_VOLT = addUnit(JOULE.multiply(ELEMENTARY_CHARGE));
 
     // ///////////////
     // Illuminance //
@@ -489,13 +495,13 @@ public class NonSI extends AbstractSystemOfUnits {
      * by a column of mercury 1 millimeter high (standard name <code>mmHg</code>
      * ).
      */
-    static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322));
+    public static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322));
 
     /**
      * A unit of pressure equal to the pressure exerted at the Earth's surface
      * by a column of mercury 1 inch high (standard name <code>inHg</code>).
      */
-    static final Unit<Pressure> INCH_OF_MERCURY = addUnit(PASCAL.multiply(3386.388));
+    public static final Unit<Pressure> INCH_OF_MERCURY = addUnit(PASCAL.multiply(3386.388));
 
     // ///////////////////////////
     // Radiation dose absorbed //
@@ -504,13 +510,13 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of radiation dose absorbed equal to a dose of 0.01 joule of energy
      * per kilogram of mass (J/kg) (standard name <code>rd</code>).
      */
-    static final Unit<RadiationDoseAbsorbed> RAD = addUnit(GRAY.divide(100));
+    public static final Unit<RadiationDoseAbsorbed> RAD = addUnit(GRAY.divide(100));
 
     /**
      * A unit of radiation dose effective equal to <code>0.01 Sv</code>
      * (standard name <code>rem</code>).
      */
-    static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
+    public static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
 
     // ////////////////////////
     // Radioactive activity //
@@ -562,7 +568,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit used to measure the frequency (rate) at which an imaging device
      * produces unique consecutive images (standard name <code>fps</code>).
      */
-    static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(ONE.divide(SECOND)).asType(Frequency.class);
+    static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(AbstractUnit.ONE.divide(SECOND)).asType(Frequency.class);
 
     // //////////
     // Others //
