@@ -84,5 +84,5 @@
 		<github.global.server>github</github.global.server>
 		<commit.message>Site update</commit.message>
 	</properties>
-	<url>https://github.com/unitsofmeasurement/unit-api</url>
+	<url>https://github.com/unitsofmeasurement/si-units</url>
 </project>
