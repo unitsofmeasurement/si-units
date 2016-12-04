@@ -78,7 +78,7 @@ import tec.units.ri.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.1, $Date: 2016-11-07$
+ * @version 1.0.2, $Date: 2016-12-04$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -135,28 +135,31 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
+	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))),
+	    "Degree Angle", "deg");
 
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
 
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>''</code>).
      */
-    public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+    public static final Unit<Angle> SECOND_ANGLE = addUnit(
+	    new TransformedUnit<Angle>(RADIAN,
+		    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60))),
+	    "Second Angle", "''");
 
     /**
      * A mass unit accepted for use with SI units (standard name
      * <code>t</code>).
      */
-    public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
-	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");
+    public static final Unit<Mass> TONNE = addUnit(new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)),
+	    "Tonne", "t");
 
     /**
      * An energy unit accepted for use with SI units (standard name
@@ -165,7 +168,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * value must be obtained by experiment, and is therefore not known exactly.
      */
     public static final Unit<Energy> ELECTRON_VOLT = addUnit(
-	    new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)));
+	    new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)), "Electron Volt", "eV");
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
@@ -189,7 +192,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * known exactly.
      */
     public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
-	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)));
+	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)), "Astronomical Unit", "UA");
     // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
 
     /**
@@ -197,7 +200,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>ha</code>).
      */
     public static final Unit<Area> HECTARE = addUnit(
-	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)));
+	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)), "Hectare", "ha");
 
     // /////////////////
     // Dimensionless //
@@ -238,7 +241,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of length equal to the average distance from the center of the
      * Earth to the center of the Sun (standard name <code>ua</code>).
      */
-//    static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(METRE.multiply(149597870691.0));
+    // static final Unit<Length> ASTRONOMICAL_UNIT =
+    // addUnit(METRE.multiply(149597870691.0));
 
     /**
      * A unit of length equal to the distance that light travels in one year
@@ -377,7 +381,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of energy equal to one electron-volt (standard name
      * <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
      */
-//    static final Unit<Energy> ELECTRON_VOLT = JOULE.multiply(ELEMENTARY_CHARGE);
+    // static final Unit<Energy> ELECTRON_VOLT =
+    // JOULE.multiply(ELEMENTARY_CHARGE);
 
     // ///////////////
     // Illuminance //

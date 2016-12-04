@@ -217,7 +217,7 @@ public final class SI extends Units {
      */
     public static final Unit<RadiantIntensity> WATT_PER_STERADIAN = addUnit(
 	    WATT.divide(STERADIAN).asType(RadiantIntensity.class));
-    
+
     /**
      * The SI unit for radiance (standard name <code>W⋅sr−1⋅m−2</code>).
      */
@@ -231,6 +231,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>deg</code>).
+     * 
      * @deprecated use NonSI
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
@@ -239,6 +240,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>'</code>).
+     * 
      * @deprecated use NonSI
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
@@ -247,6 +249,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>''</code>).
+     * 
      * @deprecated use NonSI
      */
     public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
@@ -255,6 +258,7 @@ public final class SI extends Units {
     /**
      * A mass unit accepted for use with SI units (standard name
      * <code>t</code>).
+     * 
      * @deprecated use NonSI
      */
     public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
@@ -278,7 +282,8 @@ public final class SI extends Units {
      * known exactly.
      */
     public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
-	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u", true);
+	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u",
+	    true);
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
@@ -369,6 +374,22 @@ public final class SI extends Units {
     @SuppressWarnings("unused")
     private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
 	return addUnit(unit, null, text, isLabel);
+    }
+
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param label
+     *            the string to use as label
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
+	return addUnit(unit, name, label, true);
     }
 
     /**

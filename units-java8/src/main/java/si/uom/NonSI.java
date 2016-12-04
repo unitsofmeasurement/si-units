@@ -87,7 +87,7 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.1, $Date: 2016-11-07$
+ * @version 1.0.2, $Date: 2016-12-04$
  */
 public class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
@@ -142,21 +142,24 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
+	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))),
+	    "Degree Angle", "deg");
 
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
 
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>''</code>).
      */
-    public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+    public static final Unit<Angle> SECOND_ANGLE = addUnit(
+	    new TransformedUnit<Angle>(RADIAN,
+		    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60))),
+	    "Second Angle", "''");
 
     /**
      * A mass unit accepted for use with SI units (standard name
@@ -172,7 +175,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * value must be obtained by experiment, and is therefore not known exactly.
      */
     public static final Unit<Energy> ELECTRON_VOLT = addUnit(
-	    new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)));
+	    new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)), "Electron Volt", "eV");
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
@@ -196,7 +199,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * known exactly.
      */
     public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
-	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)));
+	    new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)), "Astronomical Unit", "UA");
     // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
 
     /**
@@ -204,7 +207,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>ha</code>).
      */
     public static final Unit<Area> HECTARE = addUnit(
-	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)));
+	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)), "Hectare", "ha");
 
     // /////////////////
     // Dimensionless //
@@ -226,8 +229,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * A logarithmic unit used to describe a ratio (standard name
      * <code>dB</code>).
      */
-    static final Unit<Dimensionless> DECIBEL = 
-	    AbstractUnit.ONE.transform(new LogConverter(10).inverse().concatenate(RationalConverter.of(1d, 10d)));
+    static final Unit<Dimensionless> DECIBEL = AbstractUnit.ONE
+	    .transform(new LogConverter(10).inverse().concatenate(RationalConverter.of(1d, 10d)));
 
     // ///////////////////////
     // Amount of substance //
@@ -373,7 +376,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
-    static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
+    static final Unit<Speed> C = addUnit(METRES_PER_SECOND.multiply(299792458));
 
     // ////////////////
     // Acceleration //
@@ -383,7 +386,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * (standard name <code>grav</code>).
      */
     static final Unit<Acceleration> G = addUnit(
-	    METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+	    METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
     // ////////
     // Area //
@@ -642,5 +645,21 @@ public class NonSI extends AbstractSystemOfUnits {
 	    INSTANCE.units.add(unit);
 	}
 	return unit;
+    }
+
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String text) {
+	return addUnit(unit, name, text, true);
     }
 }
