@@ -1,6 +1,6 @@
 /*
  *  SI Units for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -33,6 +33,7 @@ import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Energy;
+import javax.measure.quantity.Force;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
@@ -76,7 +77,7 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.1, October 23, 2016
+ * @version 1.0.2, February 12, 2017
  */
 public final class SI extends Units {
 
@@ -124,9 +125,14 @@ public final class SI extends Units {
      * The SI unit for acceleration quantities (standard name
      * <code>m/s2</code>).
      */
-    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = addUnit(
-	    new ProductUnit<Acceleration>(METRES_PER_SECOND.divide(SECOND)), Acceleration.class);
-
+    public static final Unit<Acceleration> METRE_PER_SQUARE_SECOND = addUnit(
+	    new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
+    /**
+     * Alias {@link #METRE_PER_SQUARE_SECOND}
+     * @deprecated use METRE_PER_SQUARE_SECOND
+     */
+    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = METRE_PER_SQUARE_SECOND;
+    
     /**
      * The SI unit for action quantities (standard name <code>j.s</code>).
      */
@@ -139,9 +145,14 @@ public final class SI extends Units {
      * permittivity is the measure of resistance that is encountered when
      * forming an electric field in a medium.
      */
-    public static final Unit<ElectricPermittivity> FARADS_PER_METRE = addUnit(
+    public static final Unit<ElectricPermittivity> FARAD_PER_METRE = addUnit(
 	    new AlternateUnit<ElectricPermittivity>(FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
-
+    /**
+     * Alias for {@link #FARAD_PER_METRE}
+     * @deprecated use FARAD_PER_METRE
+     */
+    public static final Unit<ElectricPermittivity> FARADS_PER_METRE = FARAD_PER_METRE;
+   
     /**
      * The SI unit for magnetic permeability quantities (standard name
      * <code>N/A2</code>).
@@ -179,9 +190,16 @@ public final class SI extends Units {
      * The SI unit for kinematic viscosity quantities (standard name
      * <code>m2/s"</code>).
      */
-    public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND = addUnit(
+    public static final Unit<KinematicViscosity> SQUARE_METRE_PER_SECOND = addUnit(
 	    new ProductUnit<KinematicViscosity>(SQUARE_METRE.divide(SECOND)), KinematicViscosity.class);
 
+    /**
+     * Alias for {@link #SQUARE_METRE_PER_SECOND}
+     * @deprecated use SQUARE_METRE_PER_SECOND
+     */
+    public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND = SQUARE_METRE_PER_SECOND;
+
+    
     /**
      * A magnetic field is the magnetic effect of electric currents and magnetic
      * materials. The magnetic field at any given point is specified by both a
@@ -206,9 +224,15 @@ public final class SI extends Units {
      * The SI unit for ionizing radiation quantities (standard name
      * <code>C/kg"</code>).
      */
-    public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM = addUnit(
+    public static final Unit<IonizingRadiation> COULOMB_PER_KILOGRAM = addUnit(
 	    new ProductUnit<IonizingRadiation>(COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
+    /**
+     * Alias for {@link #COULOMB_PER_KILOGRAM}
+     * @deprecated use COULOMB_PER_KILOGRAM
+     */
+    public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM = COULOMB_PER_KILOGRAM;
 
+    
     /**
      * The SI unit for radiant intensity (standard name <code>W/sr</code>).
      */
