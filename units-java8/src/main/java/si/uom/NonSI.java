@@ -1,6 +1,6 @@
 /*
  *  SI Units of Measurement for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -73,11 +73,7 @@ import tec.uom.se.unit.Units;
  * This class contains units that are not part of the International System of
  * Units, that is, they are outside the SI, but are important and widely used.
  * </p>
- * 
- * <p>
- * This is an internal collection of otherwise unassigned units used by
- * <b>UCUM</b> or similar systems.
- * </p>
+ *
  * <p>
  * This class is not intended to be implemented by clients.
  * </p>
@@ -87,7 +83,7 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.2, $Date: 2016-12-04$
+ * @version 1.0.3, $Date: 2017-02-12$
  */
 public class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
