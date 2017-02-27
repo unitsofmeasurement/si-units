@@ -108,7 +108,7 @@ public final class SI extends Units {
      * <code>m/s2</code>).
      */
     public static final Unit<Acceleration> METRE_PER_SQUARE_SECOND = addUnit(
-	    new ProductUnit<Acceleration>(METRES_PER_SECOND.divide(SECOND)), Acceleration.class);
+	    new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
     /**
      * Alias for METRE_PER_SQUARE_SECOND.
      * 
