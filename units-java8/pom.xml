@@ -16,7 +16,7 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<se.version>1.0.2-SNAPSHOT</se.version>
+		<se.version>1.0.4</se.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -66,6 +66,11 @@
 	<!-- Additional repositories -->
 	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
 	<repositories>
+	    <repository>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
 		<repository>
 			<snapshots>
 				<enabled>false</enabled>
@@ -81,11 +86,6 @@
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
-		</repository>
-		<repository>
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
 		</repository>
 	</repositories>
 

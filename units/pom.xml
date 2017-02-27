@@ -15,7 +15,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<!-- Versions -->
-		<ri.version>1.0.1</ri.version>
+		<ri.version>1.0.2</ri.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>

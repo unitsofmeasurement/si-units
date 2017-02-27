@@ -78,7 +78,7 @@ import tec.units.ri.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.2, $Date: 2016-12-04$
+ * @version 1.0.3, $Date: 2017-02-28$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -345,7 +345,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
-    static final Unit<Speed> C = METRES_PER_SECOND.multiply(299792458);
+    static final Unit<Speed> C = METRE_PER_SECOND.multiply(299792458);
 
     // ////////////////
     // Acceleration //
@@ -354,7 +354,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of acceleration equal to the gravity at the earth's surface
      * (standard name <code>grav</code>).
      */
-    static final Unit<Acceleration> G = METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+    static final Unit<Acceleration> G = METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
 	    .divide(STANDARD_GRAVITY_DIVISOR);
 
     // ////////////////////
