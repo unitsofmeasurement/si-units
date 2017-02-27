@@ -29,7 +29,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Priority;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -40,7 +39,7 @@ import si.uom.SI;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 0.5, November 5, 2016
  */
-@Priority(20)
+//@Priority(20)
 class SISystemService implements SystemOfUnitsService {
 
     final Map<String, SystemOfUnits> souMap = new HashMap<>();
