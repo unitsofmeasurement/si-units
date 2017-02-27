@@ -157,7 +157,7 @@ public final class SI extends Units {
      * The SI unit for magnetic permeability quantities (standard name
      * <code>N/A2</code>).
      */
-    public static final Unit<MagneticPermeability> NEWTONS_PER_SQUARE_AMPERE = addUnit(
+    public static final Unit<MagneticPermeability> NEWTON_PER_SQUARE_AMPERE = addUnit(
 	    new ProductUnit<MagneticPermeability>(NEWTON.divide(AMPERE.pow(2))), MagneticPermeability.class);
 
     /**
