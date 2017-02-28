@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>0.6.3-SNAPSHOT</version>
+		<version>0.6.3</version>
 	</parent>
 	<artifactId>si-units</artifactId>
 	<name>SI Units</name>
-    <packaging>bundle</packaging>
+	<packaging>bundle</packaging>
 
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -65,6 +65,11 @@
 	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
 	<repositories>
 		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+		<repository>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -80,16 +85,9 @@
 			<name>libs-snapshot</name>
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
-		<repository>
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
-		</repository>
 	</repositories>
 
 	<build>
-		<!-- <sourceDirectory>src/main/${jsrcFolder}</sourceDirectory> <outputDirectory>target/${classFolder}</outputDirectory> 
-			<testSourceDirectory>src/test/${jsrcFolder}</testSourceDirectory> <testOutputDirectory>target/test-${classFolder}</testOutputDirectory> -->
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -115,20 +113,20 @@
 				<!-- <configuration> <classifier>${envClassifier}</classifier> </configuration> -->
 			</plugin>
 
-            <!-- ======================================================= -->
-            <!-- Packaging (OSGi bundle) -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>si.uom</Export-Package>
-                        <Private-Package>si.uom.impl.*</Private-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
+			<!-- ======================================================= -->
+			<!-- Packaging (OSGi bundle) -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Export-Package>si.uom</Export-Package>
+						<Private-Package>si.uom.impl.*</Private-Package>
+					</instructions>
+				</configuration>
+			</plugin>
 
 			<!-- ======================================================= -->
 			<!-- JavaDoc Attachment -->
