@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>0.6.4</version>
+		<version>0.6.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>si-units-java8</artifactId>
 	<name>SI Units for Java SE 8</name>
@@ -16,7 +16,7 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<se.version>1.0.4</se.version>
+		<se.version>1.0.5</se.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
