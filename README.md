@@ -24,8 +24,6 @@ E.g.
 Planning
 ------------
 [![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/pr?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
-[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/issue?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
-
 
 Waffle.io
 ------------
