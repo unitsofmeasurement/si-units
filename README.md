@@ -24,10 +24,11 @@ E.g.
 Planning
 ------------
 [![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/pr?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
+[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/issue?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
+
 
 Waffle.io
 ------------
 [![Stories in Ready](https://badge.waffle.io/unitsofmeasurement/si-units.png?label=ready&title=Ready)](https://waffle.io/unitsofmeasurement/si-units)
-[![Stories in Progress](https://badge.waffle.io/unitsofmeasurement/si-units.png?label=in%20progress&title=In Progress)](https://waffle.io/unitsofmeasurement/si-units)
 
 [![Throughput Graph](https://graphs.waffle.io/unitsofmeasurement/si-units/throughput.svg)](https://waffle.io/unitsofmeasurement/si-units/metrics)
