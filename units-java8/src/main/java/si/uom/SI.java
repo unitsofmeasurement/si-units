@@ -79,32 +79,10 @@ import tec.uom.se.unit.Units;
  * @version 1.0.3, April 16, 2017
  */
 public final class SI extends Units {
-
     /**
      * The singleton instance.
      */
     private static final SI INSTANCE = new SI();
-
-    /**
-     * Holds the mapping quantity to unit.
-     */
-    // private final HashMap<Class<? extends Quantity>, AbstractUnit>
-    // quantityToUnit = new HashMap<Class<? extends Quantity>, AbstractUnit>();
-
-    /**
-     * Default constructor (prevents this class from being instantiated).
-     */
-    private SI() {
-    }
-
-    /**
-     * Returns the singleton instance of this class.
-     *
-     * @return the metric system instance.
-     */
-    public static SI getInstance() {
-	return INSTANCE;
-    }
 
     ////////////////////////////////
     // SI DERIVED ALTERNATE UNITS //
@@ -128,10 +106,11 @@ public final class SI extends Units {
 	    new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
     /**
      * Alias {@link #METRE_PER_SQUARE_SECOND}
+     * 
      * @deprecated use METRE_PER_SQUARE_SECOND
      */
     public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = METRE_PER_SQUARE_SECOND;
-    
+
     /**
      * The SI unit for action quantities (standard name <code>j.s</code>).
      */
@@ -148,10 +127,11 @@ public final class SI extends Units {
 	    new AlternateUnit<ElectricPermittivity>(FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
     /**
      * Alias for {@link #FARAD_PER_METRE}
+     * 
      * @deprecated use FARAD_PER_METRE
      */
     public static final Unit<ElectricPermittivity> FARADS_PER_METRE = FARAD_PER_METRE;
-   
+
     /**
      * The SI unit for magnetic permeability quantities (standard name
      * <code>N/A2</code>).
@@ -194,11 +174,11 @@ public final class SI extends Units {
 
     /**
      * Alias for {@link #SQUARE_METRE_PER_SECOND}
+     * 
      * @deprecated use SQUARE_METRE_PER_SECOND
      */
     public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND = SQUARE_METRE_PER_SECOND;
 
-    
     /**
      * A magnetic field is the magnetic effect of electric currents and magnetic
      * materials. The magnetic field at any given point is specified by both a
@@ -227,11 +207,11 @@ public final class SI extends Units {
 	    new ProductUnit<IonizingRadiation>(COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
     /**
      * Alias for {@link #COULOMB_PER_KILOGRAM}
+     * 
      * @deprecated use COULOMB_PER_KILOGRAM
      */
     public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM = COULOMB_PER_KILOGRAM;
 
-    
     /**
      * The SI unit for radiant intensity (standard name <code>W/sr</code>).
      */
@@ -294,7 +274,8 @@ public final class SI extends Units {
      * known exactly.
      */
     public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
-	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u", true);
+	    new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u",
+	    true);
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
@@ -325,12 +306,27 @@ public final class SI extends Units {
     /////////////////////
     // Collection View //
     /////////////////////
+    
+    /**
+     * Default constructor (prevents this class from being instantiated).
+     */
+    private SI() { // Singleton
+    }
 
     @Override
     public String getName() {
 	return SI.class.getSimpleName(); // for Java SE this works
     }
-
+    
+    /**
+     * Returns the singleton instance of this class.
+     *
+     * @return the metric system instance.
+     */
+    public static SI getInstance() {
+	return INSTANCE;
+    }
+    
     /**
      * Adds a new unit not mapped to any specified quantity type and puts a text
      * as symbol or label.

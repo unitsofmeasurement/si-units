@@ -112,21 +112,6 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     private static final double ELEMENTARY_CHARGE = 1.602176462e-19; // (C).
 
-    /**
-     * Default constructor (prevents this class from being instantiated).
-     */
-    private NonSI() {
-    }
-
-    /**
-     * Returns the unique instance of this class.
-     * 
-     * @return the NonSI instance.
-     */
-    public static NonSI getInstance() {
-	return INSTANCE;
-    }
-
     private static final NonSI INSTANCE = new NonSI();
 
     /////////////////////////////////////////////////////////////////
@@ -560,18 +545,18 @@ public class NonSI extends AbstractSystemOfUnits {
     static final Unit<KinematicViscosity> STOKE = addUnit(CENTI(METRE).pow(2).divide(SECOND))
 	    .asType(KinematicViscosity.class);
 
-    // /////////////
+    ///////////////
     // Frequency //
-    // /////////////
+    ///////////////
     /**
      * A unit used to measure the frequency (rate) at which an imaging device
      * produces unique consecutive images (standard name <code>fps</code>).
      */
     static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(AbstractUnit.ONE.divide(SECOND)).asType(Frequency.class);
 
-    // //////////
+    ////////////
     // Others //
-    // //////////
+    ////////////
     /**
      * A unit used to measure the ionizing ability of radiation (standard name
      * <code>Roentgen</code>).
@@ -585,7 +570,26 @@ public class NonSI extends AbstractSystemOfUnits {
     @SuppressWarnings("unchecked")
     public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(
 	    COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "r", true);
+    
+    /////////////////////
+    // Collection View //
+    /////////////////////
+    
+    /**
+     * Default constructor (prevents this class from being instantiated).
+     */
+    private NonSI() { // Singleton
+    }
 
+    /**
+     * Returns the unique instance of this class.
+     * 
+     * @return the NonSI instance.
+     */
+    public static NonSI getInstance() {
+	return INSTANCE;
+    }
+    
     public String getName() {
 	return SYSTEM_NAME;
     }
