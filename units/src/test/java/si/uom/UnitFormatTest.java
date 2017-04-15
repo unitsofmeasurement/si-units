@@ -37,7 +37,6 @@ import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
 import javax.measure.quantity.Area;
-import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
 
@@ -91,7 +90,7 @@ public class UnitFormatTest {
 	@Test
 	public void testFormat3() {
 		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
-		//assertEquals("At", at.toString());
+		assertEquals("At", at.toString());
 	}
 	
 	@Test
