@@ -28,32 +28,8 @@ package si.uom;
 import static tec.uom.se.unit.MetricPrefix.CENTI;
 import static tec.uom.se.unit.Units.*;
 
-import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
-import javax.measure.quantity.AmountOfSubstance;
-import javax.measure.quantity.Angle;
-import javax.measure.quantity.Area;
-import javax.measure.quantity.Dimensionless;
-import javax.measure.quantity.ElectricCharge;
-import javax.measure.quantity.ElectricCurrent;
-import javax.measure.quantity.Energy;
-import javax.measure.quantity.Force;
-import javax.measure.quantity.Frequency;
-import javax.measure.quantity.Illuminance;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.MagneticFlux;
-import javax.measure.quantity.MagneticFluxDensity;
-import javax.measure.quantity.Mass;
-import javax.measure.quantity.Power;
-import javax.measure.quantity.Pressure;
-import javax.measure.quantity.RadiationDoseAbsorbed;
-import javax.measure.quantity.RadiationDoseEffective;
-import javax.measure.quantity.Radioactivity;
-import javax.measure.quantity.SolidAngle;
-import javax.measure.quantity.Speed;
-import javax.measure.quantity.Temperature;
-import javax.measure.quantity.Time;
+import javax.measure.quantity.*;
 
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
@@ -615,11 +591,11 @@ public class NonSI extends AbstractSystemOfUnits {
      *            the quantity type.
      * @return <code>unit</code>.
      */
-    private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
-	INSTANCE.units.add(unit);
-	INSTANCE.quantityToUnit.put(type, unit);
-	return unit;
-    }
+//    private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+//	INSTANCE.units.add(unit);
+//	INSTANCE.quantityToUnit.put(type, unit);
+//	return unit;
+//    }
 
     /**
      * Adds a new unit not mapped to any specified quantity type and puts a text
