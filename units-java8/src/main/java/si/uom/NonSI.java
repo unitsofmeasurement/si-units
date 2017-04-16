@@ -34,6 +34,7 @@ import javax.measure.quantity.*;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.Luminance;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
@@ -41,6 +42,7 @@ import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.function.RationalConverter;
+import tec.uom.se.unit.ProductUnit;
 import tec.uom.se.unit.TransformedUnit;
 import tec.uom.se.unit.Units;
 
@@ -166,21 +168,14 @@ public class NonSI extends AbstractSystemOfUnits {
     public static final Unit<Area> HECTARE = addUnit(
 	    new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)), "Hectare", "ha");
 
-    // /////////////////
+    ///////////////////
     // Dimensionless //
-    // /////////////////
+    ///////////////////
     /**
      * A dimensionless unit equals to <code>pi</code> (standard name
      * <code>Ï€</code>).
      */
     public static final Unit<Dimensionless> PI = addUnit(AbstractUnit.ONE.multiply(StrictMath.PI));
-
-    /**
-     * A dimensionless unit equals to <code>0.01</code> (standard name
-     * <code>%</code>).
-     */
-    // static final Unit<Dimensionless> PERCENT = addUnit(ONE
-    // .divide(100));
 
     /**
      * A logarithmic unit used to describe a ratio (standard name
@@ -189,18 +184,18 @@ public class NonSI extends AbstractSystemOfUnits {
     protected static final Unit<Dimensionless> DECIBEL = AbstractUnit.ONE
 	    .transform(new LogConverter(10).inverse().concatenate(RationalConverter.of(1d, 10d)));
 
-    // ///////////////////////
+    /////////////////////////
     // Amount of substance //
-    // ///////////////////////
+    /////////////////////////
     /**
      * A unit of amount of substance equals to one atom (standard name
      * <code>atom</code>).
      */
     public static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT));
 
-    // //////////
+    ////////////
     // Length //
-    // //////////
+    ////////////
 
     /**
      * A unit of length equal to <code>1E-10 m</code> (standard name
@@ -212,7 +207,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of length equal to the distance that light travels in one year
      * through a vacuum (standard name <code>ly</code>).
      */
-    static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15));
+    protected static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15));
 
     /**
      * A unit of length equal to the distance at which a star would appear to
@@ -223,9 +218,9 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
 
-    // ////////////
+    //////////////
     // Duration //
-    // ////////////
+    //////////////
 
     /**
      * A unit of duration equal to the time required for a complete rotation of
@@ -345,18 +340,18 @@ public class NonSI extends AbstractSystemOfUnits {
     protected static final Unit<Acceleration> G = addUnit(
 	    METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
-    // ////////
+    //////////
     // Area //
-    // ////////
+    //////////
     /**
      * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
      * ).
      */
     protected static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
 
-    // ////////////////////
+    //////////////////////
     // Electric current //
-    // ////////////////////
+    //////////////////////
     /**
      * A unit of electric charge equal to the centimeter-gram-second
      * electromagnetic unit of magnetomotive force, equal to <code>10/4
@@ -373,7 +368,19 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>erg</code>).
      */
     protected static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
-
+    
+    /////////////////
+    // Luminance //
+    /////////////////
+    protected static final Unit<Luminance> STILB = addUnit(
+	    new ProductUnit<Luminance>(CANDELA.divide(CENTI(METRE).pow(2))));
+    
+    /**
+     * A unit of luminance equal to <code>1E4 Lx</code> (standard name
+     * <code>La</code>).
+     */
+    protected static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
+   
     ///////////////////
     // Magnetic Flux //
     ///////////////////
@@ -484,26 +491,22 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     protected static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL.multiply(1000000));
 
-    // ///////////////
+    /////////////////
     // Solid angle //
-    // ///////////////
+    /////////////////
     /**
      * A unit of solid angle equal to <code>4 <i>&pi;</i> steradians</code>
      * (standard name <code>sphere</code>).
      */
     protected static final Unit<SolidAngle> SPHERE = addUnit(STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class));
 
-    // //////////
-    // Volume //
-    // //////////
-
-    // /////////////
+    ///////////////
     // Viscosity //
-    // /////////////
+    ///////////////
     /**
      * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit).
      */
-    static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
+    protected static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
 	    .asType(DynamicViscosity.class);
 
     /**
@@ -524,12 +527,7 @@ public class NonSI extends AbstractSystemOfUnits {
     ////////////
     // Others //
     ////////////
-    /**
-     * A unit used to measure the ionizing ability of radiation (standard name
-     * <code>Roentgen</code>).
-     */
-    // static final Unit<IonizingRadiation> ROENTGEN = SI.ROENTGEN;
-
+ 
     /**
      * A unit used to measure the ionizing ability of radiation (standard name
      * <code>Roentgen</code>).
