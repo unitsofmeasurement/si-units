@@ -41,8 +41,8 @@ import org.junit.Test;
 public class SystemOfUnitsServiceTest {
     private static final String SI_NAME = "SI";
     private static final String NONSI_NAME = "Non-SI Units";
-    
     private static final int UNITS_EXPECTED = 20;
+    private static final int UNITS_EXPECTED_NONSI = 49;
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
@@ -90,7 +90,7 @@ public class SystemOfUnitsServiceTest {
 	    assertEquals(UNITS_EXPECTED, system.getUnits().size());
 	} else if (NONSI_NAME.equals(system.getName())) {
 	    assertEquals("si.uom.NonSI", system.getClass().getName());
-	    assertEquals(50, system.getUnits().size());
+	    assertEquals(UNITS_EXPECTED_NONSI, system.getUnits().size());
 	}
     }
 }

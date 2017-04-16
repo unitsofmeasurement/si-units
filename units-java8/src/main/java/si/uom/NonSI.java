@@ -263,19 +263,19 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of mass equal to 1/12 the mass of the carbon-12 atom (standard
      * name <code>u</code>).
      */
-    static final Unit<Mass> ATOMIC_MASS = addUnit(KILOGRAM.multiply(1e-3 / AVOGADRO_CONSTANT));
+    private static final Unit<Mass> ATOMIC_MASS = addUnit(KILOGRAM.multiply(1e-3 / AVOGADRO_CONSTANT));
 
     /**
      * A unit of mass equal to the mass of the electron (standard name
      * <code>me</code>).
      */
-    static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
+    private static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
 
     /**
      * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
      * standard name <code>lb</code>).
      */
-    static final Unit<Mass> POUND = addUnit(
+    private static final Unit<Mass> POUND = addUnit(
 	    KILOGRAM.multiply(AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
 
     // ///////////////////
@@ -285,20 +285,20 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of electric charge equal to the charge on one electron (standard
      * name <code>e</code>).
      */
-    static final Unit<ElectricCharge> E = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE));
+    private static final Unit<ElectricCharge> E = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE));
 
     /**
      * A unit of electric charge equal to equal to the product of Avogadro's
      * number (see {@link SI#MOLE}) and the charge (1 e) on a single electron
      * (standard name <code>Fd</code>).
      */
-    static final Unit<ElectricCharge> FARADAY = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE * AVOGADRO_CONSTANT)); // e/mol
+    private static final Unit<ElectricCharge> FARADAY = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE * AVOGADRO_CONSTANT)); // e/mol
 
     /**
      * A unit of electric charge which exerts a force of one dyne on an equal
      * charge at a distance of one centimeter (standard name <code>Fr</code>).
      */
-    static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
+    private static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
 
     // ///////////////
     // Temperature //
@@ -307,7 +307,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
      * <code>Â°R</code>).
      */
-    static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
+    private static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
 
     // /////////
     // Angle //
@@ -372,16 +372,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of energy equal to <code>1E-7 J</code> (standard name
      * <code>erg</code>).
      */
-    static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
-
-    // ///////////////
-    // Illuminance //
-    // ///////////////
-    /**
-     * A unit of illuminance equal to <code>1E4 Lx</code> (standard name
-     * <code>La</code>).
-     */
-    static final Unit<Illuminance> LAMBERT = addUnit(LUX.multiply(10000));
+    private static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
 
     // /////////////////
     // Magnetic Flux //
@@ -390,7 +381,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of magnetic flux equal <code>1E-8 Wb</code> (standard name
      * <code>Mx</code>).
      */
-    static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
+    private static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
 
     // /////////////////////////
     // Magnetic Flux Density //
@@ -399,7 +390,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of magnetic flux density equal <code>1000 A/m</code> (standard
      * name <code>G</code>).
      */
-    static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
+    private static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
 
     // /////////
     // Force //
@@ -408,20 +399,20 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of force equal to <code>1E-5 N</code> (standard name
      * <code>dyn</code>).
      */
-    static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
+    private static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
 
     /**
      * A unit of force equal to <code>9.80665 N</code> (standard name
      * <code>kgf</code>).
      */
-    static final Unit<Force> KILOGRAM_FORCE = addUnit(
+    private static final Unit<Force> KILOGRAM_FORCE = addUnit(
 	    NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
     /**
      * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
      * (standard name <code>lbf</code>).
      */
-    static final Unit<Force> POUND_FORCE = addUnit(
+    private static final Unit<Force> POUND_FORCE = addUnit(
 	    NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
 		    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
 
@@ -433,7 +424,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * kilograms at a velocity of 1 meter per second (metric, standard name
      * <code>hp</code>).
      */
-    static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
+    private static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
 
     // ////////////
     // Pressure //
@@ -442,7 +433,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of pressure equal to the average pressure of the Earth's
      * atmosphere at sea level (standard name <code>atm</code>).
      */
-    static final Unit<Pressure> ATMOSPHERE = addUnit(PASCAL.multiply(101325));
+    private static final Unit<Pressure> ATMOSPHERE = addUnit(PASCAL.multiply(101325));
 
     /**
      * A unit of pressure equal to <code>100 kPa</code> (standard name
