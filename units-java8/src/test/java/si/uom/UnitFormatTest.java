@@ -58,18 +58,17 @@ import tec.uom.se.unit.Units;
 public class UnitFormatTest {
     private Quantity<Length> sut;
 
-    private EBNFUnitFormat format;
-    private SimpleUnitFormat format2;
+//    private EBNFUnitFormat format;
 
     @Before
     public void init() {
+	final SimpleUnitFormat format0 = SimpleUnitFormat.getInstance();
 	sut = DefaultQuantityFactory.getInstance(Length.class).create(10, METRE);
 
-	format = EBNFUnitFormat.getInstance();
-	format2 = SimpleUnitFormat.getInstance();
+//	format = EBNFUnitFormat.getInstance();
 
-	format2.label(SI.HECTARE, "Ha");
-	format2.label(SI.TONNE, "t");
+	format0.label(SI.HECTARE, "Ha");
+	format0.label(SI.TONNE, "t");
     }
 
     @Test
@@ -98,9 +97,9 @@ public class UnitFormatTest {
 
     @Test
     public void testParseSimple() {
-	final UnitFormat format = EBNFUnitFormat.getInstance();
+	final UnitFormat format1 = EBNFUnitFormat.getInstance();
 	try {
-	    Unit<?> u = format.parse("s");
+	    Unit<?> u = format1.parse("s");
 	    assertEquals("s", u.getSymbol());
 	    assertEquals(SECOND, u);
 	} catch (ParserException e) {
@@ -110,10 +109,10 @@ public class UnitFormatTest {
 
     @Test
     public void testFormatFromQuantity() {
-	final UnitFormat format = EBNFUnitFormat.getInstance();
+	final UnitFormat format1 = EBNFUnitFormat.getInstance();
 	final Appendable a = new StringBuilder();
 	try {
-	    format.format(METRE, a);
+	    format1.format(METRE, a);
 	} catch (IOException e) {
 	    fail(e.getMessage());
 	}
@@ -124,7 +123,7 @@ public class UnitFormatTest {
 	@SuppressWarnings("unchecked")
 	Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
 	try {
-	    format.format(v, a2);
+	    format1.format(v, a2);
 	} catch (IOException e) {
 	    fail(e.getMessage());
 	}
@@ -133,9 +132,9 @@ public class UnitFormatTest {
 
     @Test
     public void testParseSimple1() {
-	final UnitFormat format = EBNFUnitFormat.getInstance();
+	final UnitFormat format1 = EBNFUnitFormat.getInstance();
 	try {
-	    Unit<?> u = format.parse("min");
+	    Unit<?> u = format1.parse("min");
 	    // assertEquals("min", u.getSymbol());
 	    assertEquals(MINUTE, u);
 	} catch (ParserException e) {
@@ -145,9 +144,9 @@ public class UnitFormatTest {
 
     @Test
     public void testParseSimple2() {
-	final UnitFormat format = EBNFUnitFormat.getInstance();
+	final UnitFormat format1 = EBNFUnitFormat.getInstance();
 	try {
-	    Unit<?> u = format.parse("m");
+	    Unit<?> u = format1.parse("m");
 	    assertEquals("m", u.getSymbol());
 	    assertEquals(METRE, u);
 	} catch (ParserException e) {
@@ -157,9 +156,9 @@ public class UnitFormatTest {
 
     @Test
     public void testParseSimple3() {
-	final UnitFormat format = EBNFUnitFormat.getInstance();
+	final UnitFormat format1 = EBNFUnitFormat.getInstance();
 	try {
-	    Unit<?> u = format.parse("kg");
+	    Unit<?> u = format1.parse("kg");
 	    assertEquals("kg", u.getSymbol());
 	    assertEquals(KILOGRAM, u);
 	} catch (ParserException e) {
