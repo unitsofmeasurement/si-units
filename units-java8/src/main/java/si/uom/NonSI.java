@@ -285,7 +285,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of electric charge equal to the charge on one electron (standard
      * name <code>e</code>).
      */
-    private static final Unit<ElectricCharge> E = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE));
+    protected static final Unit<ElectricCharge> E = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE));
 
     /**
      * A unit of electric charge equal to equal to the product of Avogadro's
