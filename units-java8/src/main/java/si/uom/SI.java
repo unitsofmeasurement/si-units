@@ -125,13 +125,7 @@ public final class SI extends Units {
      */
     public static final Unit<ElectricPermittivity> FARAD_PER_METRE = addUnit(
 	    new AlternateUnit<ElectricPermittivity>(FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
-    /**
-     * Alias for {@link #FARAD_PER_METRE}
-     * 
-     * @deprecated use FARAD_PER_METRE
-     */
-    public static final Unit<ElectricPermittivity> FARADS_PER_METRE = FARAD_PER_METRE;
-
+  
     /**
      * The SI unit for magnetic permeability quantities (standard name
      * <code>N/A2</code>).
@@ -192,12 +186,6 @@ public final class SI extends Units {
     public static final Unit<MagneticFieldStrength> AMPERE_PER_METRE = addUnit(
 	    new ProductUnit<MagneticFieldStrength>(AMPERE.divide(METRE)), MagneticFieldStrength.class);
 
-    /**
-     * Alias for AMPERE_PER_METRE
-     * 
-     * @deprecated use AMPERE_PER_METRE.
-     */
-    public static final Unit<MagneticFieldStrength> AMPERES_PER_METRE = AMPERE_PER_METRE;
 
     /**
      * The SI unit for ionizing radiation quantities (standard name
@@ -205,13 +193,7 @@ public final class SI extends Units {
      */
     public static final Unit<IonizingRadiation> COULOMB_PER_KILOGRAM = addUnit(
 	    new ProductUnit<IonizingRadiation>(COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
-    /**
-     * Alias for {@link #COULOMB_PER_KILOGRAM}
-     * 
-     * @deprecated use COULOMB_PER_KILOGRAM
-     */
-    public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM = COULOMB_PER_KILOGRAM;
-
+ 
     /**
      * The SI unit for radiant intensity (standard name <code>W/sr</code>).
      */
