@@ -24,9 +24,8 @@ E.g.
 
 Planning
 ------------
-[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/pr?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
-[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/si-units/badge/issue?style=flat)](http://issuestats.com/github/unitsofmeasurement/si-units)
-
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/unitsofmeasurement/si-units.svg)](http://isitmaintained.com/project/unitsofmeasurement/si-units "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/unitsofmeasurement/si-units.svg)](http://isitmaintained.com/project/unitsofmeasurement/si-units "Percentage of issues still open")
 
 Waffle.io
 ------------
