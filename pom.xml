@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
-	<version>0.7-SNAPSHOT</version>
+	<version>0.7</version>
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>
@@ -20,13 +20,14 @@
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<si.version>${project.version}</si.version>
-		<si.quantity.version>0.6.6</si.quantity.version><!-- To handle quantity separately, makes deployment easier -->
+		<si.quantity.version>0.6.6</si.quantity.version><!-- To handle quantity 
+			separately, makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 	<modules>
-		<module>quantity</module> 
+		<module>quantity</module>
 		<module>units</module>
 		<module>units-java8</module>
 	</modules>
@@ -139,4 +140,45 @@
 			<url>scp://unitsofmeasurement.github.io/www/docs/lib/</url>
 		</site>
 	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>p2</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.reficio</groupId>
+						<artifactId>p2-maven-plugin</artifactId>
+						<version>1.2.0</version>
+						<executions>
+							<execution>
+								<id>default-cli</id>
+								<configuration>
+									<artifacts>
+										<!-- specify your depencies here -->
+										<!-- groupId:artifactId:version -->
+										<artifact>
+											<id>javax.measure:unit-api:${jsr.version}</id>
+											<id>tec.uom.lib:uom-lib-common:${jsr.version}</id>
+											<!-- >id>tec.uom:uom-se:${project.version}</id -->
+											<id>tec.uom:uom-se:1.0.7</id> <!-- TODO define SE version in parent -->
+											<id>si.uom:si-quantity:${project.version}</id>
+											<id>si.uom:si-units-java8:${project.version}</id>
+										</artifact>
+									</artifacts>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+
+			<pluginRepositories>
+				<pluginRepository>
+					<id>reficio</id>
+					<url>http://repo.reficio.org/maven/</url>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
 </project>

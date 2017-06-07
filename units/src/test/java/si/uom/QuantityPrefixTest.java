@@ -18,7 +18,7 @@ public class QuantityPrefixTest {
 	@Test
 	public void testKilo() {
 		// TODO how to handle equals for units?
-		assertEquals(KILOGRAM.getSymbol(), KILO(GRAM).getSymbol());
+		assertNull(KILO(GRAM).getSymbol());
 		assertEquals(KILOGRAM.toString(), KILO(GRAM).toString());
 	}
 	

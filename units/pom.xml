@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>0.7-SNAPSHOT</version>
+		<version>0.7</version>
 	</parent>
 	<artifactId>si-units</artifactId>
 	<name>SI Units</name>
@@ -15,7 +15,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<!-- Versions -->
-		<ri.version>1.0.3-SNAPSHOT</ri.version>
+		<ri.version>1.0.3</ri.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>

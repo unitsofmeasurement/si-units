@@ -53,7 +53,7 @@ public class PrefixTest {
     @Test
     public void testMega() {
 	Unit<Mass> m1 = MEGA(GRAM);
-	assertEquals("t", m1.toString()); // Passes in Maeven/CI
+	assertEquals("Mg", m1.toString()); // Passes in Maven/CI
     }
 
     @Test
