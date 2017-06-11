@@ -17,11 +17,15 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
+		<!-- Versions -->
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
-		<si.version>${project.version}</si.version>
-		<si.quantity.version>0.7</si.quantity.version><!-- To handle quantity 
-			separately, makes deployment easier -->
+		<lib.version>1.0.2</lib.version>
+		<ri.version>1.0.3</ri.version>
+		<se.version>1.0.7</se.version>
+		<si.version>0.7</si.version><!-- ${project.version} -->
+		<si.quantity.version>0.7</si.quantity.version><!-- To handle quantity separately, 
+			makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -159,11 +163,18 @@
 										<!-- groupId:artifactId:version -->
 										<artifact>
 											<id>javax.measure:unit-api:${jsr.version}</id>
-											<id>tec.uom.lib:uom-lib-common:${jsr.version}</id>
-											<!-- >id>tec.uom:uom-se:${project.version}</id -->
-											<id>tec.uom:uom-se:1.0.7</id> <!-- TODO define SE version in parent -->
-											<id>si.uom:si-quantity:${project.version}</id>
-											<id>si.uom:si-units-java8:${project.version}</id>
+										</artifact>
+										<artifact>
+											<id>tec.uom.lib:uom-lib-common:${lib.version}</id>
+										</artifact>
+										<artifact>
+											<id>tec.uom:uom-se:${se.version}</id>
+										</artifact>
+										<artifact>
+											<id>si.uom:si-quantity:${si.quantity.version}</id>
+										</artifact>
+										<artifact>
+											<id>si.uom:si-units-java8:${si.version}</id>
 										</artifact>
 									</artifacts>
 								</configuration>
