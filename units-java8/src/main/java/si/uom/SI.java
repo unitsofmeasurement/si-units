@@ -76,7 +76,7 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.3, April 16, 2017
+ * @version 1.0.4, August 12, 2017
  */
 public final class SI extends Units {
     /**
@@ -213,6 +213,8 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>deg</code>).
+     * 
+     * @deprecated use NonSI
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
 	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
@@ -220,6 +222,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>'</code>).
+     * @deprecated use NonSI
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
 	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
@@ -227,6 +230,7 @@ public final class SI extends Units {
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>''</code>).
+     * @deprecated use NonSI
      */
     public static final Unit<Angle> SECOND_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
 	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60))));
