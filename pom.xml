@@ -22,7 +22,7 @@
 		<jsr.version>1.0</jsr.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.7</se.version>
+		<se.version>1.0.8</se.version>
 		<si.version>${project.version}</si.version><!--  -->
 		<si.quantity.version>0.7</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->

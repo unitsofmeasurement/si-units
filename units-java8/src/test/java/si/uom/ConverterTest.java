@@ -43,19 +43,20 @@ import tec.uom.se.unit.Units;
 
 public class ConverterTest {
 
-  @Test
-  public void testAngleConverter() {
-    Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, SI.DEGREE_ANGLE).to(Units.RADIAN);
-    assertNotNull(sut);
-    assertEquals(Units.RADIAN, sut.getUnit());
-    assertEquals(new BigDecimal("1.745329251994329576923690768488613E-35"), sut.getValue());
-  }
+    @Test
+    public void testAngleConverter() {
+	Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
+	assertNotNull(sut);
+	assertEquals(Units.RADIAN, sut.getUnit());
+	assertEquals(new BigDecimal("0.01745329251994329576923690768488613"), sut.getValue());
+    }
 
-  @Test
-  public void testAngleConverterOpposite() {
-    Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, Units.RADIAN).to(SI.DEGREE_ANGLE);
-    assertNotNull(sut);
-    assertEquals(Units.DEGREE_ANGLE, sut.getUnit());
-    assertEquals(new BigDecimal("5.729577951308232087679815481410517E+34"), sut.getValue());
-  }
+    @Test
+    public void testAngleConverternOpposite() {
+	Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, Units.RADIAN).to(NonSI.DEGREE_ANGLE);
+	assertNotNull(sut);
+	assertEquals(NonSI.DEGREE_ANGLE, sut.getUnit());
+	assertEquals(new BigDecimal("57.29577951308232087679815481410517"), sut.getValue());
+    }
+
 }

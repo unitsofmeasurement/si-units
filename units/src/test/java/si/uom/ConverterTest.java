@@ -44,7 +44,7 @@ public class ConverterTest {
 
   @Test
   public void testAngleConverter() {
-    Quantity<Angle> sut = Quantities.getQuantity(1, SI.DEGREE_ANGLE).to(Units.RADIAN);
+    Quantity<Angle> sut = Quantities.getQuantity(1, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
     assertNotNull(sut);
     assertEquals(Units.RADIAN, sut.getUnit());
     assertEquals(0.017453292519943295d, sut.getValue());
@@ -52,9 +52,9 @@ public class ConverterTest {
 
   @Test
   public void testAngleConverterOpposite() {
-    Quantity<Angle> sut = Quantities.getQuantity(1d, Units.RADIAN).to(SI.DEGREE_ANGLE);
+    Quantity<Angle> sut = Quantities.getQuantity(1d, Units.RADIAN).to(NonSI.DEGREE_ANGLE);
     assertNotNull(sut);
-    assertEquals(SI.DEGREE_ANGLE, sut.getUnit());
+    assertEquals(NonSI.DEGREE_ANGLE, sut.getUnit());
     assertEquals(57.29577951308232d, sut.getValue());
   }
 }

@@ -61,9 +61,9 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.4, $Date: 2017-04-16$
+ * @version 1.0.5, $Date: 2017-08-12$
  */
-public class NonSI extends AbstractSystemOfUnits {
+public final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
 
     /**
@@ -530,11 +530,14 @@ public class NonSI extends AbstractSystemOfUnits {
  
     /**
      * A unit used to measure the ionizing ability of radiation (standard name
-     * <code>Roentgen</code>).
+     * <code>R</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Roentgen_(unit)"> Wikipedia:
+     *      Roentgen</a>
      */
     @SuppressWarnings("unchecked")
     public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(
-	    COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "r", true);
+	    COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "R", true);
     
     /////////////////////
     // Collection View //
