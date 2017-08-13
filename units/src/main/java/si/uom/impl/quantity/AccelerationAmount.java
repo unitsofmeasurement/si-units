@@ -1,5 +1,5 @@
 /*
- * SI Units for Java
+ * International System of Units (SI)
  * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.

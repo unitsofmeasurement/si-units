@@ -1,4 +1,4 @@
-SI Units for Java
+International System of Units (SI)
 Copyright (c) ${project.inceptionYear}-${currentYear}, ${owner}.
  
 All rights reserved.
