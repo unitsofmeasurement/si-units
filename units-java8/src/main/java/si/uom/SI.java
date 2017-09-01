@@ -41,6 +41,7 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import si.uom.quantity.Action;
+import si.uom.quantity.AngularSpeed;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
@@ -80,7 +81,7 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.4, August 12, 2017
+ * @version 1.0.5, September 1, 2017
  */
 public final class SI extends Units {
     /**
@@ -210,6 +211,15 @@ public final class SI extends Units {
     public static final Unit<Radiance> WATT_PER_STERADIAN_PER_SQUARE_METRE = addUnit(
 	    WATT_PER_STERADIAN.divide(SQUARE_METRE).asType(Radiance.class));
 
+    /**
+     *  The SI unit of angular speed (standard name
+     * <code>ω</code>).
+     * @see AngularSpeed
+     */
+    public static final Unit<AngularSpeed> RADIAN_PER_SECOND = addUnit(
+        new ProductUnit<AngularSpeed>(RADIAN.divide(SECOND)), "Radian per second", "\u03C9", AngularSpeed.class);
+
+    
     /////////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //
     /////////////////////////////////////////////////////////////////
@@ -305,7 +315,7 @@ public final class SI extends Units {
 
     @Override
     public String getName() {
-	return SI.class.getSimpleName(); // for Java SE this works
+        return SI.class.getSimpleName(); // for Java SE this works
     }
     
     /**
@@ -314,7 +324,7 @@ public final class SI extends Units {
      * @return the metric system instance.
      */
     public static SI getInstance() {
-	return INSTANCE;
+        return INSTANCE;
     }
     
     /**
@@ -332,15 +342,15 @@ public final class SI extends Units {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
-	if (isLabel) {
-	    SimpleUnitFormat.getInstance().label(unit, text);
-	}
-	if (name != null && unit instanceof AbstractUnit) {
-	    return Helper.addUnit(INSTANCE.units, unit, name);
-	} else {
-	    INSTANCE.units.add(unit);
-	}
-	return unit;
+    	if (isLabel) {
+    	    SimpleUnitFormat.getInstance().label(unit, text);
+    	}
+    	if (name != null && unit instanceof AbstractUnit) {
+    	    return Helper.addUnit(INSTANCE.units, unit, name);
+    	} else {
+    	    INSTANCE.units.add(unit);
+    	}
+    	return unit;
     }
 
     /**
@@ -357,7 +367,7 @@ public final class SI extends Units {
      */
     @SuppressWarnings("unused")
     private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
-	return addUnit(unit, null, text, isLabel);
+        return addUnit(unit, null, text, isLabel);
     }
 
     /**
@@ -368,8 +378,26 @@ public final class SI extends Units {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit) {
-	INSTANCE.units.add(unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        return unit;
+    }
+    
+    /**
+     * Adds a new unit with name and label and maps it to the specified quantity type.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param label
+     *            the string to use as label
+     * @param type
+     *            the quantity type.
+     * @return <code>unit</code>.
+     */
+    private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, String label, Class<? extends Quantity<?>> type) {
+        INSTANCE.quantityToUnit.put(type, unit);
+        return addUnit(unit, name, label, true);
     }
 
     /**
@@ -382,15 +410,15 @@ public final class SI extends Units {
      * @return <code>unit</code>.
      */
     private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
-	INSTANCE.units.add(unit);
-	INSTANCE.quantityToUnit.put(type, unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        INSTANCE.quantityToUnit.put(type, unit);
+        return unit;
     }
 
     // //////////////////////////////////////////////////////////////////////////
     // Label adjustments for SI
     static {
-	SimpleUnitFormat.getInstance().label(TONNE, "t");
-	SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
+        SimpleUnitFormat.getInstance().label(TONNE, "t");
+        SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
     }
 }

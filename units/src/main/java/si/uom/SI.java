@@ -69,7 +69,7 @@ import tec.units.ri.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0.2, August 12, 2017
+ * @version 1.0.3, September 1, 2017
  */
 public final class SI extends Units {
 
@@ -228,6 +228,15 @@ public final class SI extends Units {
     public static final Unit<Radiance> WATT_PER_STERADIAN_PER_SQUARE_METRE = addUnit(
 	    WATT_PER_STERADIAN.divide(SQUARE_METRE).asType(Radiance.class));
 
+    /**
+     *  The SI unit of angular speed (standard name
+     * <code>ω</code>).
+     * @see AngularSpeed
+     */
+    public static final Unit<AngularSpeed> RADIAN_PER_SECOND = addUnit(
+        new ProductUnit<AngularSpeed>(RADIAN.divide(SECOND)), "Radian per second", "\u03C9", AngularSpeed.class);
+
+    
     /////////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //
     /////////////////////////////////////////////////////////////////
@@ -377,7 +386,7 @@ public final class SI extends Units {
      */
     @SuppressWarnings("unused")
     private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
-	return addUnit(unit, null, text, isLabel);
+        return addUnit(unit, null, text, isLabel);
     }
 
     /**
@@ -393,7 +402,25 @@ public final class SI extends Units {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
-	return addUnit(unit, name, label, true);
+        return addUnit(unit, name, label, true);
+    }
+    
+    /**
+     * Adds a new unit with name and label and maps it to the specified quantity type.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param label
+     *            the string to use as label
+     * @param type
+     *            the quantity type.
+     * @return <code>unit</code>.
+     */
+    private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, String label, Class<? extends Quantity<?>> type) {
+        INSTANCE.quantityToUnit.put(type, unit);
+        return addUnit(unit, name, label);
     }
 
     /**
@@ -406,8 +433,8 @@ public final class SI extends Units {
      * @return <code>unit</code>.
      */
     private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
-	INSTANCE.units.add(unit);
-	INSTANCE.quantityToUnit.put(type, unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        INSTANCE.quantityToUnit.put(type, unit);
+        return unit;
     }
 }
