@@ -38,10 +38,12 @@ import javax.measure.Quantity;
  * <p><cite>Angular speed</cite> is a scalar value, while <cite>angular velocity</cite> is a
  * pseudo-vector. The angular speed is the magnitude of the angular velocity pseudo-vector,
  * or the components of the angular velocity pseudo-vector.</p>
+ * 
+ * Angular speed is usually represented by the symbol omega (ω, rarely Ω).
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2
+ * @version 1.2.1
  *
  * @see Angle
  * @see Time

@@ -31,18 +31,19 @@ package si.uom.quantity;
 
 import javax.measure.Quantity;
 
-
 /**
  * Rate of change of angular velocity with respect to time.
- * The system unit for this quantity is "rad/s²" (radian per square second).
+ * It is measured in "rad/s²" (radian per square second), and usually denoted by the Greek letter alpha (α).
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @version 1.1
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.2
  *
  * @see Angle
  * @see AngularSpeed
  * @see Time
  * @see Acceleration
+ * @see <a href="http://en.wikipedia.org/wiki/Angular_acceleration">Wikipedia: Angular Acceleration</a>
  */
 public interface AngularAcceleration extends Quantity<AngularAcceleration> {
 }

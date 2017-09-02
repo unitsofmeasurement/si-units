@@ -45,7 +45,7 @@ import org.junit.Test;
 public class SystemOfUnitsServiceTest {
     private static final String SI_NAME = "SI";
     private static final String NONSI_NAME = "Non-SI Units";
-    private static final int UNITS_EXPECTED = 21;
+    private static final int UNITS_EXPECTED = 22;
     private static final int UNITS_EXPECTED_NONSI = 51;
     private static SystemOfUnitsService defaultService;
 
