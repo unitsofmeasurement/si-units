@@ -91,30 +91,6 @@ public final class TemperatureAmount extends NumberQuantity<Temperature> impleme
 		&& dq.getScalar().equals(getScalar());
     }
 
-    boolean ne(TemperatureAmount d1) {
-	return ne((TemperatureAmount) d1);
-    }
-
-    boolean gt(TemperatureAmount d1) {
-	return gt((TemperatureAmount) d1);
-    }
-
-    public boolean lt(TemperatureAmount d1) {
-	return lt((TemperatureAmount) d1);
-    }
-
-    /**
-     * @param d1
-     * @return
-     */
-    public boolean ge(TemperatureAmount d1) {
-	return ge((TemperatureAmount) d1);
-    }
-
-    public boolean le(TemperatureAmount d1) {
-	return le((TemperatureAmount) d1);
-    }
-
     /**
      * @param v
      * @return
