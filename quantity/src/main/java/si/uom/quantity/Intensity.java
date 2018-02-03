@@ -36,7 +36,8 @@ import javax.measure.Quantity;
  * The SI unit for this quantity is Watt per square meter (W/m2).
  *
  * @author <a href="mailto:henning.treu@telekom.de">Henning Treu</a>
- *
+ * @version 1.0
+ * @since 0.8
  * @see <a href="https://en.wikipedia.org/wiki/Intensity_(physics)">Wikipedia: Intensity</a>
  */
 public interface Intensity extends Quantity<Intensity> {
