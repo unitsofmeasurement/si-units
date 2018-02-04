@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -62,7 +62,6 @@ import si.uom.quantity.Luminance;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.MultiplyConverter;
 import tec.units.ri.function.PiMultiplierConverter;
 import tec.units.ri.function.RationalConverter;
@@ -202,13 +201,6 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     protected static final Unit<Dimensionless> PI = addUnit(ONE.multiply(StrictMath.PI));
 
-    /**
-     * A logarithmic unit used to describe a ratio (standard name
-     * <code>dB</code>).
-     */
-    protected static final Unit<Dimensionless> DECIBEL = ONE
-	    .transform(new LogConverter(10).inverse().concatenate(new RationalConverter(1d, 10d)));
-
     /////////////////////////
     // Amount of substance //
     /////////////////////////
@@ -224,7 +216,9 @@ public class NonSI extends AbstractSystemOfUnits {
 
     /**
      * A unit of length equal to <code>1E-10 m</code> (standard name
-     * <code>\u00C5ngstr\u00F6m</code>).
+     * <code>Å</code>).
+     * @see <a href="https://en.wikipedia.org/wiki/%C3%85ngstr%C3%B6m"> Wikipedia:
+     *      Ångström</a>
      */
     public static final Unit<Length> ANGSTROM = addUnit(METRE.divide(10000000000L), "\u00C5ngstr\u00F6m", "\u00C5");
 

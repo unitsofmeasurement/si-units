@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -42,7 +42,6 @@ import si.uom.quantity.Luminance;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
-import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.function.RationalConverter;
@@ -65,7 +64,7 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.5, $Date: 2017-08-12$
+ * @version 1.0.6, $Date: 2018-02-04$
  */
 public final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
@@ -181,13 +180,6 @@ public final class NonSI extends AbstractSystemOfUnits {
      */
     public static final Unit<Dimensionless> PI = addUnit(AbstractUnit.ONE.multiply(StrictMath.PI));
 
-    /**
-     * A logarithmic unit used to describe a ratio (standard name
-     * <code>dB</code>).
-     */
-    protected static final Unit<Dimensionless> DECIBEL = AbstractUnit.ONE
-	    .transform(new LogConverter(10).inverse().concatenate(RationalConverter.of(1d, 10d)));
-
     /////////////////////////
     // Amount of substance //
     /////////////////////////
@@ -203,9 +195,11 @@ public final class NonSI extends AbstractSystemOfUnits {
 
     /**
      * A unit of length equal to <code>1E-10 m</code> (standard name
-     * <code>\u00C5ngstr\u00F6m</code>).
+     * <code>Å</code>).
+     * @see <a href="https://en.wikipedia.org/wiki/%C3%85ngstr%C3%B6m"> Wikipedia:
+     *      Ångström</a>
      */
-    public static final Unit<Length> ANGSTROM = addUnit(METRE.divide(10000000000L));
+    public static final Unit<Length> ANGSTROM = addUnit(METRE.divide(10000000000L), "\u00C5ngstr\u00F6m", "\u00C5");
 
     /**
      * A unit of length equal to the distance that light travels in one year

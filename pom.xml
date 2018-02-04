@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
-	<version>0.8</version>
+	<version>0.9-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>
@@ -22,9 +22,9 @@
 		<jsr.version>1.0</jsr.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.8</se.version>
+		<se.version>1.0.9-SNAPSHOT</se.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>0.7.1</si.quantity.version><!-- To handle quantity separately, 
+		<si.quantity.version>0.8</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
@@ -108,7 +108,7 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2017</currentYear>
+							<currentYear>2018</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>
@@ -135,7 +135,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 
 	<!-- Additional repositories -->
 	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
