@@ -20,7 +20,7 @@ The project currently contains the following modules:
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/unitsofmeasurement/si-units.svg)](http://isitmaintained.com/project/unitsofmeasurement/si-units "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/unitsofmeasurement/si-units.svg)](http://isitmaintained.com/project/unitsofmeasurement/si-units "Percentage of issues still open")
 
-###Waffle.io
+### Waffle.io
 ------------
 [![Stories in Ready](https://badge.waffle.io/unitsofmeasurement/si-units.png?label=ready&title=Ready)](https://waffle.io/unitsofmeasurement/si-units)
 
