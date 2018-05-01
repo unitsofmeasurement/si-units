@@ -36,8 +36,8 @@ import javax.measure.quantity.Angle;
 
 import org.junit.Test;
 
-import tec.units.ri.quantity.Quantities;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.quantity.Quantities;
+import tec.units.indriya.unit.Units;
 
 
 public class ConverterTest {

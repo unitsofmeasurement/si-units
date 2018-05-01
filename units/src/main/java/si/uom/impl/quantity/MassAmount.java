@@ -32,7 +32,7 @@ package si.uom.impl.quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Mass;
 
-import tec.units.ri.quantity.NumberQuantity;
+import tec.units.indriya.quantity.NumberQuantity;
 
 /**
  * Represents the measure of the quantity of matter that a body or an object contains.

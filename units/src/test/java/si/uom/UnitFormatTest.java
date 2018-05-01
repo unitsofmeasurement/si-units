@@ -30,10 +30,10 @@
 package si.uom;
 
 import static org.junit.Assert.*;
-import static tec.units.ri.unit.Units.KILOGRAM;
-import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.MINUTE;
-import static tec.units.ri.unit.Units.SECOND;
+import static tec.units.indriya.unit.Units.KILOGRAM;
+import static tec.units.indriya.unit.Units.METRE;
+import static tec.units.indriya.unit.Units.MINUTE;
+import static tec.units.indriya.unit.Units.SECOND;
 
 import java.io.IOException;
 
@@ -49,9 +49,9 @@ import org.junit.Test;
 
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.quantity.DefaultQuantityFactory;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.quantity.DefaultQuantityFactory;
+import tec.units.indriya.unit.Units;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>

@@ -29,9 +29,9 @@
  */
 package si.uom;
 
-import static tec.units.ri.AbstractUnit.ONE;
-import static tec.units.ri.unit.MetricPrefix.CENTI;
-import static tec.units.ri.unit.Units.*;
+import static tec.units.indriya.AbstractUnit.ONE;
+import static tec.units.indriya.unit.MetricPrefix.CENTI;
+import static tec.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
@@ -59,14 +59,14 @@ import javax.measure.quantity.Time;
 
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.Luminance;
-import tec.units.ri.AbstractSystemOfUnits;
-import tec.units.ri.AbstractUnit;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.MultiplyConverter;
-import tec.units.ri.function.PiMultiplierConverter;
-import tec.units.ri.function.RationalConverter;
-import tec.units.ri.unit.ProductUnit;
-import tec.units.ri.unit.TransformedUnit;
+import tec.units.indriya.AbstractSystemOfUnits;
+import tec.units.indriya.AbstractUnit;
+import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.function.MultiplyConverter;
+import tec.units.indriya.function.PiMultiplierConverter;
+import tec.units.indriya.function.RationalConverter;
+import tec.units.indriya.unit.ProductUnit;
+import tec.units.indriya.unit.TransformedUnit;
 
 /**
  * <p>

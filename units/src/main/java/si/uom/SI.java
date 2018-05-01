@@ -39,16 +39,16 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import si.uom.quantity.*;
-import tec.units.ri.AbstractSystemOfUnits;
-import tec.units.ri.AbstractUnit;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.MultiplyConverter;
-import tec.units.ri.function.PiMultiplierConverter;
-import tec.units.ri.function.RationalConverter;
-import tec.units.ri.unit.AlternateUnit;
-import tec.units.ri.unit.ProductUnit;
-import tec.units.ri.unit.TransformedUnit;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.AbstractSystemOfUnits;
+import tec.units.indriya.AbstractUnit;
+import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.function.MultiplyConverter;
+import tec.units.indriya.function.PiMultiplierConverter;
+import tec.units.indriya.function.RationalConverter;
+import tec.units.indriya.unit.AlternateUnit;
+import tec.units.indriya.unit.ProductUnit;
+import tec.units.indriya.unit.TransformedUnit;
+import tec.units.indriya.unit.Units;
 
 /**
  * <p>

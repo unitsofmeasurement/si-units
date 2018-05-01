@@ -34,7 +34,7 @@ import javax.measure.format.UnitFormat;
 import org.junit.Before;
 import org.junit.Test;
 
-import tec.units.ri.format.SimpleUnitFormat;
+import tec.units.indriya.format.SimpleUnitFormat;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>

@@ -32,7 +32,7 @@ package si.uom.impl.quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 
-import tec.units.ri.quantity.NumberQuantity;
+import tec.units.indriya.quantity.NumberQuantity;
 
 /**
  * Represents the rate of change of velocity with respect to time.

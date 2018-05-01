@@ -30,8 +30,8 @@
 package si.uom;
 
 import static org.junit.Assert.*;
-import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.Units.*;
+import static tec.units.indriya.unit.MetricPrefix.*;
+import static tec.units.indriya.unit.Units.*;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
@@ -41,7 +41,7 @@ import javax.measure.quantity.Volume;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import tec.units.ri.quantity.Quantities;
+import tec.units.indriya.quantity.Quantities;
 
 public class QuantityPrefixTest {
 	@Test

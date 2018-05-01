@@ -32,7 +32,7 @@ package si.uom.impl.quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Temperature;
 
-import tec.units.ri.quantity.NumberQuantity;
+import tec.units.indriya.quantity.NumberQuantity;
 
 /**
  * @author Werner Keil

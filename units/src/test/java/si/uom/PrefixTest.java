@@ -30,10 +30,10 @@
 package si.uom;
 
 import static org.junit.Assert.assertEquals;
-import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.Units.GRAM;
-import static tec.units.ri.unit.Units.KILOGRAM;
-import static tec.units.ri.unit.Units.METRE;
+import static tec.units.indriya.unit.MetricPrefix.*;
+import static tec.units.indriya.unit.Units.GRAM;
+import static tec.units.indriya.unit.Units.KILOGRAM;
+import static tec.units.indriya.unit.Units.METRE;
 
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
@@ -41,43 +41,42 @@ import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
-import tec.units.ri.function.RationalConverter;
+import tec.units.indriya.function.RationalConverter;
 
 public class PrefixTest {
-    @Test
-    public void testKilo() {
-	// TODO how to handle equals for units?
-	assertEquals(KILOGRAM.toString(), KILO(GRAM).toString());
-    }
+	@Test
+	public void testKilo() {
+		// TODO how to handle equals for units?
+		assertEquals(KILOGRAM.toString(), KILO(GRAM).toString());
+	}
 
-    @Test
-    public void testMega() {
-	Unit<Mass> m1 = MEGA(GRAM);
-	assertEquals("Mg", m1.toString()); // Passes in Maven/CI
-    }
+	@Test
+	public void testMega() {
+		Unit<Mass> m1 = MEGA(GRAM);
+		assertEquals("Mg", m1.toString()); // Passes in Maven/CI
+	}
 
-    @Test
-    public void testNano() {
-	Unit<Mass> m1 = NANO(GRAM);
-	assertEquals("ng", m1.toString());
-    }
+	@Test
+	public void testNano() {
+		Unit<Mass> m1 = NANO(GRAM);
+		assertEquals("ng", m1.toString());
+	}
 
-    @Test
-    public void testPicoNano() {
-	Unit<Mass> m1 = PICO(KILOGRAM);
-	assertEquals("ng", m1.toString());
-    }
+	@Test
+	public void testPicoNano() {
+		Unit<Mass> m1 = PICO(KILOGRAM);
+		assertEquals("ng", m1.toString());
+	}
 
-    @Test
-    public void testBetweenPrefixes() {
-	UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
-	assertEquals(conv, new RationalConverter(4.7683715820312499E17, 4.76837158203125E14)); // TODO
-											       // value?
-    }
+	@Test
+	public void testBetweenPrefixes() {
+		UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
+		assertEquals(conv, RationalConverter.of(1000, 1));
+	}
 
-    @Test
-    public void testBetweenPrefixes2() {
-	UnitConverter conv = KILO(METRE).getConverterTo(GIGA(METRE));
-	assertEquals(RationalConverter.of(1d, 1000000d), conv);
-    }
+	@Test
+	public void testBetweenPrefixes2() {
+		UnitConverter conv = KILO(METRE).getConverterTo(GIGA(METRE));
+		assertEquals(RationalConverter.of(1d, 1000000d), conv);
+	}
 }
