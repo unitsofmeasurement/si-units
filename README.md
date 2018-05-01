@@ -13,7 +13,7 @@ The project currently contains the following modules:
 
 - [Reusable Quantities](quantity)
 - [SI Units](units) for Java SE 8 and above based on [Indriya](../../../indriya) 
-- [SI Units "Legacy" for Java SE 8](units-java8) for Java SE 8 based on [UoM SE](../../../uom-se)
+- [SI Units "Legacy"](units-java8) for Java SE 8 based on [UoM SE](../../../uom-se)
 
 ## Planning
 ------------
