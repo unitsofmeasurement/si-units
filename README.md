@@ -13,21 +13,14 @@ The project currently contains the following modules:
 
 - [Reusable Quantities](quantity)
 - [SI Units](units) for Java SE 8 and above based on [Indriya](../../../indriya) 
-- [SI Units "Legacy" for Java SE 8](units-java8) for Java SE 8 based on the [UoM SE](../../../uom-se)
+- [SI Units "Legacy" for Java SE 8](units-java8) for Java SE 8 based on [UoM SE](../../../uom-se)
 
-### Environment
-Depending on the environment (Embedded, Desktop/Server or a particular Java version) implementations use a different Maven artifactId.
-
-E.g.
-- [si-units](units) for all environments prior to Java SE 8.
-- [si-units-java8](units-java8) for Java SE 8 and above.
-
-Planning
+## Planning
 ------------
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/unitsofmeasurement/si-units.svg)](http://isitmaintained.com/project/unitsofmeasurement/si-units "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/unitsofmeasurement/si-units.svg)](http://isitmaintained.com/project/unitsofmeasurement/si-units "Percentage of issues still open")
 
-Waffle.io
+###Waffle.io
 ------------
 [![Stories in Ready](https://badge.waffle.io/unitsofmeasurement/si-units.png?label=ready&title=Ready)](https://waffle.io/unitsofmeasurement/si-units)
 
