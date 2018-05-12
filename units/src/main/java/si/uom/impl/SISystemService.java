@@ -42,34 +42,34 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, November 5, 2016
+ * @version 0.6, May 12, 2018
  */
 class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
-    private static final int PRIO = 20;
+	private static final int PRIO = 20;
 
-    final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+	final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
-    public SISystemService() {
-	souMap.put(SI.getInstance().getName(), SI.getInstance());
-	souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
-    }
+	public SISystemService() {
+		souMap.put(SI.getInstance().getName(), SI.getInstance());
+		souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
+	}
 
-    public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-	return souMap.values();
-    }
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+		return souMap.values();
+	}
 
-    @Override
-    public SystemOfUnits getSystemOfUnits() {
-	return getSystemOfUnits(SI.class.getSimpleName());
-    }
+	@Override
+	public SystemOfUnits getSystemOfUnits() {
+		return getSystemOfUnits(SI.getInstance().getName());
+	}
 
-    @Override
-    public SystemOfUnits getSystemOfUnits(String name) {
-	return souMap.get(name);
-    }
+	@Override
+	public SystemOfUnits getSystemOfUnits(String name) {
+		return souMap.get(name);
+	}
 
-    @Override
-    public int getPriority() {
-	return PRIO;
-    }
+	@Override
+	public int getPriority() {
+		return PRIO;
+	}
 }
