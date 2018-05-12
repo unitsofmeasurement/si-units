@@ -43,10 +43,9 @@ import javax.measure.quantity.Angle;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tec.uom.se.function.PiMultiplierConverter;
-import tec.uom.se.quantity.Quantities;
-import tec.uom.se.unit.Units;
-
+import tec.units.indriya.function.PiMultiplierConverter;
+import tec.units.indriya.quantity.Quantities;
+import tec.units.indriya.unit.Units;
 
 public class AngleTest {
 
