@@ -47,7 +47,7 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
 	private static final int PRIO = 20;
 
-	final Map<String, SystemOfUnits> souMap = new HashMap<>();
+	private final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
 	public SISystemService() {
 		souMap.put(SI.getInstance().getName(), SI.getInstance());

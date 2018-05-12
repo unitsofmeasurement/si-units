@@ -41,15 +41,14 @@ import si.uom.SI;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, November 5, 2016
+ * @version 0.6, May 12, 2018
  */
 //@Priority(20)
 class SISystemService implements SystemOfUnitsService {
 
-    final Map<String, SystemOfUnits> souMap = new HashMap<>();
+    private final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
     SISystemService() {
-	// souMap.put(Units.class.getSimpleName(), Units.getInstance());
 	souMap.put(SI.getInstance().getName(), SI.getInstance());
 	souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
     }
