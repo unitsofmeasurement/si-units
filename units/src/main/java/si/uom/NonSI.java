@@ -446,11 +446,6 @@ public class NonSI extends AbstractSystemOfUnits {
     // ////////////
     // Pressure //
     // ////////////
-    /**
-     * A unit of pressure equal to the average pressure of the Earth's
-     * atmosphere at sea level (standard name <code>atm</code>).
-     */
-    private static final Unit<Pressure> ATMOSPHERE = PASCAL.multiply(101325);
 
     /**
      * A unit of pressure equal to <code>100 kPa</code> (standard name
@@ -464,12 +459,6 @@ public class NonSI extends AbstractSystemOfUnits {
      * ).
      */
     public static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322));
-
-    /**
-     * A unit of pressure equal to the pressure exerted at the Earth's surface
-     * by a column of mercury 1 inch high (standard name <code>inHg</code>).
-     */
-    static final Unit<Pressure> INCH_OF_MERCURY = PASCAL.multiply(3386.388);
 
     // ///////////////////////////
     // Radiation dose absorbed //

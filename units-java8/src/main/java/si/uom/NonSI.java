@@ -456,12 +456,7 @@ public final class NonSI extends AbstractSystemOfUnits {
     //////////////
     // Pressure //
     //////////////
-    /**
-     * A unit of pressure equal to the average pressure of the Earth's
-     * atmosphere at sea level (standard name <code>atm</code>).
-     */
-    protected static final Unit<Pressure> ATMOSPHERE = addUnit(PASCAL.multiply(101325));
-
+    
     /**
      * A unit of pressure equal to <code>100 kPa</code> (standard name
      * <code>bar</code>).
