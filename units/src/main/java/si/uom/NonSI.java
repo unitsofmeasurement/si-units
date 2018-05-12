@@ -31,6 +31,7 @@ package si.uom;
 
 import static tec.units.indriya.AbstractUnit.ONE;
 import static tec.units.indriya.unit.MetricPrefix.CENTI;
+import static tec.units.indriya.unit.MetricPrefix.FEMTO;
 import static tec.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
@@ -58,10 +59,12 @@ import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
 import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.Level;
 import si.uom.quantity.Luminance;
 import tec.units.indriya.AbstractSystemOfUnits;
 import tec.units.indriya.AbstractUnit;
 import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.function.LogConverter;
 import tec.units.indriya.function.MultiplyConverter;
 import tec.units.indriya.function.PiMultiplierConverter;
 import tec.units.indriya.function.RationalConverter;
@@ -226,7 +229,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of length equal to the distance that light travels in one year
      * through a vacuum (standard name <code>ly</code>).
      */
-    protected static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15));
+	public static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15), "Light year", "ly");
 
     /**
      * A unit of length equal to the distance at which a star would appear to
@@ -237,6 +240,25 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     protected static final Unit<Length> PARSEC = METRE.multiply(30856770e9);
 
+	/**
+	 * A unit of length equal to <code>1852.0 m</code> (standard name
+	 * <code>nmi</code>).
+	 */
+	public static final Unit<Length> NAUTICAL_MILE = addUnit(METRE.multiply(1852), "Nautical mile", "nmi");
+    
+    ////////////
+    // Area   //
+    ////////////
+
+    /**
+     * A barn (symbol: <code>b</code>) is a unit of area equal to 10<sup>−28</sup> <code>m2</code> (100 <code>fm2</code>)
+     */
+    public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(METRE).pow(2)).multiply(100));
+    
+    ////////////
+    // Time   //
+    ////////////
+    
     /**
      * A unit of duration equal to the time required for a complete rotation of
      * the earth in reference to any star or to the vernal equinox at the
@@ -260,9 +282,9 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     protected static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600));
 
-    // ////////
+    //////////
     // Mass //
-    // ////////
+    //////////
     /**
      * A unit of mass equal to 1/12 the mass of the carbon-12 atom (standard
      * name <code>u</code>).
@@ -297,18 +319,18 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
 
-    // ///////////////
+    /////////////////
     // Temperature //
-    // ///////////////
+    /////////////////
     /**
      * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
      * <code>Â°R</code>).
      */
     static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
 
-    // /////////
+    ///////////
     // Angle //
-    // /////////
+    ///////////
 
     /**
      * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
@@ -316,18 +338,24 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
 
-    // ////////////
-    // Velocity //
-    // ////////////
+    //////////////
+    // Speed    //
+    //////////////
     /**
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
     protected static final Unit<Speed> C = METRE_PER_SECOND.multiply(299792458);
+    
+	/**
+	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE
+	 * nautical miles} per {@link #HOUR hour} (abbreviation <code>kn</code>).
+	 */
+	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR).asType(Speed.class), "Knot", "kn");
 
-    // ////////////////
+    //////////////////
     // Acceleration //
-    // ////////////////
+    //////////////////
     /**
      * A unit of acceleration equal to the gravity at the earth's surface
      * (standard name <code>grav</code>).
@@ -335,9 +363,9 @@ public class NonSI extends AbstractSystemOfUnits {
     static final Unit<Acceleration> G = METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
 	    .divide(STANDARD_GRAVITY_DIVISOR);
 
-    // ////////////////////
+    //////////////////////
     // Electric current //
-    // ////////////////////
+    //////////////////////
     /**
      * A unit of electric charge equal to the centimeter-gram-second
      * electromagnetic unit of magnetomotive force, equal to <code>10/4
@@ -346,9 +374,9 @@ public class NonSI extends AbstractSystemOfUnits {
     public static final Unit<ElectricCurrent> GILBERT = AMPERE.multiply(10).divide(4).multiply(PI)
 	    .asType(ElectricCurrent.class);
 
-    // //////////
+    ////////////
     // Energy //
-    // //////////
+    ////////////
     /**
      * A unit of energy equal to <code>1E-7 J</code> (standard name
      * <code>erg</code>).
@@ -374,9 +402,9 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     protected static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
 
-    // /////////////////
+    ///////////////////
     // Magnetic Flux //
-    // /////////////////
+    ///////////////////
     /**
      * A unit of magnetic flux equal <code>1E-8 Wb</code> (standard name
      * <code>Mx</code>).
@@ -392,14 +420,14 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
 
-    // /////////
+    ///////////
     // Force //
-    // /////////
+    ///////////
     /**
      * A unit of force equal to <code>1E-5 N</code> (standard name
      * <code>dyn</code>).
      */
-    static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
+    public static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000), "Dyne", "dyn", true);
 
     /**
      * A unit of force equal to <code>9.80665 N</code> (standard name
@@ -422,7 +450,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of pressure equal to the average pressure of the Earth's
      * atmosphere at sea level (standard name <code>atm</code>).
      */
-    protected static final Unit<Pressure> ATMOSPHERE = addUnit(PASCAL.multiply(101325));
+    private static final Unit<Pressure> ATMOSPHERE = PASCAL.multiply(101325);
 
     /**
      * A unit of pressure equal to <code>100 kPa</code> (standard name
@@ -441,7 +469,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of pressure equal to the pressure exerted at the Earth's surface
      * by a column of mercury 1 inch high (standard name <code>inHg</code>).
      */
-    static final Unit<Pressure> INCH_OF_MERCURY = addUnit(PASCAL.multiply(3386.388));
+    static final Unit<Pressure> INCH_OF_MERCURY = PASCAL.multiply(3386.388);
 
     // ///////////////////////////
     // Radiation dose absorbed //
@@ -502,6 +530,18 @@ public class NonSI extends AbstractSystemOfUnits {
     public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(
 	    COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "R", true);
    
+    ///////////////////////
+    // Logarithmic Units //
+    ///////////////////////
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public static final Unit<Level<Dimensionless>> BEL = (Unit) addUnit(
+	    ONE.transform(new LogConverter(10)), "Bel", "B", true);
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public static final Unit<Level<Dimensionless>> NEPER = (Unit) addUnit(
+	    ONE.transform(new LogConverter(Math.E)), "Neper", "Np", true);
+    
     /////////////////////
     // Collection View //
     /////////////////////

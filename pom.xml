@@ -24,7 +24,7 @@
 		<ri.version>1.0.3</ri.version>
 		<se.version>1.0.9-SNAPSHOT</se.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>0.8</si.quantity.version><!-- To handle quantity separately, 
+		<si.quantity.version>0.9-SNAPSHOT</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>

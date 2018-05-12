@@ -30,6 +30,7 @@
 package si.uom;
 
 import static tec.uom.se.unit.MetricPrefix.CENTI;
+import static tec.uom.se.unit.MetricPrefix.FEMTO;
 import static tec.uom.se.unit.Units.*;
 
 import javax.measure.Unit;
@@ -64,7 +65,7 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.6, $Date: 2018-02-04$
+ * @version 1.0.7, $Date: 2018-05-12$
  */
 public final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
@@ -205,7 +206,7 @@ public final class NonSI extends AbstractSystemOfUnits {
      * A unit of length equal to the distance that light travels in one year
      * through a vacuum (standard name <code>ly</code>).
      */
-    protected static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15));
+	public static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15), "Light year", "ly");
 
     /**
      * A unit of length equal to the distance at which a star would appear to
@@ -216,8 +217,23 @@ public final class NonSI extends AbstractSystemOfUnits {
      */
     public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
 
+	/**
+	 * A unit of length equal to <code>1852.0 m</code> (standard name
+	 * <code>nmi</code>).
+	 */
+	public static final Unit<Length> NAUTICAL_MILE = addUnit(METRE.multiply(1852), "Nautical mile", "nmi");
+    
+    ////////////
+    // Area   //
+    ////////////
+
+    /**
+     * A barn (symbol: <code>b</code>) is a unit of area equal to 10<sup>−28</sup> <code>m2</code> (100 <code>fm2</code>)
+     */
+    public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(METRE).pow(2)).multiply(100));
+    
     //////////////
-    // Duration //
+    // Time     //
     //////////////
 
     /**
@@ -327,6 +343,12 @@ public final class NonSI extends AbstractSystemOfUnits {
      * <code>c</code>).
      */
     protected static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
+	
+    /**
+	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE
+	 * nautical miles} per {@link #HOUR hour} (abbreviation <code>kn</code>).
+	 */
+	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR).asType(Speed.class), "Knot", "kn");
 
     // ////////////////
     // Acceleration //
@@ -397,14 +419,14 @@ public final class NonSI extends AbstractSystemOfUnits {
      */
     protected static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
 
-    // /////////
+    ///////////
     // Force //
-    // /////////
+    ///////////
     /**
      * A unit of force equal to <code>1E-5 N</code> (standard name
      * <code>dyn</code>).
      */
-    protected static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
+    public static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000), "Dyne", "dyn", true);
 
     /**
      * A unit of force equal to <code>9.80665 N</code> (standard name

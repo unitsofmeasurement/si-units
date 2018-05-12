@@ -35,6 +35,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.unit.MetricPrefix;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
@@ -52,5 +53,17 @@ public class NonSIFormatTest {
 	public void testFormatAngstrom1() {
 		final String angstrom = simpleUnitFormat.format(NonSI.ANGSTROM);
 		assertEquals("\u00C5", angstrom);
+	}
+	
+	@Test
+	public void testFormatBel() {
+		final String bel = simpleUnitFormat.format(NonSI.BEL);
+		assertEquals("B", bel);
+	}
+	
+	@Test
+	public void testFormatDecibel() {
+		final String bel = simpleUnitFormat.format(MetricPrefix.DECI(NonSI.BEL));
+		assertEquals("dB", bel);
 	}
 }
