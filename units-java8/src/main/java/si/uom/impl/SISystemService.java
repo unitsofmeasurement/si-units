@@ -43,27 +43,27 @@ import si.uom.SI;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 0.6, May 12, 2018
  */
-//@Priority(20)
+// @Priority(20)
 class SISystemService implements SystemOfUnitsService {
 
-    private final Map<String, SystemOfUnits> souMap = new HashMap<>();
+	private final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
-    SISystemService() {
-	souMap.put(SI.getInstance().getName(), SI.getInstance());
-	souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
-    }
+	SISystemService() {
+		souMap.put(SI.getInstance().getName(), SI.getInstance());
+		souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
+	}
 
-    public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-	return souMap.values();
-    }
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+		return souMap.values();
+	}
 
-    @Override
-    public SystemOfUnits getSystemOfUnits() {
-	return getSystemOfUnits(SI.getInstance().getName());
-    }
+	@Override
+	public SystemOfUnits getSystemOfUnits() {
+		return getSystemOfUnits(SI.getInstance().getName());
+	}
 
-    @Override
-    public SystemOfUnits getSystemOfUnits(String name) {
-	return souMap.get(name);
-    }
+	@Override
+	public SystemOfUnits getSystemOfUnits(String name) {
+		return souMap.get(name);
+	}
 }
