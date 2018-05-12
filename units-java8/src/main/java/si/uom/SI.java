@@ -82,7 +82,7 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.6, September 2, 2017
+ * @version 1.1, May 12, 2018
  */
 public final class SI extends Units {
     /**
@@ -234,38 +234,6 @@ public final class SI extends Units {
     /////////////////////////////////////////////////////////////////
 
     /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>deg</code>).
-     * 
-     * @deprecated use NonSI
-     */
-    public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
-
-    /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>'</code>).
-     * @deprecated use NonSI
-     */
-    public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
-
-    /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>''</code>).
-     * @deprecated use NonSI
-     */
-    public static final Unit<Angle> SECOND_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60))));
-
-    /**
-     * A mass unit accepted for use with SI units (standard name
-     * <code>t</code>).
-     */
-    public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
-	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");
-
-    /**
      * An energy unit accepted for use with SI units (standard name
      * <code>eV</code>). The electronvolt is the kinetic energy acquired by an
      * electron passing through a potential difference of 1 V in vacuum. The
@@ -404,10 +372,10 @@ public final class SI extends Units {
      *            the quantity type.
      * @return <code>unit</code>.
      */
-    private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, String label, Class<? extends Quantity<?>> type) {
-        INSTANCE.quantityToUnit.put(type, unit);
-        return addUnit(unit, name, label, true);
-    }
+//    private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, String label, Class<? extends Quantity<?>> type) {
+//        INSTANCE.quantityToUnit.put(type, unit);
+//        return addUnit(unit, name, label, true);
+//    }
     
     /**
      * Adds a new unit with a name and maps it to the specified quantity type.
@@ -438,12 +406,5 @@ public final class SI extends Units {
         INSTANCE.units.add(unit);
         INSTANCE.quantityToUnit.put(type, unit);
         return unit;
-    }
-
-    // //////////////////////////////////////////////////////////////////////////
-    // Label adjustments for SI
-    static {
-        SimpleUnitFormat.getInstance().label(TONNE, "t");
-        SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
     }
 }

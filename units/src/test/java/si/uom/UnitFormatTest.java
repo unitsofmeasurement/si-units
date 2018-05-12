@@ -70,7 +70,7 @@ public class UnitFormatTest {
 //		format = EBNFUnitFormat.getInstance();
 		format2 = SimpleUnitFormat.getInstance();
 		format2.label(SI.HECTARE, "Ha");
-		format2.label(SI.TONNE, "t");
+		format2.label(NonSI.TONNE, "t");
 	}
 
 	@Test

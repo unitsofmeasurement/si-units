@@ -44,7 +44,7 @@ public class SystemOfUnitsServiceTest {
     private static final String SI_NAME = "SI";
     private static final String NONSI_NAME = "Non-SI Units";
     
-    private static final int UNITS_EXPECTED = 23;
+    private static final int UNITS_EXPECTED = 20;
     private static final int UNITS_EXPECTED_NONSI = 39;
     private static SystemOfUnitsService defaultService;
 

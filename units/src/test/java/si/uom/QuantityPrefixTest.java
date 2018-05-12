@@ -54,7 +54,7 @@ public class QuantityPrefixTest {
 	@Test
 	@Ignore("This is a known problem, it's unrelated to ServiceProvider")
 	public void testTonne() {
-		Quantity<Mass> m1 = Quantities.getQuantity(1.0, SI.TONNE);
+		Quantity<Mass> m1 = Quantities.getQuantity(1.0, NonSI.TONNE);
 		assertEquals(1d, m1.getValue());
 		assertEquals("t", m1.getUnit().toString());
 	}
@@ -62,7 +62,7 @@ public class QuantityPrefixTest {
 	@Test
 	@Ignore("This is a known problem, it's unrelated to ServiceProvider")
 	public void testMegaTonne() {
-		Quantity<Mass> m1 = Quantities.getQuantity(1.0, MEGA(SI.TONNE));
+		Quantity<Mass> m1 = Quantities.getQuantity(1.0, MEGA(NonSI.TONNE));
 		assertEquals(1d, m1.getValue());
 		assertEquals("Mt", m1.getUnit().toString());
 	}

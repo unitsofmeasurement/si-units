@@ -39,7 +39,6 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import si.uom.quantity.*;
-import tec.units.indriya.AbstractSystemOfUnits;
 import tec.units.indriya.AbstractUnit;
 import tec.units.indriya.format.SimpleUnitFormat;
 import tec.units.indriya.function.MultiplyConverter;
@@ -69,7 +68,7 @@ import tec.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0.4, September 2, 2017
+ * @version 1.1, May 12, 2018
  */
 public final class SI extends Units {
 
@@ -243,47 +242,6 @@ public final class SI extends Units {
      */
     public static final Unit<AngularAcceleration> RADIAN_PER_SQUARE_SECOND = addUnit(
         new ProductUnit<AngularAcceleration>(RADIAN_PER_SECOND.divide(SECOND)), "Radian per square second", AngularAcceleration.class);
-
-    
-    /////////////////////////////////////////////////////////////////
-    // Units outside the SI that are accepted for use with the SI. //
-    /////////////////////////////////////////////////////////////////
-
-    /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>deg</code>).
-     * 
-     * @deprecated use NonSI
-     */
-    public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))));
-
-    /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>'</code>).
-     * 
-     * @deprecated use NonSI
-     */
-    public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))));
-
-    /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>''</code>).
-     * 
-     * @deprecated use NonSI
-     */
-    public static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
-	    new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
-
-    /**
-     * A mass unit accepted for use with SI units (standard name
-     * <code>t</code>).
-     * 
-     * @deprecated use NonSI
-     */
-    public static final Unit<Mass> TONNE = AbstractSystemOfUnits.Helper.addUnit(INSTANCE.units,
-	    new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)), "Tonne", "t");
 
     /**
      * An energy unit accepted for use with SI units (standard name
