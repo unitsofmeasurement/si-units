@@ -29,8 +29,6 @@
  */
 package si.uom;
 
-import static tec.uom.se.unit.MetricPrefix.*;
-
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
@@ -54,7 +52,6 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.Radiance;
 import si.uom.quantity.RadiantIntensity;
 import si.uom.quantity.WaveNumber;
-import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.MultiplyConverter;
