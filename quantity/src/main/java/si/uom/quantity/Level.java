@@ -32,18 +32,15 @@ package si.uom.quantity;
 import javax.measure.Quantity;
 
 /**
- * Rate of change of angular velocity with respect to time.
- * It is measured in "rad/s²" (radian per square second), and usually denoted by the Greek letter alpha (α).
+ * Level of a {@link Quantity}.
+ * In the International System of Quantities, the level of a quantity is the logarithm of the ratio of the value of that quantity to a reference value of the same quantity.
  *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.2
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.5, May 12, 2018
  *
- * @see Angle
- * @see AngularSpeed
- * @see Time
- * @see Acceleration
- * @see <a href="http://en.wikipedia.org/wiki/Angular_acceleration">Wikipedia: Angular Acceleration</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Level_(logarithmic_quantity)">Wikipedia: Level (logarithmic quantity)</a>
+ * @see <a href="https://en.wikipedia.org/wiki/International_System_of_Quantities">Wikipedia: International System of Quantities (ISQ)</a>
+ * @since 0.9
  */
-public interface AngularAcceleration extends Quantity<AngularAcceleration> {
+public interface Level<Q extends Quantity<Q>> extends Quantity<Level<Q>> {
 }
