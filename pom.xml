@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>tec.uom</groupId>
+		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.4</version>
+		<version>1.2</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
