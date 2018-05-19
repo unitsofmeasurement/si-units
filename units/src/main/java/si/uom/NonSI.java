@@ -205,7 +205,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of amount of substance equals to one atom (standard name
 	 * <code>atom</code>).
 	 */
-	protected static final Unit<AmountOfSubstance> ATOM = MOLE.divide(AVOGADRO_CONSTANT);
+	protected static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT));
 
 	////////////
 	// Length //
@@ -233,7 +233,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * direction perpendicular to the direction to the star (standard name
 	 * <code>pc</code>).
 	 */
-	protected static final Unit<Length> PARSEC = METRE.multiply(30856770e9);
+	protected static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
 
 	/**
 	 * A unit of length equal to <code>1852.0 m</code> (standard name
@@ -314,7 +314,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of electric charge which exerts a force of one dyne on an equal charge
 	 * at a distance of one centimeter (standard name <code>Fr</code>).
 	 */
-	static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
+	protected static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
 
 	/////////////////
 	// Temperature //
@@ -323,7 +323,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
 	 * <code>Â°R</code>).
 	 */
-	static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
+	private static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
 
 	///////////
 	// Angle //
@@ -333,7 +333,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
 	 * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
 	 */
-	static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
+	protected static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
 
 	//////////////
 	// Speed //
@@ -342,7 +342,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of velocity relative to the speed of light (standard name
 	 * <code>c</code>).
 	 */
-	protected static final Unit<Speed> C = METRE_PER_SECOND.multiply(299792458);
+	protected static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
 
 	/**
 	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE nautical
@@ -357,7 +357,8 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of acceleration equal to the gravity at the earth's surface (standard
 	 * name <code>grav</code>).
 	 */
-	static final Unit<Acceleration> G = METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+	@SuppressWarnings("unused")
+	private static final Unit<Acceleration> G = METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
 			.divide(STANDARD_GRAVITY_DIVISOR);
 
 	//////////////////////
@@ -368,8 +369,8 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * unit of magnetomotive force, equal to <code>10/4
 	 * &pi;ampere-turn</code> (standard name <code>Gi</code>).
 	 */
-	public static final Unit<ElectricCurrent> GILBERT = AMPERE.multiply(10).divide(4).multiply(PI)
-			.asType(ElectricCurrent.class);
+	public static final Unit<ElectricCurrent> GILBERT = addUnit(AMPERE.multiply(10).divide(4).multiply(PI)
+			.asType(ElectricCurrent.class));
 
 	////////////
 	// Energy //
@@ -378,7 +379,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of energy equal to <code>1E-7 J</code> (standard name
 	 * <code>erg</code>).
 	 */
-	public static final Unit<Energy> ERG = JOULE.divide(10000000);
+	public static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
 
 	/**
 	 * A unit of energy equal to one electron-volt (standard name <code>eV</code>,
@@ -406,7 +407,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of magnetic flux equal <code>1E-8 Wb</code> (standard name
 	 * <code>Mx</code>).
 	 */
-	static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
+	protected static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
 
 	// /////////////////////////
 	// Magnetic Flux Density //
@@ -415,7 +416,8 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of magnetic flux density equal <code>1000 A/m</code> (standard name
 	 * <code>G</code>).
 	 */
-	static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
+	@SuppressWarnings("unused")
+	private static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
 
 	///////////
 	// Force //
@@ -430,14 +432,16 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of force equal to <code>9.80665 N</code> (standard name
 	 * <code>kgf</code>).
 	 */
-	static final Unit<Force> KILOGRAM_FORCE = NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND)
+	@SuppressWarnings("unused")
+	private static final Unit<Force> KILOGRAM_FORCE = NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND)
 			.divide(STANDARD_GRAVITY_DIVISOR);
 
 	/**
 	 * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code> (standard
 	 * name <code>lbf</code>).
 	 */
-	static final Unit<Force> POUND_FORCE = NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
+	@SuppressWarnings("unused")
+	private static final Unit<Force> POUND_FORCE = NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
 			.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
 
 	// ////////////
@@ -469,7 +473,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of radiation dose effective equal to <code>0.01 Sv</code> (standard
 	 * name <code>rem</code>).
 	 */
-	static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
+	protected static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
 
 	// ////////////////////////
 	// Radioactive activity //
