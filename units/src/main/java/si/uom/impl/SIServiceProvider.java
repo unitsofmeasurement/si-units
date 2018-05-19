@@ -38,16 +38,16 @@ import tec.units.indriya.spi.DefaultServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.2
+ * @version 0.3
  */
 public class SIServiceProvider extends DefaultServiceProvider {
 
-    public int getPriority() {
-	return 100;
-    }
+	public int getPriority() {
+		return 100;
+	}
 
-    @Override
-    public SystemOfUnitsService getSystemOfUnitsService() {
-	return new SISystemService();
-    }
+	@Override
+	public SystemOfUnitsService getSystemOfUnitsService() {
+		return new SISystemService();
+	}
 }
