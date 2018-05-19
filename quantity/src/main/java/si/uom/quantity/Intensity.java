@@ -33,10 +33,10 @@ import javax.measure.Quantity;
 
 /**
  * Intensity, defined as the power transferred per unit area.
- * The SI unit for this quantity is Watt per square meter (W/m2).
+ * The SI unit for this quantity is Watt per square metre (W/m2).
  *
  * @author <a href="mailto:henning.treu@telekom.de">Henning Treu</a>
- * @version 1.0
+ * @version 1.1
  * @since 0.8
  * @see <a href="https://en.wikipedia.org/wiki/Intensity_(physics)">Wikipedia: Intensity</a>
  */
