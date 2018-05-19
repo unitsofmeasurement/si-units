@@ -323,6 +323,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
 	 * <code>Â°R</code>).
 	 */
+	@SuppressWarnings("unused")
 	private static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
 
 	///////////
