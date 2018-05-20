@@ -41,6 +41,7 @@ import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
@@ -66,7 +67,7 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.7, $Date: 2018-05-12$
+ * @version 1.1, $Date: 2018-05-20$
  */
 public final class NonSI extends AbstractSystemOfUnits {
 	private static final String SYSTEM_NAME = "Non-SI Units";
@@ -358,6 +359,13 @@ public final class NonSI extends AbstractSystemOfUnits {
 	protected static final Unit<Acceleration> G = addUnit(
 			METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
+	/**
+	 * A unit of acceleration equal to <code>1 cm s<sup>2</sup></code>  (standard
+	 * name <code>Gal</code>).
+	 */
+    public static final Unit<Acceleration> GAL = addUnit(
+    	    new ProductUnit<Acceleration>(CENTI(METRE).divide(SECOND.pow(2))));
+	
 	//////////
 	// Area //
 	//////////
@@ -384,12 +392,12 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of energy equal to <code>1E-7 J</code> (standard name
 	 * <code>erg</code>).
 	 */
-	protected static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
+	public static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
 
 	/////////////////
 	// Luminance //
 	/////////////////
-	protected static final Unit<Luminance> STILB = addUnit(
+	public static final Unit<Luminance> STILB = addUnit(
 			new ProductUnit<Luminance>(CANDELA.divide(CENTI(METRE).pow(2))));
 
 	/**
@@ -398,6 +406,12 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 */
 	protected static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
 
+	/**
+	 * A unit of illuminance equal to <code>1E4 Lx</code> (standard name
+	 * <code>ph</code>).
+	 */
+	public static final Unit<Illuminance> PHOT = addUnit(LUX.divide(1E4), "Phot", "ph");
+
 	///////////////////
 	// Magnetic Flux //
 	///////////////////
@@ -405,7 +419,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of magnetic flux equal <code>1E-8 Wb</code> (standard name
 	 * <code>Mx</code>).
 	 */
-	protected static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
+	public static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
 
 	///////////////////////////
 	// Magnetic Flux Density //
@@ -414,7 +428,14 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of magnetic flux density equal <code>1000 A/m</code> (standard name
 	 * <code>G</code>).
 	 */
-	protected static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
+	public static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
+
+	/**
+	 * A unit of magnetic field strength equal <code>(10<sup>3</sup>/4pi) A m–1</code> (standard name
+	 * <code>Oe</code>).
+	 */
+    public static final Unit<MagneticFieldStrength> OERSTED = addUnit(
+    	    new ProductUnit<MagneticFieldStrength>(SI.AMPERE_PER_METRE.multiply(250).divide(PI)), "Ørsted", "Oe", true);
 
 	///////////
 	// Force //
@@ -517,13 +538,13 @@ public final class NonSI extends AbstractSystemOfUnits {
 	/**
 	 * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit).
 	 */
-	protected static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
+	public static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
 			.asType(DynamicViscosity.class);
 
 	/**
 	 * A unit of kinematic viscosity equal to <code>1 cm²/s</code> (cgs unit).
 	 */
-	protected static final Unit<KinematicViscosity> STOKE = addUnit(CENTI(METRE).pow(2).divide(SECOND))
+	public static final Unit<KinematicViscosity> STOKES = addUnit(CENTI(METRE).pow(2).divide(SECOND))
 			.asType(KinematicViscosity.class);
 
 	///////////////
