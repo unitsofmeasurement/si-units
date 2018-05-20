@@ -45,6 +45,7 @@ import javax.measure.quantity.ElectricCurrent;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Force;
 import javax.measure.quantity.Frequency;
+import javax.measure.quantity.Illuminance;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.MagneticFlux;
 import javax.measure.quantity.MagneticFluxDensity;
@@ -58,9 +59,12 @@ import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
+import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Level;
 import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import tec.units.indriya.AbstractSystemOfUnits;
 import tec.units.indriya.AbstractUnit;
 import tec.units.indriya.format.SimpleUnitFormat;
@@ -361,6 +365,13 @@ public class NonSI extends AbstractSystemOfUnits {
 	@SuppressWarnings("unused")
 	private static final Unit<Acceleration> G = METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
 			.divide(STANDARD_GRAVITY_DIVISOR);
+	
+	/**
+	 * A unit of acceleration equal to <code>1 cm s<sup>2</sup></code>  (standard
+	 * name <code>Gal</code>).
+	 */
+    public static final Unit<Acceleration> GAL = addUnit(
+    	    new ProductUnit<Acceleration>(CENTI(METRE).divide(SECOND.pow(2))));
 
 	//////////////////////
 	// Electric current //
@@ -392,7 +403,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	/////////////////
 	// Luminance //
 	/////////////////
-	protected static final Unit<Luminance> STILB = addUnit(
+	public static final Unit<Luminance> STILB = addUnit(
 			new ProductUnit<Luminance>(CANDELA.divide(CENTI(METRE).pow(2))));
 
 	/**
@@ -401,6 +412,12 @@ public class NonSI extends AbstractSystemOfUnits {
 	 */
 	protected static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
 
+	/**
+	 * A unit of illuminance equal to <code>1E4 Lx</code> (standard name
+	 * <code>ph</code>).
+	 */
+	public static final Unit<Illuminance> PHOT = addUnit(LUX.divide(1E4), "Phot", "ph");
+
 	///////////////////
 	// Magnetic Flux //
 	///////////////////
@@ -408,7 +425,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of magnetic flux equal <code>1E-8 Wb</code> (standard name
 	 * <code>Mx</code>).
 	 */
-	protected static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
+	public static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
 
 	// /////////////////////////
 	// Magnetic Flux Density //
@@ -417,9 +434,15 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of magnetic flux density equal <code>1000 A/m</code> (standard name
 	 * <code>G</code>).
 	 */
-	@SuppressWarnings("unused")
-	private static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
+	public static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
 
+	/**
+	 * A unit of magnetic field strength equal <code>(10<sup>3</sup>/4pi) A m–1</code> (standard name
+	 * <code>Oe</code>).
+	 */
+    public static final Unit<MagneticFieldStrength> OERSTED = addUnit(
+    	    new ProductUnit<MagneticFieldStrength>(SI.AMPERE_PER_METRE.multiply(250).divide(PI)), "Ørsted", "Oe", true);
+	
 	///////////
 	// Force //
 	///////////
@@ -445,9 +468,9 @@ public class NonSI extends AbstractSystemOfUnits {
 	private static final Unit<Force> POUND_FORCE = NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
 			.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
 
-	// ////////////
+	//////////////
 	// Pressure //
-	// ////////////
+	//////////////
 
 	/**
 	 * A unit of pressure equal to <code>100 kPa</code> (standard name
@@ -461,9 +484,9 @@ public class NonSI extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322));
 
-	// ///////////////////////////
+	/////////////////////////////
 	// Radiation dose absorbed //
-	// ///////////////////////////
+	/////////////////////////////
 	/**
 	 * A unit of radiation dose absorbed equal to a dose of 0.01 joule of energy per
 	 * kilogram of mass (J/kg) (standard name <code>rd</code>).
@@ -476,9 +499,9 @@ public class NonSI extends AbstractSystemOfUnits {
 	 */
 	protected static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
 
-	// ////////////////////////
+	//////////////////////////
 	// Radioactive activity //
-	// ////////////////////////
+	//////////////////////////
 	/**
 	 * A unit of radioctive activity equal to the activity of a gram of radium
 	 * (standard name <code>Ci</code>).
@@ -491,9 +514,9 @@ public class NonSI extends AbstractSystemOfUnits {
 	 */
 	protected static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL.multiply(1000000));
 
-	// ///////////////
+	/////////////////
 	// Solid angle //
-	// ///////////////
+	/////////////////
 	/**
 	 * A unit of solid angle equal to <code>4 <i>&pi;</i> steradians</code>
 	 * (standard name <code>sphere</code>).
@@ -501,9 +524,24 @@ public class NonSI extends AbstractSystemOfUnits {
 	protected static final Unit<SolidAngle> SPHERE = addUnit(
 			STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class));
 
-	// /////////////
+	///////////////
+	// Viscosity //
+	///////////////
+	/**
+	 * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit).
+	 */
+	public static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
+			.asType(DynamicViscosity.class);
+
+	/**
+	 * A unit of kinematic viscosity equal to <code>1 cm²/s</code> (cgs unit).
+	 */
+	public static final Unit<KinematicViscosity> STOKES = addUnit(CENTI(METRE).pow(2).divide(SECOND))
+			.asType(KinematicViscosity.class);
+	
+	///////////////
 	// Frequency //
-	// /////////////
+	///////////////
 	/**
 	 * A unit used to measure the frequency (rate) at which an imaging device
 	 * produces unique consecutive images (standard name <code>fps</code>).
