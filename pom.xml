@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
-	<version>0.9-SNAPSHOT</version>
+	<version>0.9</version>
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>
@@ -22,9 +22,9 @@
 		<jsr.version>1.0</jsr.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.9-SNAPSHOT</se.version>
+		<se.version>1.0.9</se.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>0.9-SNAPSHOT</si.quantity.version><!-- To handle quantity separately, 
+		<si.quantity.version>0.9</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
