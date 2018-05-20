@@ -43,6 +43,7 @@ import si.uom.quantity.AngularAcceleration;
 import si.uom.quantity.AngularSpeed;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
+import si.uom.quantity.Intensity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Luminance;
@@ -79,7 +80,7 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, May 12, 2018
+ * @version 1.2, May 20, 2018
  */
 public final class SI extends Units {
     /**
@@ -209,6 +210,12 @@ public final class SI extends Units {
     public static final Unit<Radiance> WATT_PER_STERADIAN_PER_SQUARE_METRE = addUnit(
 	    WATT_PER_STERADIAN.divide(SQUARE_METRE).asType(Radiance.class));
 
+    /**
+     * The SI unit for intensity (standard name <code>W/m<sup>2</sup></code>).
+     */
+    public static final Unit<Intensity> WATT_PER_SQUARE_METRE = addUnit(
+	    WATT.divide(SQUARE_METRE).asType(Intensity.class));
+    
     /**
      *  The SI unit of angular speed (standard name
      * <code>rad/s</code>).
