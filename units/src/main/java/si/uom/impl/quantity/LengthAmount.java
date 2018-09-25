@@ -32,7 +32,7 @@ package si.uom.impl.quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Length;
 
-import tec.units.indriya.quantity.NumberQuantity;
+import tech.units.indriya.quantity.NumberQuantity;
 
 /**
  * Represents the extent of something along its greatest dimension or the extent

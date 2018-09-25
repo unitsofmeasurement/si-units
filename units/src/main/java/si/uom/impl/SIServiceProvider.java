@@ -31,14 +31,14 @@ package si.uom.impl;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tec.units.indriya.spi.DefaultServiceProvider;
+import tech.units.indriya.spi.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.3
+ * @version 0.4
  */
 public class SIServiceProvider extends DefaultServiceProvider {
 

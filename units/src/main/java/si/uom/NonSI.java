@@ -29,10 +29,10 @@
  */
 package si.uom;
 
-import static tec.units.indriya.AbstractUnit.ONE;
-import static tec.units.indriya.unit.MetricPrefix.CENTI;
-import static tec.units.indriya.unit.MetricPrefix.FEMTO;
-import static tec.units.indriya.unit.Units.*;
+import static tech.units.indriya.AbstractUnit.ONE;
+import static tech.units.indriya.unit.MetricPrefix.CENTI;
+import static tech.units.indriya.unit.MetricPrefix.FEMTO;
+import static tech.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
@@ -65,15 +65,15 @@ import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Level;
 import si.uom.quantity.Luminance;
 import si.uom.quantity.MagneticFieldStrength;
-import tec.units.indriya.AbstractSystemOfUnits;
-import tec.units.indriya.AbstractUnit;
-import tec.units.indriya.format.SimpleUnitFormat;
-import tec.units.indriya.function.LogConverter;
-import tec.units.indriya.function.MultiplyConverter;
-import tec.units.indriya.function.PiMultiplierConverter;
-import tec.units.indriya.function.RationalConverter;
-import tec.units.indriya.unit.ProductUnit;
-import tec.units.indriya.unit.TransformedUnit;
+import tech.units.indriya.AbstractSystemOfUnits;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.SimpleUnitFormat;
+import tech.units.indriya.function.LogConverter;
+import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.unit.ProductUnit;
+import tech.units.indriya.unit.TransformedUnit;
 
 /**
  * <p>
@@ -90,7 +90,7 @@ import tec.units.indriya.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.4, $Date: 2017-04-17$
+ * @version 1.0.5, $Date: 2018-09-26$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -132,21 +132,21 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * <code>deg</code>).
 	 */
 	public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-			new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180))),
+			new TransformedUnit<Angle>(RADIAN, PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
 			"Degree Angle", "deg");
 
 	/**
 	 * An angle unit accepted for use with SI units (standard name <code>'</code>).
 	 */
 	public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-			new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
+	        PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
 
 	/**
 	 * An angle unit accepted for use with SI units (standard name <code>''</code>).
 	 */
 	public static final Unit<Angle> SECOND_ANGLE = addUnit(
 			new TransformedUnit<Angle>(RADIAN,
-					new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60))),
+			        PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
 			"Second Angle", "''");
 
 	/**

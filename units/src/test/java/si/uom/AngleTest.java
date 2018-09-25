@@ -43,17 +43,17 @@ import javax.measure.quantity.Angle;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tec.units.indriya.function.PiMultiplierConverter;
-import tec.units.indriya.quantity.Quantities;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.quantity.Quantities;
+import tech.units.indriya.unit.Units;
 
 public class AngleTest {
 
-  private static PiMultiplierConverter piMultiplierConverter;
+  private static PowersOfPiConverter piMultiplierConverter;
 
   @BeforeClass
   public static void setUp() throws Exception {
-    piMultiplierConverter = new PiMultiplierConverter();
+    piMultiplierConverter = PowersOfPiConverter.of(1);
   }
 
   @Test
@@ -63,12 +63,12 @@ public class AngleTest {
     assertEquals(-314.15, piMultiplierConverter.convert(-100), 0.1);
   }
 
-  @Test
-  public void testConvertBigDecimalMethod() {
-    assertEquals(314.15, piMultiplierConverter.convert(new BigDecimal("100"), MathContext.DECIMAL32).doubleValue(), 0.1);
-    assertEquals(0, piMultiplierConverter.convert(BigDecimal.ZERO, MathContext.DECIMAL32).doubleValue(), 0);
-    assertEquals(-314.15, piMultiplierConverter.convert(new BigDecimal("-100"), MathContext.DECIMAL32).doubleValue(), 0.1);
-  }
+//  @Test
+//  public void testConvertBigDecimalMethod() {
+//    assertEquals(314.15, piMultiplierConverter.convert(new BigDecimal("100"), MathContext.DECIMAL32).doubleValue(), 0.1);
+//    assertEquals(0, piMultiplierConverter.convert(BigDecimal.ZERO, MathContext.DECIMAL32).doubleValue(), 0);
+//    assertEquals(-314.15, piMultiplierConverter.convert(new BigDecimal("-100"), MathContext.DECIMAL32).doubleValue(), 0.1);
+//  }
 
   @Test
   public void testEqualityOfTwoLogConverter() {
@@ -77,7 +77,7 @@ public class AngleTest {
 
   @Test
   public void testGetValuePiDivisorConverter() {
-    assertEquals("(π)", piMultiplierConverter.getValue());
+    assertEquals(1, piMultiplierConverter.getExponent());
   }
 
   @Test
@@ -98,6 +98,6 @@ public class AngleTest {
     Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, Units.RADIAN).to(NonSI.DEGREE_ANGLE);
     assertNotNull(sut);
     assertEquals(NonSI.DEGREE_ANGLE, sut.getUnit());
-    assertEquals(new BigDecimal("57.29577951308232087679815481410517"), sut.getValue());
+    assertEquals(new BigDecimal("57.2957795130823208767981548141051660"), sut.getValue());
   }
 }

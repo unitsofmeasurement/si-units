@@ -28,9 +28,9 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>tec.units</groupId>
+				<groupId>tech.units</groupId>
 				<artifactId>indriya</artifactId>
-				<version>1.0</version>
+				<version>1.2</version>
 			</dependency>
 			<dependency>
 				<groupId>si.uom</groupId>
@@ -45,7 +45,7 @@
 			<artifactId>unit-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>tec.units</groupId>
+			<groupId>tech.units</groupId>
 			<artifactId>indriya</artifactId>
 		</dependency>
 

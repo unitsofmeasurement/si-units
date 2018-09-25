@@ -39,15 +39,15 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import si.uom.quantity.*;
-import tec.units.indriya.AbstractUnit;
-import tec.units.indriya.format.SimpleUnitFormat;
-import tec.units.indriya.function.MultiplyConverter;
-import tec.units.indriya.function.PiMultiplierConverter;
-import tec.units.indriya.function.RationalConverter;
-import tec.units.indriya.unit.AlternateUnit;
-import tec.units.indriya.unit.ProductUnit;
-import tec.units.indriya.unit.TransformedUnit;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.SimpleUnitFormat;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.unit.AlternateUnit;
+import tech.units.indriya.unit.ProductUnit;
+import tech.units.indriya.unit.TransformedUnit;
+import tech.units.indriya.unit.Units;
 
 /**
  * <p>
@@ -68,7 +68,7 @@ import tec.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.2, May 20, 2018
+ * @version 1.3, Sep 26, 2018
  */
 public final class SI extends Units {
 
@@ -288,7 +288,7 @@ public final class SI extends Units {
      * <code>rev</code>).
      */
     public static final Unit<Angle> REVOLUTION = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(2, 1))));
+	    new TransformedUnit<Angle>(RADIAN, PowersOfPiConverter.of(1).concatenate(new RationalConverter(2, 1))));
 
     /**
      * An angle unit accepted for use with SI units (standard name
