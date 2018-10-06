@@ -42,7 +42,7 @@ import si.uom.quantity.*;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.PowerOfPiConverter;
 import tech.units.indriya.function.RationalConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
@@ -288,7 +288,7 @@ public final class SI extends Units {
      * <code>rev</code>).
      */
     public static final Unit<Angle> REVOLUTION = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, PowersOfPiConverter.of(1).concatenate(new RationalConverter(2, 1))));
+	    new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(2, 1))));
 
     /**
      * An angle unit accepted for use with SI units (standard name

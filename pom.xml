@@ -18,10 +18,10 @@
 	<!-- ======================================================= -->
 	<properties>
 		<!-- Versions -->
-		<jdkVersion>1.7</jdkVersion>
-		<jsr.version>1.0</jsr.version>
-		<lib.version>1.0.2</lib.version>
-		<ri.version>1.0.3</ri.version>
+		<jdkVersion>1.8</jdkVersion>
+		<jsr.version>2.0-EDR</jsr.version>
+		<lib.version>2.0-EDR</lib.version>
+		<ri.version>2.0-EDR</ri.version>
 		<se.version>1.0.9</se.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>0.9</si.quantity.version><!-- To handle quantity separately, 
