@@ -132,21 +132,21 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * <code>deg</code>).
 	 */
 	public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-			new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
+			new TransformedUnit<Angle>(RADIAN, tech.units(1).concatenate(new RationalConverter(1, 180))),
 			"Degree Angle", "deg");
 
 	/**
 	 * An angle unit accepted for use with SI units (standard name <code>'</code>).
 	 */
 	public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-	        PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
+	        tech.units(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
 
 	/**
 	 * An angle unit accepted for use with SI units (standard name <code>''</code>).
 	 */
 	public static final Unit<Angle> SECOND_ANGLE = addUnit(
 			new TransformedUnit<Angle>(RADIAN,
-			        PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
+			        tech.units(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
 			"Second Angle", "''");
 
 	/**
