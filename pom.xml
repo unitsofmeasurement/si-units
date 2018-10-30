@@ -27,11 +27,12 @@
 		<si.quantity.version>1.0-SNAPSHOT</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
-		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
+		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 	<modules>
 		<module>quantity</module>
+		<module>units</module>
 		<module>units-java8</module>
 	</modules>
 
