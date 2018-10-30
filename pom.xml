@@ -22,7 +22,7 @@
 		<jsr.version>2.0-EDR</jsr.version>
 		<lib.version>2.0-EDR</lib.version>
 		<ri.version>2.0-EDR</ri.version>
-		<se.version>1.0.9</se.version>
+		<se.version>1.0.10-SNAPSHOT</se.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>1.0-SNAPSHOT</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->
