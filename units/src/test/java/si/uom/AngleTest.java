@@ -51,7 +51,7 @@ public class AngleTest {
 
   @BeforeClass
   public static void setUp() throws Exception {
-    piMultiplierConverter = tech.units(1);
+    piMultiplierConverter = PowerOfPiConverter.of(1);
   }
 
   @Test

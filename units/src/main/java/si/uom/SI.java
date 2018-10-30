@@ -288,7 +288,7 @@ public final class SI extends Units {
      * <code>rev</code>).
      */
     public static final Unit<Angle> REVOLUTION = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, tech.units(1).concatenate(new RationalConverter(2, 1))));
+	    new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(2, 1))));
 
     /**
      * An angle unit accepted for use with SI units (standard name
