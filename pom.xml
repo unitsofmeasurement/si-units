@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0-EDR</version>
+		<version>1.2</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
@@ -108,7 +108,7 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2018</currentYear>
+							<currentYear>2019</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>
