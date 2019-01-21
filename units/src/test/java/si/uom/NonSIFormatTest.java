@@ -35,7 +35,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tech.units.indriya.format.SimpleUnitFormat;
-import javax.measure.MetricPrefix;
+import tech.units.indriya.unit.MetricPrefix;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>

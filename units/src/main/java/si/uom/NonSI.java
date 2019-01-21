@@ -30,8 +30,8 @@
 package si.uom;
 
 import static tech.units.indriya.AbstractUnit.ONE;
-import static javax.measure.MetricPrefix.CENTI;
-import static javax.measure.MetricPrefix.FEMTO;
+import static tech.units.indriya.unit.MetricPrefix.CENTI;
+import static tech.units.indriya.unit.MetricPrefix.FEMTO;
 import static tech.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
@@ -69,7 +69,7 @@ import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
-import tech.units.indriya.function.PowerOfPiConverter;
+import tech.units.indriya.function.PowersOfPiConverter;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.function.RationalConverter;
 import tech.units.indriya.unit.ProductUnit;
@@ -132,21 +132,21 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-            new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
+            new TransformedUnit<Angle>(RADIAN, PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
             "Degree Angle", "deg");
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
+            PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>''</code>).
      */
     public static final Unit<Angle> SECOND_ANGLE = addUnit(
             new TransformedUnit<Angle>(RADIAN,
-                    PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
+                    PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
             "Second Angle", "''");
 
     /**
