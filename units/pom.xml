@@ -8,7 +8,6 @@
 	</parent>
 	<artifactId>si-units</artifactId>
 	<name>SI Units</name>
-	<packaging>bundle</packaging>
 
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -104,17 +103,27 @@
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+			</plugin>
+
 			<!-- ======================================================= -->
 			<!-- JAR -->
 			<!-- ======================================================= -->
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
-				<!-- <configuration> <classifier>${envClassifier}</classifier> </configuration> -->
+				<configuration>
+					<archive>
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
 			</plugin>
 
 			<!-- ======================================================= -->
 			<!-- Packaging (OSGi bundle) -->
 			<!-- ======================================================= -->
+			<!--
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -122,11 +131,12 @@
 				<configuration>
 					<instructions>
 						<Export-Package>si.uom</Export-Package>
-						<Private-Package>si.uom.impl.*</Private-Package>
+						<Private-Package>si.uom.impl</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
-
+			-->
+			
 			<!-- ======================================================= -->
 			<!-- JavaDoc Attachment -->
 			<!-- ======================================================= -->
