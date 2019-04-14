@@ -136,13 +136,6 @@ public final class SI extends Units {
 	    new ProductUnit<MagneticPermeability>(NEWTON.divide(AMPERE.pow(2))), MagneticPermeability.class);
 
     /**
-     * Alias for NEWTON_PER_SQUARE_AMPERE.
-     * 
-     * @deprecated use NEWTON_PER_SQUARE_AMPERE.
-     */
-    public static final Unit<MagneticPermeability> NEWTONS_PER_SQUARE_AMPERE = NEWTON_PER_SQUARE_AMPERE;
-
-    /**
      * The SI unit for wave number quantities (standard name <code>1/m</code>).
      */
     public static final Unit<WaveNumber> RECIPROCAL_METRE = addUnit(new ProductUnit<WaveNumber>(METRE.pow(-1)),
@@ -174,13 +167,6 @@ public final class SI extends Units {
      */
     public static final Unit<KinematicViscosity> SQUARE_METRE_PER_SECOND = addUnit(
 	    new ProductUnit<KinematicViscosity>(SQUARE_METRE.divide(SECOND)), KinematicViscosity.class);
-
-    /**
-     * Alias for SQUARE_METRE_PER_SECOND.
-     * 
-     * @deprecated use SQUARE_METRE_PER_SECOND.
-     */
-    public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND = SQUARE_METRE_PER_SECOND;
 
     /**
      * The SI unit for magnetic field strength quantities (standard name
@@ -284,7 +270,7 @@ public final class SI extends Units {
 
     @Override
     public String getName() {
-	return "SI";
+        return "SI";
     }
 
     /**
@@ -295,8 +281,8 @@ public final class SI extends Units {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit) {
-	INSTANCE.units.add(unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        return unit;
     }
 
     /**
