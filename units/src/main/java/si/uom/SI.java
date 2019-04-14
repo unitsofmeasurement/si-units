@@ -112,12 +112,6 @@ public final class SI extends Units {
      */
     public static final Unit<Acceleration> METRE_PER_SQUARE_SECOND = addUnit(
 	    new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
-    /**
-     * Alias for METRE_PER_SQUARE_SECOND.
-     * 
-     * @deprecated use METRE_PER_SQUARE_SECOND instead.
-     */
-    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = METRE_PER_SQUARE_SECOND;
 
     /**
      * The SI unit for action quantities (standard name <code>j.s</code>).
@@ -196,24 +190,11 @@ public final class SI extends Units {
 	    new ProductUnit<MagneticFieldStrength>(AMPERE.divide(METRE)), MagneticFieldStrength.class);
 
     /**
-     * Alias for AMPERE_PER_METRE.
-     * 
-     * @deprecated use AMPERE_PER_METRE.
-     */
-    public static final Unit<MagneticFieldStrength> AMPERES_PER_METRE = AMPERE_PER_METRE;
-
-    /**
      * The SI unit for ionizing radiation quantities (standard name
      * <code>C/kg"</code>).
      */
     public static final Unit<IonizingRadiation> COULOMB_PER_KILOGRAM = addUnit(
 	    new ProductUnit<IonizingRadiation>(COULOMB.divide(KILOGRAM)), IonizingRadiation.class);
-    /**
-     * Alias for COULOMB_PER_KILOGRAM.
-     * 
-     * @deprecated use COULOMB_PER_KILOGRAM.
-     */
-    public static final Unit<IonizingRadiation> COULOMBS_PER_KILOGRAM = COULOMB_PER_KILOGRAM;
 
     /**
      * The SI unit for radiant intensity (standard name <code>W/sr</code>).
