@@ -108,12 +108,6 @@ public final class SI extends Units {
      */
     public static final Unit<Acceleration> METRE_PER_SQUARE_SECOND = addUnit(
 	    new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
-    /**
-     * Alias {@link #METRE_PER_SQUARE_SECOND}
-     * 
-     * @deprecated use METRE_PER_SQUARE_SECOND
-     */
-    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = METRE_PER_SQUARE_SECOND;
 
     /**
      * The SI unit for action quantities (standard name <code>j.s</code>).
@@ -169,13 +163,6 @@ public final class SI extends Units {
      */
     public static final Unit<KinematicViscosity> SQUARE_METRE_PER_SECOND = addUnit(
 	    new ProductUnit<KinematicViscosity>(SQUARE_METRE.divide(SECOND)), KinematicViscosity.class);
-
-    /**
-     * Alias for {@link #SQUARE_METRE_PER_SECOND}
-     * 
-     * @deprecated use SQUARE_METRE_PER_SECOND
-     */
-    public static final Unit<KinematicViscosity> SQUARE_METRES_PER_SECOND = SQUARE_METRE_PER_SECOND;
 
     /**
      * A magnetic field is the magnetic effect of electric currents and magnetic
