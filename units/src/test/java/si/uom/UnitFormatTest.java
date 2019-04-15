@@ -34,12 +34,14 @@ import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
+import static tech.units.indriya.unit.MetricPrefix.*;
 
 import java.io.IOException;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
+import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
@@ -162,4 +164,16 @@ public class UnitFormatTest {
 			fail(e.getMessage());
 		}
 	}
+	
+    @Test
+    public void testParseMicro() {
+      Unit<?> u = format2.parse("μm");
+      assertEquals(MICRO(METRE), u);
+    }
+
+    @Test
+    public void testParseMicroAlias() {
+      Unit<?> u = format2.parse("\u03bcm");
+      assertEquals(MICRO(METRE), u);
+    }
 }

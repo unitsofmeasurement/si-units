@@ -30,6 +30,7 @@
 package si.uom;
 
 import static org.junit.Assert.*;
+import static tec.uom.se.unit.MetricPrefix.MICRO;
 import static tec.uom.se.unit.Units.KILOGRAM;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.MINUTE;
@@ -62,111 +63,125 @@ import tec.uom.se.unit.Units;
 public class UnitFormatTest {
     private Quantity<Length> sut;
 
-//    private EBNFUnitFormat format;
+    // private EBNFUnitFormat format;
 
     @Before
     public void init() {
-	final SimpleUnitFormat format0 = SimpleUnitFormat.getInstance();
-	sut = DefaultQuantityFactory.getInstance(Length.class).create(10, METRE);
+        final SimpleUnitFormat format0 = SimpleUnitFormat.getInstance();
+        sut = DefaultQuantityFactory.getInstance(Length.class).create(10, METRE);
 
-//	format = EBNFUnitFormat.getInstance();
+        // format = EBNFUnitFormat.getInstance();
 
-	format0.label(SI.HECTARE, "Ha");
-	format0.label(NonSI.TONNE, "t");
+        format0.label(SI.HECTARE, "Ha");
+        format0.label(NonSI.TONNE, "t");
     }
 
     @Test
     public void testFormat2() {
-	Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
-	assertEquals("km/h", kph.toString());
+        Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
+        assertEquals("km/h", kph.toString());
     }
 
     @Test
     public void testFormat4() {
-	Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
-	assertEquals("km/h", kph.toString()); // TODO i18n vs. no i18n
+        Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
+        assertEquals("km/h", kph.toString()); // TODO i18n vs. no i18n
     }
 
     @Test
     public void testFormat5() {
-	Unit<Area> b = SI.HECTARE;
-	assertEquals("Ha", b.toString());
+        Unit<Area> b = SI.HECTARE;
+        assertEquals("Ha", b.toString());
     }
 
     @Test
     public void testFormat3() {
-	Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
-	assertEquals("At", at.toString());
+        Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
+        assertEquals("At", at.toString());
     }
 
     @Test
-    public void testParseSimple() {
-	final UnitFormat format1 = EBNFUnitFormat.getInstance();
-	try {
-	    Unit<?> u = format1.parse("s");
-	    assertEquals("s", u.getSymbol());
-	    assertEquals(SECOND, u);
-	} catch (ParserException e) {
-	    fail(e.getMessage());
-	}
+    public void testParseEBNF() {
+        final UnitFormat format1 = EBNFUnitFormat.getInstance();
+        try {
+            Unit<?> u = format1.parse("s");
+            assertEquals("s", u.getSymbol());
+            assertEquals(SECOND, u);
+        } catch (ParserException e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
     public void testFormatFromQuantity() {
-	final UnitFormat format1 = EBNFUnitFormat.getInstance();
-	final Appendable a = new StringBuilder();
-	try {
-	    format1.format(METRE, a);
-	} catch (IOException e) {
-	    fail(e.getMessage());
-	}
-	assertEquals(METRE, sut.getUnit());
-	assertEquals("m", a.toString());
+        final UnitFormat format1 = EBNFUnitFormat.getInstance();
+        final Appendable a = new StringBuilder();
+        try {
+            format1.format(METRE, a);
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+        assertEquals(METRE, sut.getUnit());
+        assertEquals("m", a.toString());
 
-	final Appendable a2 = new StringBuilder();
-	@SuppressWarnings("unchecked")
-	Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
-	try {
-	    format1.format(v, a2);
-	} catch (IOException e) {
-	    fail(e.getMessage());
-	}
-	assertEquals("m/s", a2.toString());
+        final Appendable a2 = new StringBuilder();
+        @SuppressWarnings("unchecked")
+        Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
+        try {
+            format1.format(v, a2);
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+        assertEquals("m/s", a2.toString());
     }
 
     @Test
-    public void testParseSimple1() {
-	final UnitFormat format1 = EBNFUnitFormat.getInstance();
-	try {
-	    Unit<?> u = format1.parse("min");
-	    // assertEquals("min", u.getSymbol());
-	    assertEquals(MINUTE, u);
-	} catch (ParserException e) {
-	    fail(e.getMessage());
-	}
+    public void testParseEBNF1() {
+        final UnitFormat format1 = EBNFUnitFormat.getInstance();
+        try {
+            Unit<?> u = format1.parse("min");
+            // assertEquals("min", u.getSymbol());
+            assertEquals(MINUTE, u);
+        } catch (ParserException e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testParseSimple2() {
-	final UnitFormat format1 = EBNFUnitFormat.getInstance();
-	try {
-	    Unit<?> u = format1.parse("m");
-	    assertEquals("m", u.getSymbol());
-	    assertEquals(METRE, u);
-	} catch (ParserException e) {
-	    fail(e.getMessage());
-	}
+    public void testParseEBNF2() {
+        final UnitFormat format1 = EBNFUnitFormat.getInstance();
+        try {
+            Unit<?> u = format1.parse("m");
+            assertEquals("m", u.getSymbol());
+            assertEquals(METRE, u);
+        } catch (ParserException e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testParseSimple3() {
-	final UnitFormat format1 = EBNFUnitFormat.getInstance();
-	try {
-	    Unit<?> u = format1.parse("kg");
-	    assertEquals("kg", u.getSymbol());
-	    assertEquals(KILOGRAM, u);
-	} catch (ParserException e) {
-	    fail(e.getMessage());
-	}
+    public void testParseEBNF3() {
+        final UnitFormat format1 = EBNFUnitFormat.getInstance();
+        try {
+            Unit<?> u = format1.parse("kg");
+            assertEquals("kg", u.getSymbol());
+            assertEquals(KILOGRAM, u);
+        } catch (ParserException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testParseMicro() {
+      final UnitFormat format = SimpleUnitFormat.getInstance();
+      Unit<?> u = format.parse("μm");
+      assertEquals(MICRO(METRE), u);
+    }
+
+    @Test
+    public void testParseMicroAlias() {
+      final UnitFormat format = SimpleUnitFormat.getInstance();
+      Unit<?> u = format.parse("\u03bcm");
+      assertEquals(MICRO(METRE), u);
     }
 }
