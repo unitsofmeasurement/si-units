@@ -80,9 +80,24 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2, May 20, 2018
+ * @version 1.3, April 30, 2019
  */
 public final class SI extends Units {
+	/**
+	 * Holds the Avogadro constant.
+	 */
+	public static final double AVOGADRO_CONSTANT = 6.02214199E23; // (1/mol).
+
+    /**
+     * Holds the electric charge of one electron.
+     */
+    public static final double ELEMENTARY_CHARGE = 1.602176462E-19; // (C).
+	
+	/**
+     * Holds the Planck constant.
+     */
+    private static final double PLANCK_CONSTANT_FACTOR = 6.62607015E-34; // (1/mol).
+
     /**
      * The singleton instance.
      */
@@ -114,6 +129,12 @@ public final class SI extends Units {
      */
     public static final Unit<Action> JOULE_SECOND = addUnit(new ProductUnit<Action>(JOULE.multiply(SECOND)),
 	    Action.class);
+    
+    /**
+     * The Planck constant (denoted <code>h</code>, also called Planck's constant) is a physical constant that is the quantum of electromagnetic action, which relates the energy carried by a photon to its frequency. A photon's energy is equal to its frequency multiplied by the Planck constant. The Planck constant is of fundamental importance in quantum mechanics, and in metrology it is the basis for the definition of the kilogram.
+     */
+    public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_FACTOR),"h", true);
+
 
     /**
      * The SI unit for electric permittivity (standard name <code>ε</code>,

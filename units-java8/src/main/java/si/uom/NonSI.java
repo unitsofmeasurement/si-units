@@ -29,6 +29,8 @@
  */
 package si.uom;
 
+import static si.uom.SI.AVOGADRO_CONSTANT;
+import static si.uom.SI.ELEMENTARY_CHARGE;
 import static tec.uom.se.unit.MetricPrefix.CENTI;
 import static tec.uom.se.unit.MetricPrefix.FEMTO;
 import static tec.uom.se.unit.MetricPrefix.MEGA;
@@ -42,6 +44,7 @@ import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Luminance;
 import si.uom.quantity.MagneticFieldStrength;
+import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
@@ -66,8 +69,8 @@ import tec.uom.se.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, $Date: 2018-05-20$
+ * @author <a href="mailto:werner@uom.tech">Werner Keil</a>
+ * @version 1.2, $Date: 2019-04-29$
  */
 public final class NonSI extends AbstractSystemOfUnits {
 	private static final String SYSTEM_NAME = "Non-SI Units";
@@ -85,16 +88,6 @@ public final class NonSI extends AbstractSystemOfUnits {
 	private static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
 
 	private static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
-
-	/**
-	 * Holds the Avogadro constant.
-	 */
-	private static final double AVOGADRO_CONSTANT = 6.02214199e23; // (1/mol).
-
-	/**
-	 * Holds the electric charge of one electron.
-	 */
-	private static final double ELEMENTARY_CHARGE = 1.602176462e-19; // (C).
 
 	private static final NonSI INSTANCE = new NonSI();
 
@@ -150,8 +143,16 @@ public final class NonSI extends AbstractSystemOfUnits {
 			new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u",
 			true);
 	// CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
-
-	/**
+    /**
+     * The dalton (Da) and the unified atomic mass unit (u) are alternative names (and symbols) for the same unit, 
+     * equal to 1/12 times the mass of a free carbon 12 atom, at rest and in its ground state. 
+     * The dalton is often combined with SI prefixes, for example to express the masses of large molecules in kilodaltons, kDa, or megadaltons, MDa, 
+     * or to express the values of small mass differences of atoms or molecules in nanodaltons, nDa, or even picodaltons, pDa.
+     */
+    public static final Unit<Mass> DALTON = addUnit(
+            new TransformedUnit<Mass>(UNIFIED_ATOMIC_MASS, AbstractConverter.IDENTITY), "Dalton", "Da");
+	
+    /**
 	 * A length unit accepted for use with SI units (standard name <code>UA</code>).
 	 * The astronomical unit is a unit of length. Its value is such that, when used
 	 * to describe the motion of bodies in the solar system, the heliocentric
@@ -220,6 +221,12 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Length> NAUTICAL_MILE = addUnit(METRE.multiply(1852), "Nautical mile", "nmi");
 
+	/**
+	 * The Bohr radius (a0 or rBohr) is a physical constant, approximately equal to the most probable distance between the nucleus and the electron in a hydrogen atom in its ground state.
+	 * It is named after Niels Bohr, due to its role in the Bohr model of an atom. Its value is 5.2917721067(12)×10−11 m.
+	 */
+	public static final Unit<Length> BOHR_RADIUS = addUnit(METRE.multiply(5.291772106712E-11), "Bohr Radius", "a0");
+	
 	////////////
 	// Area //
 	////////////
@@ -276,7 +283,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of mass equal to the mass of the electron (standard name
 	 * <code>me</code>).
 	 */
-	protected static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
+	public static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
 
 	/**
 	 * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
@@ -335,13 +342,13 @@ public final class NonSI extends AbstractSystemOfUnits {
 	// PiMultiplierConverter().concatenate(new RationalConverter(2, 1))));
 
 	// ////////////
-	// Velocity //
+	// Speed     //
 	// ////////////
 	/**
-	 * A unit of velocity relative to the speed of light (standard name
+	 * The Natural Unit of {@link Speed}, a unit of velocity relative to the speed of light (standard name
 	 * <code>c</code>).
 	 */
-	protected static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
+	public static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
 
 	/**
 	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE nautical
@@ -457,9 +464,9 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code> (standard
 	 * name <code>lbf</code>).
 	 */
-	protected static final Unit<Force> POUND_FORCE = addUnit(
+	private static final Unit<Force> POUND_FORCE = 
 			NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
-					.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
+					.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
 
 	// /////////
 	// Power //
@@ -508,13 +515,13 @@ public final class NonSI extends AbstractSystemOfUnits {
 	public static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
 
 	// ////////////////////////
-	// Radioactive activity //
+	// Radioactivity        //
 	// ////////////////////////
 	/**
 	 * A unit of radioctive activity equal to the activity of a gram of radium
 	 * (standard name <code>Ci</code>).
 	 */
-	protected static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL.multiply(37000000000L));
+	public static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL.multiply(37000000000L));
 
 	/**
 	 * A unit of radioctive activity equal to 1 million radioactive disintegrations
