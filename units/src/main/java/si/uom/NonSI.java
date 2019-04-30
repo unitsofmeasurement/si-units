@@ -52,6 +52,7 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.MagneticFlux;
 import javax.measure.quantity.MagneticFluxDensity;
 import javax.measure.quantity.Mass;
+import javax.measure.quantity.Power;
 import javax.measure.quantity.Pressure;
 import javax.measure.quantity.RadiationDoseAbsorbed;
 import javax.measure.quantity.RadiationDoseEffective;
@@ -320,14 +321,14 @@ public class NonSI extends AbstractSystemOfUnits {
      * (see {@link SI#MOLE}) and the charge (1 e) on a single electron (standard
      * name <code>Fd</code>).
      */
-    protected static final Unit<ElectricCharge> FARADAY = addUnit(
+    public static final Unit<ElectricCharge> FARADAY = addUnit(
             COULOMB.multiply(ELEMENTARY_CHARGE * AVOGADRO_CONSTANT)); // e/mol
 
     /**
      * A unit of electric charge which exerts a force of one dyne on an equal charge
      * at a distance of one centimeter (standard name <code>Fr</code>).
      */
-    protected static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
+    public static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
 
     /////////////////
     // Temperature //
@@ -336,8 +337,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
      * <code>Â°R</code>).
      */
-    @SuppressWarnings("unused")
-    private static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
+    public static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
 
     ///////////
     // Angle //
@@ -419,7 +419,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of luminance equal to <code>1E4 Lx</code> (standard name
      * <code>La</code>).
      */
-    protected static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
+    public static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
 
     /**
      * A unit of illuminance equal to <code>1E4 Lx</code> (standard name
@@ -476,6 +476,15 @@ public class NonSI extends AbstractSystemOfUnits {
     @SuppressWarnings("unused")
     private static final Unit<Force> POUND_FORCE = NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
             .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
+
+	///////////
+	// Power //
+	///////////
+	/**
+	 * A unit of power equal to the power required to raise a mass of 75 kilograms
+	 * at a velocity of 1 meter per second (metric, standard name <code>hp</code>).
+	 */
+	public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
 
     //////////////
     // Pressure //

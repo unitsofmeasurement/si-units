@@ -70,7 +70,7 @@ import tec.uom.se.unit.Units;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.tech">Werner Keil</a>
- * @version 1.2, $Date: 2019-04-29$
+ * @version 1.2, $Date: 2019-04-30$
  */
 public final class NonSI extends AbstractSystemOfUnits {
 	private static final String SYSTEM_NAME = "Non-SI Units";
@@ -285,13 +285,6 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
 
-	/**
-	 * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
-	 * standard name <code>lb</code>).
-	 */
-	protected static final Unit<Mass> POUND = addUnit(
-			KILOGRAM.multiply(AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
-
 	/////////////////////
 	// Electric charge //
 	/////////////////////
@@ -306,14 +299,14 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * (see {@link SI#MOLE}) and the charge (1 e) on a single electron (standard
 	 * name <code>Fd</code>).
 	 */
-	protected static final Unit<ElectricCharge> FARADAY = addUnit(
+	public static final Unit<ElectricCharge> FARADAY = addUnit(
 			COULOMB.multiply(ELEMENTARY_CHARGE * AVOGADRO_CONSTANT)); // e/mol
 
 	/**
 	 * A unit of electric charge which exerts a force of one dyne on an equal charge
 	 * at a distance of one centimeter (standard name <code>Fr</code>).
 	 */
-	protected static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
+	public static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
 
 	/////////////////
 	// Temperature //
@@ -322,7 +315,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
 	 * <code>Â°R</code>).
 	 */
-	protected static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
+	public static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
 
 	///////////
 	// Angle //
@@ -389,7 +382,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * unit of magnetomotive force, equal to <code>10/4
 	 * &pi;ampere-turn</code> (standard name <code>Gi</code>).
 	 */
-	protected static final Unit<ElectricCurrent> GILBERT = addUnit(
+	public static final Unit<ElectricCurrent> GILBERT = addUnit(
 			AMPERE.multiply(10).divide(4).multiply(PI).asType(ElectricCurrent.class));
 
 	////////////
@@ -411,7 +404,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of luminance equal to <code>1E4 Lx</code> (standard name
 	 * <code>La</code>).
 	 */
-	protected static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
+	public static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(STILB.divide(PI)));
 
 	/**
 	 * A unit of illuminance equal to <code>1E4 Lx</code> (standard name
@@ -457,25 +450,26 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of force equal to <code>9.80665 N</code> (standard name
 	 * <code>kgf</code>).
 	 */
-	protected static final Unit<Force> KILOGRAM_FORCE = addUnit(
-			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+	protected static final Unit<Force> KILOGRAM_FORCE = 
+			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR);
 
 	/**
 	 * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code> (standard
 	 * name <code>lbf</code>).
 	 */
+	@SuppressWarnings("unused")
 	private static final Unit<Force> POUND_FORCE = 
 			NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
 					.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
 
-	// /////////
+	///////////
 	// Power //
-	// /////////
+	///////////
 	/**
 	 * A unit of power equal to the power required to raise a mass of 75 kilograms
 	 * at a velocity of 1 meter per second (metric, standard name <code>hp</code>).
 	 */
-	protected static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
+	public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
 
 	//////////////
 	// Pressure //
