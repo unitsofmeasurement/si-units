@@ -29,11 +29,14 @@
  */
 package si.uom;
 
+import static tec.uom.se.AbstractUnit.ONE;
+
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Angle;
-import javax.measure.quantity.Area;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -80,24 +83,10 @@ import tec.uom.se.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.3, April 30, 2019
+ * @version 1.4, May 1, 2019
  */
 public final class SI extends Units {
-	/**
-	 * Holds the Avogadro constant.
-	 */
-	public static final double AVOGADRO_CONSTANT = 6.02214199E23; // (1/mol).
-
-    /**
-     * Holds the electric charge of one electron.
-     */
-    public static final double ELEMENTARY_CHARGE = 1.602176462E-19; // (C).
 	
-	/**
-     * Holds the Planck constant.
-     */
-    private static final double PLANCK_CONSTANT_FACTOR = 6.62607015E-34; // (1/mol).
-
     /**
      * The singleton instance.
      */
@@ -129,12 +118,6 @@ public final class SI extends Units {
      */
     public static final Unit<Action> JOULE_SECOND = addUnit(new ProductUnit<Action>(JOULE.multiply(SECOND)),
 	    Action.class);
-    
-    /**
-     * The Planck constant (denoted <code>h</code>, also called Planck's constant) is a physical constant that is the quantum of electromagnetic action, which relates the energy carried by a photon to its frequency. A photon's energy is equal to its frequency multiplied by the Planck constant. The Planck constant is of fundamental importance in quantum mechanics, and in metrology it is the basis for the definition of the kilogram.
-     */
-    public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_FACTOR),"h", true);
-
 
     /**
      * The SI unit for electric permittivity (standard name <code>ε</code>,
@@ -286,11 +269,56 @@ public final class SI extends Units {
     public static final Unit<Angle> REVOLUTION = addUnit(
 	    new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(2, 1))));
 
+    
+    ///////////////////////////
+    // Fundamental Constants //
+    ///////////////////////////
+    
     /**
-     * An angle unit accepted for use with SI units (standard name
-     * <code>ha</code>).
+     * Holds the numeric value of the Avogadro constant.
      */
-    public static final Unit<Area> HECTARE = new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1));
+    static final double AVOGADRO_CONSTANT_VALUE = 6.02214199E23; // (1/mol).
+    
+    /**
+     * Holds the numeric value of the Boltzmann constant.
+     */
+    static final double BOLTZMANN_CONSTANT_VALUE = 1.3806485279E-23;
+    
+    /**
+     * Holds the electric charge of one electron.
+     */
+    static final double ELEMENTARY_CHARGE_VALUE = 1.602176462E-19; // (C).
+
+	/**
+     * Holds the numeric value of the Planck constant.
+     */
+    static final double PLANCK_CONSTANT_VALUE = 6.62607015E-34; // (1/mol).
+
+    
+    /**
+     * The Avogadro constant, named after scientist Amedeo Avogadro, is the number of constituent particles, usually molecules, atoms or ions that are contained in the amount of substance given by one mole. 
+     * It is the proportionality factor that relates the molar mass of a substance to the mass of a sample, is designated with the symbol <code>NA</code> or <code>L</code>, and has the value 6.022140857(74)×1023 mol−1 in the International System of Units (SI).
+     */
+    public static final Unit<Dimensionless> AVOGADRO_CONSTANT =  addUnit(new AlternateUnit<Dimensionless>(ONE.divide(MOLE), "m-1").multiply(AVOGADRO_CONSTANT_VALUE), "L"); // (1/mol).
+   
+    /**
+     * The Boltzmann constant (<code>kB</code> or <code>k</code>) is a physical constant named after its discoverer, Ludwig Boltzmann, 
+     * which relates the average relative kinetic energy of particles in a gas with the temperature of the gas and occurs in Planck's law of black-body radiation and in Boltzmann's entropy formula.
+     */
+    public static final Unit<Dimensionless> BOLTZMANN_CONSTANT =  addUnit(new AlternateUnit<Dimensionless>(JOULE.divide(KILOGRAM), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "k");
+
+    /**
+     * The elementary charge, usually denoted by <code>e</code> or sometimes <code>qe</code>, is the electric charge carried by a single proton or, 
+     * equivalently, the magnitude of the electric charge carried by a single electron, which has charge −1 e.
+     * This elementary charge is a fundamental physical constant. 
+     * To avoid confusion over its sign, e is sometimes called the elementary positive charge.
+     */
+    public static final Unit<ElectricCharge> ELEMENTARY_CHARGE = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE_VALUE), "e", true);
+    
+    /**
+     * The Planck constant (denoted <code>h</code>, also called Planck's constant) is a physical constant that is the quantum of electromagnetic action, which relates the energy carried by a photon to its frequency. A photon's energy is equal to its frequency multiplied by the Planck constant. The Planck constant is of fundamental importance in quantum mechanics, and in metrology it is the basis for the definition of the kilogram.
+     */
+    public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_VALUE),"h", true);
 
     /////////////////////
     // Collection View //
@@ -354,9 +382,22 @@ public final class SI extends Units {
      *            if the string should be used as a label or not
      * @return <code>unit</code>.
      */
-    @SuppressWarnings("unused")
     private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
         return addUnit(unit, null, text, isLabel);
+    }
+    
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param text
+     *            the string to use as label or symbol
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String text) {
+        return addUnit(unit, null, text, true);
     }
 
     /**

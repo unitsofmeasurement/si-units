@@ -72,7 +72,7 @@ public class UnitFormatTest {
 
         // format = EBNFUnitFormat.getInstance();
 
-        format0.label(SI.HECTARE, "Ha");
+        format0.label(NonSI.HECTARE, "Ha");
         format0.label(NonSI.TONNE, "t");
     }
 
@@ -90,7 +90,7 @@ public class UnitFormatTest {
 
     @Test
     public void testFormat5() {
-        Unit<Area> b = SI.HECTARE;
+        Unit<Area> b = NonSI.HECTARE;
         assertEquals("Ha", b.toString());
     }
 

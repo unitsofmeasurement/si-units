@@ -29,8 +29,8 @@
  */
 package si.uom;
 
-import static si.uom.SI.AVOGADRO_CONSTANT;
-import static si.uom.SI.ELEMENTARY_CHARGE;
+import static si.uom.SI.AVOGADRO_CONSTANT_VALUE;
+import static si.uom.SI.ELEMENTARY_CHARGE_VALUE;
 import static tech.units.indriya.AbstractUnit.ONE;
 import static tech.units.indriya.unit.MetricPrefix.CENTI;
 import static tech.units.indriya.unit.MetricPrefix.FEMTO;
@@ -94,7 +94,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.tech">Werner Keil</a>
- * @version 1.1, $Date: 2019-04-30$
+ * @version 1.2, $Date: 2019-05-01$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -143,12 +143,6 @@ public class NonSI extends AbstractSystemOfUnits {
             new TransformedUnit<Angle>(RADIAN,
                     PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
             "Second Angle", "''");
-
-    /**
-     * A mass unit accepted for use with SI units (standard name <code>t</code>).
-     */
-    public static final Unit<Mass> TONNE = addUnit(new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)),
-            "Tonne", "t");
 
     /**
      * An energy unit accepted for use with SI units (standard name
@@ -213,7 +207,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of amount of substance equals to one atom (standard name
      * <code>atom</code>).
      */
-    protected static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT));
+    public static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT_VALUE));
 
     ////////////
     // Length //
@@ -276,13 +270,19 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>day_sidereal</code>).
      */
     public static final Unit<Time> DAY_SIDEREAL = addUnit(SECOND.multiply(86164.09));
+	
+    /**
+	 * A unit of duration equal to 365 {@link #DAY} (standard name
+	 * <code>year</code>).
+	 */
+	public static final Unit<Time> YEAR_CALENDAR = addUnit(DAY.multiply(365));
 
     /**
      * A unit of duration equal to one complete revolution of the earth about the
      * sun, relative to the fixed stars, or 365 days, 6 hours, 9 minutes, 9.54
      * seconds (standard name <code>year_sidereal</code>).
      */
-    protected static final Unit<Time> YEAR_SIDEREAL = addUnit(SECOND.multiply(31558149.54));
+    public static final Unit<Time> YEAR_SIDEREAL = addUnit(SECOND.multiply(31558149.54));
 
     /**
      * The Julian year, as used in astronomy and other sciences, is a time unit
@@ -290,7 +290,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * (symbol "a" from the Latin annus, annata) used in various scientific
      * contexts.
      */
-    protected static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600));
+    public static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600));
 
     //////////
     // Mass //
@@ -299,13 +299,19 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of mass equal to 1/12 the mass of the carbon-12 atom (standard name
      * <code>u</code>).
      */
-    protected static final Unit<Mass> ATOMIC_MASS = addUnit(KILOGRAM.multiply(1e-3 / AVOGADRO_CONSTANT));
+    public static final Unit<Mass> ATOMIC_MASS = addUnit(KILOGRAM.multiply(1e-3 / AVOGADRO_CONSTANT_VALUE));
 
     /**
      * A unit of mass equal to the mass of the electron (standard name
      * <code>me</code>).
      */
     public static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188E-31));
+    
+    /**
+     * A mass unit accepted for use with SI units (standard name <code>t</code>).
+     */
+    public static final Unit<Mass> TONNE = addUnit(new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)),
+            "Tonne", "t");
 
     /////////////////////
     // Electric charge //
@@ -314,7 +320,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of electric charge equal to the charge on one electron (standard name
      * <code>e</code>).
      */
-    protected static final Unit<ElectricCharge> E = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE));
+    @SuppressWarnings("unused")
+	private static final Unit<ElectricCharge> E = COULOMB.multiply(ELEMENTARY_CHARGE_VALUE);
 
     /**
      * A unit of electric charge equal to equal to the product of Avogadro's number
@@ -322,7 +329,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * name <code>Fd</code>).
      */
     public static final Unit<ElectricCharge> FARADAY = addUnit(
-            COULOMB.multiply(ELEMENTARY_CHARGE * AVOGADRO_CONSTANT)); // e/mol
+            COULOMB.multiply(ELEMENTARY_CHARGE_VALUE * AVOGADRO_CONSTANT_VALUE)); // e/mol
 
     /**
      * A unit of electric charge which exerts a force of one dyne on an equal charge
@@ -347,10 +354,10 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
      * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
      */
-    protected static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
+    public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
 
     //////////////
-    // Speed //
+    // Speed    //
     //////////////
     /**
      * The Natural Unit of {@link Speed}, a unit of velocity relative to the speed of light (standard name
@@ -371,9 +378,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of acceleration equal to the gravity at the earth's surface (standard
      * name <code>grav</code>).
      */
-    @SuppressWarnings("unused")
-    private static final Unit<Acceleration> G = METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
-            .divide(STANDARD_GRAVITY_DIVISOR);
+    public static final Unit<Acceleration> G = addUnit(METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+            .divide(STANDARD_GRAVITY_DIVISOR), "g");
     
     /**
      * A unit of acceleration equal to <code>1 cm s<sup>2</sup></code>  (standard
@@ -401,13 +407,6 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>erg</code>).
      */
     public static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
-
-    /**
-     * A unit of energy equal to one electron-volt (standard name <code>eV</code>,
-     * also recognized <code>keV, MeV, GeV</code>).
-     */
-    // static final Unit<Energy> ELECTRON_VOLT =
-    // JOULE.multiply(ELEMENTARY_CHARGE);
 
     /////////////////
     // Luminance //
@@ -461,13 +460,12 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     public static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000), "Dyne", "dyn", true);
 
-    /**
-     * A unit of force equal to <code>9.80665 N</code> (standard name
-     * <code>kgf</code>).
-     */
-    @SuppressWarnings("unused")
-    private static final Unit<Force> KILOGRAM_FORCE = NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND)
-            .divide(STANDARD_GRAVITY_DIVISOR);
+	/**
+	 * A unit of force equal to <code>9.80665 N</code> (standard name
+	 * <code>kgf</code>).
+	 */
+	public static final Unit<Force> KILOGRAM_FORCE = addUnit(
+			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR), "kgf");
 
     /**
      * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code> (standard
@@ -579,9 +577,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * @see <a href="https://en.wikipedia.org/wiki/Roentgen_(unit)"> Wikipedia:
      *      Roentgen</a>
      */
-    @SuppressWarnings("unchecked")
-    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(
-            COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "R", true);
+    public static final Unit<IonizingRadiation> ROENTGEN = addUnit(
+            COULOMB.divide(KILOGRAM).multiply(2.58e-4).asType(IonizingRadiation.class), "Roentgen", "R", true);
 
     ///////////////////////
     // Logarithmic Units //
@@ -670,5 +667,34 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text) {
         return addUnit(unit, name, text, true);
+    }
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
+        return addUnit(unit, null, text, isLabel);
+    }
+    
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param text
+     *            the string to use as label or symbol
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String text) {
+        return addUnit(unit, text, true);
     }
 }
