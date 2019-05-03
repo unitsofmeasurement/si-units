@@ -30,6 +30,8 @@
 package si.uom;
 
 import static org.junit.Assert.*;
+
+import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
 import org.junit.Before;
 import org.junit.Test;
@@ -66,4 +68,10 @@ public class NonSIFormatTest {
 		final String bel = simpleUnitFormat.format(MetricPrefix.DECI(NonSI.BEL));
 		assertEquals("dB", bel);
 	}
+	
+	@Test
+	public void compatibleUnitCheckGramm() throws Exception {
+	    Unit<?> gramm = SimpleUnitFormat.getInstance().parse("g");
+	    assertTrue(gramm.isCompatible(SI.KILOGRAM));
+	 }
 }

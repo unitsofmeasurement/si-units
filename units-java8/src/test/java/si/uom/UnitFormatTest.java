@@ -184,4 +184,16 @@ public class UnitFormatTest {
       Unit<?> u = format.parse("\u03bcm");
       assertEquals(MICRO(METRE), u);
     }
+    
+	@Test
+	public void compatibleUnitCheckGramParsed() throws Exception {
+	    Unit<?> gramm = SimpleUnitFormat.getInstance().parse("g");
+	    assertTrue(gramm.isCompatible(Units.KILOGRAM));
+	 }
+	
+	@Test
+	public void compatibleUnitCheckGram() throws Exception {
+	    //Unit<?> gramm = SimpleUnitFormat.getInstance().parse("g");
+	    assertTrue(Units.GRAM.isCompatible(Units.KILOGRAM));
+	 }
 }

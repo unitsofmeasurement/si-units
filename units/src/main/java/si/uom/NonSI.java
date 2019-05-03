@@ -93,8 +93,8 @@ import tech.units.indriya.unit.TransformedUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:werner@uom.tech">Werner Keil</a>
- * @version 1.2, $Date: 2019-05-01$
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.3, May 3, 2019
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -103,7 +103,7 @@ public class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
 
     /**
-     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
+     * Holds the standard gravity constant: 9.80665 m/s² exact.
      */
     private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
 
@@ -375,11 +375,11 @@ public class NonSI extends AbstractSystemOfUnits {
     // Acceleration //
     //////////////////
     /**
-     * A unit of acceleration equal to the gravity at the earth's surface (standard
-     * name <code>grav</code>).
+     * Standard acceleration of free fall, sometimes abbreviated as standard gravity. A unit of acceleration equal to the gravity at the earth's surface (standard
+     * name <code>g<sub>n</sub></code>).
      */
-    public static final Unit<Acceleration> G = addUnit(METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
-            .divide(STANDARD_GRAVITY_DIVISOR), "g");
+    public static final Unit<Acceleration> STANDARD_GRAVITY = addUnit(METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+            .divide(STANDARD_GRAVITY_DIVISOR), "g\\u2099");
     
     /**
      * A unit of acceleration equal to <code>1 cm s<sup>2</sup></code>  (standard
@@ -468,7 +468,7 @@ public class NonSI extends AbstractSystemOfUnits {
 			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR), "kgf");
 
     /**
-     * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code> (standard
+     * A unit of force equal to <code>{@link #POUND}Â·{@link #STANDARD_GRAVITY}</code> (standard
      * name <code>lbf</code>).
      */
     @SuppressWarnings("unused")
