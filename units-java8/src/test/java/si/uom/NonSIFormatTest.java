@@ -30,6 +30,8 @@
 package si.uom;
 
 import static org.junit.Assert.*;
+
+import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -63,5 +65,11 @@ public class NonSIFormatTest {
 	public void testFormatAngstrom2() {
 		final String angstrom = ebnfUnitFormat.format(NonSI.ANGSTROM);
 		assertEquals("\u00C5", angstrom);
+	}
+	
+	@Test
+	public void compatibleUnitGravityParsed() throws Exception {
+		Unit<?> g = SimpleUnitFormat.getInstance().parse("gn");
+		assertTrue(g.isCompatible(SI.METRE_PER_SQUARE_SECOND));
 	}
 }

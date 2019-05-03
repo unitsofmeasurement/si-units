@@ -41,7 +41,6 @@ import java.io.IOException;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
-import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
@@ -63,12 +62,11 @@ public class UnitFormatTest {
 	private Quantity<Length> sut;
 
 	private SimpleUnitFormat format2;
-	
+
 	@Before
 	public void init() {
-		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
-				METRE);
-		
+		sut = DefaultQuantityFactory.getInstance(Length.class).create(10, METRE);
+
 //		format = EBNFUnitFormat.getInstance();
 		format2 = SimpleUnitFormat.getInstance();
 		format2.label(NonSI.HECTARE, "Ha");
@@ -80,25 +78,25 @@ public class UnitFormatTest {
 		Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());
 	}
-	
+
 	@Test
 	public void testFormat4() {
 		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());
 	}
-		
+
 	@Test
 	public void testFormat5() {
 		Unit<Area> b = NonSI.HECTARE;
 		assertEquals("Ha", b.toString());
 	}
-	
+
 	@Test
 	public void testFormat3() {
 		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
 		assertEquals("At", at.toString());
 	}
-	
+
 	@Test
 	public void testParseSimple() {
 		try {
@@ -109,7 +107,7 @@ public class UnitFormatTest {
 			fail(e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void testFormatFromQuantity() {
 		final Appendable a = new StringBuilder();
@@ -164,16 +162,27 @@ public class UnitFormatTest {
 			fail(e.getMessage());
 		}
 	}
-	
-    @Test
-    public void testParseMicro() {
-      Unit<?> u = format2.parse("μm");
-      assertEquals(MICRO(METRE), u);
-    }
 
-    @Test
-    public void testParseMicroAlias() {
-      Unit<?> u = format2.parse("\u03bcm");
-      assertEquals(MICRO(METRE), u);
-    }
+	@Test
+	public void testParseMicro() {
+		Unit<?> u = format2.parse("μm");
+		assertEquals(MICRO(METRE), u);
+	}
+
+	@Test
+	public void testParseMicroAlias() {
+		Unit<?> u = format2.parse("\u03bcm");
+		assertEquals(MICRO(METRE), u);
+	}
+
+	@Test
+	public void compatibleUnitCheckGramParsed() throws Exception {
+		Unit<?> gram = SimpleUnitFormat.getInstance().parse("g");
+		assertTrue(gram.isCompatible(Units.KILOGRAM));
+	}
+
+	@Test
+	public void compatibleUnitCheckGram() throws Exception {
+		assertTrue(Units.GRAM.isCompatible(Units.KILOGRAM));
+	}
 }

@@ -30,6 +30,8 @@
 package si.uom;
 
 import static org.junit.Assert.*;
+
+import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
 import org.junit.Before;
 import org.junit.Test;
@@ -65,5 +67,11 @@ public class NonSIFormatTest {
 	public void testFormatDecibel() {
 		final String bel = simpleUnitFormat.format(MetricPrefix.DECI(NonSI.BEL));
 		assertEquals("dB", bel);
+	}
+	
+	@Test
+	public void compatibleUnitGravityParsed() throws Exception {
+		Unit<?> g = SimpleUnitFormat.getInstance().parse("gn");
+		assertTrue(g.isCompatible(SI.METRE_PER_SQUARE_SECOND));
 	}
 }

@@ -349,13 +349,14 @@ public final class NonSI extends AbstractSystemOfUnits {
 	//////////////////
 	// Acceleration //
 	//////////////////
-	/**
-	 * A unit of acceleration equal to the gravity at the earth's surface (standard
-	 * name <code>grav</code>).
-	 */
-	public static final Unit<Acceleration> G = addUnit(
-			METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR), "g");
 
+    /**
+     * Standard acceleration of free fall, sometimes abbreviated as standard gravity. A unit of acceleration equal to the gravity at the earth's surface (standard
+     * name <code>g<sub>n</sub></code>).
+     */
+    public static final Unit<Acceleration> STANDARD_GRAVITY = addUnit(METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+       .divide(STANDARD_GRAVITY_DIVISOR), "g\\u2099");
+    
 	/**
 	 * A unit of acceleration equal to <code>1 cm s<sup>2</sup></code>  (standard
 	 * name <code>Gal</code>).
@@ -695,5 +696,6 @@ public final class NonSI extends AbstractSystemOfUnits {
     static {
         SimpleUnitFormat.getInstance().label(TONNE, "t");
         SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
+        SimpleUnitFormat.getInstance().alias(STANDARD_GRAVITY, "gn");
     }
 }

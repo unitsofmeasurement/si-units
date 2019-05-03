@@ -33,7 +33,6 @@ import static tech.units.indriya.AbstractUnit.ONE;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.ElectricCharge;
@@ -108,13 +107,6 @@ public final class SI extends Units {
     //////////////////////////////
     // SI DERIVED PRODUCT UNITS //
     //////////////////////////////
-
-    /**
-     * The SI unit for acceleration quantities (standard name
-     * <code>m/s2</code>).
-     */
-    public static final Unit<Acceleration> METRE_PER_SQUARE_SECOND = addUnit(
-	    new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
 
     /**
      * The SI unit for action quantities (standard name <code>J.s</code>).
