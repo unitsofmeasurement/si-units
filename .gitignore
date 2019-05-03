@@ -11,3 +11,10 @@ buildNumber.properties
 /repository.zip
 /si.uom_0.7.zip
 /si.uom_0.7/
+
+# IntelliJ #
+.idea/
+*.iml
+
+ # OS Files #
+.DS_Store
