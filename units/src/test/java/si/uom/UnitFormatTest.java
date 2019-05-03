@@ -41,7 +41,6 @@ import java.io.IOException;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
-import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
@@ -176,4 +175,15 @@ public class UnitFormatTest {
       Unit<?> u = format2.parse("\u03bcm");
       assertEquals(MICRO(METRE), u);
     }
+    
+	@Test
+	public void compatibleUnitCheckGramParsed() throws Exception {
+	    Unit<?> gram = SimpleUnitFormat.getInstance().parse("g");
+	    assertTrue(gram.isCompatible(Units.KILOGRAM));
+	 }
+	
+	@Test
+	public void compatibleUnitCheckGram() throws Exception {
+	    assertTrue(Units.GRAM.isCompatible(Units.KILOGRAM));
+	 }
 }
