@@ -70,7 +70,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.5, May 1, 2019
+ * @version 1.6, May 4, 2019
  */
 public final class SI extends Units {
 

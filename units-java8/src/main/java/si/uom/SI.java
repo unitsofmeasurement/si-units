@@ -81,8 +81,8 @@ import tec.uom.se.unit.Units;
  * @see tec.uom.se.unit.MetricPrefix
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.4, May 1, 2019
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.5, May 4, 2019
  */
 public final class SI extends Units {
 	

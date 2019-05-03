@@ -70,8 +70,8 @@ public class NonSIFormatTest {
 	}
 	
 	@Test
-	public void compatibleUnitGravityParsed() throws Exception {
-		Unit<?> g = SimpleUnitFormat.getInstance().parse("gn");
+	public void testCompatibleUnitGravityParsed() throws Exception {
+		final Unit<?> g = SimpleUnitFormat.getInstance().parse("gn");
 		assertTrue(g.isCompatible(SI.METRE_PER_SQUARE_SECOND));
 	}
 }
