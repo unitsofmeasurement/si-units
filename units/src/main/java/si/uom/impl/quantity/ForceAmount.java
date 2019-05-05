@@ -40,12 +40,17 @@ import tech.units.indriya.quantity.NumberQuantity;
  * (Newton).
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.3.1, $Date: 2016-10-23 $
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.4, $Date: 2019-05-04 $
  */
 public final class ForceAmount extends NumberQuantity<Force> implements Force {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3021822020310138257L;
+
+	/**
      * @param number
      * @param unit
      */

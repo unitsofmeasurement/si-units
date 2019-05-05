@@ -30,7 +30,7 @@
 package si.uom;
 
 import static org.junit.Assert.*;
-import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.*;
 
 import javax.measure.Quantity;
@@ -86,7 +86,7 @@ public class QuantityPrefixTest {
 				
 		Quantity<Length> m2 = m1.to(MICRO(SI.METRE));
 		assertEquals(1000000.0d, m2.getValue());
-		assertEquals("µm", m2.getUnit().toString());
+		assertEquals("μm", m2.getUnit().toString());
 	}
 	
 	@Test

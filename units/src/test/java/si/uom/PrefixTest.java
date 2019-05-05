@@ -30,7 +30,7 @@
 package si.uom;
 
 import static org.junit.Assert.assertEquals;
-import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
@@ -44,6 +44,10 @@ import org.junit.Test;
 
 import tech.units.indriya.function.RationalConverter;
 
+/**
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ *
+ */
 public class PrefixTest {
 	@Test
 	public void testKilo() {

@@ -30,6 +30,9 @@
 package si.uom;
 
 import static org.junit.Assert.*;
+
+import java.math.BigDecimal;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
 
@@ -45,7 +48,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(10E30d, SI.UNIFIED_ATOMIC_MASS);
 		Quantity<Mass> result = kg.add(p);
-		assertEquals(16610.38782d, result.getValue());
+		assertEquals(BigDecimal.valueOf(16610.38782d), result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 
@@ -54,7 +57,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(5000d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(1E30d, SI.UNIFIED_ATOMIC_MASS);
 		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(3339.461218d, result.getValue());
+		assertEquals(BigDecimal.valueOf(3339.461218d), result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 }

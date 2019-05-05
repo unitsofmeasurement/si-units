@@ -41,17 +41,17 @@ import javax.measure.quantity.Angle;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.PowerOfPiConverter;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
 
 public class AngleTest {
 
-  private static PowersOfPiConverter piMultiplierConverter;
+  private static PowerOfPiConverter piMultiplierConverter;
 
   @BeforeClass
   public static void setUp() throws Exception {
-    piMultiplierConverter = PowersOfPiConverter.of(1);
+    piMultiplierConverter = PowerOfPiConverter.of(1);
   }
 
   @Test

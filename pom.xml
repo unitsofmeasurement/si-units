@@ -18,12 +18,12 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>1.0</jsr.version>
-		<lib.version>1.1</lib.version>
-		<ri.version>1.3</ri.version>
+		<jsr.version>2.0-SNAPSHOT</jsr.version>
+		<lib.version>2.0-SNAPSHOT</lib.version>
+		<ri.version>2.0-SNAPSHOT</ri.version>
 		<se.version>1.0.10</se.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>1.0</si.quantity.version><!-- To handle quantity separately, 
+		<si.quantity.version>2.0-SNAPSHOT</si.quantity.version><!-- To handle quantity separately, 
 			makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
@@ -32,7 +32,6 @@
 	<modules>
 		<module>quantity</module>
 		<module>units</module>
-		<module>units-java8</module>
 	</modules>
 
 	<build>

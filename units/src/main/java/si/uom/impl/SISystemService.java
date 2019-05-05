@@ -38,11 +38,11 @@ import javax.measure.spi.SystemOfUnitsService;
 
 import si.uom.NonSI;
 import si.uom.SI;
-import tec.uom.lib.common.function.IntPrioritySupplier;
+import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, October 6, 2018
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.0, May 4, 2019
  */
 class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
 	private static final int PRIO = 20;

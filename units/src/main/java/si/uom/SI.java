@@ -45,7 +45,7 @@ import si.uom.quantity.*;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.PowerOfPiConverter;
 import tech.units.indriya.function.RationalConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
@@ -71,7 +71,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.5, May 1, 2019
+ * @version 1.6, May 4, 2019
  */
 public final class SI extends Units {
 // FIXME update to SI Brochure 9 once available
@@ -259,7 +259,7 @@ public final class SI extends Units {
      * <code>rev</code>).
      */
     public static final Unit<Angle> REVOLUTION = addUnit(
-	    new TransformedUnit<Angle>(RADIAN, PowersOfPiConverter.of(1).concatenate(new RationalConverter(2, 1))));
+	    new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(2, 1))));
 
     
     ///////////////////////////

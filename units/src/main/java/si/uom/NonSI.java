@@ -32,9 +32,9 @@ package si.uom;
 import static si.uom.SI.AVOGADRO_CONSTANT_VALUE;
 import static si.uom.SI.ELEMENTARY_CHARGE_VALUE;
 import static tech.units.indriya.AbstractUnit.ONE;
-import static tech.units.indriya.unit.MetricPrefix.CENTI;
-import static tech.units.indriya.unit.MetricPrefix.FEMTO;
-import static tech.units.indriya.unit.MetricPrefix.MEGA;
+import static javax.measure.MetricPrefix.CENTI;
+import static javax.measure.MetricPrefix.FEMTO;
+import static javax.measure.MetricPrefix.MEGA;
 import static tech.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
@@ -74,7 +74,7 @@ import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
-import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.PowerOfPiConverter;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.function.RationalConverter;
 import tech.units.indriya.unit.ProductUnit;
@@ -128,21 +128,21 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-            new TransformedUnit<Angle>(RADIAN, PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
+            new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
             "Degree Angle", "deg");
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-            PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
+            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>''</code>).
      */
     public static final Unit<Angle> SECOND_ANGLE = addUnit(
             new TransformedUnit<Angle>(RADIAN,
-                    PowersOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
+                    PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
             "Second Angle", "''");
 
     /**
@@ -251,7 +251,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	public static final Unit<Length> BOHR_RADIUS = addUnit(METRE.multiply(5.291772106712E-11), "Bohr Radius", "a0");
 
     ////////////
-    // Area //
+    // Area   //
     ////////////
 
     /**
@@ -261,7 +261,7 @@ public class NonSI extends AbstractSystemOfUnits {
     public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(METRE).pow(2)).multiply(100));
 
     ////////////
-    // Time //
+    // Time   //
     ////////////
 
     /**
@@ -437,9 +437,9 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     public static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
 
-    // /////////////////////////
+    ///////////////////////////
     // Magnetic Flux Density //
-    // /////////////////////////
+    ///////////////////////////
     /**
      * A unit of magnetic flux density equal <code>1000 A/m</code> (standard name
      * <code>G</code>).
@@ -451,7 +451,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>Oe</code>).
      */
     public static final Unit<MagneticFieldStrength> OERSTED = addUnit(
-            new ProductUnit<MagneticFieldStrength>(SI.AMPERE_PER_METRE.multiply(250).divide(PI)), "Ørsted", "Oe", true);
+            new ProductUnit<>(SI.AMPERE_PER_METRE.multiply(250).divide(PI)), "Oersted", "Oe", true);
     
     ///////////
     // Force //

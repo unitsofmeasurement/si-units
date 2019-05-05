@@ -34,13 +34,13 @@ import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
-import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 
 import java.io.IOException;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.format.ParserException;
+import javax.measure.format.MeasurementParseException;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
@@ -51,11 +51,11 @@ import org.junit.Test;
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.quantity.DefaultQuantityFactory;
+import tech.units.indriya.internal.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
  *
  */
 public class UnitFormatTest {
@@ -104,7 +104,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("s");
 			assertEquals("s", u.getSymbol());
 			assertEquals(SECOND, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
@@ -137,7 +137,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("min");
 			// assertEquals("min", u.getSymbol());
 			assertEquals(MINUTE, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
@@ -148,7 +148,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("m");
 			assertEquals("m", u.getSymbol());
 			assertEquals(METRE, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
@@ -159,7 +159,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("kg");
 			assertEquals("kg", u.getSymbol());
 			assertEquals(KILOGRAM, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}

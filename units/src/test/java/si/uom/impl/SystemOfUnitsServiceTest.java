@@ -44,7 +44,8 @@ public class SystemOfUnitsServiceTest {
 	private static final String SI_NAME = "SI";
 	private static final String NONSI_NAME = "Non-SI Units";
 
-	private static final int UNITS_EXPECTED = 24;
+	private static final int UNITS_EXPECTED = 43;
+	private static final int UNITS_EXPECTED_SI = 24;
 	private static final int UNITS_EXPECTED_NONSI = 56;
 	private static SystemOfUnitsService defaultService;
 
@@ -58,8 +59,8 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(defaultService);
 		SystemOfUnits system = defaultService.getSystemOfUnits();
 		assertNotNull(system);
-		assertEquals("si.uom.SI", system.getClass().getName());
-		assertEquals("SI", system.getName());
+		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
+		assertEquals("Units", system.getName());
 		assertNotNull(system.getUnits());
 		assertEquals(UNITS_EXPECTED, system.getUnits().size());
 		// SI extends Units, this is only its additional collection
@@ -69,7 +70,7 @@ public class SystemOfUnitsServiceTest {
 	public void testOtherUnitSystems() {
 		Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
 		assertNotNull(systems);
-		assertEquals(2, systems.size()); // we'd expect SI and NonSI here
+		assertEquals(1, systems.size()); // we'd expect SI and NonSI here
 
 		for (SystemOfUnits s : systems) {
 			checkSystem(s);
@@ -82,18 +83,29 @@ public class SystemOfUnitsServiceTest {
 		SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
 		assertNotNull(otherService);
 		assertNotNull(otherService.getSystemOfUnits());
-		assertEquals("Units", otherService.getSystemOfUnits().getName());
+		assertEquals("SI", otherService.getSystemOfUnits().getName());
 	}
 
-	private void checkSystem(SystemOfUnits system) {
+	private void checkSystem(SystemOfUnits system, final String mode) {
 		assertNotNull(system);
-		assertTrue(SI_NAME.equals(system.getName()) || NONSI_NAME.equals(system.getName()));
-		if (SI_NAME.equals(system.getName())) {
-			assertEquals("si.uom.SI", system.getClass().getName());
-			assertEquals(UNITS_EXPECTED, system.getUnits().size());
-		} else if (NONSI_NAME.equals(system.getName())) {
-			assertEquals("si.uom.NonSI", system.getClass().getName());
-			assertEquals(UNITS_EXPECTED_NONSI, system.getUnits().size());
+		switch (mode) {
+		case "SI":
+			assertTrue(SI_NAME.equals(system.getName()) || NONSI_NAME.equals(system.getName()));
+			if (SI_NAME.equals(system.getName())) {
+				assertEquals("si.uom.SI", system.getClass().getName());
+				assertEquals(UNITS_EXPECTED, system.getUnits().size());
+			} else if (NONSI_NAME.equals(system.getName())) {
+				assertEquals("si.uom.NonSI", system.getClass().getName());
+				assertEquals(UNITS_EXPECTED_NONSI, system.getUnits().size());
+			}
+			break;
+		default:
+			assertTrue("Units".equals(system.getName()));
+			break;
 		}
+	}
+	
+	private void checkSystem(SystemOfUnits system) {
+		checkSystem(system, "Units");
 	}
 }

@@ -14,7 +14,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<!-- Versions -->
-		<jdkVersion>1.8</jdkVersion><!-- Using Indriya now -->
+		<jdkVersion>1.9</jdkVersion><!-- Using Indriya now -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>

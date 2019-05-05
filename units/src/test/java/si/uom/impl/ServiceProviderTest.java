@@ -39,24 +39,24 @@ import org.junit.Test;
 
 public class ServiceProviderTest {
 
-    @Test
-    public void testAvailables() {
-	List<ServiceProvider> providers = ServiceProvider.available();
-	assertNotNull(providers);
-	assertEquals(2, providers.size());
-    }
-    
-    @Test
-    public void testDefault() {
-	ServiceProvider provider = ServiceProvider.current();
-	assertNotNull(provider);
-	assertEquals("si.uom.impl.SIServiceProvider", provider.getClass().getName());
-	
-	assertNotNull(provider.getUnitFormatService());
-	assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
-	assertEquals(4, provider.getUnitFormatService().getAvailableFormatNames().size());
-	assertNotNull(provider.getSystemOfUnitsService());
-	assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
-	assertEquals("SI", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
-    }
+	@Test
+	public void testAvailables() {
+		List<ServiceProvider> providers = ServiceProvider.available();
+		assertNotNull(providers);
+		assertEquals(2, providers.size());
+	}
+
+	@Test
+	public void testDefault() {
+		ServiceProvider provider = ServiceProvider.current();
+		assertNotNull(provider);
+		assertEquals("tech.units.indriya.internal.DefaultServiceProvider", provider.getClass().getName());
+
+		assertNotNull(provider.getFormatService());
+		assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
+		assertEquals(4, provider.getUnitFormatService().getAvailableFormatNames().size());
+		assertNotNull(provider.getSystemOfUnitsService());
+		assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
+		assertEquals("Units", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
+	}
 }
