@@ -9,6 +9,7 @@
 	</parent>
 	<artifactId>si-units-java8</artifactId>
 	<name>SI Units for Java SE 8</name>
+  <packaging>bundle</packaging>
 
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -97,9 +98,10 @@
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 
-			<plugin>
-				<groupId>biz.aQute.bnd</groupId>
-				<artifactId>bnd-maven-plugin</artifactId>
+ 			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
 			</plugin>
 
 			<plugin>
