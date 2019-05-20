@@ -50,6 +50,7 @@ import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
 import tech.units.indriya.unit.Units;
+import tech.units.indriya.unit.MetricPrefix;
 
 /**
  * <p>
@@ -62,15 +63,14 @@ import tech.units.indriya.unit.Units;
  *      International System of Units</a>
  * @see <a href="http://physics.nist.gov/cuu/Units/outside.html">Units outside
  *      the SI that are accepted for use with the SI</a>
- * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf">SI 2006
- *      - Official Specification</a>
+ * @see <a href="https://www.bipm.org/en/publications/si-brochure/">SI Brochure: The International System of Units (SI)</a>
  * @see MetricPrefix
  * 
  * @noextend This class is not intended to be extended by clients.
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.6, May 4, 2019
+ * @version 1.7, May 20, 2019
  */
 public final class SI extends Units {
 

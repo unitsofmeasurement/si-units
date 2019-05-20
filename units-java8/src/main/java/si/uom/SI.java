@@ -64,6 +64,7 @@ import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
 import tec.uom.se.unit.TransformedUnit;
 import tec.uom.se.unit.Units;
+import tec.uom.se.unit.MetricPrefix;
 
 /**
  * <p>
@@ -76,13 +77,12 @@ import tec.uom.se.unit.Units;
  *      International System of Units</a>
  * @see <a href="http://physics.nist.gov/cuu/Units/outside.html">Units outside
  *      the SI that are accepted for use with the SI</a>
- * @see <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8.pdf">SI 2006
- *      - Official Specification</a>
- * @see tec.uom.se.unit.MetricPrefix
+ * @see <a href="https://www.bipm.org/en/publications/si-brochure/">SI Brochure: The International System of Units (SI)</a>
+ * @see MetricPrefix
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.5, May 4, 2019
+ * @version 1.6, May 20, 2019
  */
 public final class SI extends Units {
 	
