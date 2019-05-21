@@ -234,4 +234,5 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
+	<version>1.3-SNAPSHOT</version>
 </project>
