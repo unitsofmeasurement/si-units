@@ -27,37 +27,50 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom;
+package si.uom.impl;
 
 import static org.junit.Assert.*;
 
-import java.math.BigDecimal;
-
-import javax.measure.Quantity;
-import javax.measure.quantity.Mass;
-
+import javax.measure.spi.FormatService;
+import javax.measure.spi.FormatService.FormatType;
+import javax.measure.spi.ServiceProvider;
 import org.junit.Test;
 
-import tech.units.indriya.quantity.Quantities;
-import tech.units.indriya.unit.Units;
+public class FormatServiceTest {
 
-public class ArithmeticTest {
+	@Test
+	public void testNumberOfFormatServices() {
+		for (ServiceProvider provider : ServiceProvider.available()) {
+			final String providerName = provider.getClass().getName();
+			//System.out.println(providerName);
+            FormatService formatService = provider.getFormatService();
+            //System.out.println(formatService.toString());
+            assertEquals(4, formatService.getAvailableFormatNames(FormatType.UNIT_FORMAT).size());
+            assertEquals(4, formatService.getAvailableFormatNames(FormatType.QUANTITY_FORMAT).size());
+        }
+	}
 	
 	@Test
-	public void testAdd() {
-		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(10E30d, SI.UNIFIED_ATOMIC_MASS);
-		Quantity<Mass> result = kg.add(p);
-		assertEquals(new BigDecimal("16610.387820000000000000000000000000000000"), result.getValue());
-		assertEquals(Units.KILOGRAM, result.getUnit());
+	public void testUnitFormatServices() {
+		for (ServiceProvider provider : ServiceProvider.available()) {
+			final String providerName = provider.getClass().getName();
+			//System.out.println(providerName);
+            FormatService formatService = provider.getFormatService();
+            for (String serviceName : formatService.getAvailableFormatNames(FormatType.UNIT_FORMAT)) {
+            	assertNotNull(formatService.getUnitFormat(serviceName));
+            }
+        }
 	}
-
+	
 	@Test
-	public void testSubtract2() {
-		Quantity<Mass> kg = Quantities.getQuantity(5000d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(1E30d, SI.UNIFIED_ATOMIC_MASS);
-		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(new BigDecimal("3339.461218000000000000000000000000000000"), result.getValue());
-		assertEquals(Units.KILOGRAM, result.getUnit());
+	public void testQuantityFormatServices() {
+		for (ServiceProvider provider : ServiceProvider.available()) {
+			final String providerName = provider.getClass().getName();
+			//System.out.println(providerName);
+            FormatService formatService = provider.getFormatService();
+            for (String serviceName : formatService.getAvailableFormatNames(FormatType.QUANTITY_FORMAT)) {
+            	assertNotNull(formatService.getQuantityFormat(serviceName));
+            }
+        }
 	}
 }

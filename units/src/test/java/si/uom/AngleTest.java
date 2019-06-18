@@ -88,7 +88,7 @@ public class AngleTest {
     Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
     assertNotNull(sut);
     assertEquals(Units.RADIAN, sut.getUnit());
-    assertEquals(new BigDecimal("0.01745329251994329576923690768488613"), sut.getValue());
+    assertEquals(new BigDecimal("0.017453292519943295769236907684886129174041179373241439316730392568668"), sut.getValue());
   }
 
   @Test

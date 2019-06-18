@@ -74,7 +74,7 @@ public class QuantityPrefixTest {
 		assertEquals("l", m1.getUnit().toString());
 				
 		Quantity<Volume> m2 = m1.to(MILLI(LITRE));
-		assertEquals(1000.0d, m2.getValue());
+		assertEquals(1000, m2.getValue());
 		assertEquals("ml", m2.getUnit().toString());
 	}
 	
@@ -85,7 +85,7 @@ public class QuantityPrefixTest {
 		assertEquals("m", m1.getUnit().toString());
 				
 		Quantity<Length> m2 = m1.to(MICRO(SI.METRE));
-		assertEquals(1000000.0d, m2.getValue());
+		assertEquals(1000000, m2.getValue());
 		assertEquals("μm", m2.getUnit().toString());
 	}
 	
@@ -96,7 +96,7 @@ public class QuantityPrefixTest {
 		assertEquals("g", m1.getUnit().toString());
 				
 		Quantity<Mass> m2 = m1.to(NANO(SI.GRAM));
-		assertEquals(1000000000.0d, m2.getValue());
+		assertEquals(1000000000, m2.getValue());
 		assertEquals("ng", m2.getUnit().toString());
 	}
 	
@@ -107,7 +107,7 @@ public class QuantityPrefixTest {
 		assertEquals("m", m1.getUnit().toString());
 				
 		Quantity<Length> m2 = m1.to(NANO(METRE));
-		assertEquals(1000000000.0d, m2.getValue());
+		assertEquals(1000000000, m2.getValue());
 		assertEquals("nm", m2.getUnit().toString());
 	}
 }

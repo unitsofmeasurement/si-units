@@ -31,6 +31,8 @@ package si.uom;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Angle;
 
@@ -47,7 +49,7 @@ public class ConverterTest {
     Quantity<Angle> sut = Quantities.getQuantity(1, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
     assertNotNull(sut);
     assertEquals(Units.RADIAN, sut.getUnit());
-    assertEquals(0.017453292519943295d, sut.getValue());
+    assertEquals(new BigDecimal("0.017453292519943295769236907684886129174041179373241439316730392568668"), sut.getValue());
   }
 
   @Test
@@ -55,6 +57,6 @@ public class ConverterTest {
     Quantity<Angle> sut = Quantities.getQuantity(1d, Units.RADIAN).to(NonSI.DEGREE_ANGLE);
     assertNotNull(sut);
     assertEquals(NonSI.DEGREE_ANGLE, sut.getUnit());
-    assertEquals(57.29577951308232d, sut.getValue());
+    assertEquals(new BigDecimal("57.2957795130823208767981548141051660"), sut.getValue());
   }
 }
