@@ -29,6 +29,7 @@
  */
 package si.uom.impl;
 
+import javax.annotation.Priority;
 import javax.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
@@ -39,9 +40,10 @@ import tech.units.indriya.internal.DefaultServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0
+ * @version 1.1
  */
 @Named("SI")
+@Priority(100)
 public class SIServiceProvider extends DefaultServiceProvider {
 
 	public int getPriority() {
@@ -52,4 +54,11 @@ public class SIServiceProvider extends DefaultServiceProvider {
 	public SystemOfUnitsService getSystemOfUnitsService() {
 		return new SISystemService();
 	}
+	
+    @Override
+    public String toString() {
+        return "SI";
+    }
+	
+	
 }

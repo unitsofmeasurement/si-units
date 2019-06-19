@@ -44,6 +44,10 @@ public class ServiceProviderTest {
 		List<ServiceProvider> providers = ServiceProvider.available();
 		assertNotNull(providers);
 		assertEquals(2, providers.size());
+		
+		for (ServiceProvider provider : providers) {
+			System.out.println(provider);
+		}
 	}
 
 	@Test
