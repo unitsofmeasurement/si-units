@@ -69,14 +69,12 @@ import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Level;
 import si.uom.quantity.Luminance;
 import si.uom.quantity.MagneticFieldStrength;
-import tech.units.indriya.AbstractConverter;
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
+import tech.units.indriya.function.AbstractConverter;
 import tech.units.indriya.function.LogConverter;
-import tech.units.indriya.function.PowerOfPiConverter;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.RationalConverter;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
 
@@ -95,7 +93,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.3, May 3, 2019
+ * @version 1.4, June 21, 2019
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -128,21 +126,21 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>deg</code>).
      */
     public static final Unit<Angle> DEGREE_ANGLE = addUnit(
-            new TransformedUnit<Angle>(RADIAN, PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180))),
+            new TransformedUnit<Angle>(RADIAN, MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(1, 180))),
             "Degree Angle", "deg");
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>'</code>).
      */
     public static final Unit<Angle> MINUTE_ANGLE = addUnit(new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60))), "Minute Angle", "'");
+            MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(1, 180 * 60))), "Minute Angle", "'");
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>''</code>).
      */
     public static final Unit<Angle> SECOND_ANGLE = addUnit(
             new TransformedUnit<Angle>(RADIAN,
-                    PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60))),
+                    MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(1, 180 * 60 * 60))),
             "Second Angle", "''");
 
     /**
@@ -152,7 +150,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * must be obtained by experiment, and is therefore not known exactly.
      */
     public static final Unit<Energy> ELECTRON_VOLT = addUnit(
-            new TransformedUnit<Energy>(JOULE, new MultiplyConverter(1.602176487E-19)), "Electron Volt", "eV");
+            new TransformedUnit<Energy>(JOULE, MultiplyConverter.of(1.602176487E-19)), "Electron Volt", "eV");
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
     /**
@@ -162,7 +160,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * obtained by experiment, and is therefore not known exactly.
      */
     public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
-            new TransformedUnit<Mass>(KILOGRAM, new MultiplyConverter(1.660538782E-27)), "Unified atomic mass", "u",
+            new TransformedUnit<Mass>(KILOGRAM, MultiplyConverter.of(1.660538782E-27)), "Unified atomic mass", "u",
             true);
     // CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
@@ -183,14 +181,14 @@ public class NonSI extends AbstractSystemOfUnits {
      * obtained by experiment, and is therefore not known exactly.
      */
     public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
-            new TransformedUnit<Length>(METRE, new MultiplyConverter(149597871000.0)), "Astronomical Unit", "UA");
+            new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597871000.0)), "Astronomical Unit", "UA");
     // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>ha</code>).
      */
     public static final Unit<Area> HECTARE = addUnit(
-            new TransformedUnit<Area>(SQUARE_METRE, new RationalConverter(10000, 1)), "Hectare", "ha");
+            new TransformedUnit<Area>(SQUARE_METRE, MultiplyConverter.ofRational(10000, 1)), "Hectare", "ha");
 
     ///////////////////
     // Dimensionless //
@@ -311,7 +309,7 @@ public class NonSI extends AbstractSystemOfUnits {
     /**
      * A mass unit accepted for use with SI units (standard name <code>t</code>).
      */
-    public static final Unit<Mass> TONNE = addUnit(new TransformedUnit<Mass>(KILOGRAM, new RationalConverter(1000, 1)),
+    public static final Unit<Mass> TONNE = addUnit(new TransformedUnit<Mass>(KILOGRAM, MultiplyConverter.ofRational(1000, 1)),
             "Tonne", "t");
 
     /////////////////////

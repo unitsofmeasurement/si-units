@@ -31,13 +31,12 @@ package si.uom;
 
 import static org.junit.Assert.*;
 
-import java.math.BigDecimal;
-
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
+import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
 
@@ -48,7 +47,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(10E30d, SI.UNIFIED_ATOMIC_MASS);
 		Quantity<Mass> result = kg.add(p);
-		assertEquals(new BigDecimal("16610.387820000000000000000000000000000000"), result.getValue());
+		assertEquals(RationalNumber.of(16610.38782d), result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 
@@ -57,7 +56,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(5000d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(1E30d, SI.UNIFIED_ATOMIC_MASS);
 		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(new BigDecimal("3339.461218000000000000000000000000000000"), result.getValue());
+		assertEquals(RationalNumber.of(3339.461218d), result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 }

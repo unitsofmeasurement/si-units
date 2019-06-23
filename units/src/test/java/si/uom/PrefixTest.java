@@ -42,7 +42,7 @@ import javax.measure.quantity.Mass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.function.MultiplyConverter;
 
 /**
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
@@ -77,13 +77,13 @@ public class PrefixTest {
 	@Ignore("Adjust to PowerOfIntConverter")
 	public void testBetweenPrefixes() {
 		UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
-		assertEquals(conv, RationalConverter.of(1000, 1));
+		assertEquals(conv, MultiplyConverter.ofRational(1000, 1));
 	}
 
 	@Test
 	@Ignore("Adjust to PowerOfIntConverter")
 	public void testBetweenPrefixes2() {
 		UnitConverter conv = KILO(METRE).getConverterTo(GIGA(METRE));
-		assertEquals(RationalConverter.of(1L, 1000000L), conv);
+		assertEquals(MultiplyConverter.ofRational(1L, 1000000L), conv);
 	}
 }
