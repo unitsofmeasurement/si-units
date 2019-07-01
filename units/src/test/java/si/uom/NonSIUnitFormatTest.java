@@ -27,40 +27,51 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.impl;
+package si.uom;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-
-import javax.measure.spi.ServiceProvider;
-
+import javax.measure.Unit;
+import javax.measure.format.UnitFormat;
+import org.junit.Before;
 import org.junit.Test;
 
-public class ServiceProviderTest {
+import tech.units.indriya.format.SimpleUnitFormat;
+import javax.measure.MetricPrefix;
 
-	@Test
-	public void testAvailables() {
-		List<ServiceProvider> providers = ServiceProvider.available();
-		assertNotNull(providers);
-		assertEquals(2, providers.size());
-		
-		for (ServiceProvider provider : providers) {
-			System.out.println(provider);
-		}
+/**
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ *
+ */
+public class NonSIUnitFormatTest {
+	private UnitFormat simpleUnitFormat;
+
+	@Before
+	public void init() {
+		simpleUnitFormat = SimpleUnitFormat.getInstance();
 	}
 
 	@Test
-	public void testDefault() {
-		ServiceProvider provider = ServiceProvider.current();
-		assertNotNull(provider);
-		assertEquals("tech.units.indriya.internal.DefaultServiceProvider", provider.getClass().getName());
-
-		assertNotNull(provider.getFormatService());
-		assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
-		assertEquals(4, provider.getUnitFormatService().getAvailableFormatNames().size());
-		assertNotNull(provider.getSystemOfUnitsService());
-		assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
-		assertEquals("Units", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
+	public void testFormatAngstrom1() {
+		final String angstrom = simpleUnitFormat.format(NonSI.ANGSTROM);
+		assertEquals("\u00C5", angstrom);
 	}
+	
+	@Test
+	public void testFormatBel() {
+		final String bel = simpleUnitFormat.format(NonSI.BEL);
+		assertEquals("B", bel);
+	}
+	
+	@Test
+	public void testFormatDecibel() {
+		final String bel = simpleUnitFormat.format(MetricPrefix.DECI(NonSI.BEL));
+		assertEquals("dB", bel);
+	}
+	
+	@Test
+	public void compatibleUnitCheckGramm() throws Exception {
+	    Unit<?> gramm = SimpleUnitFormat.getInstance().parse("g");
+	    assertTrue(gramm.isCompatible(SI.KILOGRAM));
+	 }
 }

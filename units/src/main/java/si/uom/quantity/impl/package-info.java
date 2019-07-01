@@ -27,38 +27,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.impl;
-
-import javax.annotation.Priority;
-import javax.inject.Named;
-import javax.measure.spi.ServiceProvider;
-import javax.measure.spi.SystemOfUnitsService;
-import tech.units.indriya.internal.DefaultServiceProvider;
 
 /**
- * This class implements the {@link ServiceProvider} interface and hereby uses
- * the JDK {@link java.util.ServiceLoader} to load the services required.
+ * SI Quantity Implementations
+ * @author Werner
  *
- * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.1
  */
-@Named("SI")
-@Priority(100)
-public class SIServiceProvider extends DefaultServiceProvider {
-
-	public int getPriority() {
-		return 100;
-	}
-
-	@Override
-	public SystemOfUnitsService getSystemOfUnitsService() {
-		return new SISystemService();
-	}
-	
-    @Override
-    public String toString() {
-        return "SI";
-    }
-	
-	
-}
+package si.uom.quantity.impl;

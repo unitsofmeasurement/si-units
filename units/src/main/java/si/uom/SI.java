@@ -270,7 +270,7 @@ public final class SI extends Units {
 	static final double BOLTZMANN_CONSTANT_VALUE = 1.3806485279E-23;
 
 	/**
-	 * Holds the electric charge of one electron.
+	 * Holds the electric charge value of one electron.
 	 */
 	static final double ELEMENTARY_CHARGE_VALUE = 1.602176462E-19; // (C).
 

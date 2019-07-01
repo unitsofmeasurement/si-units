@@ -32,8 +32,10 @@ package si.uom;
 import static org.junit.Assert.*;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
+import static tech.units.indriya.unit.Units.HOUR;
 import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
+import static si.uom.SI.PLANCK_CONSTANT;
 import static javax.measure.MetricPrefix.*;
 
 import java.io.IOException;
@@ -58,10 +60,10 @@ import tech.units.indriya.unit.Units;
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
  *
  */
-public class UnitFormatTest {
+public class SIUnitFormatTest {
 	private Quantity<Length> sut;
 
-	private SimpleUnitFormat format2;
+	private SimpleUnitFormat suf;
 	
 	@Before
 	public void init() {
@@ -69,9 +71,9 @@ public class UnitFormatTest {
 				METRE);
 		
 //		format = EBNFUnitFormat.getInstance();
-		format2 = SimpleUnitFormat.getInstance();
-		format2.label(NonSI.HECTARE, "Ha");
-		format2.label(NonSI.TONNE, "t");
+		suf = SimpleUnitFormat.getInstance();
+		suf.label(NonSI.HECTARE, "Ha");
+		suf.label(NonSI.TONNE, "t");
 	}
 
 	@Test
@@ -99,9 +101,9 @@ public class UnitFormatTest {
 	}
 	
 	@Test
-	public void testParseSimple() {
+	public void testParseSimpleSec() {
 		try {
-			Unit<?> u = format2.parse("s");
+			Unit<?> u = suf.parse("s");
 			assertEquals("s", u.getSymbol());
 			assertEquals(SECOND, u);
 		} catch (MeasurementParseException e) {
@@ -113,7 +115,7 @@ public class UnitFormatTest {
 	public void testFormatFromQuantity() {
 		final Appendable a = new StringBuilder();
 		try {
-			format2.format(METRE, a);
+			suf.format(METRE, a);
 		} catch (IOException e) {
 			fail(e.getMessage());
 		}
@@ -124,7 +126,7 @@ public class UnitFormatTest {
 		@SuppressWarnings("unchecked")
 		Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
 		try {
-			format2.format(v, a2);
+			suf.format(v, a2);
 		} catch (IOException e) {
 			fail(e.getMessage());
 		}
@@ -132,20 +134,30 @@ public class UnitFormatTest {
 	}
 
 	@Test
-	public void testParseSimple1() {
+	public void testParseSimpleMin() {
 		try {
-			Unit<?> u = format2.parse("min");
+			Unit<?> u = suf.parse("min");
 			// assertEquals("min", u.getSymbol());
 			assertEquals(MINUTE, u);
 		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void testParseSimpleHour() {
+		try {
+			Unit<?> u = suf.parse("h");
+			assertEquals(HOUR, u);
+		} catch (MeasurementParseException e) {
+			fail(e.getMessage());
+		}
+	}
 
 	@Test
-	public void testParseSimple2() {
+	public void testParseSimpleMetre() {
 		try {
-			Unit<?> u = format2.parse("m");
+			Unit<?> u = suf.parse("m");
 			assertEquals("m", u.getSymbol());
 			assertEquals(METRE, u);
 		} catch (MeasurementParseException e) {
@@ -154,9 +166,9 @@ public class UnitFormatTest {
 	}
 
 	@Test
-	public void testParseSimple3() {
+	public void testParseSimpleKg() {
 		try {
-			Unit<?> u = format2.parse("kg");
+			Unit<?> u = suf.parse("kg");
 			assertEquals("kg", u.getSymbol());
 			assertEquals(KILOGRAM, u);
 		} catch (MeasurementParseException e) {
@@ -166,14 +178,20 @@ public class UnitFormatTest {
 	
     @Test
     public void testParseMicro() {
-      Unit<?> u = format2.parse("μm");
+      Unit<?> u = suf.parse("μm");
       assertEquals(MICRO(METRE), u);
     }
 
     @Test
     public void testParseMicroAlias() {
-      Unit<?> u = format2.parse("\u03bcm");
+      Unit<?> u = suf.parse("\u03bcm");
       assertEquals(MICRO(METRE), u);
+    }
+    
+    @Test
+    public void testParsePlanck() {
+      Unit<?> u = suf.parse("ℎ");
+      assertEquals(PLANCK_CONSTANT, u);
     }
     
 	@Test

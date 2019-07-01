@@ -27,50 +27,38 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.impl.quantity;
+package si.uom.internal;
 
-import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
-
-import tech.units.indriya.quantity.NumberQuantity;
+import javax.annotation.Priority;
+import javax.inject.Named;
+import javax.measure.spi.ServiceProvider;
+import javax.measure.spi.SystemOfUnitsService;
+import tech.units.indriya.internal.DefaultServiceProvider;
 
 /**
- * Represents the rate of change of velocity with respect to time.
- * The metric system unit for this quantity is "m/s²" (metre per square second).
+ * This class implements the {@link ServiceProvider} interface and hereby uses
+ * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
- * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.5, $Date: 2016-10-23 $
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.1
  */
-/**
- * @author werner
- *
- */
-/**
- * @author werner
- *
- */
-public final class AccelerationAmount extends NumberQuantity<Acceleration> implements Acceleration {
+@Named("SI")
+@Priority(100)
+public class SIServiceProvider extends DefaultServiceProvider {
 
-    /**
-     * 
-     */
-    // private static final long serialVersionUID = -3979825836742796484L;
+	public int getPriority() {
+		return 100;
+	}
 
-    /**
-     * @param number
-     * @param unit
-     */
-    public AccelerationAmount(Number number, Unit<Acceleration> unit) {
-	super(number, unit);
+	@Override
+	public SystemOfUnitsService getSystemOfUnitsService() {
+		return new SISystemService();
+	}
+	
+    @Override
+    public String toString() {
+        return "SI";
     }
-
-    /**
-     * @param number
-     * @param unit
-     * @return
-     */
-    public static final AccelerationAmount of(Number number, Unit<Acceleration> unit) {
-	return new AccelerationAmount(number, unit);
-    }
+	
+	
 }

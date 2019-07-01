@@ -27,31 +27,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.impl.quantity;
+package si.uom.internal;
 
-import javax.measure.Unit;
-import javax.measure.quantity.Mass;
+import static org.junit.Assert.*;
 
-import tech.units.indriya.quantity.NumberQuantity;
+import java.util.List;
 
-/**
- * Represents the measure of the quantity of matter that a body or an object contains.
- * The mass of the body is not dependent on gravity and therefore is different from but
- * proportional to its weight.
- * The metric system unit for this quantity is "kg" (kilogram).
- *
- * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8.1, $Date: 2015-06-04 $
- */
-public final class MassAmount extends NumberQuantity<Mass> implements Mass {
+import javax.measure.spi.ServiceProvider;
 
-	/**
-	 * 
-	 */
-//	private static final long serialVersionUID = -3190275944382844647L;
+import org.junit.Test;
 
-	public MassAmount(Number number, Unit<Mass> unit) {
-		super(number, unit);
+public class ServiceProviderTest {
+
+	@Test
+	public void testAvailables() {
+		List<ServiceProvider> providers = ServiceProvider.available();
+		assertNotNull(providers);
+		assertEquals(2, providers.size());
+		
+		for (ServiceProvider provider : providers) {
+			System.out.println(provider);
+		}
+	}
+
+	@Test
+	public void testDefault() {
+		ServiceProvider provider = ServiceProvider.current();
+		assertNotNull(provider);
+		assertEquals("tech.units.indriya.internal.DefaultServiceProvider", provider.getClass().getName());
+
+		assertNotNull(provider.getFormatService());
+		assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
+		assertEquals(4, provider.getUnitFormatService().getAvailableFormatNames().size());
+		assertNotNull(provider.getSystemOfUnitsService());
+		assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
+		assertEquals("Units", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
 	}
 }

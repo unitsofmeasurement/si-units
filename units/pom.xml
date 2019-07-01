@@ -140,7 +140,7 @@
 			<!-- ======================================================= -->
 			<!-- <plugin> <groupId>org.apache.felix</groupId> <artifactId>maven-bundle-plugin</artifactId> 
 				<extensions>true</extensions> <configuration> <instructions> <Export-Package>si.uom</Export-Package> 
-				<Private-Package>si.uom.impl</Private-Package> </instructions> </configuration> 
+				<Private-Package>si.uom.internal</Private-Package> </instructions> </configuration> 
 				</plugin> -->
 
 			<!-- ======================================================= -->
