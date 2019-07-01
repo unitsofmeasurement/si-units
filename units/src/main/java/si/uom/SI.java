@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.1, June 21, 2019
+ * @version 2.2, July 1, 2019
  */
 public final class SI extends Units {
 	/**
@@ -313,14 +313,14 @@ public final class SI extends Units {
 			true);
 
 	/**
-	 * The Planck constant (denoted <code>h</code>, also called Planck's constant)
+	 * The Planck constant (denoted <code>ℎ</code>, also called Planck's constant)
 	 * is a physical constant that is the quantum of electromagnetic action, which
 	 * relates the energy carried by a photon to its frequency. A photon's energy is
 	 * equal to its frequency multiplied by the Planck constant. The Planck constant
 	 * is of fundamental importance in quantum mechanics, and in metrology it is the
 	 * basis for the definition of the kilogram.
 	 */
-	public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_VALUE), "h", true);
+	public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_VALUE), "\u210E", true);
 
 	/////////////////////
 	// Collection View //
