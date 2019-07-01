@@ -284,21 +284,21 @@ public final class SI extends Units {
 	 * of constituent particles, usually molecules, atoms or ions that are contained
 	 * in the amount of substance given by one mole. It is the proportionality
 	 * factor that relates the molar mass of a substance to the mass of a sample, is
-	 * designated with the symbol <code>NA</code> or <code>L</code>, and has the
+	 * designated with the symbol <code>N<sub>A<sub></code> or <code>L</code>, and has the
 	 * value 6.022140857(74)×1023 mol−1 in the International System of Units (SI).
 	 */
 	public static final Unit<Dimensionless> AVOGADRO_CONSTANT = addUnit(
-			new AlternateUnit<Dimensionless>(ONE.divide(MOLE), "m-1").multiply(AVOGADRO_CONSTANT_VALUE), "L", true); // (1/mol).
+			new AlternateUnit<Dimensionless>(ONE.divide(MOLE), "m-1").multiply(AVOGADRO_CONSTANT_VALUE), "NA", true); // (1/mol).
 
 	/**
-	 * The Boltzmann constant (<code>kB</code> or <code>k</code>) is a physical
+	 * The Boltzmann constant (<code>k<sub>B<sub></code> or <code>k</code>) is a physical
 	 * constant named after its discoverer, Ludwig Boltzmann, which relates the
 	 * average relative kinetic energy of particles in a gas with the temperature of
 	 * the gas and occurs in Planck's law of black-body radiation and in Boltzmann's
 	 * entropy formula.
 	 */
 	public static final Unit<Dimensionless> BOLTZMANN_CONSTANT = addUnit(
-			new AlternateUnit<Dimensionless>(JOULE.divide(KILOGRAM), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "k",
+			new AlternateUnit<Dimensionless>(JOULE.divide(KILOGRAM), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "kB",
 			true);
 
 	/**
