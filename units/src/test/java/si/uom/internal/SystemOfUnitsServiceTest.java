@@ -48,10 +48,12 @@ public class SystemOfUnitsServiceTest {
 	private static final int UNITS_EXPECTED_SI = 24;
 	private static final int UNITS_EXPECTED_NONSI = 56;
 	private static SystemOfUnitsService defaultService;
-
+	private static SystemOfUnitsService siService;
+	
 	@BeforeClass
 	public static void setUp() {
 		defaultService = ServiceProvider.current().getSystemOfUnitsService();
+		siService = ServiceProvider.of(SI_NAME).getSystemOfUnitsService();
 	}
 
 	@Test
@@ -62,18 +64,19 @@ public class SystemOfUnitsServiceTest {
 		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
 		assertEquals("Units", system.getName());
 		assertNotNull(system.getUnits());
+		checkSystem(system);
 		assertEquals(UNITS_EXPECTED, system.getUnits().size());
 		// SI extends Units, this is only its additional collection
 	}
 
 	@Test
 	public void testOtherUnitSystems() {
-		Collection<SystemOfUnits> systems = defaultService.getAvailableSystemsOfUnits();
+		Collection<SystemOfUnits> systems = siService.getAvailableSystemsOfUnits();
 		assertNotNull(systems);
-		assertEquals(1, systems.size()); // we'd expect SI and NonSI here
+		assertEquals(2, systems.size()); // we'd expect SI and NonSI here
 
 		for (SystemOfUnits s : systems) {
-			checkSystem(s);
+			checkSystem(s, SI_NAME);
 		}
 	}
 
@@ -93,7 +96,7 @@ public class SystemOfUnitsServiceTest {
 			assertTrue(SI_NAME.equals(system.getName()) || NONSI_NAME.equals(system.getName()));
 			if (SI_NAME.equals(system.getName())) {
 				assertEquals("si.uom.SI", system.getClass().getName());
-				assertEquals(UNITS_EXPECTED, system.getUnits().size());
+				assertEquals(UNITS_EXPECTED_SI, system.getUnits().size());
 			} else if (NONSI_NAME.equals(system.getName())) {
 				assertEquals("si.uom.NonSI", system.getClass().getName());
 				assertEquals(UNITS_EXPECTED_NONSI, system.getUnits().size());
@@ -101,6 +104,7 @@ public class SystemOfUnitsServiceTest {
 			break;
 		default:
 			assertTrue("Units".equals(system.getName()));
+			assertEquals(UNITS_EXPECTED, system.getUnits().size());
 			break;
 		}
 	}

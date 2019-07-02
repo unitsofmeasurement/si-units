@@ -30,24 +30,16 @@
 package si.uom.internal;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.measure.spi.SystemOfUnits;
-import javax.measure.spi.SystemOfUnitsService;
-
 import si.uom.NonSI;
 import si.uom.SI;
-import tech.uom.lib.common.function.IntPrioritySupplier;
+import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0, May 4, 2019
+ * @version 1.1, July 2, 2019
  */
-class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
-	private static final int PRIO = 20;
-
-	private final Map<String, SystemOfUnits> souMap = new HashMap<>();
+class SISystemService extends AbstractSystemOfUnitsService {
 
 	public SISystemService() {
 		souMap.put(SI.getInstance().getName(), SI.getInstance());
@@ -66,10 +58,5 @@ class SISystemService implements SystemOfUnitsService, IntPrioritySupplier {
 	@Override
 	public SystemOfUnits getSystemOfUnits(String name) {
 		return souMap.get(name);
-	}
-
-	@Override
-	public int getPriority() {
-		return PRIO;
 	}
 }

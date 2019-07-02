@@ -33,18 +33,19 @@ import javax.annotation.Priority;
 import javax.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tech.units.indriya.internal.DefaultServiceProvider;
+
+import tech.units.indriya.spi.AbstractServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.1
+ * @version 1.2
  */
 @Named("SI")
 @Priority(100)
-public class SIServiceProvider extends DefaultServiceProvider {
+public class SIServiceProvider extends AbstractServiceProvider {
 
 	public int getPriority() {
 		return 100;
