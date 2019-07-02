@@ -32,12 +32,15 @@ package si.uom.internal;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import javax.measure.spi.FormatService.FormatType;
 import javax.measure.spi.ServiceProvider;
 
 import org.junit.Test;
 
 public class ServiceProviderTest {
+	private static final Logger LOGGER = Logger.getLogger(ServiceProviderTest.class.getName());
 
 	@Test
 	public void testAvailables() {
@@ -46,7 +49,7 @@ public class ServiceProviderTest {
 		assertEquals(2, providers.size());
 		
 		for (ServiceProvider provider : providers) {
-			System.out.println(provider);
+			LOGGER.info(String.valueOf(provider));
 		}
 	}
 
@@ -57,10 +60,29 @@ public class ServiceProviderTest {
 		assertEquals("tech.units.indriya.internal.DefaultServiceProvider", provider.getClass().getName());
 
 		assertNotNull(provider.getFormatService());
-		assertNotNull(provider.getUnitFormatService().getAvailableFormatNames());
-		assertEquals(4, provider.getUnitFormatService().getAvailableFormatNames().size());
+		assertNotNull(provider.getFormatService().getAvailableFormatNames());
+		assertEquals(4, provider.getFormatService().getAvailableFormatNames().size());
 		assertNotNull(provider.getSystemOfUnitsService());
 		assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
+		assertEquals(1, provider.getSystemOfUnitsService().getAvailableSystemsOfUnits().size());
 		assertEquals("Units", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
+	}
+	
+	@Test
+	public void testSI() {
+		ServiceProvider provider = ServiceProvider.of("SI");
+		assertNotNull(provider);
+		assertEquals("si.uom.internal.SIServiceProvider", provider.getClass().getName());
+
+		assertNotNull(provider.getFormatService());
+		assertNotNull(provider.getFormatService().getAvailableFormatNames(FormatType.UNIT_FORMAT));
+		assertEquals(4, provider.getFormatService().getAvailableFormatNames(FormatType.UNIT_FORMAT).size());
+		assertNotNull(provider.getFormatService().getAvailableFormatNames(FormatType.QUANTITY_FORMAT));
+		assertEquals(4, provider.getFormatService().getAvailableFormatNames(FormatType.QUANTITY_FORMAT).size());
+
+		assertNotNull(provider.getSystemOfUnitsService());
+		assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
+		assertEquals(2, provider.getSystemOfUnitsService().getAvailableSystemsOfUnits().size());
+		assertEquals("SI", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
 	}
 }
