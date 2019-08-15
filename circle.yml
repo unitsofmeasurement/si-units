@@ -1,5 +1,0 @@
-test:
-   override:
-     - mvn clean
-#   post:
-#     - cp $CIRCLE_TEST_REPORTS/*.* $CIRCLE_ARTIFACTS
