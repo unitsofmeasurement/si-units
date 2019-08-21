@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.2, July 1, 2019
+ * @version 2.3, August 21, 2019
  */
 public final class SI extends Units {
 	/**
@@ -298,7 +298,7 @@ public final class SI extends Units {
 	 * entropy formula.
 	 */
 	public static final Unit<Dimensionless> BOLTZMANN_CONSTANT = addUnit(
-			new AlternateUnit<Dimensionless>(JOULE.divide(KILOGRAM), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "kB",
+			new AlternateUnit<Dimensionless>(JOULE.divide(KELVIN), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "kB",
 			true);
 
 	/**
