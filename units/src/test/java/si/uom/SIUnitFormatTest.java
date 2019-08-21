@@ -53,7 +53,7 @@ import org.junit.Test;
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.internal.DefaultQuantityFactory;
+import tech.units.indriya.quantity.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
 
 /**

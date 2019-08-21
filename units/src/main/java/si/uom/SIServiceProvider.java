@@ -27,36 +27,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.internal;
+package si.uom;
 
-import java.util.Collection;
-import javax.measure.spi.SystemOfUnits;
-import si.uom.NonSI;
-import si.uom.SI;
-import tech.units.indriya.spi.AbstractSystemOfUnitsService;
+import javax.annotation.Priority;
+import javax.inject.Named;
+import javax.measure.spi.ServiceProvider;
+import javax.measure.spi.SystemOfUnitsService;
+
+import tech.units.indriya.spi.AbstractServiceProvider;
 
 /**
+ * This class implements the {@link ServiceProvider} interface and hereby uses
+ * the JDK {@link java.util.ServiceLoader} to load the services required.
+ *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.1, July 2, 2019
+ * @version 1.2
  */
-class SISystemService extends AbstractSystemOfUnitsService {
+@Named("SI")
+@Priority(100)
+public class SIServiceProvider extends AbstractServiceProvider {
 
-	public SISystemService() {
-		souMap.put(SI.getInstance().getName(), SI.getInstance());
-		souMap.put(NonSI.getInstance().getName(), NonSI.getInstance());
-	}
-
-	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-		return souMap.values();
+	public int getPriority() {
+		return 100;
 	}
 
 	@Override
-	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(SI.getInstance().getName());
+	public SystemOfUnitsService getSystemOfUnitsService() {
+		return new SISystemService();
 	}
-
-	@Override
-	public SystemOfUnits getSystemOfUnits(String name) {
-		return souMap.get(name);
-	}
+	
+    @Override
+    public String toString() {
+        return "SI";
+    }
+	
+	
 }

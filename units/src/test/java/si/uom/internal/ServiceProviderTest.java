@@ -57,7 +57,7 @@ public class ServiceProviderTest {
 	public void testDefault() {
 		ServiceProvider provider = ServiceProvider.current();
 		assertNotNull(provider);
-		assertEquals("tech.units.indriya.internal.DefaultServiceProvider", provider.getClass().getName());
+		assertEquals("tech.units.indriya.spi.DefaultServiceProvider", provider.getClass().getName());
 
 		assertNotNull(provider.getFormatService());
 		assertNotNull(provider.getFormatService().getAvailableFormatNames());
@@ -72,7 +72,7 @@ public class ServiceProviderTest {
 	public void testSI() {
 		ServiceProvider provider = ServiceProvider.of("SI");
 		assertNotNull(provider);
-		assertEquals("si.uom.internal.SIServiceProvider", provider.getClass().getName());
+		assertEquals("si.uom.SIServiceProvider", provider.getClass().getName());
 
 		assertNotNull(provider.getFormatService());
 		assertNotNull(provider.getFormatService().getAvailableFormatNames(FormatType.UNIT_FORMAT));
