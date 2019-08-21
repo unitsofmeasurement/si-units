@@ -70,7 +70,7 @@ import tech.units.indriya.unit.MetricPrefix;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.7, May 20, 2019
+ * @version 1.8, August 21, 2019
  */
 public final class SI extends Units {
 
@@ -289,7 +289,7 @@ public final class SI extends Units {
      * The Boltzmann constant (<code>kB</code> or <code>k</code>) is a physical constant named after its discoverer, Ludwig Boltzmann, 
      * which relates the average relative kinetic energy of particles in a gas with the temperature of the gas and occurs in Planck's law of black-body radiation and in Boltzmann's entropy formula.
      */
-    public static final Unit<Dimensionless> BOLTZMANN_CONSTANT =  addUnit(new AlternateUnit<Dimensionless>(JOULE.divide(KILOGRAM), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "k", true);
+    public static final Unit<Dimensionless> BOLTZMANN_CONSTANT =  addUnit(new AlternateUnit<Dimensionless>(JOULE.divide(KELVIN), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "k", true);
 
     /**
      * The elementary charge, usually denoted by <code>e</code> or sometimes <code>qe</code>, is the electric charge carried by a single proton or, 
