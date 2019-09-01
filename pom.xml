@@ -23,7 +23,7 @@
 		<lib.version>2.0</lib.version>
 		<ri.version>2.0.1</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>2.0-SNAPSHOT</si.quantity.version><!-- To handle quantity 
+		<si.quantity.version>2.0</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
