@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.3, August 21, 2019
+ * @version 2.4, September 12, 2019
  */
 public final class SI extends Units {
 	/**
@@ -239,14 +239,15 @@ public final class SI extends Units {
 
 	/**
 	 * A length unit accepted for use with SI units (standard name <code>UA</code>).
-	 * The astronomical unit is a unit of length. Its value is such that, when used
-	 * to describe the motion of bodies in the solar system, the heliocentric
-	 * gravitation constant is (0.017 202 098 95)2 ua3·d-2. The value must be
-	 * obtained by experiment, and is therefore not known exactly.
+	 * The astronomical unit is a unit of length. 
+	 * Originally conceived as the average of Earth's aphelion and perihelion, 
+	 * since 2012 it has been defined as exactly 149,597,870,700 metres, 
+	 * or about 150 million kilometres (93 million miles).
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Astronomical_unit"> Wikipedia: Astronomical unit</a>
 	 */
 	public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
-			new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597871000.0)));
-	// Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
+			new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597870700d)));
 
 	/**
 	 * An angle unit accepted for use with SI units (standard name
