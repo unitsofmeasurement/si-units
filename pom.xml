@@ -207,7 +207,7 @@
 											<id>javax.measure:unit-api:${jsr.version}</id>
 										</artifact>
 										<artifact>
-											<id>tec.uom.lib:uom-lib-common:${lib.version}</id>
+											<id>tech.uom.lib:uom-lib-common:${lib.version}</id>
 										</artifact>
 										<artifact>
 											<id>tec.uom:uom-se:${se.version}</id>
