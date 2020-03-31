@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -27,7 +27,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 /**
  * SI Quantity Implementations
  * @author Werner

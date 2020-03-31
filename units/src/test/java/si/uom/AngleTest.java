@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,17 +29,16 @@
  */
 package si.uom;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import javax.measure.Quantity;
 import javax.measure.quantity.Angle;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.quantity.Quantities;
@@ -49,7 +48,7 @@ public class AngleTest {
 
   private static MultiplyConverter piMultiplierConverter;
 
-  @BeforeClass
+  @BeforeAll
   public static void setUp() throws Exception {
     piMultiplierConverter = MultiplyConverter.ofPiExponent(1);
   }
@@ -89,7 +88,7 @@ public class AngleTest {
     Quantity<Angle> sut = Quantities.getQuantity(BigDecimal.ONE, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
     assertNotNull(sut);
     assertEquals(Units.RADIAN, sut.getUnit());
-    assertEquals(new BigDecimal("0.017453292519943295769236907684886129174041179373241439316730392568668"), sut.getValue());
+    assertEquals(new BigDecimal("0.0174532925199432957692369076848861280629300682621303282056192814575568"), sut.getValue());
   }
 
   @Test

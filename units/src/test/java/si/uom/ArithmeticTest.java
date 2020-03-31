@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,12 +29,12 @@
  */
 package si.uom;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;

@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,8 +29,8 @@
  */
 package si.uom;
 
-import static org.junit.Assert.assertEquals;
 import static javax.measure.MetricPrefix.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
@@ -39,8 +39,8 @@ import javax.measure.Unit;
 import javax.measure.UnitConverter;
 import javax.measure.quantity.Mass;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.MultiplyConverter;
 
@@ -74,14 +74,14 @@ public class PrefixTest {
 	}
 
 	@Test
-	@Ignore("Adjust to PowerOfIntConverter")
+	@Disabled("Adjust to PowerOfIntConverter")
 	public void testBetweenPrefixes() {
 		UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
 		assertEquals(conv, MultiplyConverter.ofRational(1000, 1));
 	}
 
 	@Test
-	@Ignore("Adjust to PowerOfIntConverter")
+	@Disabled("Adjust to PowerOfIntConverter")
 	public void testBetweenPrefixes2() {
 		UnitConverter conv = KILO(METRE).getConverterTo(GIGA(METRE));
 		assertEquals(MultiplyConverter.ofRational(1L, 1000000L), conv);

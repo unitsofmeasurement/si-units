@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,14 +29,15 @@
  */
 package si.uom;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Angle;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
@@ -49,7 +50,7 @@ public class ConverterTest {
     Quantity<Angle> sut = Quantities.getQuantity(1, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
     assertNotNull(sut);
     assertEquals(Units.RADIAN, sut.getUnit());
-    assertEquals(new BigDecimal("0.017453292519943295769236907684886129174041179373241439316730392568668"), sut.getValue());
+    assertEquals(new BigDecimal("0.0174532925199432957692369076848861280629300682621303282056192814575568"), sut.getValue());
   }
 
   @Test

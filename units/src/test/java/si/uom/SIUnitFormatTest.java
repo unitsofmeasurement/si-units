@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,7 +29,6 @@
  */
 package si.uom;
 
-import static org.junit.Assert.*;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.HOUR;
@@ -37,6 +36,9 @@ import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
 import static si.uom.SI.PLANCK_CONSTANT;
 import static javax.measure.MetricPrefix.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 
@@ -47,10 +49,9 @@ import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.quantity.DefaultQuantityFactory;
@@ -65,7 +66,7 @@ public class SIUnitFormatTest {
 
 	private SimpleUnitFormat suf;
 	
-	@Before
+	@BeforeEach
 	public void init() {
 		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
 				METRE);

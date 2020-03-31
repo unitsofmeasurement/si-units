@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,7 +29,9 @@
  */
 package si.uom.internal;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collection;
 
@@ -37,20 +39,20 @@ import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
 	private static final String SI_NAME = "SI";
 	private static final String NONSI_NAME = "Non-SI Units";
 
-	private static final int UNITS_EXPECTED = 43;
+	private static final int UNITS_EXPECTED = 44;
 	private static final int UNITS_EXPECTED_SI = 24;
 	private static final int UNITS_EXPECTED_NONSI = 56;
 	private static SystemOfUnitsService defaultService;
 	private static SystemOfUnitsService siService;
 	
-	@BeforeClass
+	@BeforeAll
 	public static void setUp() {
 		defaultService = ServiceProvider.current().getSystemOfUnitsService();
 		siService = ServiceProvider.of(SI_NAME).getSystemOfUnitsService();

@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,7 +29,9 @@
  */
 package si.uom;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.*;
 
@@ -38,8 +40,8 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Volume;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.quantity.Quantities;
 
@@ -52,7 +54,7 @@ public class QuantityPrefixTest {
 	}
 	
 	@Test
-	@Ignore("This is a known problem, it's unrelated to ServiceProvider")
+	@Disabled("This is a known problem, it's unrelated to ServiceProvider")
 	public void testTonne() {
 		Quantity<Mass> m1 = Quantities.getQuantity(1.0, NonSI.TONNE);
 		assertEquals(1d, m1.getValue());
@@ -60,7 +62,7 @@ public class QuantityPrefixTest {
 	}
 	
 	@Test
-	@Ignore("This is a known problem, it's unrelated to ServiceProvider")
+	@Disabled("This is a known problem, it's unrelated to ServiceProvider")
 	public void testMegaTonne() {
 		Quantity<Mass> m1 = Quantities.getQuantity(1.0, MEGA(NonSI.TONNE));
 		assertEquals(1d, m1.getValue());

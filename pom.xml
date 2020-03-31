@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0.1</version>
+		<version>2.0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
@@ -21,13 +21,14 @@
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>2.0</jsr.version>
 		<lib.version>2.0</lib.version>
-		<ri.version>2.0.1</ri.version>
+		<ri.version>2.0.3-SNAPSHOT</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>2.0.1</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+		<thisYear>2020</thisYear>
 	</properties>
 	<modules>
 		<module>quantity</module>
@@ -129,7 +130,7 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2019</currentYear>
+							<currentYear>${thisYear}</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>
@@ -157,13 +158,76 @@
 		</pluginManagement>
 	</build>
 
+	<!-- Dependency Management -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- OSGI support -->
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.annotation</artifactId>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+			
+			<!-- Testing -->
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-junit</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-launcher</artifactId>
+				<version>${junit.platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-runner</artifactId>
+				<version>${junit.platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<!-- Additional repositories -->
 	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
 	<repositories>
 		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
+			<url>https://jcenter.bintray.com</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -171,7 +235,7 @@
 			</snapshots>
 			<id>bintray-release</id>
 			<name>libs-release</name>
-			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+			<url>https://oss.jfrog.org/artifactory/libs-release</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -179,7 +243,7 @@
 			</snapshots>
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
-			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
 
@@ -227,9 +291,6 @@
 										</artifact>
 										<artifact>
 											<id>si.uom:si-quantity:${si.quantity.version}</id>
-										</artifact>
-										<artifact>
-											<id>si.uom:si-units-java8:${si.version}</id>
 										</artifact>
 									</artifacts>
 								</configuration>
@@ -308,5 +369,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>2.0.2-SNAPSHOT</version>
+	<version>2.1-SNAPSHOT</version>
 </project>
