@@ -27,31 +27,42 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.quantity.impl;
+package si.uom.impl.quantity;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Mass;
+import javax.measure.quantity.Acceleration;
 
 import tech.units.indriya.quantity.NumberQuantity;
 
 /**
- * Represents the measure of the quantity of matter that a body or an object contains.
- * The mass of the body is not dependent on gravity and therefore is different from but
- * proportional to its weight.
- * The metric system unit for this quantity is "kg" (kilogram).
+ * Represents the rate of change of velocity with respect to time. The metric
+ * system unit for this quantity is "m/s²" (metre per square second).
  *
- * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8.1, $Date: 2015-06-04 $
+ * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.7, $Date: 2019-07-02 $
  */
-public final class MassAmount extends NumberQuantity<Mass> implements Mass {
+public final class AccelerationAmount extends NumberQuantity<Acceleration> implements Acceleration {
 
 	/**
 	 * 
 	 */
-//	private static final long serialVersionUID = -3190275944382844647L;
+	private static final long serialVersionUID = -3979825836742796484L;
 
-	public MassAmount(Number number, Unit<Mass> unit) {
+	/**
+	 * @param number
+	 * @param unit
+	 */
+	public AccelerationAmount(Number number, Unit<Acceleration> unit) {
 		super(number, unit);
+	}
+
+	/**
+	 * @param number
+	 * @param unit
+	 * @return
+	 */
+	public static final AccelerationAmount of(Number number, Unit<Acceleration> unit) {
+		return new AccelerationAmount(number, unit);
 	}
 }

@@ -27,42 +27,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.quantity.impl;
+package si.uom.impl.quantity;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Force;
+import javax.measure.quantity.Length;
 
 import tech.units.indriya.quantity.NumberQuantity;
 
 /**
- * Represents a quantity that tends to produce an acceleration of a body in the
- * direction of its application. The metric system unit for this quantity is "N"
- * (Newton).
- * 
+ * Represents the extent of something along its greatest dimension or the extent
+ * of space between two objects or places. The metric system unit for this
+ * quantity is "m" (metre).
+ *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.4, $Date: 2019-05-04 $
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.7.3, $Date: 2015-04-16 $
  */
-public final class ForceAmount extends NumberQuantity<Force> implements Force {
+public final class LengthAmount extends NumberQuantity<Length> implements Length {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 3021822020310138257L;
-
-	/**
-     * @param number
-     * @param unit
+     * 
      */
-    public ForceAmount(Number number, Unit<Force> unit) {
-	super(number, unit);
-    }
+    // private static final long serialVersionUID = -1088138019909223368L;
 
-    /**
-     * @param number
-     * @param unit
-     */
-    public ForceAmount(double number, Unit<Force> unit) {
+    public LengthAmount(Number number, Unit<Length> unit) {
 	super(number, unit);
     }
 }

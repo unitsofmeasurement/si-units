@@ -34,7 +34,7 @@ module si.uom.units {
     requires transitive java.annotation;
     
     exports si.uom;
-    exports si.uom.quantity.impl;
+    exports si.uom.impl.quantity;
     
     provides javax.measure.spi.ServiceProvider with
     	si.uom.SIServiceProvider;

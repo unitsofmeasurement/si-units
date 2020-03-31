@@ -27,40 +27,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.quantity.impl;
+package si.uom.impl.quantity;
 
-import static org.junit.Assert.*;
-import static si.uom.SI.METRE;
+import javax.measure.Unit;
+import javax.measure.quantity.Mass;
 
-import javax.measure.quantity.Length;
+import tech.units.indriya.quantity.NumberQuantity;
 
-import org.junit.Before;
-import org.junit.Test;
+/**
+ * Represents the measure of the quantity of matter that a body or an object contains.
+ * The mass of the body is not dependent on gravity and therefore is different from but
+ * proportional to its weight.
+ * The metric system unit for this quantity is "kg" (kilogram).
+ *
+ * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
+ * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.8.1, $Date: 2015-06-04 $
+ */
+public final class MassAmount extends NumberQuantity<Mass> implements Mass {
 
-import si.uom.quantity.impl.LengthAmount;
+	/**
+	 * 
+	 */
+//	private static final long serialVersionUID = -3190275944382844647L;
 
-public class LengthTest {
-
-	private Length sut;
-	
-	@Before
-	public void init() {
-		sut = new LengthAmount(10, METRE);
+	public MassAmount(Number number, Unit<Mass> unit) {
+		super(number, unit);
 	}
-	
-	@Test
-	public void testUnit() {
-		assertEquals(METRE, sut.getUnit());
-	}
-	
-	@Test
-	public void testValue() {
-		assertEquals(Integer.valueOf(10), sut.getValue());
-	}
-	
-	@Test
-	public void testToString() {
-		assertEquals("10 m", sut.toString());
-	}
-
 }

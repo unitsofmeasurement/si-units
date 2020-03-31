@@ -27,42 +27,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.quantity.impl;
+package si.uom.impl.quantity;
 
-import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
+import static org.junit.Assert.*;
+import static si.uom.SI.METRE;
 
-import tech.units.indriya.quantity.NumberQuantity;
+import javax.measure.quantity.Length;
 
-/**
- * Represents the rate of change of velocity with respect to time. The metric
- * system unit for this quantity is "m/s²" (metre per square second).
- *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, $Date: 2019-07-02 $
- */
-public final class AccelerationAmount extends NumberQuantity<Acceleration> implements Acceleration {
+import org.junit.Before;
+import org.junit.Test;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3979825836742796484L;
+import si.uom.impl.quantity.LengthAmount;
 
-	/**
-	 * @param number
-	 * @param unit
-	 */
-	public AccelerationAmount(Number number, Unit<Acceleration> unit) {
-		super(number, unit);
+public class LengthTest {
+
+	private Length sut;
+	
+	@Before
+	public void init() {
+		sut = new LengthAmount(10, METRE);
+	}
+	
+	@Test
+	public void testUnit() {
+		assertEquals(METRE, sut.getUnit());
+	}
+	
+	@Test
+	public void testValue() {
+		assertEquals(Integer.valueOf(10), sut.getValue());
+	}
+	
+	@Test
+	public void testToString() {
+		assertEquals("10 m", sut.toString());
 	}
 
-	/**
-	 * @param number
-	 * @param unit
-	 * @return
-	 */
-	public static final AccelerationAmount of(Number number, Unit<Acceleration> unit) {
-		return new AccelerationAmount(number, unit);
-	}
 }
