@@ -12,7 +12,8 @@
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>
-
+	<version>2.1-SNAPSHOT</version>
+	
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
@@ -369,5 +370,4 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>2.1-SNAPSHOT</version>
 </project>
