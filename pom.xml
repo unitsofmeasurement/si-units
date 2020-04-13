@@ -21,10 +21,10 @@
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>2.0</jsr.version>
-		<lib.version>2.0</lib.version>
-		<ri.version>2.0.3-SNAPSHOT</ri.version>
+		<lib.version>2.0.1-SNAPSHOT</lib.version>
+		<ri.version>2.0.2</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>2.0.1</si.quantity.version><!-- To handle quantity 
+		<si.quantity.version>${project.version}</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
