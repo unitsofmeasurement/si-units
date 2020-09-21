@@ -72,7 +72,7 @@ public class QuantityPrefixTest {
 	@Test
 	public void testMilli() {
 		Quantity<Volume> m1 = Quantities.getQuantity(1.0, LITRE);
-		assertEquals(1d, m1.getValue());
+		assertEquals(1, m1.getValue());
 		assertEquals("l", m1.getUnit().toString());
 				
 		Quantity<Volume> m2 = m1.to(MILLI(LITRE));
@@ -83,7 +83,7 @@ public class QuantityPrefixTest {
 	@Test
 	public void testMicro2() {
 		Quantity<Length> m1 = Quantities.getQuantity(1.0, METRE);
-		assertEquals(1d, m1.getValue());
+		assertEquals(1, m1.getValue());
 		assertEquals("m", m1.getUnit().toString());
 				
 		Quantity<Length> m2 = m1.to(MICRO(SI.METRE));
@@ -94,7 +94,7 @@ public class QuantityPrefixTest {
 	@Test
 	public void testNano() {
 		Quantity<Mass> m1 = Quantities.getQuantity(1.0, GRAM);
-		assertEquals(1d, m1.getValue());
+		assertEquals(1, m1.getValue());
 		assertEquals("g", m1.getUnit().toString());
 				
 		Quantity<Mass> m2 = m1.to(NANO(SI.GRAM));
@@ -105,7 +105,7 @@ public class QuantityPrefixTest {
 	@Test
 	public void testNano2() {
 		Quantity<Length> m1 = Quantities.getQuantity(1.0, METRE);
-		assertEquals(1d, m1.getValue());
+		assertEquals(1, m1.getValue());
 		assertEquals("m", m1.getUnit().toString());
 				
 		Quantity<Length> m2 = m1.to(NANO(METRE));
