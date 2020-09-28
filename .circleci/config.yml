@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:12.0.2
+      - image: circleci/openjdk:12
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -28,7 +28,7 @@ jobs:
   deployment:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:12.0.2
+      - image: circleci/openjdk:12
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
