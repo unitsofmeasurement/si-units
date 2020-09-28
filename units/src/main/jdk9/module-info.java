@@ -31,6 +31,7 @@ module si.uom.units {
     requires transitive java.measure;
     requires transitive si.uom.quantity;
     requires transitive tech.units.indriya;
+    requires transitive tech.uom.lib.common;
     requires transitive java.annotation;
     
     exports si.uom;
