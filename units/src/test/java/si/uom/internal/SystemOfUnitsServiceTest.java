@@ -46,7 +46,7 @@ public class SystemOfUnitsServiceTest {
 	private static final String SI_NAME = "SI";
 	private static final String NONSI_NAME = "Non-SI Units";
 
-	private static final int UNITS_EXPECTED = 44;
+	private static final int UNITS_EXPECTED_DEF = 44;
 	private static final int UNITS_EXPECTED_SI = 24;
 	private static final int UNITS_EXPECTED_NONSI = 56;
 	private static SystemOfUnitsService defaultService;
@@ -63,11 +63,11 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(defaultService);
 		SystemOfUnits system = defaultService.getSystemOfUnits();
 		assertNotNull(system);
-		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
-		assertEquals("Units", system.getName());
+		assertEquals("si.uom.SI", system.getClass().getName());
+		assertEquals("SI", system.getName());
 		assertNotNull(system.getUnits());
 		checkSystem(system);
-		assertEquals(UNITS_EXPECTED, system.getUnits().size());
+		assertEquals(UNITS_EXPECTED_SI, system.getUnits().size());
 		// SI extends Units, this is only its additional collection
 	}
 
@@ -88,7 +88,7 @@ public class SystemOfUnitsServiceTest {
 		SystemOfUnitsService otherService = otherProvider.getSystemOfUnitsService();
 		assertNotNull(otherService);
 		assertNotNull(otherService.getSystemOfUnits());
-		assertEquals("SI", otherService.getSystemOfUnits().getName());
+		assertEquals("Units", otherService.getSystemOfUnits().getName());
 	}
 
 	private void checkSystem(SystemOfUnits system, final String mode) {
@@ -106,12 +106,12 @@ public class SystemOfUnitsServiceTest {
 			break;
 		default:
 			assertTrue("Units".equals(system.getName()));
-			assertEquals(UNITS_EXPECTED, system.getUnits().size());
+			assertEquals(UNITS_EXPECTED_DEF, system.getUnits().size());
 			break;
 		}
 	}
 	
 	private void checkSystem(SystemOfUnits system) {
-		checkSystem(system, "Units");
+		checkSystem(system, "SI");
 	}
 }

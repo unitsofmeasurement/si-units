@@ -19,9 +19,9 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>2.1-SNAPSHOT</jsr.version>
-		<lib.version>2.1-SNAPSHOT</lib.version>
-		<ri.version>2.1-SNAPSHOT</ri.version>
+		<jsr.version>2.1</jsr.version>
+		<lib.version>2.1</lib.version>
+		<ri.version>2.1</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>${project.version}</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
@@ -368,4 +368,5 @@
 			</build>
 		</profile>
 	</profiles>
+	<version>2.1</version>
 </project>

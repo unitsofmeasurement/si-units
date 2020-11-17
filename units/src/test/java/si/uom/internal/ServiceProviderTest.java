@@ -29,11 +29,12 @@
  */
 package si.uom.internal;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static javax.measure.spi.FormatService.FormatType.UNIT_FORMAT;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.measure.spi.FormatService.FormatType;
@@ -43,7 +44,8 @@ import org.junit.jupiter.api.Test;
 
 public class ServiceProviderTest {
 	private static final Logger LOGGER = Logger.getLogger(ServiceProviderTest.class.getName());
-
+	private static final Level LOGLEVEL = Level.INFO;
+	
 	@Test
 	public void testAvailables() {
 		List<ServiceProvider> providers = ServiceProvider.available();
@@ -51,7 +53,7 @@ public class ServiceProviderTest {
 		assertEquals(2, providers.size());
 		
 		for (ServiceProvider provider : providers) {
-			LOGGER.info(String.valueOf(provider));
+			LOGGER.log(LOGLEVEL, String.valueOf(provider));
 		}
 	}
 
@@ -59,15 +61,15 @@ public class ServiceProviderTest {
 	public void testDefault() {
 		ServiceProvider provider = ServiceProvider.current();
 		assertNotNull(provider);
-		assertEquals("tech.units.indriya.spi.DefaultServiceProvider", provider.getClass().getName());
+		assertEquals("si.uom.SIServiceProvider", provider.getClass().getName());
 
 		assertNotNull(provider.getFormatService());
-		assertNotNull(provider.getFormatService().getAvailableFormatNames());
-		assertEquals(4, provider.getFormatService().getAvailableFormatNames().size());
+		assertNotNull(provider.getFormatService().getAvailableFormatNames(UNIT_FORMAT));
+		assertEquals(4, provider.getFormatService().getAvailableFormatNames(UNIT_FORMAT).size());
 		assertNotNull(provider.getSystemOfUnitsService());
 		assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits());
-		assertEquals(1, provider.getSystemOfUnitsService().getAvailableSystemsOfUnits().size());
-		assertEquals("Units", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
+		assertEquals(2, provider.getSystemOfUnitsService().getAvailableSystemsOfUnits().size());
+		assertEquals("SI", provider.getSystemOfUnitsService().getSystemOfUnits().getName());
 	}
 	
 	@Test
