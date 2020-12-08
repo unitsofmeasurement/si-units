@@ -12,6 +12,7 @@
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>	
+    <version>2.1-SNAPSHOT</version>
 	
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -19,9 +20,9 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>2.1</jsr.version>
+		<jsr.version>2.1.1</jsr.version>
 		<lib.version>2.1</lib.version>
-		<ri.version>2.1</ri.version>
+		<ri.version>2.1.1</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>${project.version}</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
@@ -367,6 +368,5 @@
 				</plugins>
 			</build>
 		</profile>
-	</profiles>
-	<version>2.1-SNAPSHOT</version>
+	</profiles>	
 </project>

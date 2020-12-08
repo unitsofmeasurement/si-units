@@ -41,7 +41,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.2
+ * @version 1.3, December 8, 2020
  */
 @Named("SI")
 @Priority(100)
@@ -58,8 +58,6 @@ public class SIServiceProvider extends AbstractServiceProvider {
 	
     @Override
     public String toString() {
-        return "SI";
-    }
-	
-	
+        return SIServiceProvider.class.getSimpleName();
+    }	
 }

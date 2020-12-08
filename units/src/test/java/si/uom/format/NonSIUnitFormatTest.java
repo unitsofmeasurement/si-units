@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom;
+package si.uom.format;
 
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
@@ -35,6 +35,8 @@ import javax.measure.format.UnitFormat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import si.uom.NonSI;
+import si.uom.SI;
 import tech.units.indriya.format.SimpleUnitFormat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

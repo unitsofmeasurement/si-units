@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom.internal;
+package si.uom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -62,7 +62,8 @@ public class ServiceProviderTest {
 		ServiceProvider provider = ServiceProvider.current();
 		assertNotNull(provider);
 		assertEquals("si.uom.SIServiceProvider", provider.getClass().getName());
-
+		assertEquals("SIServiceProvider", provider.toString());
+		
 		assertNotNull(provider.getFormatService());
 		assertNotNull(provider.getFormatService().getAvailableFormatNames(UNIT_FORMAT));
 		assertEquals(4, provider.getFormatService().getAvailableFormatNames(UNIT_FORMAT).size());

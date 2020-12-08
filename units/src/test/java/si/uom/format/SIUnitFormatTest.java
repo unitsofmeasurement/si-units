@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom;
+package si.uom.format;
 
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
@@ -52,6 +52,8 @@ import javax.measure.quantity.Speed;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import si.uom.NonSI;
+import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.quantity.DefaultQuantityFactory;

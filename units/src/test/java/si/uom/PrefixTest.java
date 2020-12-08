@@ -77,7 +77,7 @@ public class PrefixTest {
 	@Disabled("Adjust to PowerOfIntConverter")
 	public void testBetweenPrefixes() {
 		UnitConverter conv = YOTTA(METRE).getConverterTo(ZETTA(METRE));
-		assertEquals(conv, MultiplyConverter.ofRational(1000, 1));
+		assertEquals(MultiplyConverter.ofRational(1000, 1), conv);
 	}
 
 	@Test
