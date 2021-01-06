@@ -31,33 +31,49 @@ package si.uom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.math.BigDecimal;
-
-import javax.measure.Quantity;
-import javax.measure.quantity.Angle;
-
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import tech.units.indriya.quantity.Quantities;
-import tech.units.indriya.unit.Units;
-
+import tech.units.indriya.function.MultiplyConverter;
 
 public class ConverterTest {
 
-  @Test
-  public void testAngleConverter() {
-    Quantity<Angle> sut = Quantities.getQuantity(1, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
-    assertNotNull(sut);
-    assertEquals(Units.RADIAN, sut.getUnit());
-    assertEquals(new BigDecimal("0.0174532925199432957692369076848861280629300682621303282056192814575568"), sut.getValue());
+  private static MultiplyConverter piMultiplierConverter;
+
+  @BeforeAll
+  public static void setUp() throws Exception {
+    piMultiplierConverter = MultiplyConverter.ofPiExponent(1);
   }
 
   @Test
-  public void testAngleConverterOpposite() {
-    Quantity<Angle> sut = Quantities.getQuantity(1d, Units.RADIAN).to(NonSI.DEGREE_ANGLE);
-    assertNotNull(sut);
-    assertEquals(NonSI.DEGREE_ANGLE, sut.getUnit());
-    assertEquals(new BigDecimal("57.2957795130823208767981548141051660"), sut.getValue());
+  public void testConvertMethod() {
+    assertEquals(314.15, piMultiplierConverter.convert(100), 0.1);
+    assertEquals(0, piMultiplierConverter.convert(0), 0);
+    assertEquals(-314.15, piMultiplierConverter.convert(-100), 0.1);
+  }
+
+//  @Test
+//  public void testConvertBigDecimalMethod() {
+//    assertEquals(314.15, piMultiplierConverter.convert(new BigDecimal("100"), MathContext.DECIMAL32).doubleValue(), 0.1);
+//    assertEquals(0, piMultiplierConverter.convert(BigDecimal.ZERO, MathContext.DECIMAL32).doubleValue(), 0);
+//    assertEquals(-314.15, piMultiplierConverter.convert(new BigDecimal("-100"), MathContext.DECIMAL32).doubleValue(), 0.1);
+//  }
+
+  @Test
+  public void testEqualityOfTwoLogConverter() {
+    assertNotNull(piMultiplierConverter);
+  }
+
+//  @Test
+//  public void testGetValuePiDivisorConverter() {
+//	  if(piMultiplierConverter instanceof PowerOfPiConverter) {
+//    assertEquals(1, piMultiplierConverter.g .getExponent());
+//  }
+
+  @Test
+  public void isLinearOfLogConverterTest() {
+    assertTrue(piMultiplierConverter.isLinear());
   }
 }
