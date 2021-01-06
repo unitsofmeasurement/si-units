@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *

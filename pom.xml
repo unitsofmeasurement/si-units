@@ -29,7 +29,7 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<thisYear>2020</thisYear>
+		<thisYear>2021</thisYear>
 	</properties>
 	<modules>
 		<module>quantity</module>
