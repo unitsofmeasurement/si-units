@@ -46,7 +46,7 @@ import tech.units.indriya.unit.Units;
 public class AngleTest {
 
   @Test
-  public void testAngleConverter() {
+  public void testDegreeToRadian() {
     Quantity<Angle> sut = Quantities.getQuantity(1, NonSI.DEGREE_ANGLE).to(Units.RADIAN);
     assertNotNull(sut);
     assertEquals(Units.RADIAN, sut.getUnit());
@@ -54,7 +54,7 @@ public class AngleTest {
   }
 
   @Test
-  public void testAngleConverterOpposite() {
+  public void testRadianToDegree() {
     Quantity<Angle> sut = Quantities.getQuantity(1d, Units.RADIAN).to(NonSI.DEGREE_ANGLE);
     assertNotNull(sut);
     assertEquals(NonSI.DEGREE_ANGLE, sut.getUnit());
