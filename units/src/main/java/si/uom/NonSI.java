@@ -498,7 +498,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * A unit of pressure equal to the pressure exerted at the Earth's surface by a
      * column of mercury 1 millimeter high (standard name <code>mmHg</code> ).
      */
-    public static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322));
+    public static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322387415));
 
 	/**
 	 * A unit of pressure equal to the pressure exerted at the Earth's surface by a
