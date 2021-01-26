@@ -36,19 +36,17 @@ import tech.units.indriya.quantity.NumberQuantity;
 
 /**
  * @author Werner Keil
- * @version 1.5.2, $Date: 2016-10-23 $
- */
-/**
- * @author werner
- *
- */
-/**
- * @author werner
- *
+ * @version 1.6, $Date: 2021-01-26 $
+ * @deprecated Are those still used?
  */
 public final class TemperatureAmount extends NumberQuantity<Temperature> implements Temperature {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4368067029949483958L;
+
+	/**
      * 
      */
     // private static final long serialVersionUID = -3444768963576192753L;

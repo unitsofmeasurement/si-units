@@ -41,7 +41,8 @@ import tech.units.indriya.quantity.NumberQuantity;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.4, $Date: 2019-05-04 $
+ * @version 1.5, $Date: 2021-01-26 $
+ * @deprecated Are those still used?
  */
 public final class ForceAmount extends NumberQuantity<Force> implements Force {
 

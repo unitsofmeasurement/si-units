@@ -42,7 +42,8 @@ import tech.units.indriya.quantity.NumberQuantity;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8.1, $Date: 2015-06-04 $
+ * @version 0.9, $Date: 2021-01-26 $
+ * @deprecated Are those still used?
  */
 public final class MassAmount extends NumberQuantity<Mass> implements Mass {
 
