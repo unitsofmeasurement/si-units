@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.1</version>
+		<version>2.1.1</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
@@ -20,9 +20,9 @@
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>2.1.1</jsr.version>
+		<jsr.version>2.1.2</jsr.version>
 		<lib.version>2.1</lib.version>
-		<ri.version>2.1.2-SNAPSHOT</ri.version>
+		<ri.version>2.1.2</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>${project.version}</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
@@ -222,49 +222,31 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- Additional repositories -->
-	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
-	<repositories>
-		<repository>
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>https://jcenter.bintray.com</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>bintray-release</id>
-			<name>libs-release</name>
-			<url>https://oss.jfrog.org/artifactory/libs-release</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>bintray-snapshot</id>
-			<name>libs-snapshot</name>
-			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
-		</repository>
-	</repositories>
+    <!-- Additional repositories -->
+    <!-- Helps to resolve Parent POM and Snapshot artifacts -->
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>ossrh-snapshot</id>
+            <name>OSSRH Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>       
+    </repositories>
 
-	<distributionManagement>
-		<repository>
-			<id>bintray-release</id>
-			<name>oss-jfrog-artifactory-release</name>
-			<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>bintray-snapshot</id>
-			<name>oss-jfrog-artifactory-snapshot</name>
-			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
-		</snapshotRepository>
-		<site>
-			<id>unitsofmeasurement</id>
-			<url>scp://unitsofmeasurement.github.io/www/docs/lib/</url>
-		</site>
-	</distributionManagement>
-
+    <!-- Deployment to public servers -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    
 	<profiles>
 		<profile>
 			<id>p2</id>
