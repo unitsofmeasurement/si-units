@@ -256,6 +256,31 @@ public final class SI extends Units {
 	public static final Unit<Angle> REVOLUTION = addUnit(new TransformedUnit<Angle>(RADIAN,
 			MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(2, 1))));
 
+
+	/**
+     * The newton-second (also newton second; symbol: N⋅s or N s)[1] is the derived SI unit of impulse.<br>
+     * It is dimensionally equivalent to the momentum unit kilogram-metre per second (kg⋅m/s).<br>
+     * One newton-second corresponds to a one-newton force applied for one second.
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Impulse_(physics)">Wikipedia: Impulse (physics)</a>
+	 * @see #KILOGRAM_METRE_PER_SECOND
+	 */
+	public static final Unit<Impulse> NEWTON_SECOND = addUnit(
+			new ProductUnit<Impulse>(NEWTON.multiply(SECOND)), Impulse.class);
+	
+	/**
+     * A kilogram-metre per second (kg⋅m/s) is the derived SI unit of momentum.<br>
+     * It is dimensionally equivalent to the newton-second.<br>
+     * One newton-second corresponds to a one-newton force applied for one second.
+	 * 
+	 * @see #NEWTON_SECOND
+	 * @see <a href="https://en.wikipedia.org/wiki/Momentum"> Wikipedia:
+	 *      Momentum</a>
+	 */
+	public static final Unit<Momentum> KILOGRAM_METRE_PER_SECOND = addUnit(
+			new ProductUnit<Momentum>(KILOGRAM.multiply(METRE_PER_SECOND)), Momentum.class);
+
+		
 	///////////////////////////
 	// Fundamental Constants //
 	///////////////////////////
@@ -322,30 +347,6 @@ public final class SI extends Units {
 	 * basis for the definition of the kilogram.
 	 */
 	public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_VALUE), "\u210E", true);
-
-	/**
-     * The newton-second (also newton second; symbol: N⋅s or N s)[1] is the derived SI unit of impulse.<br>
-     * It is dimensionally equivalent to the momentum unit kilogram-metre per second (kg⋅m/s).<br>
-     * One newton-second corresponds to a one-newton force applied for one second.
-	 * 
-	 * @see <a href="https://en.wikipedia.org/wiki/Impulse_(physics)">Wikipedia: Impulse (physics)</a>
-	 * @see #KILOGRAM_METRE_PER_SECOND
-	 */
-	public static final Unit<Impulse> NEWTON_SECOND = addUnit(
-			new ProductUnit<Impulse>(NEWTON.multiply(SECOND)), Impulse.class);
-	
-	/**
-     * A kilogram-metre per second (kg⋅m/s) is the derived SI unit of momentum.<br>
-     * It is dimensionally equivalent to the newton-second.<br>
-     * One newton-second corresponds to a one-newton force applied for one second.
-	 * 
-	 * @see #NEWTON_SECOND
-	 * @see <a href="https://en.wikipedia.org/wiki/Momentum"> Wikipedia:
-	 *      Momentum</a>
-	 */
-	public static final Unit<Momentum> KILOGRAM_METRE_PER_SECOND = addUnit(
-			new ProductUnit<Momentum>(KILOGRAM.multiply(METRE_PER_SECOND)), Momentum.class);
-
 	
 	/////////////////////
 	// Collection View //
