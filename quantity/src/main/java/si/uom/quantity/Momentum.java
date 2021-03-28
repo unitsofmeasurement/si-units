@@ -33,7 +33,7 @@ import javax.measure.Quantity;
 
 /**
  * In Newtonian mechanics, linear momentum, translational momentum, or simply momentum (pl. momenta) is the product of the mass and velocity of an object. It is a vector quantity, possessing a magnitude and a direction. If m is an object's mass and v is its velocity (also a vector quantity), then the object's momentum is:
-<code>\mathbf{p} = m \mathbf{v}</code>.
+<code>\mathbf{p} = m \mathbf{v}</code>.<br>
  * In SI units, momentum is measured in kilogram meters per second (kg⋅m/s).
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
@@ -42,6 +42,7 @@ import javax.measure.Quantity;
  * @see <a href="https://en.wikipedia.org/wiki/Momentum">Wikipedia: Momentum</a>
  * @see Mass
  * @see Speed
+ * @see Impulse
  * @since 2.1
  */
 public interface Momentum extends Quantity<Momentum>{

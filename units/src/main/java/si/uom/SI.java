@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.4, September 12, 2019
+ * @version 2.5, March 28, 2021
  */
 public final class SI extends Units {
 	/**
@@ -328,11 +328,23 @@ public final class SI extends Units {
      * It is dimensionally equivalent to the momentum unit kilogram-metre per second (kg⋅m/s).<br>
      * One newton-second corresponds to a one-newton force applied for one second.
 	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Impulse_(physics)">Wikipedia: Impulse (physics)</a>
+	 * @see #KILOGRAM_METRE_PER_SECOND
+	 */
+	public static final Unit<Impulse> NEWTON_SECOND = addUnit(
+			new ProductUnit<Impulse>(NEWTON.multiply(SECOND)), Impulse.class);
+	
+	/**
+     * A kilogram-metre per second (kg⋅m/s) is the derived SI unit of momentum.<br>
+     * It is dimensionally equivalent to the newton-second.<br>
+     * One newton-second corresponds to a one-newton force applied for one second.
+	 * 
+	 * @see #NEWTON_SECOND
 	 * @see <a href="https://en.wikipedia.org/wiki/Momentum"> Wikipedia:
 	 *      Momentum</a>
 	 */
-//	public static final Unit<Momentum> KILOGRAM_METRE_PER_SECOND = addUnit(
-//			new ProductUnit<Momentum>(KILOGRAM.multiply(METRE_PER_SECOND)), Momentum.class);
+	public static final Unit<Momentum> KILOGRAM_METRE_PER_SECOND = addUnit(
+			new ProductUnit<Momentum>(KILOGRAM.multiply(METRE_PER_SECOND)), Momentum.class);
 
 	
 	/////////////////////

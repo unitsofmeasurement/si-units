@@ -43,6 +43,7 @@ import javax.measure.Quantity;
  * @see <a href="https://en.wikipedia.org/wiki/Impulse_(physics)">Wikipedia: Impulse (physics)</a>
  * @see Force
  * @see Time
+ * @see Momentum
  * @since 2.1
  */
 public interface Impulse extends Quantity<Impulse>{
