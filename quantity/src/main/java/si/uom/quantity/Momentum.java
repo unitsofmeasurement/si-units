@@ -29,23 +29,18 @@
  */
 package si.uom.quantity;
 
-import javax.measure.Quantity;
-
 /**
- * Moment of a force.
- * The system unit for this quantity is "N.m" (Newton-Metre).
+ * In Newtonian mechanics, linear momentum, translational momentum, or simply momentum (pl. momenta) is the product of the mass and velocity of an object. It is a vector quantity, possessing a magnitude and a direction. If m is an object's mass and v is its velocity (also a vector quantity), then the object's momentum is:
+<code>\mathbf{p} = m \mathbf{v}</code>.
+ * In SI units, momentum is measured in kilogram meters per second (kg⋅m/s).
  *
- * <p><b>Note:</b> The Newton-metre ("N.m") is also a way of expressing a Joule
- * (unit of energy). However, torque is not energy. So, to avoid confusion, we
- * will use the units "N.m" for torque and not "J". This distinction occurs due
- * to the scalar nature of energy and the vector nature of torque.</p>
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.0
  *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2.2
- *
- * @see Force
- * @see Length
+ * @see <a href="https://en.wikipedia.org/wiki/Momentum">Wikipedia: Momentum</a>
+ * @see Mass
+ * @see Speed
+ * @since 2.1
  */
-public interface Torque extends Quantity<Torque> {
+public interface Momentum {
 }
