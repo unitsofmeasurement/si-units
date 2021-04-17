@@ -31,6 +31,7 @@ package si.uom.format;
 
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
+import javax.measure.quantity.Area;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,9 @@ import org.junit.jupiter.api.Test;
 import si.uom.NonSI;
 import si.uom.SI;
 import tech.units.indriya.format.SimpleUnitFormat;
+
+import static javax.measure.BinaryPrefix.*;
+import static javax.measure.MetricPrefix.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -54,6 +58,7 @@ public class NonSIUnitFormatTest {
 	@BeforeEach
 	public void init() {
 		simpleUnitFormat = SimpleUnitFormat.getInstance();
+		simpleUnitFormat.label(NonSI.HECTARE, "Ha");
 	}
 
 	@Test
@@ -79,4 +84,16 @@ public class NonSIUnitFormatTest {
 	    Unit<?> gramm = SimpleUnitFormat.getInstance().parse("g");
 	    assertTrue(gramm.isCompatible(SI.KILOGRAM));
 	 }
+	
+	@Test
+	public void testToString() {		
+		assertEquals("Kit", KIBI(NonSI.TONNE).toString());
+		assertEquals("Mt", MEGA(NonSI.TONNE).toString());
+	}
+	
+	@Test
+	public void testToString2() {
+		Unit<Area> b = NonSI.HECTARE;
+		assertEquals("Ha", b.toString()); // here it's upper case after init
+	}
 }

@@ -35,6 +35,7 @@ import static tech.units.indriya.unit.Units.HOUR;
 import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
 import static si.uom.SI.PLANCK_CONSTANT;
+import static javax.measure.BinaryPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -45,14 +46,12 @@ import java.io.IOException;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.MeasurementParseException;
-import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import si.uom.NonSI;
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
 import tech.units.indriya.format.SimpleUnitFormat;
@@ -71,34 +70,28 @@ public class SIUnitFormatTest {
 	@BeforeEach
 	public void init() {
 		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
-				METRE);
-		
+				METRE);		
 //		format = EBNFUnitFormat.getInstance();
 		suf = SimpleUnitFormat.getInstance();
-		suf.label(NonSI.HECTARE, "Ha");
-		suf.label(NonSI.TONNE, "t");
 	}
 
 	@Test
-	public void testFormat2() {
+	public void testToString() {
 		Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());
+		assertEquals("eV", SI.ELECTRON_VOLT.toString());
+		assertEquals("meV", MILLI(SI.ELECTRON_VOLT).toString());
+		assertEquals("KieV", KIBI(SI.ELECTRON_VOLT).toString());
 	}
 	
 	@Test
-	public void testFormat4() {
+	public void testToString2() {
 		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());
 	}
-		
-	@Test
-	public void testFormat5() {
-		Unit<Area> b = NonSI.HECTARE;
-		assertEquals("Ha", b.toString());
-	}
 	
 	@Test
-	public void testFormat3() {
+	public void testToString3() {
 		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
 		assertEquals("At", at.toString());
 	}

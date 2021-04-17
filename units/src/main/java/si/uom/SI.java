@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.5, March 28, 2021
+ * @version 2.6, April 17, 2021
  */
 public final class SI extends Units {
 	/**
@@ -223,7 +223,7 @@ public final class SI extends Units {
 	 * must be obtained by experiment, and is therefore not known exactly.
 	 */
 	public static final Unit<Energy> ELECTRON_VOLT = addUnit(
-			new TransformedUnit<Energy>(JOULE, MultiplyConverter.of(1.602176487E-19)));
+			new TransformedUnit<Energy>(JOULE, MultiplyConverter.of(1.602176487E-19)), "Electron Volt", "eV");
 	// CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
 
 	/**
@@ -247,15 +247,16 @@ public final class SI extends Units {
 	 * @see <a href="https://en.wikipedia.org/wiki/Astronomical_unit"> Wikipedia: Astronomical unit</a>
 	 */
 	public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
-			new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597870700d)));
+			new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597870700d)),
+			"Astronomical Unit", "UA");
 
 	/**
 	 * An angle unit accepted for use with SI units (standard name
 	 * <code>rev</code>).
 	 */
 	public static final Unit<Angle> REVOLUTION = addUnit(new TransformedUnit<Angle>(RADIAN,
-			MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(2, 1))));
-
+			MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(2, 1))),
+			"Revolution", "rev");
 
 	/**
      * The newton-second (also newton second; symbol: N⋅s or N s)[1] is the derived SI unit of impulse.<br>
