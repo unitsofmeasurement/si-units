@@ -53,29 +53,29 @@ import javax.measure.MetricPrefix;
  *
  */
 public class NonSIUnitFormatTest {
-	private UnitFormat simpleUnitFormat;
+	private UnitFormat format;
 
 	@BeforeEach
 	public void init() {
-		simpleUnitFormat = SimpleUnitFormat.getInstance();
-		simpleUnitFormat.label(NonSI.HECTARE, "Ha");
+		format = SimpleUnitFormat.getInstance();
+		format.label(NonSI.HECTARE, "Ha");
 	}
 
 	@Test
 	public void testFormatAngstrom1() {
-		final String angstrom = simpleUnitFormat.format(NonSI.ANGSTROM);
+		final String angstrom = format.format(NonSI.ANGSTROM);
 		assertEquals("\u00C5", angstrom);
 	}
 	
 	@Test
 	public void testFormatBel() {
-		final String bel = simpleUnitFormat.format(NonSI.BEL);
+		final String bel = format.format(NonSI.BEL);
 		assertEquals("B", bel);
 	}
 	
 	@Test
 	public void testFormatDecibel() {
-		final String bel = simpleUnitFormat.format(MetricPrefix.DECI(NonSI.BEL));
+		final String bel = format.format(MetricPrefix.DECI(NonSI.BEL));
 		assertEquals("dB", bel);
 	}
 	

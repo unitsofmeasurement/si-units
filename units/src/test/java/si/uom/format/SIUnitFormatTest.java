@@ -71,31 +71,20 @@ public class SIUnitFormatTest {
 	public void init() {
 		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
 				METRE);		
-//		format = EBNFUnitFormat.getInstance();
 		suf = SimpleUnitFormat.getInstance();
 		suf.label(PLANCK_CONSTANT, "ℎ");
 	}
-
-	@Test
-	public void testToString() {
-		Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
-		assertEquals("km/h", kph.toString());
-		assertEquals("eV", SI.ELECTRON_VOLT.toString());
-		assertEquals("meV", MILLI(SI.ELECTRON_VOLT).toString());
-		assertEquals("KieV", KIBI(SI.ELECTRON_VOLT).toString());
-	}
 	
 	@Test
-	public void testToString2() {
-		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
-		assertEquals("km/h", kph.toString());
-	}
+	public void compatibleUnitCheckGramParsed() throws Exception {
+	    Unit<?> gram = SimpleUnitFormat.getInstance().parse("g");
+	    assertTrue(gram.isCompatible(Units.KILOGRAM));
+	 }
 	
 	@Test
-	public void testToString3() {
-		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
-		assertEquals("At", at.toString());
-	}
+	public void compatibleUnitCheckGram() throws Exception {
+	    assertTrue(Units.GRAM.isCompatible(Units.KILOGRAM));
+	 }
 	
 	@Test
 	public void testParseSimpleSec() {
@@ -190,15 +179,25 @@ public class SIUnitFormatTest {
       Unit<?> u = suf.parse("ℎ");
       assertEquals(PLANCK_CONSTANT, u);
     }
-    
-	@Test
-	public void compatibleUnitCheckGramParsed() throws Exception {
-	    Unit<?> gram = SimpleUnitFormat.getInstance().parse("g");
-	    assertTrue(gram.isCompatible(Units.KILOGRAM));
-	 }
 	
 	@Test
-	public void compatibleUnitCheckGram() throws Exception {
-	    assertTrue(Units.GRAM.isCompatible(Units.KILOGRAM));
-	 }
+	public void testToString() {
+		Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
+		assertEquals("km/h", kph.toString());
+		assertEquals("eV", SI.ELECTRON_VOLT.toString());
+		assertEquals("meV", MILLI(SI.ELECTRON_VOLT).toString());
+		assertEquals("KieV", KIBI(SI.ELECTRON_VOLT).toString());
+	}
+	
+	@Test
+	public void testToString2() {
+		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
+		assertEquals("km/h", kph.toString());
+	}
+	
+	@Test
+	public void testToString3() {
+		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
+		assertEquals("At", at.toString());
+	}
 }
