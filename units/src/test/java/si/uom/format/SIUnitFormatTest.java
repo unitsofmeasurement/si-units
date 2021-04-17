@@ -186,7 +186,7 @@ public class SIUnitFormatTest {
     
     @Test
     public void testParsePlanck() {
-      Unit<?> u = suf.parse("ℎ");
+      Unit<?> u = suf.parse("\u210E");
       assertEquals(PLANCK_CONSTANT, u);
     }
     
