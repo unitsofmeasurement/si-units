@@ -11,8 +11,7 @@
 	<artifactId>si-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
-	<description>Units of Measurement SI (Système International d'Unités)</description>	
-    <version>2.1-SNAPSHOT</version>
+	<description>Units of Measurement SI (Système International d'Unités)</description>	    
 	
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -352,4 +351,5 @@
 			</build>
 		</profile>
 	</profiles>	
+	<version>2.1</version>
 </project>
