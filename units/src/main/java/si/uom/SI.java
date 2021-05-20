@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.6, April 17, 2021
+ * @version 2.7, May 20, 2021
  */
 public final class SI extends Units {
 	/**
@@ -259,6 +259,15 @@ public final class SI extends Units {
 			"Revolution", "rev");
 
 	/**
+     * A kilogram per second (kg/s) is the derived SI unit of mass flow rate.<br>
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Mass_flow_rate"> Wikipedia:
+	 *      Mass flow rate</a>
+	 */
+	public static final Unit<MassFlowRate> KILOGRAM_PER_SECOND = addUnit(
+			new ProductUnit<MassFlowRate>(KILOGRAM.divide(SECOND)), MassFlowRate.class);
+	
+	/**
      * The newton-second (also newton second; symbol: N⋅s or N s)[1] is the derived SI unit of impulse.<br>
      * It is dimensionally equivalent to the momentum unit kilogram-metre per second (kg⋅m/s).<br>
      * One newton-second corresponds to a one-newton force applied for one second.
@@ -318,7 +327,7 @@ public final class SI extends Units {
 			new AlternateUnit<Dimensionless>(ONE.divide(MOLE), "m-1").multiply(AVOGADRO_CONSTANT_VALUE), "NA", true); // (1/mol).
 
 	/**
-	 * The Boltzmann constant (<code>k<sub>B<sub></code> or <code>k</code>) is a physical
+	 * The Boltzmann constant (<code>k<sub>B</sub></code> or <code>k</code>) is a physical
 	 * constant named after its discoverer, Ludwig Boltzmann, which relates the
 	 * average relative kinetic energy of particles in a gas with the temperature of
 	 * the gas and occurs in Planck's law of black-body radiation and in Boltzmann's
