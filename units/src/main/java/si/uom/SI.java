@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.7, May 20, 2021
+ * @version 2.8, May 20, 2021
  */
 public final class SI extends Units {
 	/**
@@ -113,6 +113,14 @@ public final class SI extends Units {
 			new ProductUnit<Acceleration>(METRE_PER_SECOND.divide(SECOND)), Acceleration.class);
 
 	/**
+	 * The SI unit for absement quantities (standard name <code>m.s</code>).
+	 * @see <a href="https://en.wikipedia.org/wiki/Absement"> Wikipedia:
+	 *      Absement</a>
+	 */
+	public static final Unit<Absement> METRE_SECOND = addUnit(
+			new ProductUnit<Absement>(METRE.multiply(SECOND)), Absement.class);
+	
+	/**
 	 * The SI unit for action quantities (standard name <code>J.s</code>).
 	 */
 	public static final Unit<Action> JOULE_SECOND = addUnit(new ProductUnit<Action>(JOULE.multiply(SECOND)),
@@ -125,8 +133,22 @@ public final class SI extends Units {
 	 * electric field in a medium.
 	 */
 	public static final Unit<ElectricPermittivity> FARAD_PER_METRE = addUnit(
-			new AlternateUnit<ElectricPermittivity>(FARAD.divide(METRE), "ε"), ElectricPermittivity.class);
+			new ProductUnit<ElectricPermittivity>(FARAD.divide(METRE)), ElectricPermittivity.class);
 
+	/**
+	 * The SI unit for electrical conductivity, <code>S/m</code>).
+     * @see <a href="https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity">Wikipedia: Electrical resistivity and conductivity</a>
+	 */
+	public static final Unit<ElectricalConductivity> SIEMENS_PER_METRE = addUnit(
+			new ProductUnit<ElectricalConductivity>(SIEMENS.divide(METRE)), ElectricalConductivity.class);
+
+	/**
+	 * The SI unit for electrical resistivity, <code>Ω⋅m</code>).
+     * @see <a href="https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity">Wikipedia: Electrical resistivity and conductivity</a>
+	 */
+	public static final Unit<ElectricalResistivity> OHM_METRE = addUnit(
+			new ProductUnit<ElectricalResistivity>(OHM.multiply(METRE)), ElectricalResistivity.class);
+	
 	/**
 	 * The SI unit for magnetic permeability quantities (standard name
 	 * <code>N/A2</code>).
@@ -289,6 +311,24 @@ public final class SI extends Units {
 	 */
 	public static final Unit<Momentum> KILOGRAM_METRE_PER_SECOND = addUnit(
 			new ProductUnit<Momentum>(KILOGRAM.multiply(METRE_PER_SECOND)), Momentum.class);
+	
+	/**
+     * A kilogram per second (kg/m2) is the derived SI unit of area density. 
+	 * 
+     * @see <a href="https://en.wikipedia.org/wiki/Area_density"> Wikipedia:
+     *      Area density</a>
+	 */
+	public static final Unit<AreaDensity> KILOGRAM_PER_SQUARE_METRE = addUnit(
+			new ProductUnit<AreaDensity>(KILOGRAM.divide(SQUARE_METRE)), AreaDensity.class);
+	
+	/**
+     * A gray per second (kg⋅m/s) is the derived SI unit of radiation absorbed dose rate.<br> 
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Absorbed_dose"> Wikipedia:
+	 *      Absorbed dose</a>
+	 */
+	public static final Unit<RadiationDoseAbsorbedRate> GRAY_PER_SECOND = addUnit(
+			new ProductUnit<RadiationDoseAbsorbedRate>(GRAY.divide(SECOND)), RadiationDoseAbsorbedRate.class);
 
 		
 	///////////////////////////

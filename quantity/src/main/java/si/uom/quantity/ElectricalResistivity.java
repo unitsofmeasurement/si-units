@@ -31,18 +31,16 @@ package si.uom.quantity;
 
 import javax.measure.Quantity;
 
-
 /**
- * Movement of mass per time.
- * The system unit for this quantity is "kg/s" (kilogram per second).
+ * Electrical resistivity (also called specific electrical resistance or volume resistivity) is a fundamental property of a material that measures how strongly it resists electric current. Its inverse, called electrical conductivity, quantifies how well a material conducts electricity.
+ * The system unit for this quantity is "Ω⋅m" (ohm metre).
  *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.2.2
- *
- * @see javax.measure.quantity.Mass
- * @see javax.measure.quantity.Time
- * @see <a href="http://en.wikipedia.org/wiki/Mass_flow_rate">Wikipedia: Mass Flow Rate</a>
+ * @version 1.0
+ * @since 2.1
+ * 
+ * @see <a href="https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity">Wikipedia: Electrical resistivity and conductivity</a>
+ * @see ElectricalConductivity 
  */
-public interface MassFlowRate extends Quantity<MassFlowRate> {
+public interface ElectricalResistivity extends Quantity<ElectricalResistivity> {
 }

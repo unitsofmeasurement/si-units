@@ -31,18 +31,16 @@ package si.uom.quantity;
 
 import javax.measure.Quantity;
 
-
 /**
- * Movement of mass per time.
- * The system unit for this quantity is "kg/s" (kilogram per second).
+ * Electrical conductivity or specific conductance is the reciprocal of electrical resistivity. It represents a material's ability to conduct electric current.
+ * The system unit for this quantity is "S/m" (siemens per metre).
  *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.2.2
- *
- * @see javax.measure.quantity.Mass
- * @see javax.measure.quantity.Time
- * @see <a href="http://en.wikipedia.org/wiki/Mass_flow_rate">Wikipedia: Mass Flow Rate</a>
+ * @version 1.0
+ * @since 2.1
+ * 
+ * @see <a href="https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity">Wikipedia: Electrical resistivity and conductivity</a>
+ * @see ElectricalResistivity
  */
-public interface MassFlowRate extends Quantity<MassFlowRate> {
+public interface ElectricalConductivity extends Quantity<ElectricalConductivity> {
 }

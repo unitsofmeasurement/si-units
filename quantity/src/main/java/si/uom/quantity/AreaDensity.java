@@ -1,6 +1,6 @@
 /*
- * International System of Units (SI)
- * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
+ * Units of Measurement API
+ * Copyright (c) 2014-2021, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -13,8 +13,8 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of SI System, Units of Measurement nor the names of their contributors may be used to
- *    endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-385 nor the names of its contributors may be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -31,18 +31,18 @@ package si.uom.quantity;
 
 import javax.measure.Quantity;
 
-
 /**
- * Movement of mass per time.
- * The system unit for this quantity is "kg/s" (kilogram per second).
+ * The area density (also known as areal density, surface density, superficial density, areic density, mass thickness, column density, or density thickness) of a two-dimensional object is calculated as the mass per unit area.
+ * The system unit for this quantity is "kg/m2" or "kg·m−2" (kilogram per square metre).
  *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.2.2
+ * @version 1.0
+ * @since 2.1
  *
+ * @see <a href="https://en.wikipedia.org/wiki/Area_density"> Wikipedia:
+ *      Area density</a>
  * @see javax.measure.quantity.Mass
- * @see javax.measure.quantity.Time
- * @see <a href="http://en.wikipedia.org/wiki/Mass_flow_rate">Wikipedia: Mass Flow Rate</a>
+ * @see javax.measure.quantity.Area
  */
-public interface MassFlowRate extends Quantity<MassFlowRate> {
+public interface AreaDensity extends Quantity<AreaDensity> {
 }

@@ -36,8 +36,8 @@ import javax.measure.Quantity;
  * The system unit for this quantity is "F/m" (farads per metre).
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.8.2
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ * @version 1.9
  *
  * @see <a href="http://en.wikipedia.org/wiki/Electric_permittivity">Wikipedia: Electric Permittivity</a>
  */
