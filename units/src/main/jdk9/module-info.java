@@ -32,7 +32,7 @@ module si.uom.units {
     requires transitive si.uom.quantity;
     requires transitive tech.units.indriya;
     requires transitive tech.uom.lib.common;
-    requires transitive java.annotation;
+    requires transitive jakarta.annotation;
     
     exports si.uom;
     

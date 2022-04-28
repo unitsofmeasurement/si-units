@@ -29,7 +29,7 @@
  */
 package si.uom;
 
-import javax.annotation.Priority;
+import jakarta.annotation.Priority;
 import javax.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
