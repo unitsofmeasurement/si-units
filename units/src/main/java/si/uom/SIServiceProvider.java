@@ -30,7 +30,7 @@
 package si.uom;
 
 import javax.annotation.Priority;
-import javax.inject.Named;
+import jakarta.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -41,7 +41,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.3, December 8, 2020
+ * @version 2.0, April 6, 2023
  */
 @Named("SI")
 @Priority(100)

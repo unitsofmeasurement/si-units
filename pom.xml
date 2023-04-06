@@ -5,30 +5,31 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.1.2</version>
+		<version>2.2-SNAPSHOT</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>	    
-	
+	<version>2.2-SNAPSHOT</version>
+		
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
 		<!-- Versions -->
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>2.1.2</jsr.version>
-		<lib.version>2.1</lib.version>
-		<ri.version>2.1.2</ri.version>
+		<jsr.version>2.2-SNAPSHOT</jsr.version>
+		<lib.version>2.2-SNAPSHOT</lib.version>
+		<ri.version>2.2-SNAPSHOT</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>2.1</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<thisYear>2021</thisYear>
+		<thisYear>2023</thisYear>
 	</properties>
 	<modules>
 		<module>quantity</module>
@@ -57,7 +58,7 @@
 				<plugin>
 					<groupId>biz.aQute.bnd</groupId>
 					<artifactId>bnd-maven-plugin</artifactId>
-					<version>4.2.0</version>
+					<version>4.3.0</version>
 					<executions>
 						<execution>
 							<goals>
@@ -70,7 +71,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>3.3.0</version>
 				</plugin>
 
 				<!-- ======================================================= -->
@@ -350,6 +351,5 @@
 				</plugins>
 			</build>
 		</profile>
-	</profiles>	
-	<version>2.1.1-SNAPSHOT</version>
+	</profiles>
 </project>
