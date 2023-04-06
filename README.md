@@ -4,8 +4,7 @@ International System of Units
 A library of SI quantities and unit types
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/si.uom/si-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/si.uom/si-parent)
-[![Circle CI](https://circleci.com/gh/unitsofmeasurement/si-units.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/si-units) 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/42fba63eaae8453f9f153f07cce6094a)](https://www.codacy.com/app/unitsofmeasurement/si-units?utm_source=github.com&utm_medium=referral&utm_content=unitsofmeasurement/si-units&utm_campaign=badger)
+[![Circle CI](https://circleci.com/gh/unitsofmeasurement/si-units.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/si-units) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/35833e8176fc46a0a75e675ac409d035)](https://app.codacy.com/gh/unitsofmeasurement/si-units/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
 [![Stack Overflow](http://img.shields.io/badge/stack%20overflow-si%20units-4183C4.svg)](http://stackoverflow.com/search?q=si+units)
