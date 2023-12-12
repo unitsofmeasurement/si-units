@@ -19,7 +19,6 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<junit.platform.version>1.1.0</junit.platform.version>
 
 		<!-- Folders -->
 		<jsrcFolder>java</jsrcFolder>
