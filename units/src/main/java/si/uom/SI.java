@@ -30,7 +30,6 @@
 package si.uom;
 
 import static tech.units.indriya.AbstractUnit.ONE;
-import static tech.units.indriya.unit.Units.METRE_PER_SECOND;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
