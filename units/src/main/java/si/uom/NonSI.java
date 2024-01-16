@@ -32,6 +32,7 @@ package si.uom;
 import static si.uom.SI.AVOGADRO_CONSTANT_VALUE;
 import static si.uom.SI.ELEMENTARY_CHARGE_VALUE;
 import static tech.units.indriya.AbstractUnit.ONE;
+import static tech.units.indriya.format.SimpleUnitFormat.Flavor.ASCII;
 import static javax.measure.MetricPrefix.CENTI;
 import static javax.measure.MetricPrefix.FEMTO;
 import static javax.measure.MetricPrefix.MEGA;
@@ -86,7 +87,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.6, April 6, 2023
+ * @version 1.7, Jan 16, 2024
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -697,5 +698,6 @@ public final class NonSI extends AbstractSystemOfUnits {
         SimpleUnitFormat.getInstance().label(TONNE, "t");
         SimpleUnitFormat.getInstance().label(MEGA(TONNE), "Mt");
        	SimpleUnitFormat.getInstance().alias(STANDARD_GRAVITY, "gn");
+       	SimpleUnitFormat.getInstance(ASCII).label(STANDARD_GRAVITY, "gn");
     }
 }
