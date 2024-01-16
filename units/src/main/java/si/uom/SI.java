@@ -30,6 +30,7 @@
 package si.uom;
 
 import static tech.units.indriya.AbstractUnit.ONE;
+import static tech.units.indriya.unit.Units.METRE_PER_SECOND;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -40,6 +41,7 @@ import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import javax.measure.quantity.Speed;
 
 import si.uom.quantity.*;
 import tech.units.indriya.AbstractUnit;
@@ -69,7 +71,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.8, May 20, 2021
+ * @version 2.9, Jan 16, 2024
  */
 public final class SI extends Units {
 	/**
@@ -377,6 +379,15 @@ public final class SI extends Units {
 			new AlternateUnit<Dimensionless>(JOULE.divide(KELVIN), "J/K").multiply(BOLTZMANN_CONSTANT_VALUE), "kB",
 			true);
 
+    /**
+     * The Natural Unit of {@link Speed}, the speed of light in vacuum (standard name
+     * <code>c</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Speed_of_light"> Wikipedia:
+	 *      Speed of light</a> 
+     */
+    public static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
+	
 	/**
 	 * The elementary charge, usually denoted by <code>e</code> or sometimes
 	 * <code>qe</code>, is the electric charge carried by a single proton or,

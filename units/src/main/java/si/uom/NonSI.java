@@ -355,6 +355,7 @@ public final class NonSI extends AbstractSystemOfUnits {
     /**
      * The Natural Unit of {@link Speed}, a unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
+     * @deprecated Use SI.C instead
      */
     public static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
 
