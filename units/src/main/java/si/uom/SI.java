@@ -38,6 +38,7 @@ import javax.measure.quantity.Angle;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.Energy;
+import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Speed;
@@ -64,13 +65,15 @@ import tech.units.indriya.unit.Units;
  *      the SI that are accepted for use with the SI</a>
  * @see <a href="https://www.bipm.org/en/publications/si-brochure/">SI Brochure:
  *      The International System of Units (SI)</a>
+ * @see <a href="https://www.bipm.org/en/measurement-units/si-defining-constants">SI:
+ *      Defining constants</a>
  * @see MetricPrefix
  * 
  * @noextend This class is not intended to be extended by clients.
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.9, Jan 16, 2024
+ * @version 3.0, Aug 16, 2024
  */
 public final class SI extends Units {
 	/**
@@ -349,12 +352,12 @@ public final class SI extends Units {
 	/**
 	 * Holds the electric charge value of one electron.
 	 */
-	static final double ELEMENTARY_CHARGE_VALUE = 1.602176462E-19; // (C).
-
+	static final double ELEMENTARY_CHARGE_VALUE = 1.602176462E-19; // (E).
+	
 	/**
 	 * Holds the numeric value of the Planck constant.
 	 */
-	static final double PLANCK_CONSTANT_VALUE = 6.62607015E-34; // (1/mol).
+	static final double PLANCK_CONSTANT_VALUE = 6.62607015E-34;
 
 	/**
 	 * The Avogadro constant, named after scientist Amedeo Avogadro, is the number
@@ -387,6 +390,14 @@ public final class SI extends Units {
      */
     public static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
 	
+    /**
+     * The ground state hyperfine structure transition frequency of the caesium-133 atom <code>Δν<sub>Cs</sub></code> is exactly 9192631770 hertz (Hz).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Hyperfine_structure#Use_in_defining_the_SI_second_and_meter"> Wikipedia:
+	 *      Hyperfine Structure Transition - Use in defining the SI second and meter</a> 
+     */
+    public static final Unit<Frequency> DELTA_V_CS = addUnit(HERTZ.multiply(9192631770l));
+    
 	/**
 	 * The elementary charge, usually denoted by <code>e</code> or sometimes
 	 * <code>qe</code>, is the electric charge carried by a single proton or,
@@ -397,6 +408,12 @@ public final class SI extends Units {
 	 */
 	public static final Unit<ElectricCharge> ELEMENTARY_CHARGE = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE_VALUE), "e",
 			true);
+	
+	/**
+	 * The luminous efficacy of monochromatic radiation of frequency 540 ×10<sup>12</sup> hertz <code>K<sub>cd</sub></code> is 683 lm/W. 
+	 */
+	public static final Unit<LuminousEfficacy> KCD = addUnit((LUMEN.divide(WATT)).multiply(683).asType(LuminousEfficacy.class), 
+			"KCD", true);
 
 	/**
 	 * The Planck constant (denoted <code>ℎ</code>, also called Planck's constant)

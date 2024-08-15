@@ -87,7 +87,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.7, Jan 16, 2024
+ * @version 1.8, August 15, 2024
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -309,12 +309,6 @@ public final class NonSI extends AbstractSystemOfUnits {
     /////////////////////
     // Electric charge //
     /////////////////////
-    /**
-     * A unit of electric charge equal to the charge on one electron (standard name
-     * <code>e</code>).
-     */
-    @SuppressWarnings("unused")
-	private static final Unit<ElectricCharge> E = COULOMB.multiply(ELEMENTARY_CHARGE_VALUE);
 
     /**
      * A unit of electric charge equal to equal to the product of Avogadro's number
