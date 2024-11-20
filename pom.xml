@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.2</version>
+		<version>2.2.1</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
@@ -13,6 +13,9 @@
 	<name>International System of Units (SI)</name>
 	<description>Units of Measurement SI (Système International d'Unités)</description>	    
 	<version>2.2-SNAPSHOT</version>
+	<organization>
+		<name>Units of Measurement</name>
+	</organization>
 		
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -32,7 +35,7 @@
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<thisYear>2024</thisYear>
 		<bnd.version>7.0.0</bnd.version>
-		<build-helper.version>3.5.0</build-helper.version>
+		<build-helper.version>3.6.0</build-helper.version>
 	</properties>
 	<modules>
 		<module>quantity</module>
