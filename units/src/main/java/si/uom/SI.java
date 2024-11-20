@@ -73,7 +73,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.0, Aug 16, 2024
+ * @version 3.1, Nov 20, 2024
  */
 public final class SI extends Units {
 	/**
@@ -435,17 +435,6 @@ public final class SI extends Units {
 	}
 
 	/**
-	 * Adds a new unit not mapped to any specified quantity type.
-	 *
-	 * @param unit the unit being added.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends Unit<?>> U addUnit(U unit) {
-		INSTANCE.units.add(unit);
-		return unit;
-	}
-
-	/**
 	 * Adds a new unit not mapped to any specified quantity type and puts a text as
 	 * symbol or label.
 	 *
@@ -481,19 +470,6 @@ public final class SI extends Units {
 	}
 
 	/**
-	 * Adds a new unit not mapped to any specified quantity type and puts a text as
-	 * symbol or label.
-	 *
-	 * @param unit  the unit being added.
-	 * @param name  the string to use as name
-	 * @param label the string to use as label
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
-		return addUnit(unit, name, label, true);
-	}
-
-	/**
 	 * Adds a new unit with name and label and maps it to the specified quantity
 	 * type.
 	 *
@@ -508,31 +484,5 @@ public final class SI extends Units {
 			Class<? extends Quantity<?>> type) {
 		INSTANCE.quantityToUnit.put(type, unit);
 		return addUnit(unit, name, label);
-	}
-
-	/**
-	 * Adds a new unit with a name and maps it to the specified quantity type.
-	 *
-	 * @param unit the unit being added.
-	 * @param name the string to use as name
-	 * @param type the quantity type.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, Class<? extends Quantity<?>> type) {
-		INSTANCE.quantityToUnit.put(type, unit);
-		return addUnit(unit, name, null, false);
-	}
-
-	/**
-	 * Adds a new unit and maps it to the specified quantity type.
-	 *
-	 * @param unit the unit being added.
-	 * @param type the quantity type.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
-		INSTANCE.units.add(unit);
-		INSTANCE.quantityToUnit.put(type, unit);
-		return unit;
 	}
 }

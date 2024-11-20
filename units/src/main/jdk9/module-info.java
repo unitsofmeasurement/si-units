@@ -34,7 +34,7 @@ module si.uom.units {
     requires transitive tech.uom.lib.common;
     requires transitive jakarta.annotation;
     requires transitive jakarta.inject;
-    
+    requires java.logging;
     exports si.uom;
     
     provides javax.measure.spi.ServiceProvider with

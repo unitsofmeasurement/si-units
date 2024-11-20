@@ -22,7 +22,7 @@
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>2.2</jsr.version>
 		<lib.version>2.2</lib.version>
-		<ri.version>2.2</ri.version>
+		<ri.version>2.2.1</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>2.2-SNAPSHOT</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
