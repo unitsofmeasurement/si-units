@@ -35,7 +35,6 @@ import static tech.units.indriya.unit.Units.HOUR;
 import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
 import static si.uom.SI.PLANCK_CONSTANT;
-import static javax.measure.BinaryPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -54,6 +53,7 @@ import org.junit.jupiter.api.Test;
 
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.quantity.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
@@ -179,14 +179,18 @@ public class SIUnitFormatTest {
       Unit<?> u = suf.parse("ℎ");
       assertEquals(PLANCK_CONSTANT, u);
     }
+    
+    @Test
+    public void testParsePlanckEBNF() {
+      EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+      Unit<?> u = format.parse("\u210E");    	
+      assertEquals(PLANCK_CONSTANT, u);
+    }
 	
 	@Test
 	public void testToString() {
 		Unit<Speed> kph = SI.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());
-		assertEquals("eV", SI.ELECTRON_VOLT.toString());
-		assertEquals("meV", MILLI(SI.ELECTRON_VOLT).toString());
-		assertEquals("KieV", KIBI(SI.ELECTRON_VOLT).toString());
 	}
 	
 	@Test
@@ -200,4 +204,20 @@ public class SIUnitFormatTest {
 		Unit<MagnetomotiveForce> at = SI.AMPERE_TURN;
 		assertEquals("At", at.toString());
 	}
+	
+    @Test
+    public void testFormatFPMEBNF() {
+      EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+      String s = format.format(SI.FARAD_PER_METRE);
+      assertEquals("F/m", s);
+    }
+	
+    @Test
+    public void testParseFPMEBNF() {
+      EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+      Unit<?> u = format.parse("F/m");    	
+      assertEquals(SI.FARAD_PER_METRE, u);
+      u = format.parse("ε");
+      assertEquals(SI.FARAD_PER_METRE, u);
+    }
 }

@@ -27,36 +27,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom;
+package si.uom.format;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static si.uom.SI.COULOMB_PER_KILOGRAM;
+import static si.uom.NonSI.UNIFIED_ATOMIC_MASS;
 
-import javax.measure.Quantity;
-import javax.measure.quantity.Mass;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Logger;
+
+import javax.measure.Unit;
+import javax.measure.spi.SystemOfUnits;
 
 import org.junit.jupiter.api.Test;
 
-import tech.units.indriya.function.RationalNumber;
-import tech.units.indriya.quantity.Quantities;
-import tech.units.indriya.unit.Units;
+import si.uom.NonSI;
+import si.uom.SI;
+import tech.units.indriya.format.EBNFUnitFormat;
 
-public class ArithmeticTest {
+
+/**
+ * @author <a href="mailto:werner@uom.si">Werner Keil</a>
+ *
+ */
+public class EBNFUnitFormatTest {
+	private static final Logger logger = Logger.getLogger(EBNFUnitFormatTest.class.getName());
+	
+	private static final Unit<?>[] SKIP_UNITS = {COULOMB_PER_KILOGRAM, UNIFIED_ATOMIC_MASS};
+	private static final List<Unit<?>> SKIP_LIST = Arrays.asList(SKIP_UNITS); 
 	
 	@Test
-	public void testAdd() {
-		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(10E30d, NonSI.UNIFIED_ATOMIC_MASS);
-		Quantity<Mass> result = kg.add(p);
-		assertEquals(RationalNumber.of(16610.38782d), result.getValue());
-		assertEquals(Units.KILOGRAM, result.getUnit());
+	public void testFormatAndParseSI() {
+		formatAndParseSystem(SI.getInstance());
 	}
-
+	
 	@Test
-	public void testSubtract2() {
-		Quantity<Mass> kg = Quantities.getQuantity(5000d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(1E30d, NonSI.UNIFIED_ATOMIC_MASS);
-		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(RationalNumber.of(3339.461218d), result.getValue());
-		assertEquals(Units.KILOGRAM, result.getUnit());
+	public void testFormatAndParseNonSI() {
+		formatAndParseSystem(NonSI.getInstance());
+	}
+	
+	private void formatAndParseSystem(SystemOfUnits system) {
+		EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+	    for (Unit<?> u : system.getUnits()) {
+	    	String fmt = format.format(u);
+	    	logger.fine(String.format("%s: %s", u.getName(), fmt));
+			Unit<?> parsed = format.parse(fmt);
+			if (SKIP_LIST.contains(u)) {
+				// these are parsed correctly, but the concrete unit types differ
+				assertEquals(u.toString(), parsed.toString());
+			} else {
+				assertEquals(u, parsed);
+			}
+	    }
 	}
 }

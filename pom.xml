@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.2.1</version>
+		<version>2.2.2-SNAPSHOT</version>
 	</parent>
 	<groupId>si.uom</groupId>
 	<artifactId>si-parent</artifactId>
@@ -25,7 +25,7 @@
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>2.2</jsr.version>
 		<lib.version>2.2</lib.version>
-		<ri.version>2.2.1</ri.version>
+		<ri.version>2.2.2-SNAPSHOT</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
 		<si.quantity.version>2.2-SNAPSHOT</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->

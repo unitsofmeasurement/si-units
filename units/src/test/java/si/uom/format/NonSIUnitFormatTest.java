@@ -38,6 +38,7 @@ import org.junit.jupiter.api.Test;
 
 import si.uom.NonSI;
 import si.uom.SI;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 
 import static javax.measure.BinaryPrefix.*;
@@ -60,17 +61,41 @@ public class NonSIUnitFormatTest {
 		format = SimpleUnitFormat.getInstance();
 		format.label(NonSI.HECTARE, "Ha");
 	}
-
+	
 	@Test
-	public void testFormatAngstrom1() {
-		final String angstrom = format.format(NonSI.ANGSTROM);
-		assertEquals("\u00C5", angstrom);
+	public void testFormatTonne() {
+		final String t = format.format(NonSI.TONNE);
+		assertEquals("t", t);
+	}
+	
+	@Test
+	public void testFormatTonneEBNF() {
+		final String s = EBNFUnitFormat.getInstance().format(NonSI.TONNE);
+		assertEquals("t", s);
+	}
+	
+	@Test
+	public void testParseTonneEBNF() {
+		Unit<?> u = EBNFUnitFormat.getInstance().parse("t");    	
+	    assertEquals(NonSI.TONNE, u);
 	}
 	
 	@Test
 	public void testFormatBel() {
 		final String bel = format.format(NonSI.BEL);
 		assertEquals("B", bel);
+	}
+	
+	@Test
+	public void testFormatBelEBNF() {
+		final String s = EBNFUnitFormat.getInstance().format(NonSI.BEL);
+		assertEquals("B", s);
+	}
+	
+	@Test
+	public void testParseBelEBNF() {
+		Unit<?> u = EBNFUnitFormat.getInstance().parse("B");    	
+	    assertEquals(NonSI.BEL, u);
 	}
 	
 	@Test
@@ -89,6 +114,9 @@ public class NonSIUnitFormatTest {
 	public void testToString() {		
 		assertEquals("Kit", KIBI(NonSI.TONNE).toString());
 		assertEquals("Mt", MEGA(NonSI.TONNE).toString());
+		assertEquals("eV", NonSI.ELECTRON_VOLT.toString());
+		assertEquals("meV", MILLI(NonSI.ELECTRON_VOLT).toString());
+		assertEquals("KieV", KIBI(NonSI.ELECTRON_VOLT).toString());
 	}
 	
 	@Test

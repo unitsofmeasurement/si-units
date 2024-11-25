@@ -31,25 +31,44 @@ package si.uom;
 
 import static tech.units.indriya.AbstractUnit.ONE;
 
+import javax.measure.MetricPrefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
-import javax.measure.quantity.Angle;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.ElectricCharge;
-import javax.measure.quantity.Energy;
 import javax.measure.quantity.Frequency;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
 import javax.measure.quantity.Speed;
 
-import si.uom.quantity.*;
+import si.uom.quantity.Absement;
+import si.uom.quantity.Action;
+import si.uom.quantity.AngularAcceleration;
+import si.uom.quantity.AngularSpeed;
+import si.uom.quantity.AreaDensity;
+import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.ElectricPermittivity;
+import si.uom.quantity.ElectricalConductivity;
+import si.uom.quantity.ElectricalResistivity;
+import si.uom.quantity.Impulse;
+import si.uom.quantity.Intensity;
+import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.Luminance;
+import si.uom.quantity.LuminousEfficacy;
+import si.uom.quantity.MagneticFieldStrength;
+import si.uom.quantity.MagneticPermeability;
+import si.uom.quantity.MagnetomotiveForce;
+import si.uom.quantity.MassFlowRate;
+import si.uom.quantity.Momentum;
+import si.uom.quantity.Radiance;
+import si.uom.quantity.RadiantIntensity;
+import si.uom.quantity.RadiationDoseAbsorbedRate;
+import si.uom.quantity.WaveNumber;
 import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
-import tech.units.indriya.unit.TransformedUnit;
 import tech.units.indriya.unit.Units;
 
 /**
@@ -73,7 +92,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.1, Nov 20, 2024
+ * @version 3.3, Nov 24, 2024
  */
 public final class SI extends Units {
 	/**
@@ -243,48 +262,6 @@ public final class SI extends Units {
 			AngularAcceleration.class);
 
 	/**
-	 * An energy unit accepted for use with SI units (standard name
-	 * <code>eV</code>). The electronvolt is the kinetic energy acquired by an
-	 * electron passing through a potential difference of 1 V in vacuum. The value
-	 * must be obtained by experiment, and is therefore not known exactly.
-	 */
-	public static final Unit<Energy> ELECTRON_VOLT = addUnit(
-			new TransformedUnit<Energy>(JOULE, MultiplyConverter.of(1.602176487E-19)), "Electron Volt", "eV");
-	// CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
-
-	/**
-	 * A mass unit accepted for use with SI units (standard name <code>u</code>).
-	 * The unified atomic mass unit is equal to 1/12 of the mass of an unbound atom
-	 * of the nuclide 12C, at rest and in its ground state. The value must be
-	 * obtained by experiment, and is therefore not known exactly.
-	 */
-	public static final Unit<Mass> UNIFIED_ATOMIC_MASS = addUnit(
-			new TransformedUnit<Mass>(KILOGRAM, MultiplyConverter.of(1.660538782E-27)), "Unified atomic mass", "u",
-			true);
-	// CODATA 2006 - http://physics.nist.gov/cuu/Constants/codata.pdf
-
-	/**
-	 * A length unit accepted for use with SI units (standard name <code>UA</code>).
-	 * The astronomical unit is a unit of length. 
-	 * Originally conceived as the average of Earth's aphelion and perihelion, 
-	 * since 2012 it has been defined as exactly 149,597,870,700 metres, 
-	 * or about 150 million kilometres (93 million miles).
-	 * 
-	 * @see <a href="https://en.wikipedia.org/wiki/Astronomical_unit"> Wikipedia: Astronomical unit</a>
-	 */
-	public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
-			new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597870700d)),
-			"Astronomical Unit", "UA");
-
-	/**
-	 * An angle unit accepted for use with SI units (standard name
-	 * <code>rev</code>).
-	 */
-	public static final Unit<Angle> REVOLUTION = addUnit(new TransformedUnit<Angle>(RADIAN,
-			MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(2, 1))),
-			"Revolution", "rev");
-
-	/**
      * A kilogram per second (kg/s) is the derived SI unit of mass flow rate.<br>
 	 * 
 	 * @see <a href="https://en.wikipedia.org/wiki/Mass_flow_rate"> Wikipedia:
@@ -388,7 +365,8 @@ public final class SI extends Units {
      * @see <a href="https://en.wikipedia.org/wiki/Speed_of_light"> Wikipedia:
 	 *      Speed of light</a> 
      */
-    public static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
+    public static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458), "C",
+			true);
 	
     /**
      * The ground state hyperfine structure transition frequency of the caesium-133 atom <code>Δν<sub>Cs</sub></code> is exactly 9192631770 hertz (Hz).
@@ -396,7 +374,8 @@ public final class SI extends Units {
      * @see <a href="https://en.wikipedia.org/wiki/Hyperfine_structure#Use_in_defining_the_SI_second_and_meter"> Wikipedia:
 	 *      Hyperfine Structure Transition - Use in defining the SI second and meter</a> 
      */
-    public static final Unit<Frequency> DELTA_V_CS = addUnit(HERTZ.multiply(9192631770l));
+    public static final Unit<Frequency> DELTA_V_CS = addUnit(HERTZ.multiply(9192631770l), "Δν",
+			true);
     
 	/**
 	 * The elementary charge, usually denoted by <code>e</code> or sometimes
@@ -425,6 +404,18 @@ public final class SI extends Units {
 	 */
 	public static final Unit<Action> PLANCK_CONSTANT = addUnit(JOULE_SECOND.multiply(PLANCK_CONSTANT_VALUE), "\u210E", true);
 	
+    ////////////////////////////////////////////////////////////////////////////
+    // Label adjustments for SI
+    ////////////////////////////////////////////////////////////////////////////
+    static {
+        // Simple
+       	SimpleUnitFormat.getInstance().alias(FARAD_PER_METRE, "ε");
+
+       	// EBNF
+       	EBNFUnitFormat.getInstance().alias(FARAD_PER_METRE, "ε");
+       	EBNFUnitFormat.getInstance().label(AMPERE_TURN, "At");       	
+    }
+	
 	/////////////////////
 	// Collection View //
 	/////////////////////
@@ -447,6 +438,7 @@ public final class SI extends Units {
 	private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
 		if (isLabel) {
 			SimpleUnitFormat.getInstance().label(unit, text);
+			EBNFUnitFormat.getInstance().label(unit, text);
 		}
 		if (name != null && unit instanceof AbstractUnit) {
 			return Helper.addUnit(INSTANCE.units, unit, name);
@@ -484,5 +476,56 @@ public final class SI extends Units {
 			Class<? extends Quantity<?>> type) {
 		INSTANCE.quantityToUnit.put(type, unit);
 		return addUnit(unit, name, label);
+	}
+	
+	/**
+	 * Adds a new unit not mapped to any specified quantity type.
+	 *
+	 * @param unit the unit being added.
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends Unit<?>> U addUnit(U unit) {
+		INSTANCE.units.add(unit);
+		return unit;
+	}
+    
+	/**
+	 * Adds a new unit to a set and maps it to the specified quantity type.
+	 *
+	 * @param units the set to add to.
+	 * @param unit the unit being added.
+	 * @param name the name of the unit being added.
+	 * @param type the quantity type.
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, Class<? extends Quantity<?>> type) {
+		Helper.addUnit(INSTANCE.units, unit, name);
+		INSTANCE.quantityToUnit.put(type, unit);
+		return unit;
+	}
+	
+	/**
+	 * Adds a new unit and maps it to the specified quantity type.
+	 *
+	 * @param unit the unit being added.
+	 * @param type the quantity type.
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+		INSTANCE.units.add(unit);
+		INSTANCE.quantityToUnit.put(type, unit);
+		return unit;
+	}
+
+	/**
+	 * Adds a new unit with name and symbol.
+	 *
+	 * @param unit  the unit being added.
+	 * @param name  the string to use as name
+	 * @param symbol the string to use as symbol
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends AbstractUnit<?>> U addUnit(U unit, String name, String symbol) {
+		return Helper.addUnit(INSTANCE.units, unit, name, symbol);
 	}
 }
