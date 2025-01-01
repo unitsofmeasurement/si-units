@@ -33,7 +33,7 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<thisYear>2024</thisYear>
+		<thisYear>2025</thisYear>
 		<bnd.version>7.0.0</bnd.version>
 		<build-helper.version>3.6.0</build-helper.version>
 	</properties>

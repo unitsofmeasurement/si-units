@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -35,7 +35,6 @@ import static si.uom.SI.ELEMENTARY_CHARGE_VALUE;
 import static tech.units.indriya.AbstractUnit.ONE;
 import static tech.units.indriya.unit.Units.BECQUEREL;
 import static tech.units.indriya.unit.Units.COULOMB;
-import static tech.units.indriya.unit.Units.DAY;
 import static tech.units.indriya.unit.Units.JOULE;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
@@ -68,6 +67,7 @@ import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.AbstractConverter;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.unit.Units;
 import tech.units.indriya.unit.TransformedUnit;
 
 /**
@@ -78,7 +78,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.1, November 25, 2024
+ * @version 2.2, January 1, 2025
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
  *      Common Units not officially sanctioned</a>
@@ -195,6 +195,11 @@ public final class NonSI extends AbstractSystemOfUnits {
     // Time   //
     ////////////
 
+    /**
+	 * A time unit accepted for use with SI units (standard name <code>d</code> ).
+	 */     
+    public static final Unit<Time> DAY = addUnit(Units.DAY, "Day", "d");
+	
     /**
      * A unit of duration equal to the time required for a complete rotation of the
      * earth in reference to any star or to the vernal equinox at the meridian,

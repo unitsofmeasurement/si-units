@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -48,7 +48,7 @@ public class SystemOfUnitsServiceTest {
 
 	private static final int UNITS_EXPECTED_DEF = 44;
 	private static final int UNITS_EXPECTED_SI = 31;
-	private static final int UNITS_EXPECTED_NONSI = 25;
+	private static final int UNITS_EXPECTED_NONSI = 26;
 	private static SystemOfUnitsService defaultService;
 	private static SystemOfUnitsService siService;
 	

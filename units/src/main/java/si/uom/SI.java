@@ -1,6 +1,6 @@
 /*
  * International System of Units (SI)
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -92,7 +92,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.3, Nov 24, 2024
+ * @version 3.3.1, Jan 1, 2025
  */
 public final class SI extends Units {
 	/**
@@ -341,7 +341,7 @@ public final class SI extends Units {
 	 * of constituent particles, usually molecules, atoms or ions that are contained
 	 * in the amount of substance given by one mole. It is the proportionality
 	 * factor that relates the molar mass of a substance to the mass of a sample, is
-	 * designated with the symbol <code>N<sub>A<sub></code> or <code>L</code>, and has the
+	 * designated with the symbol <code>N<sub>A</sub></code> or <code>L</code>, and has the
 	 * value 6.022140857(74)×1023 mol−1 in the International System of Units (SI).
 	 */
 	public static final Unit<Dimensionless> AVOGADRO_CONSTANT = addUnit(
