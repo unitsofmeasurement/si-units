@@ -34,6 +34,7 @@ import static si.uom.SI.AVOGADRO_CONSTANT_VALUE;
 import static si.uom.SI.ELEMENTARY_CHARGE_VALUE;
 import static tech.units.indriya.AbstractUnit.ONE;
 import static tech.units.indriya.unit.Units.BECQUEREL;
+import static tech.units.indriya.unit.Units.DAY;
 import static tech.units.indriya.unit.Units.COULOMB;
 import static tech.units.indriya.unit.Units.JOULE;
 import static tech.units.indriya.unit.Units.KILOGRAM;
@@ -67,7 +68,6 @@ import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.AbstractConverter;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.unit.Units;
 import tech.units.indriya.unit.TransformedUnit;
 
 /**
@@ -159,7 +159,6 @@ public final class NonSI extends AbstractSystemOfUnits {
      */
     public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(
             new TransformedUnit<Length>(METRE, MultiplyConverter.of(149597871000.0)), "Astronomical Unit", "UA");
-    // Best estimate source: http://maia.usno.navy.mil/NSFA/CBE.html
 
     ////////////
     // Area   //
@@ -188,6 +187,8 @@ public final class NonSI extends AbstractSystemOfUnits {
 	/**
 	 * The Bohr radius (a0 or rBohr) is a physical constant, approximately equal to the most probable distance between the nucleus and the electron in a hydrogen atom in its ground state.
 	 * It is named after Niels Bohr, due to its role in the Bohr model of an atom. Its value is 5.2917721067(12)×10−11 m.
+	 * 
+     * @see <a href="https://en.wikipedia.org/wiki/Niels_Bohr"> Wikipedia: Niels Bohr</a> 
 	 */
 	public static final Unit<Length> BOHR_RADIUS = addUnit(METRE.multiply(5.291772106712E-11), "Bohr Radius", "a0");
 
@@ -195,11 +196,6 @@ public final class NonSI extends AbstractSystemOfUnits {
     // Time   //
     ////////////
 
-    /**
-	 * A time unit accepted for use with SI units (standard name <code>d</code> ).
-	 */     
-    public static final Unit<Time> DAY = addUnit(Units.DAY, "Day", "d");
-	
     /**
      * A unit of duration equal to the time required for a complete rotation of the
      * earth in reference to any star or to the vernal equinox at the meridian,
@@ -210,8 +206,9 @@ public final class NonSI extends AbstractSystemOfUnits {
     		"Day Sidereal", "day_sidereal");
 	
     /**
-	 * A unit of duration equal to 365 {@link #DAY} (standard name
+	 * A unit of duration equal to 365 days (standard name
 	 * <code>year</code>).
+	 * @see SI#DAY
 	 */
 	public static final Unit<Time> YEAR_CALENDAR = addUnit(DAY.multiply(365), "Calendar Year", "year");
 
@@ -259,9 +256,14 @@ public final class NonSI extends AbstractSystemOfUnits {
     /////////////////////
 
     /**
-     * A unit of electric charge equal to equal to the product of Avogadro's number
+     * A unit of electric charge equal to the product of Avogadro's number
      * (see {@link SI#MOLE}) and the charge (1 e) on a single electron (standard
      * name <code>Fd</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Michael_Faraday"> Wikipedia: Michael Faraday</a>
+     * @see SI#COULOMB
+     * @see SI#AVOGADRO_CONSTANT 
+     * @see SI#ELEMENTARY_CHARGE
      */
     public static final Unit<ElectricCharge> FARADAY = addUnit(
             COULOMB.multiply(ELEMENTARY_CHARGE_VALUE * AVOGADRO_CONSTANT_VALUE), "Faraday", "Fd"); // e/mol
