@@ -76,12 +76,14 @@ import tech.units.indriya.unit.TransformedUnit;
  * Units, that is, they are outside the SI, but some are still widely used.
  * </p>
  * 
+ * @noextend This class is not intended to be extended by clients.
+ *  
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.2, January 1, 2025
+ * @version 2.2.1, January 21, 2025
  * @see <a href=
- *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI#Common_units_not_officially_sanctioned">Wikipedia:
- *      Common Units not officially sanctioned</a>
+ *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI">Wikipedia:
+ *      Non-SI units mentioned in the SI</a>
  */
 public final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";

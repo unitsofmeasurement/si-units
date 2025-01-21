@@ -27,10 +27,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 /**
- * Specifies SI Quantities.
+ * Specifies SI Units in the unit systems {@link si.uom.SI} and {@link si.uom.NonSI}.
+ *  
  * @author Werner Keil
  * @see <a href="https://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia: International System of Units</a>
  */
-package si.uom.quantity;
+package si.uom;
