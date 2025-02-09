@@ -80,7 +80,7 @@ import tech.units.indriya.unit.TransformedUnit;
  *  
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.2.1, January 21, 2025
+ * @version 2.2.2, February 9, 2025
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI">Wikipedia:
  *      Non-SI units mentioned in the SI</a>
@@ -313,7 +313,7 @@ public final class NonSI extends AbstractSystemOfUnits {
      * A unit of radioctive activity equal to 1 million radioactive disintegrations
      * per second (standard name <code>Rd</code>).
      */
-    protected static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL.multiply(1000000), 
+    public static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL.multiply(1000000), 
     		"Rutherford", "Rd");
 
     ///////////////////////
