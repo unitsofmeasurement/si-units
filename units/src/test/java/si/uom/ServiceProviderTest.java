@@ -58,7 +58,7 @@ public class ServiceProviderTest {
 	}
 
 	@Test
-	public void testDefault() {
+	public void testCurrent() {
 		ServiceProvider provider = ServiceProvider.current();
 		assertNotNull(provider);
 		assertEquals("si.uom.SIServiceProvider", provider.getClass().getName());
