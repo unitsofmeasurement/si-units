@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package si.uom;
+package si.uom.spi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -47,7 +47,7 @@ public class SystemOfUnitsServiceTest {
 	private static final String NONSI_NAME = "Non-SI Units";
 
 	private static final int UNITS_EXPECTED_DEF = 44;
-	private static final int UNITS_EXPECTED_SI = 31;
+	private static final int UNITS_EXPECTED_SI = 32;
 	private static final int UNITS_EXPECTED_NONSI = 25;
 	private static SystemOfUnitsService defaultService;
 	private static SystemOfUnitsService siService;

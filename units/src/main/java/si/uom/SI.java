@@ -45,6 +45,7 @@ import si.uom.quantity.Action;
 import si.uom.quantity.AngularAcceleration;
 import si.uom.quantity.AngularSpeed;
 import si.uom.quantity.AreaDensity;
+import si.uom.quantity.Density;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.ElectricalConductivity;
@@ -92,7 +93,7 @@ import tech.units.indriya.unit.Units;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 3.3.1, Jan 1, 2025
+ * @version 3.4, Feb 19, 2025
  */
 public final class SI extends Units {
 	/**
@@ -294,13 +295,24 @@ public final class SI extends Units {
 			new ProductUnit<Momentum>(KILOGRAM.multiply(METRE_PER_SECOND)), Momentum.class);
 	
 	/**
-     * A kilogram per second (kg/m2) is the derived SI unit of area density. 
+     * A kilogram per square metre (kg/m2) is the derived SI unit of area density. 
 	 * 
      * @see <a href="https://en.wikipedia.org/wiki/Area_density"> Wikipedia:
      *      Area density</a>
 	 */
 	public static final Unit<AreaDensity> KILOGRAM_PER_SQUARE_METRE = addUnit(
 			new ProductUnit<AreaDensity>(KILOGRAM.divide(SQUARE_METRE)), AreaDensity.class);
+	
+	/**
+     * A kilogram per cubic metre (kg/m3) is the derived SI unit of area density. 
+	 * 
+     * @see <a href="https://en.wikipedia.org/wiki/Kilogram_per_cubic_metre"> Wikipedia:
+     *      Kilogram per cubic metre</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Density"> Wikipedia:
+     *      Density</a>      
+	 */
+	public static final Unit<Density> KILOGRAM_PER_CUBIC_METRE = addUnit(
+			new ProductUnit<Density>(KILOGRAM.divide(CUBIC_METRE)), Density.class);
 	
 	/**
      * A gray per second (kg⋅m/s) is the derived SI unit of radiation absorbed dose rate.<br> 

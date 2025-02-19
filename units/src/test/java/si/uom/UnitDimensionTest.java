@@ -1,6 +1,6 @@
 /*
- * International System of Units (SI)
- * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
+ * Units of Measurement Reference Implementation
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -13,8 +13,8 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of SI System, Units of Measurement nor the names of their contributors may be used to
- *    endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-385, Indriya nor the names of their contributors may be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -29,42 +29,46 @@
  */
 package si.uom;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import javax.measure.Unit;
-import javax.measure.quantity.Dimensionless;
-import javax.measure.quantity.Mass;
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import javax.measure.Dimension;
 import org.junit.jupiter.api.Test;
 
 import si.uom.quantity.Density;
 import si.uom.quantity.Luminance;
-import tech.units.indriya.AbstractUnit;
-import tech.units.indriya.unit.Units;
+import tech.units.indriya.unit.UnitDimension;
 
-
+/**
+ * UnitDimension tests.
+ */
 public class UnitDimensionTest {
 
-  @SuppressWarnings("unused")
+  /**
+   * Verifies that the factory method returns null for null.
+   */
   @Test
-  public void testAsType() {
-	  String unitAsString = "kg/h/l";
-	  Unit<?> unit = AbstractUnit.parse(unitAsString);
-
-	  // The following should make sure that the given unit from string is matching the expected dimension. It will
-	  // throw an exception if it does not match for javax units, but not for si-quantity unit.
-	  assertThrows(ClassCastException.class,
-	            ()->{
-	          	  Unit<Mass> mass = unit.asType(Mass.class); // throws error -> correct
-	        	  Unit<Dimensionless> dimensionless = unit.asType(Dimensionless.class); // throws error -> correct
-	            });
-	  Unit<Density> density = unit.asType(Density.class); // no error -> incorrect
-	  Unit<Luminance> luminance = unit.asType(Luminance.class); // no error -> incorrect
-
-	  Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR.divide(Units.LITRE));
-
-	  assertEquals(unitKilogramPerLiter.toString(), density.toString()); // success -> incorrect behaviour
-	  assertEquals(unitKilogramPerLiter.toString(), luminance.toString()); // success -> incorrect behaviour
+  public void ofReturnsNullForNull() {
+    assertNull(UnitDimension.of(null));
+  }
+  
+  /**
+   * Verifies that the factory method works for Density.
+   */
+  @Test
+  public void testOfDensity() {
+	Dimension dim = UnitDimension.of(Density.class);
+    assertNotNull(dim);
+    assertEquals("[M]/[L]³", dim.toString());
+  }
+  
+  /**
+   * Verifies that the factory method works for Luminance.
+   */
+  @Test
+  public void testOfLuminance() {
+	Dimension dim = UnitDimension.of(Luminance.class);
+    assertNotNull(dim);
+    assertEquals("[J]/[L]²", dim.toString());
   }
 }
