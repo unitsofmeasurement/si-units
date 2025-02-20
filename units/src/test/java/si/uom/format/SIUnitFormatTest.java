@@ -37,11 +37,13 @@ import static tech.units.indriya.unit.Units.SECOND;
 import static si.uom.SI.PLANCK_CONSTANT;
 import static javax.measure.MetricPrefix.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 
+import javax.measure.Dimension;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.MeasurementParseException;
@@ -49,10 +51,12 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import si.uom.SI;
 import si.uom.quantity.MagnetomotiveForce;
+import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.quantity.DefaultQuantityFactory;
@@ -164,27 +168,27 @@ public class SIUnitFormatTest {
 	
     @Test
     public void testParseMicro() {
-      Unit<?> u = suf.parse("μm");
-      assertEquals(MICRO(METRE), u);
+    	Unit<?> u = suf.parse("μm");
+    	assertEquals(MICRO(METRE), u);
     }
 
     @Test
     public void testParseMicroAlias() {
-      Unit<?> u = suf.parse("\u03bcm");
-      assertEquals(MICRO(METRE), u);
+    	Unit<?> u = suf.parse("\u03bcm");
+    	assertEquals(MICRO(METRE), u);
     }
     
     @Test
     public void testParsePlanck() {
-      Unit<?> u = suf.parse("ℎ");
-      assertEquals(PLANCK_CONSTANT, u);
+    	Unit<?> u = suf.parse("ℎ");
+    	assertEquals(PLANCK_CONSTANT, u);
     }
     
     @Test
     public void testParsePlanckEBNF() {
-      EBNFUnitFormat format = EBNFUnitFormat.getInstance();
-      Unit<?> u = format.parse("\u210E");    	
-      assertEquals(PLANCK_CONSTANT, u);
+    	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+    	Unit<?> u = format.parse("\u210E");    	
+    	assertEquals(PLANCK_CONSTANT, u);
     }
 	
 	@Test
@@ -214,10 +218,24 @@ public class SIUnitFormatTest {
 	
     @Test
     public void testParseFPMEBNF() {
-      EBNFUnitFormat format = EBNFUnitFormat.getInstance();
-      Unit<?> u = format.parse("F/m");    	
-      assertEquals(SI.FARAD_PER_METRE, u);
-      u = format.parse("ε");
-      assertEquals(SI.FARAD_PER_METRE, u);
+    	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+    	Unit<?> u = format.parse("F/m");    	
+    	assertEquals(SI.FARAD_PER_METRE, u);
+    	u = format.parse("ε");
+    	assertEquals(SI.FARAD_PER_METRE, u);
+    }
+    
+    @Test
+    @Disabled
+    public void testParseKilogramPerLitre() {
+    	final String unitAsString = "kg/h/l";
+    	final Unit<?> unit = AbstractUnit.parse(unitAsString);
+    	final Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR).divide(Units.LITRE);
+    	
+  	  	Dimension dim1 = unit.getDimension();
+  	  	Dimension dim2 = unitKilogramPerLiter.getDimension();
+  	  	assertEquals(dim1, dim2);
+  	  	assertEquals(unit.toString(), unitAsString);
+  	  	assertNotEquals(unitKilogramPerLiter.toString(), unitAsString);
     }
 }

@@ -30,6 +30,7 @@
 package si.uom;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import javax.measure.Unit;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Mass;
@@ -39,7 +40,6 @@ import org.junit.jupiter.api.Test;
 import si.uom.quantity.Density;
 import si.uom.quantity.Luminance;
 import tech.units.indriya.AbstractUnit;
-import tech.units.indriya.unit.Units;
 
 public class AbstractUnitTest {
 
@@ -48,15 +48,12 @@ public class AbstractUnitTest {
   public void testAsType() {
 	  final String unitAsString = "kg/h/l";
 	  final Unit<?> unit = AbstractUnit.parse(unitAsString);
-	  final Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR.divide(Units.LITRE));
 	  
 	  // The following should make sure that the given unit from string is matching the expected dimension. It will
 	  // throw an exception if it does not match for javax units, but not for si-quantity unit.
 	  assertThrows(ClassCastException.class,
 	            ()->{
 	          	  Unit<Mass> mass = unit.asType(Mass.class); // throws error -> correct
-	        	  //Unit<Density> density = unit.asType(Density.class); // no error -> incorrect
-	        	  //Unit<Luminance> luminance = unit.asType(Luminance.class); // no error -> incorrect
 	            });
 	  	 
 	  assertThrows(ClassCastException.class,
@@ -68,17 +65,13 @@ public class AbstractUnitTest {
 	            ()->{
 	        	  @SuppressWarnings("unchecked")
 				Unit<Density> density = ((AbstractUnit<Density>)unit).asType(Density.class, SI.getInstance()); // throws error -> correct
-	        	assertEquals(unitKilogramPerLiter.toString(), density.toString()); // success -> incorrect behaviour
 	            });
 	  
 	  
 	  assertThrows(ClassCastException.class,
 	            ()->{
-	        	  //Unit<Density> density = unit.asType(Density.class); // no error -> incorrect
 	        	  @SuppressWarnings("unchecked")
 				Unit<Luminance> luminance = ((AbstractUnit<Luminance>)unit).asType(Luminance.class, SI.getInstance()); // throws error -> correct
-	            });
-	  	  
-	  assertNotEquals(unitKilogramPerLiter.toString(), unitAsString);
+	            });	  
   }
 }

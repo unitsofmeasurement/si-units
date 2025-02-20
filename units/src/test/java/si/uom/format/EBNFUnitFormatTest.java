@@ -30,6 +30,7 @@
 package si.uom.format;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static si.uom.SI.COULOMB_PER_KILOGRAM;
 import static si.uom.NonSI.UNIFIED_ATOMIC_MASS;
 
@@ -37,6 +38,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.measure.Dimension;
 import javax.measure.Unit;
 import javax.measure.spi.SystemOfUnits;
 
@@ -45,6 +47,7 @@ import org.junit.jupiter.api.Test;
 import si.uom.NonSI;
 import si.uom.SI;
 import tech.units.indriya.format.EBNFUnitFormat;
+import tech.units.indriya.unit.Units;
 
 
 /**
@@ -66,6 +69,20 @@ public class EBNFUnitFormatTest {
 	public void testFormatAndParseNonSI() {
 		formatAndParseSystem(NonSI.getInstance());
 	}
+	
+    @Test
+    public void testParseAndFormatKilogramPerHourPerLitre() {
+    	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+    	final String unitAsString = "kg/h/l";
+    	final Unit<?> unit = format.parse(unitAsString);
+    	final Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR).divide(Units.LITRE);
+    	
+  	  	Dimension dim1 = unit.getDimension();
+  	  	Dimension dim2 = unitKilogramPerLiter.getDimension();
+  	  	assertEquals(dim1, dim2);
+  	  	assertEquals(unit.toString(), unitKilogramPerLiter.toString());
+  	  	assertNotEquals(unitKilogramPerLiter.toString(), unitAsString);
+    }
 	
 	private void formatAndParseSystem(SystemOfUnits system) {
 		EBNFUnitFormat format = EBNFUnitFormat.getInstance();
