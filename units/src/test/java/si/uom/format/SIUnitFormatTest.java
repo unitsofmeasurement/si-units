@@ -51,7 +51,6 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import si.uom.SI;
