@@ -80,8 +80,10 @@ public class EBNFUnitFormatTest {
   	  	Dimension dim1 = unit.getDimension();
   	  	Dimension dim2 = unitKilogramPerLiter.getDimension();
   	  	assertEquals(dim1, dim2);
-  	  	assertEquals(unit.toString(), unitKilogramPerLiter.toString());
+  	  	assertEquals(unit.toString(), unitKilogramPerLiter.toString());  	  	
   	  	assertNotEquals(unitKilogramPerLiter.toString(), unitAsString);
+  	  	final Unit<?> unitAgain = format.parse(unit.toString());
+  	  	assertEquals(unit, unitAgain);
     }
 	
 	private void formatAndParseSystem(SystemOfUnits system) {

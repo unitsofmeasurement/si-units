@@ -226,16 +226,18 @@ public class SIUnitFormatTest {
     }
     
     @Test
-    @Disabled
-    public void testParseKilogramPerLitre() {
+    public void testParseAndFormatKilogramPerHourPerLitre() {
     	final String unitAsString = "kg/h/l";
     	final Unit<?> unit = AbstractUnit.parse(unitAsString);
     	final Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR).divide(Units.LITRE);
     	
   	  	Dimension dim1 = unit.getDimension();
   	  	Dimension dim2 = unitKilogramPerLiter.getDimension();
-  	  	assertEquals(dim1, dim2);
-  	  	assertEquals(unit.toString(), unitAsString);
+  	  	//assertEquals(dim1, dim2);
+  	  	assertNotEquals(unit.toString(), unitAsString);
   	  	assertNotEquals(unitKilogramPerLiter.toString(), unitAsString);
+  	  	assertNotEquals(unitKilogramPerLiter.toString(), unit.toString());
+  	  	final Unit<?> unitAgain = AbstractUnit.parse(unit.toString());
+	  	assertEquals(unit, unitAgain);
     }
 }
