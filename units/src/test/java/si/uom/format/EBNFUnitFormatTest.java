@@ -75,13 +75,13 @@ public class EBNFUnitFormatTest {
     	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
     	final String unitAsString = "kg/h/l";
     	final Unit<?> unit = format.parse(unitAsString);
-    	final Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR).divide(Units.LITRE);
+    	final Unit<?> unitKilogramPerHourLiter = Units.KILOGRAM.divide(Units.HOUR).divide(Units.LITRE);
     	
   	  	Dimension dim1 = unit.getDimension();
-  	  	Dimension dim2 = unitKilogramPerLiter.getDimension();
+  	  	Dimension dim2 = unitKilogramPerHourLiter.getDimension();
   	  	assertEquals(dim1, dim2);
-  	  	assertEquals(unit.toString(), unitKilogramPerLiter.toString());  	  	
-  	  	assertNotEquals(unitKilogramPerLiter.toString(), unitAsString);
+  	  	assertEquals(unit.toString(), unitKilogramPerHourLiter.toString());  	  	
+  	  	assertNotEquals(unitKilogramPerHourLiter.toString(), unitAsString);
   	  	final Unit<?> unitAgain = format.parse(unit.toString());
   	  	assertEquals(unit, unitAgain);
     }

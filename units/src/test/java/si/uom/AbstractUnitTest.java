@@ -40,6 +40,7 @@ import org.junit.jupiter.api.Test;
 import si.uom.quantity.Density;
 import si.uom.quantity.Luminance;
 import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.unit.Units;
 
 public class AbstractUnitTest {
 
@@ -72,6 +73,9 @@ public class AbstractUnitTest {
 	            ()->{
 	        	  @SuppressWarnings("unchecked")
 				Unit<Luminance> luminance = ((AbstractUnit<Luminance>)unit).asType(Luminance.class, SI.getInstance()); // throws error -> correct
-	            });	  
+	            });
+	  
+	  Unit<Density> density = unit.asType(Density.class);
+	  final Unit<?> unitKilogramPerLiter = Units.KILOGRAM.divide(Units.HOUR).divide(Units.LITRE);
   }
 }
