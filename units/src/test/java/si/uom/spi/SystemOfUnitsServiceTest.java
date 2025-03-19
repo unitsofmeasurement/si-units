@@ -48,7 +48,7 @@ public class SystemOfUnitsServiceTest {
 
 	private static final int UNITS_EXPECTED_DEF = 44;
 	private static final int UNITS_EXPECTED_SI = 32;
-	private static final int UNITS_EXPECTED_NONSI = 29;
+	private static final int UNITS_EXPECTED_NONSI = 37;
 	private static SystemOfUnitsService defaultService;
 	private static SystemOfUnitsService siService;
 	

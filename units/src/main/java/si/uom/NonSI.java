@@ -110,8 +110,9 @@ public final class NonSI extends AbstractSystemOfUnits {
     /**
      * A dimensionless unit equals to <code>pi</code> (standard name
      * <code>Ï€</code>).
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
      */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.multiply(StrictMath.PI));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.multiply(StrictMath.PI), "Pi", "pi");
  
     
     /**
@@ -382,14 +383,15 @@ public final class NonSI extends AbstractSystemOfUnits {
      * A unit of radiation dose effective equal to <code>0.01 Sv</code> (standard
      * name <code>rem</code>).
      */
-    public static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
+    public static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100), "Rem", "rem");
 
     /**
      * A unit of radioctive activity equal to the activity of a gram of radium
      * (standard name <code>Ci</code>).
      * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
      */
-    public static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL.multiply(37000000000L));
+    public static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL.multiply(37000000000L),
+    		"Curie", "Ci");
 
     /////////////////
     // Solid angle //
@@ -401,7 +403,7 @@ public final class NonSI extends AbstractSystemOfUnits {
      * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
      */
     protected static final Unit<SolidAngle> SPHERE = addUnit(
-            STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class));
+            STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class), "Sphere", "sphere");
 
     ///////////////
     // Viscosity //
