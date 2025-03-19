@@ -29,6 +29,7 @@
  */
 package si.uom;
 
+import static javax.measure.MetricPrefix.CENTI;
 import static javax.measure.MetricPrefix.MEGA;
 import static si.uom.SI.AVOGADRO_CONSTANT_VALUE;
 import static si.uom.SI.ELEMENTARY_CHARGE_VALUE;
@@ -37,6 +38,7 @@ import static tech.units.indriya.unit.Units.BECQUEREL;
 import static tech.units.indriya.unit.Units.DAY;
 import static tech.units.indriya.unit.Units.COULOMB;
 import static tech.units.indriya.unit.Units.JOULE;
+import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.METRE_PER_SECOND;
@@ -44,6 +46,8 @@ import static tech.units.indriya.unit.Units.MOLE;
 import static tech.units.indriya.unit.Units.PASCAL;
 import static tech.units.indriya.unit.Units.RADIAN;
 import static tech.units.indriya.unit.Units.SECOND;
+import static tech.units.indriya.unit.Units.SIEVERT;
+import static tech.units.indriya.unit.Units.STERADIAN;
 import static tech.units.indriya.unit.Units.SQUARE_METRE;
 
 import javax.measure.Unit;
@@ -53,13 +57,19 @@ import javax.measure.quantity.Area;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.Energy;
+import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Pressure;
+import javax.measure.quantity.RadiationDoseEffective;
 import javax.measure.quantity.Radioactivity;
+import javax.measure.quantity.SolidAngle;
 import javax.measure.quantity.Speed;
 import javax.measure.quantity.Time;
 
+import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.Level;
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
@@ -80,7 +90,7 @@ import tech.units.indriya.unit.TransformedUnit;
  *  
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 2.2.2, February 9, 2025
+ * @version 2.2.3, March 19, 2025
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI">Wikipedia:
  *      Non-SI units mentioned in the SI</a>
@@ -94,6 +104,16 @@ public final class NonSI extends AbstractSystemOfUnits {
     // Units outside the SI that are accepted for use with the SI. //
     /////////////////////////////////////////////////////////////////
 
+    ///////////////////
+    // Dimensionless //
+    ///////////////////
+    /**
+     * A dimensionless unit equals to <code>pi</code> (standard name
+     * <code>Ï€</code>).
+     */
+    public static final Unit<Dimensionless> PI = addUnit(ONE.multiply(StrictMath.PI));
+ 
+    
     /**
      * An angle unit accepted for use with SI units (standard name
      * <code>deg</code>).
@@ -186,11 +206,47 @@ public final class NonSI extends AbstractSystemOfUnits {
     // Length //
     ////////////
 
+    /**
+     * A unit of length equal to <code>1E-10 m</code> (standard name
+     * <code>Å</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/%C3%85ngstr%C3%B6m"> Wikipedia:
+     *      Ångström</a>
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar      
+     */
+    public static final Unit<Length> ANGSTROM = addUnit(METRE.divide(10000000000L), "\u00C5ngstr\u00F6m", "\u00C5");
+
+    /**
+     * A unit of length equal to the distance that light travels in one year through
+     * a vacuum (standard name <code>ly</code>).
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
+     */
+    public static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15), "Light year", "ly");
+
+    /**
+     * A unit of length equal to the distance at which a star would appear to shift
+     * its position by one arcsecond over the course the time (about 3 months) in
+     * which the Earth moves a distance of {@link #ASTRONOMICAL_UNIT} in the
+     * direction perpendicular to the direction to the star (standard name
+     * <code>pc</code>).
+     * 
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
+     */
+    public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9), "Parsec", "pc");
+
+    /**
+     * A unit of length equal to <code>1852.0 m</code> (standard name
+     * <code>nmi</code>).
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
+     */
+    public static final Unit<Length> NAUTICAL_MILE = addUnit(METRE.multiply(1852), "Nautical mile", "nmi");
+    
 	/**
 	 * The Bohr radius (a0 or rBohr) is a physical constant, approximately equal to the most probable distance between the nucleus and the electron in a hydrogen atom in its ground state.
 	 * It is named after Niels Bohr, due to its role in the Bohr model of an atom. Its value is 5.2917721067(12)×10−11 m.
 	 * 
-     * @see <a href="https://en.wikipedia.org/wiki/Niels_Bohr"> Wikipedia: Niels Bohr</a> 
+     * @see <a href="https://en.wikipedia.org/wiki/Niels_Bohr"> Wikipedia: Niels Bohr</a>
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
 	 */
 	public static final Unit<Length> BOHR_RADIUS = addUnit(METRE.multiply(5.291772106712E-11), "Bohr Radius", "a0");
 
@@ -203,6 +259,7 @@ public final class NonSI extends AbstractSystemOfUnits {
      * earth in reference to any star or to the vernal equinox at the meridian,
      * equal to 23 hours, 56 minutes, 4.09 seconds (standard name
      * <code>day_sidereal</code>).
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
      */
     public static final Unit<Time> DAY_SIDEREAL = addUnit(SECOND.multiply(86164.09),
     		"Day Sidereal", "day_sidereal");
@@ -218,6 +275,8 @@ public final class NonSI extends AbstractSystemOfUnits {
      * A unit of duration equal to one complete revolution of the earth about the
      * sun, relative to the fixed stars, or 365 days, 6 hours, 9 minutes, 9.54
      * seconds (standard name <code>year_sidereal</code>).
+     * 
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
      */
     public static final Unit<Time> YEAR_SIDEREAL = addUnit(SECOND.multiply(31558149.54),
     		"Year Sidereal", "year_sidereal");
@@ -227,6 +286,7 @@ public final class NonSI extends AbstractSystemOfUnits {
      * defined as exactly 365.25 days. This is the normal meaning of the unit "year"
      * (symbol "a" from the Latin annus, annata) used in various scientific
      * contexts.
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
      */
     public static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600),
     		"Year Julien", "year_julien");
@@ -301,6 +361,8 @@ public final class NonSI extends AbstractSystemOfUnits {
 	/**
 	 * A unit of pressure equal to the pressure exerted at the Earth's surface by a
 	 * column of mercury 1 inch high (standard name <code>inHg</code>).
+	 * 
+	 * @deprecated Use systems.uom.unicode.CLDR.INCH_HG
 	 */
 	public static final Unit<Pressure> INCH_OF_MERCURY = addUnit(PASCAL.multiply(3386.388),
 			"Inch of Mercury", "inHg");
@@ -316,6 +378,69 @@ public final class NonSI extends AbstractSystemOfUnits {
     public static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL.multiply(1000000), 
     		"Rutherford", "Rd");
 
+    /**
+     * A unit of radiation dose effective equal to <code>0.01 Sv</code> (standard
+     * name <code>rem</code>).
+     */
+    public static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
+
+    /**
+     * A unit of radioctive activity equal to the activity of a gram of radium
+     * (standard name <code>Ci</code>).
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
+     */
+    public static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL.multiply(37000000000L));
+
+    /////////////////
+    // Solid angle //
+    /////////////////
+    /**
+     * A unit of solid angle equal to <code>4 <i>&pi;</i> steradians</code>
+     * (standard name <code>sphere</code>).
+     * 
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
+     */
+    protected static final Unit<SolidAngle> SPHERE = addUnit(
+            STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class));
+
+    ///////////////
+    // Viscosity //
+    ///////////////
+    /**
+     * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit).
+       * @deprecated Use systems.uom.common.historic.CGS.POISE
+     */
+    public static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
+            .asType(DynamicViscosity.class);
+
+    /**
+     * A unit of kinematic viscosity equal to <code>1 cm²/s</code> (cgs unit).
+     * @deprecated Use systems.uom.common.historic.CGS.STOKES
+     */
+    public static final Unit<KinematicViscosity> STOKES = addUnit(CENTI(METRE).pow(2).divide(SECOND))
+            .asType(KinematicViscosity.class);
+    
+    ///////////////
+    // Frequency //
+    ///////////////
+    /**
+     * A unit used to measure the frequency (rate) at which an imaging device
+     * produces unique consecutive images (standard name <code>fps</code>).
+     * @deprecated Moved to <type>tech.uom.domain.imaging.unit.Imaging</type
+     */
+    protected static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(ONE.divide(SECOND)).asType(Frequency.class);
+
+    /**
+     * A unit used to measure the ionizing ability of radiation (standard name
+     * <code>R</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Roentgen_(unit)"> Wikipedia:
+     *      Roentgen</a>
+     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar
+     */
+    public static final Unit<IonizingRadiation> ROENTGEN = addUnit(
+            COULOMB.divide(KILOGRAM).multiply(2.58e-4).asType(IonizingRadiation.class), "Roentgen", "R", true);
+    
     ///////////////////////
     // Logarithmic Units //
     ///////////////////////
@@ -327,7 +452,7 @@ public final class NonSI extends AbstractSystemOfUnits {
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static final Unit<Level<Dimensionless>> NEPER = (Unit) addUnit(ONE.transform(new LogConverter(Math.E)),
             "Neper", "Np", true);
-
+  
     ////////////////////////////////////////////////////////////////////////////
     // Label adjustments for Non-SI
     ////////////////////////////////////////////////////////////////////////////
