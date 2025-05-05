@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>si.uom</groupId>
 		<artifactId>si-parent</artifactId>
-		<version>2.2.1</version>
+		<version>2.2.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>si-units</artifactId>
 	<name>SI Units</name>
@@ -103,6 +103,12 @@
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
+				 <configuration>
+				    <bnd>
+						<!-- Export all non-internal packages by default -->
+						Export-Package: si.uom.*				        
+				    </bnd>
+				 </configuration>
 			</plugin>
 
 			<!-- ======================================================= -->
