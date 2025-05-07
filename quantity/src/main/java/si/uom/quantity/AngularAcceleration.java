@@ -37,12 +37,12 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.2
+ * @version 1.3
  *
- * @see Angle
+ * @see javax.measure.quantity.Angle
  * @see AngularSpeed
- * @see Time
- * @see Acceleration
+ * @see javax.measure.quantity.Time
+ * @see javax.measure.quantity.Acceleration
  * @see <a href="http://en.wikipedia.org/wiki/Angular_acceleration">Wikipedia: Angular Acceleration</a>
  */
 public interface AngularAcceleration extends Quantity<AngularAcceleration> {

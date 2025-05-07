@@ -37,10 +37,10 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.3
+ * @version 1.3.1
  *
- * @see LuminousIntensity
- * @see Area
+ * @see javax.measure.quantity.LuminousIntensity
+ * @see javax.measure.quantity.Area
  */
 public interface Luminance extends Quantity<Luminance> {
 }

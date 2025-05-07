@@ -37,11 +37,11 @@ import javax.measure.Quantity;
  * In SI units, momentum is measured in kilogram meters per second (kg⋅m/s).
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0
+ * @version 1.1
  *
  * @see <a href="https://en.wikipedia.org/wiki/Momentum">Wikipedia: Momentum</a>
- * @see Mass
- * @see Speed
+ * @see javax.measure.quantity.Mass
+ * @see javax.measure.quantity.Speed
  * @see Impulse
  * @since 2.1
  */

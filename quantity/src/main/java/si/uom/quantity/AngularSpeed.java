@@ -43,12 +43,12 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.3
+ * @version 1.4
  *
- * @see Angle
- * @see Time
+ * @see javax.measure.quantity.Angle
+ * @see javax.measure.quantity.Time
  * @see AngularAcceleration
- * @see Speed
+ * @see javax.measure.quantity.Speed
  * @see <a href="http://en.wikipedia.org/wiki/Angular_speed">Wikipedia: Angular Speed</a>
  * @see <a href="https://en.wikipedia.org/wiki/Rotational_speed">Wikipedia: Rotational Speed</a>
  */

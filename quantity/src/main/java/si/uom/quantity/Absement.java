@@ -39,8 +39,10 @@ import javax.measure.Quantity;
  * The system unit for this quantity is "m.s" (metre second).
  *
  * @author  <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0
+ * @version 1.1
  *
+ * @see javax.measure.quantity.Length
+ * @see javax.measure.quantity.Time
  * @see <a href="https://en.wikipedia.org/wiki/Absement">Wikipedia: Absement</a>
  */
 public interface Absement extends Quantity<Absement> {

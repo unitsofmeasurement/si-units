@@ -38,9 +38,9 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.8.1
+ * @version 1.9
  *
- * @see Length
+ * @see javax.measure.quantity.Length
  * @see <a href="http://en.wikipedia.org/wiki/Wavenumber">Wikipedia: Wavenumber</a>
  */
 public interface WaveNumber extends Quantity<WaveNumber> {

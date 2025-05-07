@@ -42,10 +42,10 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2.2
+ * @version 1.3
  *
- * @see Force
- * @see Length
+ * @see javax.measure.quantity.Force
+ * @see javax.measure.quantity.Length
  */
 public interface Torque extends Quantity<Torque> {
 }

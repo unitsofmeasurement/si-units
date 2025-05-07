@@ -36,12 +36,12 @@ import javax.measure.Quantity;
  * angle. This is a directional quantity.
  *
  * @author <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.0.1
+ * @version 1.1
  *
  * @see <a href="https://en.wikipedia.org/wiki/Radiant_intensity">Wikipedia:
  *      Radiant intensity</a>
- * @see Power
- * @see SolidAngle
+ * @see javax.measure.quantity.Power
+ * @see javax.measure.quantity.SolidAngle
  */
 public interface RadiantIntensity extends Quantity<RadiantIntensity> {
 }

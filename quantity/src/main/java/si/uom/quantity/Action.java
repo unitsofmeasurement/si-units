@@ -38,8 +38,10 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:werner@uom.si">Werner Keil</a>
- * @version 1.2.1
+ * @version 1.3
  *
+ * @see javax.measure.quantity.Energy
+ * @see javax.measure.quantity.Time
  * @see <a href="http://en.wikipedia.org/wiki/Action_(physics)">Wikipedia: Action</a>
  */
 public interface Action extends Quantity<Action> {

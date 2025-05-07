@@ -37,12 +37,12 @@ import javax.measure.Quantity;
  * The metric system unit for this quantity is <code>K<sub>cd</sub></code> or "lm/W" (lumen per Watt).
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0
+ * @version 1.1
  * 
  * @see <a href="http://en.wikipedia.org/wiki/Luminous_efficacy">Wikipedia: Luminous efficacy</a>
  * 
- * @see LuminousFlux
- * @see Power
+ * @see javax.measure.quantity.LuminousFlux
+ * @see javax.measure.quantity.Power
  * 
  */
 public interface LuminousEfficacy extends Quantity<LuminousEfficacy> {
