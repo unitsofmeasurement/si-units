@@ -162,8 +162,31 @@
 						</mapping>
 					</configuration>
 				</plugin>
+				
+				<!-- ======================================================= -->
+				<!-- Sonatype Central -->
+				<!-- ======================================================= -->
+		        <plugin>
+		          <groupId>org.sonatype.central</groupId>
+		          <artifactId>central-publishing-maven-plugin</artifactId>
+		          <version>0.7.0</version>
+		          <extensions>true</extensions>
+		          <configuration>
+		             <publishingServerId>central</publishingServerId>
+		             <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
+		             <autoPublish>true</autoPublish>
+		             <waitUntil>published</waitUntil>
+		          </configuration>
+		        </plugin>
 			</plugins>
 		</pluginManagement>
+		
+		<plugins>
+		    <plugin>
+		    	<groupId>org.sonatype.central</groupId>
+		        <artifactId>central-publishing-maven-plugin</artifactId>
+	        </plugin>
+		</plugins>
 	</build>
 
 	<!-- Dependency Management -->
@@ -242,23 +265,11 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <id>ossrh-snapshot</id>
-            <name>OSSRH Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>       
+            <id>central-snapshot</id>
+            <name>Central Snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </repository>     
     </repositories>
-
-    <!-- Deployment to public servers -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
     
 	<profiles>
 		<profile>

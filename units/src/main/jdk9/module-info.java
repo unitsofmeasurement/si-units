@@ -29,12 +29,12 @@
  */
 module si.uom.units {
     requires transitive java.measure;
-    requires transitive si.uom.quantity;
     requires transitive tech.units.indriya;
     requires transitive tech.uom.lib.common;
     requires transitive jakarta.annotation;
     requires transitive jakarta.inject;
     requires java.logging;
+    requires static si.uom.quantity;
     exports si.uom;
     
     provides javax.measure.spi.ServiceProvider with
