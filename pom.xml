@@ -34,6 +34,7 @@
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<thisYear>2025</thisYear>
 		<bnd.version>7.0.0</bnd.version>
+		<osgi.version>8.1.0</osgi.version>
 		<build-helper.version>3.6.0</build-helper.version>
 		<maven.surefire.version>3.5.3</maven.surefire.version>
 	</properties>
@@ -195,18 +196,21 @@
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.annotation</artifactId>
+				<version>${osgi.version}</version>
 				<scope>provided</scope>
 				<optional>true</optional>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.compendium</artifactId>
+				<version>${osgi.version}</version>
 				<scope>provided</scope>
 				<optional>true</optional>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
+				<version>${osgi.version}</version>
 				<scope>provided</scope>
 				<optional>true</optional>
 			</dependency>
