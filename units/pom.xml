@@ -52,6 +52,7 @@
 		<dependency>
 			<groupId>si.uom</groupId>
 			<artifactId>si-quantity</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -106,7 +107,7 @@
 				 <configuration>
 				    <bnd>
 						<!-- Export all non-internal packages by default -->
-						Export-Package: si.uom.*				        
+						Export-Package: !si.uom.qantity, si.uom.*				        
 				    </bnd>
 				 </configuration>
 			</plugin>

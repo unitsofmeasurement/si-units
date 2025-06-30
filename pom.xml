@@ -27,7 +27,7 @@
 		<lib.version>2.2</lib.version>
 		<ri.version>2.2.3</ri.version>
 		<si.version>${project.version}</si.version><!-- -->
-		<si.quantity.version>2.2.2</si.quantity.version><!-- To handle quantity 
+		<si.quantity.version>2.2.3-SNAPSHOT</si.quantity.version><!-- To handle quantity 
 			separately, makes deployment easier -->
 		<jakarta.annotation.version>2.0.0</jakarta.annotation.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
